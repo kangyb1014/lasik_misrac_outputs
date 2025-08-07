@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "response.c:129:45: error: expected identifier or '(' before 'do'\n  129 | #define _MHD_remove_header(presponse, phdr) do { \\\n      |                                             ^~\nresponse.c:750:6: note: in expansion of macro '_MHD_remove_header'\n  750 | void _MHD_remove_header(struct MHD_Response *response, struct MHD_HTTP_Res_Header *phdr) {\n      |      ^~~~~~~~~~~~~~~~~~\nresponse.c:154:3: error: expected identifier or '(' before 'while'\n  154 | } while (0)\n      |   ^~~~~\nresponse.c:750:6: note: in expansion of macro '_MHD_remove_header'\n  750 | void _MHD_remove_header(struct MHD_Response *response, struct MHD_HTTP_Res_Header *phdr) {\n      |      ^~~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

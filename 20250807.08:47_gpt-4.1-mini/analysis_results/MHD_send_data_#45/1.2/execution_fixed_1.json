@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "mhd_send.c:758:9: error: conflicting types for 'MHD_send_data_'; have 'ssize_t(struct MHD_Connection *, const char *, size_t,  int)' {aka 'long int(struct MHD_Connection *, const char *, long unsigned int,  int)'}\n  758 | ssize_t MHD_send_data_ (struct MHD_Connection *connection,\n      |         ^~~~~~~~~~~~~~\nIn file included from mhd_send.c:42:\nmhd_send.h:71:1: note: previous declaration of 'MHD_send_data_' with type 'ssize_t(struct MHD_Connection *, const char *, size_t,  _Bool)' {aka 'long int(struct MHD_Connection *, const char *, long unsigned int,  _Bool)'}\n   71 | MHD_send_data_ (struct MHD_Connection *connection,\n      | ^~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2147: libmicrohttpd_la-mhd_send.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

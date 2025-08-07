@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\nis_websocket_request (struct MHD_Connection *con, const char *upg_header,\n                      const char *con_header)\n{\n\n  (void) con;  /* Unused. Silent compiler warning. */\n\n  return ((upg_header != NULL) && (con_header != NULL)\n          && (0 == strcmp (upg_header, WS_UPGRADE_VALUE))\n          && (NULL != strstr (con_header, \"Upgrade\")))\n         ? MHD_YES\n         : MHD_NO;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'is_websocket_request': {'callees': [], 'callers': ['ahc_cb']}, 'ahc_cb': {'callees': ['MHD_lookup_connection_value', 'is_websocket_request', 'send_chat_page', 'send_bad_request', 'send_upgrade_required', 'MHD_lookup_connection_value_n', 'ws_get_accept_value', 'MHD_create_response_for_upgrade', 'MHD_add_response_header', 'MHD_destroy_response', 'MHD_queue_response'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "strcmp",
+    "strstr",
+    "WS_UPGRADE_VALUE",
+    "MHD_Result",
+    "MHD_YES",
+    "MHD_NO"
+  ],
+  "explanation": "The target function uses the standard library functions strcmp and strstr for string comparison and searching, so their behavior is critical to verify compliance with the MISRA C rule banning memcmp for null-terminated string comparison. The WS_UPGRADE_VALUE symbol is used as a string literal in strcmp and needs analysis to confirm it is null-terminated and appropriate. The enum MHD_Result and its values MHD_YES and MHD_NO are returned by the function and needed to understand the function's outcomes, but they do not directly relate to the MISRA rule; still included for completeness of analysis."
+}

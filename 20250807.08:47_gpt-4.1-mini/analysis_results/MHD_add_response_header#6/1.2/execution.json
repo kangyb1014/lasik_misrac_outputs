@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "response.c:305:8: error: unknown type name 'MHD_Result'\n  305 | static MHD_Result add_response_entry(struct MHD_Response *response, int kind, const char *header, const char *content)\n      |        ^~~~~~~~~~\nresponse.c:325:8: error: unknown type name 'MHD_Result'\n  325 | static MHD_Result add_response_header_connection(struct MHD_Response *resp, const char *content)\n      |        ^~~~~~~~~~\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

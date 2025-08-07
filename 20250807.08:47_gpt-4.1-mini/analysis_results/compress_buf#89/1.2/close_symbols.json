@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\ncompress_buf (z_stream *strm, const void *src, size_t src_size, size_t *offset,\n              void **dest, size_t *dest_size,\n              void *tmp)\n{\n  unsigned int have;\n  enum MHD_Result ret;\n  int flush;\n  void *tmp_dest;\n  *dest = NULL;\n  *dest_size = 0;\n  do\n  {\n    if (src_size > CHUNK)\n    {\n      strm->avail_in = CHUNK;\n      src_size -= CHUNK;\n      flush = Z_NO_FLUSH;\n    }\n    else\n    {\n      strm->avail_in = (uInt) src_size;\n      flush = Z_SYNC_FLUSH;\n    }\n    *offset += strm->avail_in;\n    strm->next_in = (const Bytef *) src;\n    do\n    {\n      strm->avail_out = CHUNK;\n      strm->next_out = tmp;\n      ret = (Z_OK == deflate (strm, flush)) ? MHD_YES : MHD_NO;\n      have = CHUNK - strm->avail_out;\n      *dest_size += have;\n      tmp_dest = realloc (*dest, *dest_size);\n      if (NULL == tmp_dest)\n      {\n        free (*dest);\n        *dest = NULL;\n        return MHD_NO;\n      }\n      *dest = tmp_dest;\n      memcpy (((uint8_t *) (*dest)) + ((*dest_size) - have), tmp, have);\n    }\n    while (0 == strm->avail_out);\n  }\n  while (flush != Z_SYNC_FLUSH);\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'compress_buf': {'callees': [], 'callers': ['read_cb']}, 'read_cb': {'callees': ['compress_buf'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "z_stream",
+    "enum MHD_Result",
+    "CHUNK",
+    "Z_NO_FLUSH",
+    "Z_SYNC_FLUSH",
+    "deflate",
+    "MHD_YES",
+    "MHD_NO",
+    "realloc",
+    "free",
+    "memcpy",
+    "uint8_t",
+    "uInt",
+    "Bytef"
+  ],
+  "explanation": "To analyze the target function for language extensions, the provided symbols are needed to fully understand the code and check for any compiler-specific constructs or non-standard types/macros. 'z_stream', 'uInt', and 'Bytef' relate to the use of zlib compression stream types that may involve compiler-specific typedefs. 'enum MHD_Result' and its related constants ('MHD_YES', 'MHD_NO') define return values and are essential to verify any non-standard enum usage. Constants like 'CHUNK', 'Z_NO_FLUSH', and 'Z_SYNC_FLUSH' drive control flow and may involve macros or extensions. Functions like 'deflate', 'realloc', 'free', 'memcpy' are standard library or external functions whose definitions are necessary to check for any embedded extensions or attributes. The 'uint8_t' type is a fixed-width integer type that might be a typedef or macro potentially involving extensions. Knowing these symbols ensures the analyzer can identify if any language compiler extensions are used in types, functions, macros, or control constructs."
+}

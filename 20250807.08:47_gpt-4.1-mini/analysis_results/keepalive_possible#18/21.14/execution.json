@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c: In function 'keepalive_possible':\nconnection.c:1696:34: error: incompatible types when initializing type 'struct MHD_Response * const' using type 'struct MHD_Reply'\n 1696 |   struct MHD_Response *const r = c->rp;  /**< a short alias */\n      |                                  ^\nconnection.c:1730:28: error: invalid type argument of '->' (have 'struct MHD_Reply')\n 1730 |       (0 != (connection->rp->flags & MHD_RF_HTTP_1_0_SERVER)))\n      |                            ^~\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

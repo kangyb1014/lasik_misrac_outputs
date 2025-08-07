@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "http_chunked_compression.c:82:8: error: unknown type name 'MHD_Result'\n   82 | static MHD_Result compress_buf(z_stream *strm, const void *src, size_t src_size, size_t *offset,\n      |        ^~~~~~~~~~\nhttp_chunked_compression.c: In function 'compress_buf':\nhttp_chunked_compression.c:87:3: error: unknown type name 'MHD_Result'; use 'enum' keyword to refer to the type\n   87 |   MHD_Result ret;\n      |   ^~~~~~~~~~\n      |   enum \nmake[4]: *** [Makefile:1086: http_chunked_compression.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

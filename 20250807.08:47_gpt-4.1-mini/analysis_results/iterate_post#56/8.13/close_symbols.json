@@ -1,0 +1,15 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\niterate_post (void *coninfo_cls, enum MHD_ValueKind kind, const char *key,\n              const char *filename, const char *content_type,\n              const char *transfer_encoding, const char *data, uint64_t off,\n              size_t size)\n{\n  struct connection_info_struct *con_info = coninfo_cls;\n  (void) kind;               /* Unused. Silent compiler warning. */\n  (void) filename;           /* Unused. Silent compiler warning. */\n  (void) content_type;       /* Unused. Silent compiler warning. */\n  (void) transfer_encoding;  /* Unused. Silent compiler warning. */\n  (void) off;                /* Unused. Silent compiler warning. */\n\n  if (0 == strcmp (key, \"name\"))\n  {\n    if ((size > 0) && (size <= MAXNAMESIZE))\n    {\n      char *answerstring;\n      answerstring = malloc (MAXANSWERSIZE);\n      if (! answerstring)\n        return MHD_NO;\n\n      snprintf (answerstring, MAXANSWERSIZE, GREETINGPAGE, data);\n      con_info->answerstring = answerstring;\n    }\n    else\n      con_info->answerstring = NULL;\n\n    return MHD_NO;\n  }\n\n  return MHD_YES;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. A pointer should not point to a const-qualified type if the pointer is used by a function that modifies the object pointed to by the pointer.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "strcmp",
+    "malloc",
+    "snprintf",
+    "GREETINGPAGE",
+    "MAXANSWERSIZE",
+    "MAXNAMESIZE",
+    "struct connection_info_struct",
+    "MHD_NO",
+    "MHD_YES"
+  ],
+  "explanation": "To analyze the iterate_post function for the MISRA C rule on pointer const qualification, these symbols are needed: strcmp - to confirm it does not modify the pointed-to string 'key'; malloc - to verify allocated memory usage and pointer mutability; snprintf - to ensure output to 'answerstring' is proper and respects const correctness; GREETINGPAGE, MAXANSWERSIZE, MAXNAMESIZE - constants that affect buffer sizes and string formatting, relevant for pointer usage scopes; struct connection_info_struct - to understand the member 'answerstring' and whether it is a const pointer or points to modifiable data; MHD_NO and MHD_YES - enum return values indicating function outcomes but do not affect pointer constness directly. Collectively, these symbols allow determining if pointer parameters and internal pointers are used adhering to the rule about const qualification and modification."
+}
