@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpr2oqu67f/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketAddrFromString_Impl':\n/tmp/tmpr2oqu67f/src/src/os/portable/os-impl-bsd-sockets.c:742:9: error: multiple default labels in one switch\n  742 |         default:\n      |         ^~~~~~~\n/tmp/tmpr2oqu67f/src/src/os/portable/os-impl-bsd-sockets.c:738:9: note: this is the first default label\n  738 |         default:\n      |         ^~~~~~~\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

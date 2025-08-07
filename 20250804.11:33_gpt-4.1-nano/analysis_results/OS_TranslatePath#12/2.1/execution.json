@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Start OS_TranslatePath\nVirtPathLen=23\nName ptr=0x55a65414a2bf\nName ptr after = 0x55a65414a2c0\nReturn from OS_ObjectIdGetBySearch=-17\nObjectIdGetBySearch failed\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp0ukeazce/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketRecvFrom_Impl':\n/tmp/tmp0ukeazce/src/src/os/portable/os-impl-bsd-sockets.c:541:63: error: expected ';' before '}' token\n  541 |         log_message(\"Modified RemoteAddr->ActualLength to 42\")\n      |                                                               ^\n      |                                                               ;\n  542 |     }\n      |     ~                                                          \ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

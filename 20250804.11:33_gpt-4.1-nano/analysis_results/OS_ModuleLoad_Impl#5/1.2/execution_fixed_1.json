@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpm46jpy07/src/src/os/portable/os-impl-posix-dl-loader.c: In function 'OS_ModuleLoad_Impl':\n/tmp/tmpm46jpy07/src/src/os/portable/os-impl-posix-dl-loader.c:67:1: error: number of arguments doesn't match prototype\n   67 | int OS_ModuleLoad_Impl() {\n      | ^~~\nIn file included from /tmp/tmpm46jpy07/src/src/os/portable/os-impl-posix-dl-loader.c:53:\n/tmp/tmpm46jpy07/src/src/os/shared/inc/os-shared-module.h:73:7: error: prototype declaration\n   73 | int32 OS_ModuleLoad_Impl(const OS_object_token_t *token, const char *translated_path);\n      |       ^~~~~~~~~~~~~~~~~~\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:398: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-posix-dl-loader.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

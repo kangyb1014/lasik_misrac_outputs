@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "In file included from /tmp/tmpq89_n7av/src/src/os/shared/inc/os-shared-idmap.h:29,\n                 from /tmp/tmpq89_n7av/src/src/os/shared/src/osapi-printf.c:62:\n/tmp/tmpq89_n7av/src/src/os/inc/osapi-idmap.h:50:36: error: expected identifier or '(' before numeric constant\n   50 | #define OS_OBJECT_TYPE_OS_CONSOLE  0x0C /**< @brief Object console type */\n      |                                    ^~~~\n/tmp/tmpq89_n7av/src/src/os/shared/src/osapi-printf.c:152:13: note: in expansion of macro 'OS_OBJECT_TYPE_OS_CONSOLE'\n  152 | typedef int OS_OBJECT_TYPE_OS_CONSOLE;\n      |             ^~~~~~~~~~~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:272: CMakeFiles/osal.dir/src/os/shared/src/osapi-printf.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

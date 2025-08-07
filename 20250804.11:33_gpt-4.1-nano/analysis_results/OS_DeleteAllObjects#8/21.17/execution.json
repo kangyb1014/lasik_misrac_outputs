@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Iteration: 1\nBefore OS_ForEachObjectOfType, ObjectCount=0\nAfter OS_ForEachObjectOfType for TIMECB, ObjectCount=0\nBefore OS_ForEachObjectOfType, ObjectCount=0\nAfter OS_ForEachObjectOfType for TIMEBASE, ObjectCount=0\nBefore OS_ForEachObjectOfType, ObjectCount=0\nAfter OS_ForEachObjectOfType for TASK, ObjectCount=0\nBefore OS_ForEachObject, ObjectCount=0\nAfter OS_ForEachObject, ObjectCount=0\n"
+}

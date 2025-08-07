@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_API_Impl_Init failed\nWarning: Microsecs per sec value of %lu does not equal 1000000 (MicroSecPerTick: %ld   TicksPerSecond: %ld)\n"
+}

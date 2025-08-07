@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpjtv58k64/src/src/bsp/generic-linux/src/bsp_start.c: In function 'OS_BSP_Initialize':\n/tmp/tmpjtv58k64/src/src/bsp/generic-linux/src/bsp_start.c:93:47: error: 'OS_BSP_GlobalData_t' has no member named 'mutex'\n   93 |     status = pthread_mutex_init(&OS_BSP_Global.mutex, &mutex_attr);\n      |                                               ^\ngmake[2]: *** [generic-linux_impl/CMakeFiles/osal_generic-linux_impl.dir/build.make:76: generic-linux_impl/CMakeFiles/osal_generic-linux_impl.dir/src/bsp_start.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:893: generic-linux_impl/CMakeFiles/osal_generic-linux_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

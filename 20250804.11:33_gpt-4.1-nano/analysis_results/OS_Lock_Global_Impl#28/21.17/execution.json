@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Control path: Starting OS_Lock_Global_Impl with idtype: 1\nimpl pointer is valid, attempting to lock mutex.\nMutex locked successfully.\n"
+}

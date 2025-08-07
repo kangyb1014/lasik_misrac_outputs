@@ -1,0 +1,145 @@
+{
+  "user_message": "<misra_rule>
+  MISRA C 2023 Rule 14.2 is: A for loop shall be well-formed.
+  The three clauses of a for statement are the:
+  1. First clause shall be empty or an expression whose set the value of the loop counter or define and intialize the loop counter.
+  2. Second clause shall be an expression that has no persistent side effects, and shall use the loop count and optionally loop flags, and shall not use any other object that is modified in the for loop body.
+  3.Third clause shall be an expression whose modify only the value of the loop counter, and shall not use objects that are modified in the for loop body.
+  4. There shall only be one loop counter in a for loop, which shall not be modified in for loop body. A loop control flag is defined as single identifier denoting an object with essentially Boolean type that is used in the second clause. The behaviour of a for loop body includes the behaviour of any functions called within that statement.
+  </misra_rule>
+  <response format>
+  Provide your answer with these fields.
+  - is_rule_violated: whether the rule is violated or not (true/false),
+  - scenario: a specific violation scenario.
+  - test_code: a modified OS_FileOpenCheck code that contains useful probe functions that print useful logs to a file \"/tmp/logs/188.txt\". The logs should contain the control path and state information of the violation scenario. If the MISRA C rule is not violated, you can just return an empty string for the test code.
+  Here are the constraints for the test code:
+  - DO NOT introduce new violations to demonstrate your scenario.
+  - The test code MUST be compilable and executable.
+  - The test code MUST include line breaks.
+  - The test code MUST preserve the original logic of OS_FileOpenCheck as much as possible.
+  - You MUST NOT define the main function.
+  - You MUST NOT define macros.
+  - The test code MUST not contain any mock functions.
+  </response format>
+  <target_code>
+  Here is the code of OS_FileOpenCheck:
+  ```c
+  int32 OS_FileOpenCheck(const char *Filename)
+  {
+      int32                        return_code;
+      OS_object_iter_t             iter;
+      OS_stream_internal_record_t *stream;
+  
+      /* Check parameters */
+      OS_CHECK_POINTER(Filename);
+  
+      return_code = OS_ERROR;
+  
+      OS_ObjectIdIterateActive(LOCAL_OBJID_TYPE, &iter);
+  
+      while (OS_ObjectIdIteratorGetNext(&iter))
+      {
+          stream = OS_OBJECT_TABLE_GET(OS_stream_table, iter.token);
+          if (stream->socket_domain == OS_SocketDomain_INVALID && (strcmp(stream->stream_name, Filename) == 0))
+          {
+              return_code = OS_SUCCESS;
+              break;
+          }
+      }
+  
+      OS_ObjectIdIteratorDestroy(&iter);
+  
+      return return_code;
+  }
+  ```
+  </target_code>
+  <additional code>Here are the definitions of symbols that are close to the target function OS_FileOpenCheck:
+  int32 OS_ObjectIdIterateActive(osal_objtype_t objtype, OS_object_iter_t *iter)
+  {
+      return OS_ObjectIdIteratorInit(OS_ObjectFilterActive, NULL, objtype, iter);
+  }
+  ...
+  bool OS_ObjectIdIteratorGetNext(OS_object_iter_t *iter)
+  {
+      OS_common_record_t *record;
+      bool                got_next;
+  
+      got_next           = false;
+      iter->token.obj_id = OS_OBJECT_ID_UNDEFINED;
+  
+      do
+      {
+          ++iter->token.obj_idx;
+          if (iter->token.obj_idx >= iter->limit)
+          {
+              break;
+          }
+  
+          record = OS_OBJECT_TABLE_GET(iter->base, iter->token);
+          if (iter->match == NULL || iter->match(iter->arg, &iter->token, record))
+          {
+              iter->token.obj_id = record->active_id;
+              got_next           = true;
+          }
+      } while (!got_next);
+  
+      return got_next;
+  }
+  ...
+  void OS_ObjectIdIteratorDestroy(OS_object_iter_t *iter)
+  {
+      OS_ObjectIdTransactionCancel(&iter->token);
+  }
+  </additional code>
+  Judge whether the above OS_FileOpenCheck code violates the rule 14.2 or not.",
+  "is_rule_violated": true,
+  "scenario": "The for loop directly iterates over elements with explicit control of the iteration state inside the loop, and the second clause (iteration condition) depends on a function call with potential side effects, such as 'OS_ObjectIdIteratorGetNext(&iter)'.",
+  "test_code": "#include <stdio.h>
+  #include <string.h>
+  
+  // Assuming the original function definitions and global scope are available
+  // // and the macro and function declarations are the same as in the provided code.
+  // 
+  // int32 OS_FileOpenCheck(const char *Filename)
+  // {
+  //     int32 return_code;
+  //     OS_object_iter_t iter;
+  //     OS_stream_internal_record_t *stream;
+  // 
+  //     /* Check parameters */
+  //     OS_CHECK_POINTER(Filename);
+  // 
+  //     return_code = OS_ERROR;
+  // 
+  //     OS_ObjectIdIterateActive(LOCAL_OBJID_TYPE, &iter);
+  // 
+  //     while (OS_ObjectIdIteratorGetNext(&iter))
+  //     {
+  //         stream = OS_OBJECT_TABLE_GET(OS_stream_table, iter.token);
+  //         if (stream->socket_domain == OS_SocketDomain_INVALID && (strcmp(stream->stream_name, Filename) == 0))
+  //         {
+  //             return_code = OS_SUCCESS;
+  //             break;
+  //         }
+  //     }
+  // 
+  //     OS_ObjectIdIteratorDestroy(&iter);
+  // 
+  //     return return_code;
+  // }
+  // 
+  // // Probe functions to log control flow and state when the iterator gets the next element.
+  // 
+  // bool OS_ObjectIdIteratorGetNext(OS_object_iter_t *iter)
+  // {
+  //     static int call_count = 0;
+  //     FILE *logfile = fopen(\"/tmp/logs/188.txt\", \"a\");
+  //     if (logfile == NULL) return false;
+  //     fprintf(logfile, \"Call %d to getNext at line %d with iter token obj_idx=%u, limit=%u\
+  // \",
+  //             ++call_count, __LINE__, iter->token.obj_idx, iter->limit);
+  //     fclose(logfile);
+  //     return __real_OS_ObjectIdIteratorGetNext(iter); // assuming the real function exists
+  // }
+  // "
+}
