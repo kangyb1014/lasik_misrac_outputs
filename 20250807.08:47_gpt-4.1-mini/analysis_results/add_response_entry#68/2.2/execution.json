@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "response.c:262:6: error: redeclaration of 'enum MHD_ValueKind'\n  262 | enum MHD_ValueKind {};\n      |      ^~~~~~~~~~~~~\nIn file included from internal.h:34,\n                 from response.c:45:\n../../src/include/microhttpd.h:2244:6: note: originally defined here\n 2244 | enum MHD_ValueKind\n      |      ^~~~~~~~~~~~~\nresponse.c:262:21: error: empty enum is invalid\n  262 | enum MHD_ValueKind {};\n      |                     ^\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

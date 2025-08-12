@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "postprocessor.c:145:21: error: expected declaration specifiers or '...' before '*' token\n  145 | typedef MHD_Result (*MHD_PostDataIterator)(void *cls, int kind, const char *key, void *a, void *b, void *c, const char *data, uint64_t offset, size_t size);\n      |                     ^\npostprocessor.c:147:3: error: redeclaration of enumerator 'PP_Error'\n  147 |   PP_Error = -1\n      |   ^~~~~~~~\nIn file included from postprocessor.c:37:\npostprocessor.h:37:3: note: previous definition of 'PP_Error' with type 'enum PP_State'\n   37 |   PP_Error,\n      |   ^~~~~~~~\nmake[3]: *** [Makefile:2210: libmicrohttpd_la-postprocessor.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

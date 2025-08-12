@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "basicauth.c: In function 'MHD_queue_basic_auth_required_response3':\nbasicauth.c:270:36: error: initializer element is not constant\n  270 |   static const size_t prefix_len = mhd_staticstr_len(prefix);\n      |                                    ^~~~~~~~~~~~~~~~~\nbasicauth.c:271:41: error: initializer element is not constant\n  271 |   static const size_t suff_simple_len = mhd_staticstr_len(\"\\\"\");\n      |                                         ^~~~~~~~~~~~~~~~~\nbasicauth.c:272:42: error: initializer element is not constant\n  272 |   static const size_t suff_charset_len = mhd_staticstr_len(suff_charset);\n      |                                          ^~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2266: libmicrohttpd_la-basicauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

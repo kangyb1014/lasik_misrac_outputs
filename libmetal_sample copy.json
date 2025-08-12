@@ -1,0 +1,82 @@
+[
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/include/metal/system/linux/mutex.h",
+        "function": "__metal_mutex_init"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/shmem.c",
+        "function": "metal_shmem_try_map"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/device.c",
+        "function": "metal_uio_dev_open"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/device.c",
+        "function": "metal_linux_probe_driver"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/device.c",
+        "function": "metal_bus_register"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/include/metal/system/linux/mutex.h",
+        "function": "__metal_mutex_acquire"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/io.c",
+        "function": "metal_io_block_set"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/device.c",
+        "function": "metal_bus_find"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/device.c",
+        "function": "metal_device_open"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/device.c",
+        "function": "metal_register_generic_device"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/device.c",
+        "function": "metal_generic_dev_open"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/device.c",
+        "function": "metal_uio_dev_bind"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/shmem.c",
+        "function": "metal_shmem_open_generic"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/shmem.c",
+        "function": "metal_shmem_register_generic"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/utilities.c",
+        "function": "metal_open"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/utilities.c",
+        "function": "metal_map"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/device.c",
+        "function": "metal_generic_dev_dma_map"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/device.c",
+        "function": "metal_uio_dev_dma_map"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/utilities.c",
+        "function": "metal_virt2phys"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/libmetal/srcs/v2025.04.0/lib/system/linux/device.c",
+        "function": "metal_uio_read_map_attr"
+    }
+]

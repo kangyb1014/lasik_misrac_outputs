@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmp7jal0f8h/src/lib/device.c:65:8: error: redefinition of 'struct metal_bus_ops'\n   65 | struct metal_bus_ops {\n      |        ^~~~~~~~~~~~~\nIn file included from /tmp/tmp7jal0f8h/src/lib/device.c:19:\n/tmp/tmp7jal0f8h/build/lib/include/metal/device.h:37:8: note: originally defined here\n   37 | struct metal_bus_ops {\n      |        ^~~~~~~~~~~~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:90: lib/CMakeFiles/metal-shared.dir/device.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

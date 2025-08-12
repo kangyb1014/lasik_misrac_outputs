@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "In file included from ../../src/include/mhd_options.h:34,\n                 from response.c:38:\n../../MHD_config.h:783: warning: \"_MHD_EXTERN\" redefined\n  783 | #define _MHD_EXTERN __attribute__((visibility(\"default\"))) extern\n      | \nIn file included from response.c:3:\n../../src/include/microhttpd.h:191: note: this is the location of the previous definition\n  191 | #define _MHD_EXTERN extern\n      | \nresponse.c:287:8: error: unknown type name 'MHD_Result'\n  287 | static MHD_Result\n      |        ^~~~~~~~~~\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

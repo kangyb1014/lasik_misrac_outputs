@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp2eeronxm/src/build-aux/missing: line 81: makeinfo: command not found\nWARNING: 'makeinfo' is missing on your system.\n         You should only need it if you modified a '.texi' file, or\n         any other file indirectly affecting the aspect of the manual.\n         You might want to install the Texinfo package:\n         <https://www.gnu.org/software/texinfo/>\n         The spurious makeinfo call might also be the consequence of\n         using a buggy 'make' (AIX, DU, IRIX), in which case you might\n         want to install GNU make:\n         <https://www.gnu.org/software/make/>\nmake[3]: *** [Makefile:543: libmicrohttpd.info] Error 127\nmake[2]: *** [Makefile:764: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

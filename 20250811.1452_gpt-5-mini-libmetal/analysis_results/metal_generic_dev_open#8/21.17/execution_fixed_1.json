@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpi5zcqa4l/src/lib/device.c: In function 'metal_generic_dev_open':\n/tmp/tmpi5zcqa4l/src/lib/device.c:124:12: error: incompatible types when assigning to type 'struct metal_list *' from type 'struct metal_list'\n  124 |     node = _metal.common.generic_device_list;\n      |            ^~~~~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:90: lib/CMakeFiles/metal-shared.dir/device.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "response.c: In function 'add_response_header_connection':\nresponse.c:377:18: warning: too many arguments for format [-Wformat-extra-args]\n  377 |     fprintf(log, \"Old value length (including \", \") extra: %zu\\n\", old_value_len);\n      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nresponse.c:443:27: error: expected ')' before 'keep'\n  443 |     fprintf(log, \"Tokens \"keep-alive\" removed if present. New norm_len: %zu\\n\", norm_len);\n      |            ~              ^~~~\n      |                           )\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

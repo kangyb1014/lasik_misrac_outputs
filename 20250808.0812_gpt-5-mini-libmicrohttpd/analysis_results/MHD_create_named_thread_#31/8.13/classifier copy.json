@@ -1,0 +1,234 @@
+{
+  "user_message": "<misra_rule>
+  MISRA C 2023 Rule 8.13 is: A pointer should point to a const-qualified type whenever possible.
+  A pointer should not point to a const-qualified type if the pointer is used by a function that modifies the object pointed to by the pointer.
+  </misra_rule>
+  <response format>
+  Provide your answer with these fields.
+  - is_rule_violated: whether the rule is violated or not (true/false),
+  - scenario: a specific violation scenario.
+  - test_code: a modified MHD_create_named_thread_ code that contains useful probe functions that print useful logs to a file \"/tmp/logs/251.txt\". The logs should contain the control path and state information of the violation scenario. If the MISRA C rule is not violated, you can just return an empty string for the test code.
+  Here are the constraints for the test code:
+  - DO NOT introduce new violations to demonstrate your scenario.
+  - The test code MUST be compilable and executable.
+  - The test code MUST include line breaks.
+  - The test code MUST preserve the original logic of MHD_create_named_thread_ as much as possible.
+  - You MUST NOT define the main function.
+  - You MUST NOT define macros.
+  - The test code MUST not contain any mock functions.
+  </response format>
+  <target_code>
+  Here is the code of MHD_create_named_thread_:
+  ```c
+  int
+  MHD_create_named_thread_ (MHD_thread_handle_ID_ *handle_id,
+                            const char *thread_name,
+                            size_t stack_size,
+                            MHD_THREAD_START_ROUTINE_ start_routine,
+                            void *arg)
+  {
+  #if defined(MHD_USE_THREAD_ATTR_SETNAME)
+    int res;
+    pthread_attr_t attr;
+  #if defined(MHD_thread_handle_ID_get_native_handle_ptr_)
+    pthread_t *const new_tid_ptr =
+      MHD_thread_handle_ID_get_native_handle_ptr_ (handle_id);
+  #else  /* ! MHD_thread_handle_ID_get_native_handle_ptr_ */
+    pthread_t new_tid;
+    pthread_t *const new_tid_ptr = &new_tid;
+  #endif /* ! MHD_thread_handle_ID_get_native_handle_ptr_ */
+  
+    res = pthread_attr_init (&attr);
+    if (0 == res)
+    {
+  #if defined(HAVE_PTHREAD_ATTR_SETNAME_NP_NETBSD)
+      /* NetBSD uses 3 arguments: second argument is string in printf-like format,
+       *                          third argument is single argument for printf;
+       * OSF1 uses 3 arguments too, but last one always must be zero (NULL).
+       * MHD doesn't use '%' in thread names, so both forms are used in same way.
+       */
+      res = pthread_attr_setname_np (&attr,
+                                     thread_name,
+                                     0);
+  #elif defined(HAVE_PTHREAD_ATTR_SETNAME_NP_IBMI)
+      res = pthread_attr_setname_np (&attr,
+                                     thread_name);
+  #else
+  #error No pthread_attr_setname_np() function.
+  #endif
+      if ((res == 0) && (0 != stack_size) )
+        res = pthread_attr_setstacksize (&attr,
+                                         stack_size);
+      if (0 == res)
+        res = pthread_create (new_tid_ptr,
+                              &attr,
+                              start_routine,
+                              arg);
+      pthread_attr_destroy (&attr);
+    }
+    if (0 != res)
+    {
+      errno = res;
+      MHD_thread_handle_ID_set_invalid_ (handle_id);
+    }
+  #if ! defined(MHD_thread_handle_ID_get_native_handle_ptr_)
+    else
+      MHD_thread_handle_ID_set_native_handle_ (handle_id, new_tid);
+  #endif /* ! MHD_thread_handle_ID_set_current_thread_ID_ */
+  
+    return ! res;
+  #else  /* ! MHD_USE_THREAD_ATTR_SETNAME */
+    struct MHD_named_helper_param_ *param;
+  
+    if (NULL == thread_name)
+    {
+      errno = EINVAL;
+      return 0;
+    }
+  
+    param = malloc (sizeof (struct MHD_named_helper_param_));
+    if (NULL == param)
+      return 0;
+  
+    param->start_routine = start_routine;
+    param->arg = arg;
+    param->name = thread_name;
+  
+    /* Set thread name in thread itself to avoid problems with
+     * threads which terminated before name is set in other thread.
+     */
+    if (! MHD_create_thread_ (handle_id,
+                              stack_size,
+                              &named_thread_starter,
+                              (void *) param))
+    {
+      int err_num;
+  
+      err_num = errno;
+      free (param);
+      errno = err_num;
+      return 0;
+    }
+  
+    return ! 0;
+  #endif /* ! MHD_USE_THREAD_ATTR_SETNAME */
+  }
+  ```
+  </target_code>
+  Judge whether the above MHD_create_named_thread_ code violates the rule 8.13 or not.",
+  "is_rule_violated": true,
+  "scenario": "The struct MHD_named_helper_param_ stores the thread name in a non-const char * (param->name). Assigning the const-qualified thread_name (const char *) to this non-const pointer discards const qualification. This violates MISRA C 2023 Rule 8.13 which requires a pointer to point to a const-qualified type whenever possible (and avoid removing const qualification).",
+  "test_code": "#include <stdio.h>
+  #include <stdlib.h>
+  #include <errno.h>
+  #include <string.h>
+  #include <stddef.h>
+  
+  /* Minimal type definitions to preserve the original function signature */
+  typedef struct MHD_thread_handle_ID_ MHD_thread_handle_ID_;
+  typedef void *(*MHD_THREAD_START_ROUTINE_)(void *);
+  
+  /* Prototype of an external function used by this code (not defined here). */
+  int MHD_create_thread_ (MHD_thread_handle_ID_ *handle_id,
+                          size_t stack_size,
+                          MHD_THREAD_START_ROUTINE_ start_routine,
+                          void *arg);
+  
+  /* The helper-parameter structure. Note: name is intentionally non-const
+   * to demonstrate the violation scenario: assigning a const char * to a
+   * non-const char * discards const qualification. */
+  struct MHD_named_helper_param_
+  {
+    MHD_THREAD_START_ROUTINE_ start_routine;
+    void *arg;
+    char *name; /* <-- should be 'const char *name' to avoid discarding const */
+  };
+  
+  int
+  MHD_create_named_thread_ (MHD_thread_handle_ID_ *handle_id,
+                            const char *thread_name,
+                            size_t stack_size,
+                            MHD_THREAD_START_ROUTINE_ start_routine,
+                            void *arg)
+  {
+    struct MHD_named_helper_param_ *param;
+    FILE *log = fopen(\"/tmp/logs/251.txt\", \"a\");
+    if (log != NULL)
+    {
+      fprintf(log, \"MHD_create_named_thread_: entry\
+  \");
+      fprintf(log, \"  thread_name ptr=%p\
+  \", (const void *) thread_name);
+    }
+  
+    if (NULL == thread_name)
+    {
+      if (log != NULL)
+      {
+        fprintf(log, \"  thread_name is NULL -> EINVAL, return 0\
+  \");
+        fclose(log);
+      }
+      errno = EINVAL;
+      return 0;
+    }
+  
+    param = malloc (sizeof (struct MHD_named_helper_param_));
+    if (NULL == param)
+    {
+      if (log != NULL)
+      {
+        fprintf(log, \"  malloc failed -> return 0\
+  \");
+        fclose(log);
+      }
+      return 0;
+    }
+  
+    /* Here is the key assignment: assigning a const char * to a non-const
+     * char * (param->name). This discards the const qualifier and is the
+     * violation scenario for MISRA Rule 8.13. */
+    param->start_routine = start_routine;
+    param->arg = arg;
+    param->name = (char *) thread_name; /* original code used implicit assignment; cast shown explicitly for clarity in logs */
+  
+    if (log != NULL)
+    {
+      fprintf(log, \"  param=%p, param->name ptr=%p\
+  \", (void *) param, (void *) param->name);
+      if (param->name != NULL)
+        fprintf(log, \"  param->name content=\\\"%s\\\"\
+  \", param->name);
+    }
+  
+    /* Preserve original behavior: attempt to create thread with named starter. */
+    if (! MHD_create_thread_ (handle_id,
+                              stack_size,
+                              /* named_thread_starter */ start_routine,
+                              (void *) param))
+    {
+      int err_num;
+  
+      err_num = errno;
+      free (param);
+      errno = err_num;
+      if (log != NULL)
+      {
+        fprintf(log, \"  MHD_create_thread_ failed -> freed param, return 0, errno=%d\
+  \", errno);
+        fclose(log);
+      }
+      return 0;
+    }
+  
+    if (log != NULL)
+    {
+      fprintf(log, \"  MHD_create_thread_ succeeded -> returning 1\
+  \");
+      fclose(log);
+    }
+  
+    return ! 0;
+  }
+  "
+}

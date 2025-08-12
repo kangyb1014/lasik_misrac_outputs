@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "In file included from mhd_str.h:41,\n                 from digestauth.h:33,\n                 from digestauth.c:42:\nmhd_str_types.h:33:36: error: expected identifier or '(' before 'sizeof'\n   33 | #define MHD_STATICSTR_LEN_(macro) (sizeof(macro) / sizeof(char) - 1)\n      |                                    ^~~~~~\ndigestauth.c:1084:15: note: in expansion of macro 'MHD_STATICSTR_LEN_'\n 1084 | static size_t MHD_STATICSTR_LEN_(const char *str) {\n      |               ^~~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

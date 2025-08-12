@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "websocket_threaded_example.c:104:26: error: expected identifier or '(' before string constant\n  104 | #define WS_UPGRADE_VALUE \"websocket\"\n      |                          ^~~~~~~~~~~\nwebsocket_threaded_example.c:429:19: note: in expansion of macro 'WS_UPGRADE_VALUE'\n  429 | static const char WS_UPGRADE_VALUE[] = \"websocket\";\n      |                   ^~~~~~~~~~~~~~~~\nmake[4]: *** [Makefile:1208: websocket_threaded_example-websocket_threaded_example.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "demo.c:728:24: error: static declaration of 'MHD_queue_response' follows non-static declaration\n  728 | static enum MHD_Result MHD_queue_response(struct MHD_Connection *connection, unsigned int status_code, struct MHD_Response *response) { (void)connection; (void)status_code; (void)response; return MHD_YES; }\n      |                        ^~~~~~~~~~~~~~~~~~\nIn file included from demo.c:47:\n../../src/include/microhttpd.h:3746:1: note: previous declaration of 'MHD_queue_response' with type 'enum MHD_Result(struct MHD_Connection *, unsigned int,  struct MHD_Response *)'\n 3746 | MHD_queue_response (struct MHD_Connection *connection,\n      | ^~~~~~~~~~~~~~~~~~\nmake[4]: *** [Makefile:1138: demo-demo.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

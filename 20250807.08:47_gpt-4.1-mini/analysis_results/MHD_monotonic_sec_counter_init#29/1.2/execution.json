@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "mhd_mono_clock.c:151:18: error: redefinition of 'mono_clock_id'\n  151 | static clockid_t mono_clock_id = (clockid_t)-1;\n      |                  ^~~~~~~~~~~~~\nmhd_mono_clock.c:85:18: note: previous definition of 'mono_clock_id' with type 'clockid_t' {aka 'int'}\n   85 | static clockid_t mono_clock_id = _MHD_UNWANTED_CLOCK;\n      |                  ^~~~~~~~~~~~~\nmake[3]: *** [Makefile:2133: libmicrohttpd_la-mhd_mono_clock.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

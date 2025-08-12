@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "digestauth.c:765:36: error: expected ')' before 'digest_size'\n  765 | static size_t NONCE_STD_LEN(size_t digest_size) {\n      |                                    ^~~~~~~~~~~\ndigestauth.c:102:5: note: in definition of macro 'NONCE_STD_LEN'\n  102 |   ((digest_size) * 2 + TIMESTAMP_CHARS_LEN)\n      |     ^~~~~~~~~~~\ndigestauth.c:102:18: error: expected ')' before '*' token\n  102 |   ((digest_size) * 2 + TIMESTAMP_CHARS_LEN)\n      |                  ^\ndigestauth.c:765:15: note: in expansion of macro 'NONCE_STD_LEN'\n  765 | static size_t NONCE_STD_LEN(size_t digest_size) {\n      |               ^~~~~~~~~~~~~\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *\nrun_usock (void *cls)\n{\n  struct WsData *ws = cls;\n  struct MHD_UpgradeResponseHandle *urh = ws->urh;\n  unsigned char buf[2048];\n  unsigned char *msg;\n  char *text;\n  ssize_t got;\n  int type;\n  int i;\n\n  make_blocking (ws->sock);\n  while (1)\n  {\n    got = recv (ws->sock, (void *) buf, sizeof (buf), 0);\n    if (0 >= got)\n    {\n      break;\n    }\n    msg = ws_receive_frame (buf, &got, &type);\n    if (NULL == msg)\n    {\n      break;\n    }\n    if (type == WS_OPCODE_TEXT_FRAME)\n    {\n      ssize_t sent;\n      int buf_size;\n      buf_size = snprintf (NULL, 0, \"User#%d: %s\", (int) ws->sock, msg);\n      if (0 < buf_size)\n      {\n        text = malloc ((size_t) buf_size + 1);\n        if (NULL != text)\n        {\n          if (snprintf (text, (size_t) buf_size + 1,\n                        \"User#%d: %s\", (int) ws->sock, msg) == buf_size)\n            sent = ws_send_frame (ws->sock, text, (size_t) buf_size);\n          else\n            sent = -1;\n          free (text);\n        }\n        else\n          sent = -1;\n      }\n      else\n        sent = -1;\n      free (msg);\n      if (-1 == sent)\n      {\n        break;\n      }\n    }\n    else\n    {\n      if (type == WS_OPCODE_CON_CLOSE_FRAME)\n      {\n        free (msg);\n        break;\n      }\n    }\n  }\n  if (0 != pthread_mutex_lock (&MUTEX))\n    abort ();\n  for (i = 0; i < MAX_CLIENTS; i++)\n  {\n    if (CLIENT_SOCKS[i] == ws->sock)\n    {\n      CLIENT_SOCKS[i] = MHD_INVALID_SOCKET;\n      break;\n    }\n  }\n  if (0 != pthread_mutex_unlock (&MUTEX))\n    abort ();\n  free (ws);\n  MHD_upgrade_action (urh, MHD_UPGRADE_ACTION_CLOSE);\n  return NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'run_usock': {'callees': ['make_blocking', 'send_all', 'MHD_upgrade_action', 'ws_receive_frame', 'ws_send_frame'], 'callers': []}, 'make_blocking': {'callees': [], 'callers': ['send_all', 'run_usock']}, 'send_all': {'callees': ['make_blocking'], 'callers': ['run_usock', 'ws_send_frame']}, 'MHD_upgrade_action': {'callees': ['MHD_upgraded_connection_mark_app_closed_'], 'callers': ['run_usock', 'uh_cb']}, 'ws_receive_frame': {'callees': [], 'callers': ['run_usock']}, 'ws_send_frame': {'callees': ['send_all'], 'callers': ['run_usock']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "make_blocking",
+    "send_all",
+    "MHD_upgrade_action",
+    "ws_receive_frame",
+    "ws_send_frame",
+    "pthread_mutex_lock",
+    "pthread_mutex_unlock",
+    "abort",
+    "malloc",
+    "free",
+    "snprintf",
+    "CLIENT_SOCKS",
+    "MUTEX",
+    "MHD_INVALID_SOCKET",
+    "MHD_UPGRADE_ACTION_CLOSE",
+    "WsData",
+    "MHD_UpgradeResponseHandle"
+  ],
+  "explanation": "To analyze violations of the MISRA C rule on function parameter modification in run_usock, the following are needed: callee functions (make_blocking, send_all, MHD_upgrade_action, ws_receive_frame, ws_send_frame), since calls within run_usock may indirectly modify parameters; pthread_mutex_lock/unlock and abort, as their behavior affects control flow and resource states; standard functions malloc, free, snprintf to assess memory and string handling related to pointer parameters; global variables CLIENT_SOCKS, MUTEX, and constants MHD_INVALID_SOCKET, MHD_UPGRADE_ACTION_CLOSE because they are accessed or modified possibly through pointer parameters; and the struct definitions WsData and MHD_UpgradeResponseHandle to understand the pointer members and data they hold, clarifying if pointers passed as parameters are modified themselves or only the objects they point to. This comprehensive set supports determining whether pointer parameters are reassigned (violating the rule) or safely used."
+}

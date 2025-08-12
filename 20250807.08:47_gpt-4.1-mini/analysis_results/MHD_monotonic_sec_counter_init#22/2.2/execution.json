@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "mhd_mono_clock.c:5:10: fatal error: mach/mach.h: No such file or directory\n    5 | #include <mach/mach.h>\n      |          ^~~~~~~~~~~~~\ncompilation terminated.\nmake[3]: *** [Makefile:2133: libmicrohttpd_la-mhd_mono_clock.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

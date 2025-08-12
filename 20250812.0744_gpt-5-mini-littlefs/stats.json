@@ -1,0 +1,79 @@
+{
+  "total_runs": {
+    "classifier": 288,
+    "build_fix": 16,
+    "reviewer": 63,
+    "close_symbol": 0,
+    "predict_log": 0
+  },
+  "total_agent_fails": {
+    "classifier": 0,
+    "build_fix": 0,
+    "reviewer": 0,
+    "close_symbol": 0,
+    "predict_log": 0
+  },
+  "total_api_tries": {
+    "classifier": 289,
+    "build_fix": 16,
+    "reviewer": 63,
+    "close_symbol": 288,
+    "predict_log": 0
+  },
+  "total_api_success": {
+    "classifier": 288,
+    "build_fix": 16,
+    "reviewer": 63,
+    "close_symbol": 288,
+    "predict_log": 0
+  },
+  "total_api_fails": {
+    "classifier": 1,
+    "build_fix": 0,
+    "reviewer": 0,
+    "close_symbol": 0,
+    "predict_log": 0
+  },
+  "input_tokens": {
+    "classifier": 541595,
+    "build_fix": 43222,
+    "reviewer": 96494,
+    "close_symbol": 199132,
+    "predict_log": 0
+  },
+  "output_tokens": {
+    "classifier": 346285,
+    "build_fix": 38475,
+    "reviewer": 84007,
+    "close_symbol": 564804,
+    "predict_log": 0
+  },
+  "total_tokens": {
+    "classifier": 887880,
+    "build_fix": 81697,
+    "reviewer": 180501,
+    "close_symbol": 763936,
+    "predict_log": 0
+  },
+  "total_classifier_positives": 63,
+  "classifier_execution_results": {
+    "success": 8,
+    "parse_failed": 0,
+    "compile_failed": 16,
+    "empty_test_log": 39
+  },
+  "total_build_fix_tries": 16,
+  "build_fix_execution_results": {
+    "success": 1,
+    "parse_failed": 0,
+    "compile_failed": 8,
+    "empty_test_log": 7
+  },
+  "review_results": {
+    "positive": 33,
+    "negative": 30
+  },
+  "elapsed_time": "00:04:15",
+  "start_time": "2025-08-12 07:44:47",
+  "end_time": "2025-08-12 07:49:02"
+}

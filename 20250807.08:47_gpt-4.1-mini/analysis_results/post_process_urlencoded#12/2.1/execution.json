@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "/usr/bin/ld: .libs/libmicrohttpd_la-postprocessor.o: in function `MHD_http_unescape':\n/tmp/tmp1pck3e2r/src/src/microhttpd/postprocessor.c:148: multiple definition of `MHD_http_unescape'; .libs/libmicrohttpd_la-internal.o:/tmp/tmp1pck3e2r/src/src/microhttpd/internal.c:149: first defined here\ncollect2: error: ld returned 1 exit status\nmake[3]: *** [Makefile:1769: libmicrohttpd.la] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

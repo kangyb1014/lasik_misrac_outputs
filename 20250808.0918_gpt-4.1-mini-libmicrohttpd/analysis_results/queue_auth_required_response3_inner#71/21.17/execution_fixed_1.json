@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: .libs/libmicrohttpd_la-digestauth.o: in function `MHD_str_quote':\n/tmp/tmptxus80ng/src/src/microhttpd/digestauth.c:3520: multiple definition of `MHD_str_quote'; .libs/libmicrohttpd_la-mhd_str.o:/tmp/tmptxus80ng/src/src/microhttpd/mhd_str.c:2154: first defined here\ncollect2: error: ld returned 1 exit status\nmake[3]: *** [Makefile:1769: libmicrohttpd.la] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,166 @@
+[
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-common.c",
+        "function": "OS_API_Impl_Init"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-common.c",
+        "function": "OS_API_Init"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-network.c",
+        "function": "OS_NetworkGetID"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-posix-dl-symtab.c",
+        "function": "OS_SymbolLookup_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-bsd-sockets.c",
+        "function": "OS_SocketRecvFrom_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-posix-dl-loader.c",
+        "function": "OS_ModuleLoad_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-posix-files.c",
+        "function": "OS_FileOpen_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-tasks.c",
+        "function": "OS_TaskRegister_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-common.c",
+        "function": "OS_DeleteAllObjects"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-tasks.c",
+        "function": "OS_PthreadTaskEntry"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-module.c",
+        "function": "OS_SymbolLookup_Static"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-filesys.c",
+        "function": "OS_FileSysAddFixedMap"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-filesys.c",
+        "function": "OS_TranslatePath"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-bsd-sockets.c",
+        "function": "OS_SocketAddrToString_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-bsd-sockets.c",
+        "function": "OS_SocketAddrGetPort_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-mutex.c",
+        "function": "OS_MutSemTake_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-countsem.c",
+        "function": "OS_CountSemTimedWait_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-bsd-sockets.c",
+        "function": "OS_SocketAddrFromString_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-binsem.c",
+        "function": "OS_Posix_BinSemReleaseMutex"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/bsp/generic-linux/src/bsp_start.c",
+        "function": "OS_BSP_Initialize"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-countsem.c",
+        "function": "OS_CountSemTake_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/bsp/generic-linux/src/bsp_console.c",
+        "function": "OS_BSP_ConsoleOutput_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-idmap.c",
+        "function": "OS_ObjectNameMatch"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-file.c",
+        "function": "OS_rename"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-file.c",
+        "function": "OS_CloseFileByName"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-file.c",
+        "function": "OS_FileOpenCheck"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-module.c",
+        "function": "OS_ModuleLoad_Static"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-condvar.c",
+        "function": "OS_CondVarLock_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/bsp/generic-linux/src/bsp_start.c",
+        "function": "OS_BSP_Lock_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/bsp/generic-linux/src/bsp_start.c",
+        "function": "OS_BSP_Unlock_Impl"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-idmap.c",
+        "function": "OS_Lock_Global_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-condvar.c",
+        "function": "OS_Posix_CondVarReleaseMutex"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-timebase.c",
+        "function": "OS_TimeBaseLock_Impl"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-idmap.c",
+        "function": "OS_Posix_ReleaseTableMutex"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-module.c",
+        "function": "OS_ModuleLoad"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/posix/src/os-impl-console.c",
+        "function": "OS_ConsoleTask_Entry"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-filesys.c",
+        "function": "OS_FileSys_Initialize"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-printf.c",
+        "function": "OS_ConsoleWrite"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-filesys.c",
+        "function": "OS_FileSys_FindVirtMountPoint"
+    },
+    {    
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/shared/src/osapi-printf.c",
+        "function": "OS_printf"
+    },
+    {
+        "file":"/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/os/portable/os-impl-bsd-sockets.c",
+        "function": "OS_SocketAccept_Impl"
+    }
+]

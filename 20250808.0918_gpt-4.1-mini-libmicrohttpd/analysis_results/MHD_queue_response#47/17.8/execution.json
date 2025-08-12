@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:3:10: fatal error: MHD_queue_response.h: No such file or directory\n    3 | #include \"MHD_queue_response.h\"  /* Assume declarations */\n      |          ^~~~~~~~~~~~~~~~~~~~~~\ncompilation terminated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}
