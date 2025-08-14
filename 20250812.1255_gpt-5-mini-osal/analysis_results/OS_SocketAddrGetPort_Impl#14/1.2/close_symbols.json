@@ -1,0 +1,22 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_SocketAddrGetPort_Impl(uint16 *PortNum, const OS_SockAddr_t *Addr)\n{\n    in_port_t                     sa_port;\n    const OS_SockAddr_Accessor_t *Accessor;\n\n    Accessor = (const OS_SockAddr_Accessor_t *)&Addr->AddrData;\n\n    switch (Accessor->sa.sa_family)\n    {\n        case AF_INET:\n            sa_port = Accessor->sa_in.sin_port;\n            break;\n#ifdef OS_NETWORK_SUPPORTS_IPV6\n        case AF_INET6:\n            sa_port = Accessor->sa_in6.sin6_port;\n            break;\n#endif\n        default:\n            return OS_ERR_BAD_ADDRESS;\n            break;\n    }\n\n    *PortNum = ntohs(sa_port);\n\n    return OS_SUCCESS;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_SocketAddrGetPort_Impl': {'callees': [], 'callers': ['OS_CreateSocketName', 'OS_SocketAddrGetPort']}, 'OS_CreateSocketName': {'callees': ['OS_ObjectIndexFromToken', 'OS_SocketAddrToString_Impl', 'OS_SocketAddrGetPort_Impl', 'OS_strnlen'], 'callers': ['OS_SocketBindAddress', 'OS_SocketAccept']}, 'OS_SocketAddrGetPort': {'callees': ['OS_printf', 'OS_SocketAddrGetPort_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_SockAddr_Accessor_t",
+    "OS_SockAddr_t",
+    "AddrData (member of OS_SockAddr_t)",
+    "in_port_t",
+    "sa_family_t",
+    "struct sockaddr",
+    "struct sockaddr_in",
+    "struct sockaddr_in6",
+    "AF_INET",
+    "AF_INET6",
+    "OS_NETWORK_SUPPORTS_IPV6",
+    "ntohs",
+    "uint16",
+    "int32",
+    "OS_ERR_BAD_ADDRESS",
+    "OS_SUCCESS"
+  ],
+  "explanation": "For checking MISRA C language-extension usage in OS_SocketAddrGetPort_Impl you must inspect the concrete type definitions, macros and typedefs the function uses: \n- OS_SockAddr_Accessor_t: needed to determine whether the accessor type uses any compiler extensions (anonymous/unnamed structs/unions, attributes, packed/aligned extensions, GCC extensions, flexible array members, etc.).\n- OS_SockAddr_t: required to see how AddrData is declared and whether that declaration relies on extensions.\n- AddrData (member of OS_SockAddr_t): the code casts &Addr->AddrData \u2014 the exact member type/layout is needed to verify that the cast is standard-compliant and that no extension is used in its declaration.\n- in_port_t: required to check if this typedef is standard or defined using an extension (e.g., attribute or nonstandard sized integer typedef).\n- sa_family_t and struct sockaddr: sa.sa_family is accessed; need their definitions to check for any anonymous/extension use or compiler-specific attributes.\n- struct sockaddr_in and struct sockaddr_in6: used for sin_port and sin6_port \u2014 inspect these to ensure fields are standard and not declared with extensions (anonymous unions, attributes, etc.).\n- AF_INET and AF_INET6: the case labels are macros \u2014 verify they are standard integer macros and not relying on compiler-specific behavior.\n- OS_NETWORK_SUPPORTS_IPV6: preprocessor conditional \u2014 check whether this macro expands to anything that would imply nonstandard preprocessing/extension usage.\n- ntohs: inspect whether ntohs is a standard libc function or implemented as a macro/inline/extension in this environment.\n- uint16 and int32: the integer typedefs used in the signature \u2014 verify they are standard fixed-width typedefs and not created via compiler extensions.\n- OS_ERR_BAD_ADDRESS and OS_SUCCESS: constants returned by the function \u2014 confirm their definitions do not use extensions (e.g., unusual attributes or macros that hide extension behavior).\n\nCollecting these symbols allows determining whether any nonstandard language extensions (anonymous members, compiler attributes, nonstandard casting tricks, nonstandard builtins/macros) are present in the types/macros relied on by the target function."
+}

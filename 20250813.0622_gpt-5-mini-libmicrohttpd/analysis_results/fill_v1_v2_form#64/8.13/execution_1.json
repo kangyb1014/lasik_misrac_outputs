@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "post_example.c: In function 'fill_v1_v2_form':\npost_example.c:518:81: error: invalid application of 'sizeof' to incomplete type 'struct MHD_Response'\n  518 |   log_buffer(\"response_object_after_add_cookie\", (const char *) response, sizeof(*response));\n      |                                                                                 ^\nmake[4]: *** [Makefile:1086: post_example.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

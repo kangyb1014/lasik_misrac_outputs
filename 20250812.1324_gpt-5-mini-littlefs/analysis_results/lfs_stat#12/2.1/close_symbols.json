@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_stat(lfs_t *lfs, const char *path, struct lfs_info *info) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_stat(%p, \\\"%s\\\", %p)\", (void*)lfs, path, (void*)info);\n\n    err = lfs_stat_(lfs, path, info);\n\n    LFS_TRACE(\"lfs_stat -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_stat': {'callees': ['lfs_stat_'], 'callers': []}, 'lfs_stat_': {'callees': ['lfs_dir_find', 'lfs_tag_type3', 'lfs_dir_getinfo', 'lfs_tag_id'], 'callers': ['lfs_stat']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "lfs_stat_",
+    "lfs_dir_find",
+    "lfs_tag_type3",
+    "lfs_dir_getinfo",
+    "lfs_tag_id",
+    "lfs_t",
+    "struct lfs_config"
+  ],
+  "explanation": "- LFS_LOCK: macro/function that produces the initial err value. It could expand to control-flow (return/longjmp/abort) or be annotated noreturn; its definition is required to determine whether the early-path or subsequent code in lfs_stat is reachable.\n- LFS_UNLOCK: macro/function called before returning. If it contains control-flow effects (e.g. longjmp/exit) or is annotated noreturn, it affects reachability of code after the call and overall control flow in lfs_stat.\n- LFS_TRACE: tracing macro used twice in lfs_stat. Some builds define tracing macros with side effects (including control-flow or conditionally compiled-out code). Its definition is needed to ensure the trace calls do not make any statements unreachable.\n- lfs_stat_: the function called by lfs_stat. If lfs_stat_ is annotated noreturn or always terminates the program (or unconditionally hangs), the statements following the call in lfs_stat would be unreachable. Full definition (including attributes) is required.\n- lfs_dir_find, lfs_tag_type3, lfs_dir_getinfo, lfs_tag_id: callees of lfs_stat_. They matter indirectly because lfs_stat_ may call them and they could be annotated noreturn or call abort/longjmp; inspecting them helps decide whether lfs_stat_ can return in all execution paths.\n- lfs_t and struct lfs_config: types for the lfs argument and its cfg member. These are needed to correctly expand/understand LFS_LOCK/LFS_UNLOCK macros (which take lfs->cfg) and to determine whether those macros can perform control-flow that would render subsequent code unreachable."
+}

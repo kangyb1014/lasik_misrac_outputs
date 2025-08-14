@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'probe_log_attr':\nlfs.c:2263:78: error: 'const struct lfs_mattr' has no member named 'size'\n 2263 |             (int)lfs_tag_chunk(a->tag), (int)lfs_tag_id(a->tag), a->buffer, a->size);\n      |                                                                              ^~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

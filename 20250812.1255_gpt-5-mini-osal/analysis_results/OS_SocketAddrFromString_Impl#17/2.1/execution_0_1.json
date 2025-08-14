@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpib3a8tjs/src/src/os/portable/os-impl-bsd-sockets.c: In function 'os_log_probe':\n/tmp/tmpib3a8tjs/src/src/os/portable/os-impl-bsd-sockets.c:736:28: error: cast specifies array type\n  736 |     (void)vfprintf(f, fmt, (va_list)ap);\n      |                            ^\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

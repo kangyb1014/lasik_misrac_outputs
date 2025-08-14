@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c: In function 'MHD_stop_daemon':\ndaemon.c:9466:7: error: aggregate value used where an integer was expected\n 9466 |       mhd_probe_log(\"Joining thread tid=%p\", (void *)(uintptr_t) daemon->tid);\n      |       ^~~~~~~~~~~~~\ndaemon.c:9494:7: error: aggregate value used where an integer was expected\n 9494 |       mhd_probe_log(\"itc valid -> destroying itc at %p\", (void *)(uintptr_t) daemon->itc);\n      |       ^~~~~~~~~~~~~\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

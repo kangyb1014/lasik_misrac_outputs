@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c: In function 'MHD_select':\ndaemon.c:4898:9: error: cannot convert to a pointer type\n 4898 |         probe_log(\"itc add FAILED: daemon=%p itc=%p\", (void *) daemon, (void *) daemon->itc);\n      |         ^~~~~~~~~\ndaemon.c:4905:19: error: cannot convert to a pointer type\n 4905 |                   (void *) daemon->itc,\n      |                   ^\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

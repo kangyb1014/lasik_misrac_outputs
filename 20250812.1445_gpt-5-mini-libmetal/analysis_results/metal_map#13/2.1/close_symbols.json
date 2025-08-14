@@ -1,0 +1,25 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_map(int fd, off_t offset, size_t size, int expand, int flags,\n\t      void **result)\n{\n\tint prot = PROT_READ | PROT_WRITE, error;\n\tvoid *mem;\n\n\tflags |= MAP_SHARED;\n\n\tif (fd < 0) {\n\t\tfd = -1;\n\t\tflags = MAP_PRIVATE | MAP_ANONYMOUS;\n\t} else if (expand) {\n\t\toff_t reqsize = offset + size;\n\t\tstruct stat stat;\n\n\t\terror = flock(fd, LOCK_EX) < 0 ? -errno : 0;\n\t\tif (!error)\n\t\t\terror = fstat(fd, &stat);\n\t\tif (!error && stat.st_size < reqsize)\n\t\t\terror = ftruncate(fd, reqsize);\n\t\tif (!error)\n\t\t\tflock(fd, LOCK_UN);\n\t\tif (error)\n\t\t\treturn -errno;\n\t}\n\n\tmem = mmap(NULL, size, prot, flags, fd, offset);\n\tif (mem == MAP_FAILED)\n\t\treturn -errno;\n\t*result = mem;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_map': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_try_map']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mmap",
+    "MAP_FAILED",
+    "flock",
+    "LOCK_EX",
+    "LOCK_UN",
+    "fstat",
+    "ftruncate",
+    "struct stat",
+    "stat.st_size",
+    "errno",
+    "PROT_READ",
+    "PROT_WRITE",
+    "MAP_SHARED",
+    "MAP_PRIVATE",
+    "MAP_ANONYMOUS",
+    "off_t",
+    "size_t",
+    "metal_uio_dev_open",
+    "metal_shmem_try_map"
+  ],
+  "explanation": "For a sound determination of unreachable code inside metal_map you need the semantics and/or usage constraints of the OS calls, macros, types and the callers that affect the parameter values:\n\n- mmap: central call whose possible return values (success/failure) determine reachability of the error-handling branch (if (mem == MAP_FAILED)).\n- MAP_FAILED: the exact value compared against mem; required to know whether the comparison can ever be true given mmap semantics/ABI.\n- flock: used when expand is true; its possible return values (and whether it can fail) determine reachability of the error return path inside the expand branch.\n- LOCK_EX, LOCK_UN: constants used with flock; needed to know whether certain flag combinations or platform semantics could make flock behave differently.\n- fstat: its success/failure affects the conditional flow (error assignment) and thus reachability of subsequent branches.\n- ftruncate: may be called or fail when resizing is required; its behavior affects reachability of the error return.\n- struct stat: the structure returned by fstat is inspected; needed to know type and semantics of st_size.\n- stat.st_size: this field is used in the condition (stat.st_size < reqsize); knowing its type, range and semantics is necessary to decide whether that branch can be taken.\n- errno: used to produce returned error codes (-errno) and read inside error assignments; required to reason about the values produced and whether the return statements are reachable/meaningful.\n- PROT_READ, PROT_WRITE: used to build prot; while they don't control branching directly, their definitions may be needed if platform-dependent mmap prot combinations affect behavior.\n- MAP_SHARED, MAP_PRIVATE, MAP_ANONYMOUS: used to set flags; the chosen mapping type (shared vs private/anonymous) and their values may affect mmap behavior and thus reachability of mmap-failure branch.\n- off_t, size_t: types of offset/size used to compute reqsize and pass to calls; their ranges (signed/unsigned, width) are required to determine if arithmetic (offset + size) can overflow and make certain branches unreachable or always taken.\n- metal_uio_dev_open and metal_shmem_try_map: callers of metal_map \u2014 their calling conventions / the values they pass for fd, offset, size, expand and flags can make some branches inside metal_map unreachable (for example if callers always pass fd < 0 or always pass expand == 0). To prove absence of unreachable code in the project you must examine callers' guaranteed argument values.\n\nInclude these symbols (definitions/prototypes/semantics) in the next agent's prompt so it can decide whether any branch in metal_map can never be reached and thus violates the MISRA rule against unreachable code."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:6285:5: error: expected identifier or '(' before 'void'\n 6285 | int LFS_LOCK(void *cfg) {\n      |     ^~~~~~~~\nlfs.c:6285:13: error: expected ')' before 'void'\n 6285 | int LFS_LOCK(void *cfg) {\n      |     ~~~~~~~~^\n      |             )\nlfs.c:6290:1: error: expected identifier or '(' before '{' token\n 6290 | {\n      | ^\nlfs.c:3761:12: warning: 'lfs_file_truncate_' defined but not used [-Wunused-function]\n 3761 | static int lfs_file_truncate_(lfs_t *lfs, lfs_file_t *file, lfs_off_t size) {\n      |            ^~~~~~~~~~~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

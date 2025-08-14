@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_map(int fd, off_t offset, size_t size, int expand, int flags,\n\t      void **result)\n{\n\tint prot = PROT_READ | PROT_WRITE, error;\n\tvoid *mem;\n\n\tflags |= MAP_SHARED;\n\n\tif (fd < 0) {\n\t\tfd = -1;\n\t\tflags = MAP_PRIVATE | MAP_ANONYMOUS;\n\t} else if (expand) {\n\t\toff_t reqsize = offset + size;\n\t\tstruct stat stat;\n\n\t\terror = flock(fd, LOCK_EX) < 0 ? -errno : 0;\n\t\tif (!error)\n\t\t\terror = fstat(fd, &stat);\n\t\tif (!error && stat.st_size < reqsize)\n\t\t\terror = ftruncate(fd, reqsize);\n\t\tif (!error)\n\t\t\tflock(fd, LOCK_UN);\n\t\tif (error)\n\t\t\treturn -errno;\n\t}\n\n\tmem = mmap(NULL, size, prot, flags, fd, offset);\n\tif (mem == MAP_FAILED)\n\t\treturn -errno;\n\t*result = mem;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_map': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_try_map']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mmap",
+    "PROT_READ",
+    "PROT_WRITE",
+    "MAP_SHARED",
+    "MAP_PRIVATE",
+    "MAP_ANONYMOUS",
+    "MAP_FAILED",
+    "ftruncate",
+    "flock",
+    "LOCK_EX",
+    "LOCK_UN",
+    "fstat",
+    "struct stat",
+    "errno",
+    "off_t",
+    "size_t",
+    "NULL"
+  ],
+  "explanation": "For each symbol listed you need its definition/declaration to check whether any compiler-specific language-extension constructs (for example GCC/Clang __attribute__, __extension__, inline asm, typeof, nonstandard keywords, or compiler-specific macros) are used in the implementation or macro expansion:\n\n- mmap: function prototype or macro \u2014 implementations may carry compiler attributes or use nonstandard linkage/annotations.\n- PROT_READ / PROT_WRITE: macros \u2014 could be defined using compiler-specific expressions or extensions.\n- MAP_SHARED / MAP_PRIVATE / MAP_ANONYMOUS: mapping flag macros \u2014 need to inspect their definitions for any compiler-specific constructs.\n- MAP_FAILED: sentinel macro \u2014 check how it is defined (could be cast or use compiler-specific constructs).\n- ftruncate: function prototype \u2014 may have attributes or nonstandard decorations.\n- flock: function prototype \u2014 check for nonstandard decorations; also verify behavior used in the code (return handling).\n- LOCK_EX / LOCK_UN: lock flag macros \u2014 inspect definitions for extensions.\n- fstat: function prototype \u2014 verify declaration for attributes or compiler-specific annotations.\n- struct stat: type definition \u2014 ensure no compiler extensions used in the structure (bitfields with implementation-defined width, packed attributes, etc.).\n- errno: macro/identifier \u2014 errno may be a macro that expands to thread-local or function call; its definition could use compiler extensions.\n- off_t: typedef \u2014 may be implemented via nonstandard typedefs or attributes (e.g., using 64-bit extensions); ensure no compiler-specific keywords are involved.\n- size_t: typedef \u2014 examine its definition for any nonstandard constructs.\n- NULL: macro \u2014 check how NULL is defined (some headers use ((void*)0), others use 0 or compiler-specific definitions).\n\nInspecting these symbols' headers/definitions lets the analyst determine if any of them are implemented using language extensions that would violate the MISRA rule about forbidding compiler language extensions."
+}

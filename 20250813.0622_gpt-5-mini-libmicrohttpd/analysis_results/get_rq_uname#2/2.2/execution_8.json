@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c: In function 'get_rq_uname':\ndigestauth.c:1164:75: error: 'const struct MHD_RqDAuthParam' has no member named 'len'\n 1164 |                (void *) buf, buf_used, buf_size, params ? params->username.len : 0);\n      |                                                                           ^\ndigestauth.c:1181:65: error: 'const struct MHD_RqDAuthParam' has no member named 'len'\n 1181 |                (void *) buf, buf_used, params ? params->username.len : 0);\n      |                                                                 ^\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

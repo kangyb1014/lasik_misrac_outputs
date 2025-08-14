@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_open(const char *path, int shm)\n{\n\tconst int flags = O_RDWR | O_CREAT | O_CLOEXEC;\n\tconst int mode = S_IRUSR | S_IWUSR;\n\tint fd;\n\n\tif (!path || !strlen(path))\n\t\treturn -EINVAL;\n\n\tfd = shm ? shm_open(path, flags, mode) : open(path, flags, mode);\n\treturn fd < 0 ? -errno : fd;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_open': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_open']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_open': {'callees': ['metal_shmem_open_generic', 'metal_open', 'metal_shmem_try_map'], 'callers': ['shmem_child']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "strlen",
+    "memcmp",
+    "open",
+    "shm_open",
+    "errno",
+    "EINVAL",
+    "O_RDWR",
+    "O_CREAT",
+    "O_CLOEXEC",
+    "S_IRUSR",
+    "S_IWUSR",
+    "metal_uio_dev_open",
+    "metal_shmem_open"
+  ],
+  "explanation": "strlen \u2014 The target uses strlen(path); include its declaration/definition to confirm it is not a macro or wrapper that expands to memcmp (which would trigger the MISRA violation). memcmp \u2014 The MISRA rule concerns use of memcmp on null-terminated strings; include this symbol so the analyzer can detect any direct or macro-expanded use inside the target function. open \u2014 The target may call open(path,...); include to check whether open is a plain library call or a macro/wrapper that might use memcmp on path. shm_open \u2014 Same reason as open: target calls shm_open when shm flag set; include to detect any hidden memcmp use in a macro/wrapper. errno \u2014 The return value is computed from errno on error; include to ensure errno is the standard variable and not a macro that could hide memcmp use. EINVAL \u2014 Used as a returned error code in the target; include to confirm it is a constant macro and not an expression that could expand to memcmp. O_RDWR, O_CREAT, O_CLOEXEC, S_IRUSR, S_IWUSR \u2014 File-mode/flag macros used in calls; include them to check they are simple constants and not macros that expand to function calls (e.g., to memcmp). metal_uio_dev_open, metal_shmem_open \u2014 Callers of metal_open (from the provided call graph). Include the caller symbols so an interprocedural check can confirm that no caller passes data or invokes helper macros/functions that cause memcmp to be invoked indirectly as part of metal_open's execution (e.g., via wrapper macros or inlined helpers)."
+}

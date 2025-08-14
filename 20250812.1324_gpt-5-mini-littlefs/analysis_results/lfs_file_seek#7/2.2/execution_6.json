@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:538:45: error: expected identifier or '(' before '{' token\n  538 | static void LFS_TRACE(const char *fmt, ...) {\n      |                                             ^\nlfs.c:550:13: error: expected identifier or '(' before 'int'\n  550 | static void LFS_ASSERT(int cond) {\n      |             ^~~~~~~~~~\nlfs.c:550:23: error: expected ')' before '?' token\n  550 | static void LFS_ASSERT(int cond) {\n      |             ~~~~~~~~~~^\n      |                       )\nlfs.c:559:13: warning: 'LFS_UNLOCK' defined but not used [-Wunused-function]\n  559 | static void LFS_UNLOCK(void *cfg) {\n      |             ^~~~~~~~~~\nlfs.c:533:12: warning: 'LFS_LOCK' defined but not used [-Wunused-function]\n  533 | static int LFS_LOCK(void *cfg) {\n      |            ^~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

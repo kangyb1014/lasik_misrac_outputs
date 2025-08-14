@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_log_ensure_dir':\nlfs.c:6403:17: error: storage size of 'st' isn't known\n 6403 |     struct stat st;\n      |                 ^~\nlfs.c:6404:9: warning: implicit declaration of function 'stat'; did you mean 'strcat'? [-Wimplicit-function-declaration]\n 6404 |     if (stat(\"/tmp/logs\", &st) != 0) {\n      |         ^~~~\n      |         strcat\nlfs.c:6406:15: warning: implicit declaration of function 'mkdir' [-Wimplicit-function-declaration]\n 6406 |         (void)mkdir(\"/tmp/logs\", 0755);\n      |               ^~~~~\nlfs.c:6403:17: warning: unused variable 'st' [-Wunused-variable]\n 6403 |     struct stat st;\n      |                 ^~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

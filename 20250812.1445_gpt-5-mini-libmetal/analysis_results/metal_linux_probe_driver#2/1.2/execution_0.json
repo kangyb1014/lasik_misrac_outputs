@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[2025-08-12 14:47:18] enter probe_log_entry\n--- probe: entry ---\nbus_name=platform\ndrv_name=uio_pdrv_genirq\nmod_name=uio_pdrv_genirq\nsdrv=(nil)\ncommand=(null)\nret=0\n--- probe: after snprintf (probe) ---\nbus_name=platform\ndrv_name=uio_pdrv_genirq\nmod_name=uio_pdrv_genirq\nsdrv=(nil)\ncommand='modprobe uio_pdrv_genirq > /dev/null 2>&1'\nret=41\n--- probe: after system (probe) ---\nbus_name=platform\ndrv_name=uio_pdrv_genirq\nmod_name=uio_pdrv_genirq\nsdrv=(nil)\ncommand='modprobe uio_pdrv_genirq > /dev/null 2>&1'\nret=256\n--- probe: after sysfs_open_driver (probe) ---\nbus_name=platform\ndrv_name=uio_pdrv_genirq\nmod_name=uio_pdrv_genirq\nsdrv=(nil)\ncommand='modprobe uio_pdrv_genirq > /dev/null 2>&1'\nret=256\n--- probe: after snprintf (sudo probe) ---\nbus_name=platform\ndrv_name=uio_pdrv_genirq\nmod_name=uio_pdrv_genirq\nsdrv=(nil)\ncommand='sudo modprobe uio_pdrv_genirq > /dev/null 2>&1'\nret=46\n"
+}

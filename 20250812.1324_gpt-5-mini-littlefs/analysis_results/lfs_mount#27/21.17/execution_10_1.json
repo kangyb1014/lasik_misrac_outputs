@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:6007:5: error: expected identifier or '(' before 'void'\n 6007 | int LFS_LOCK(const struct lfs_config *cfg);\n      |     ^~~~~~~~\nlfs.c:6007:13: error: expected ')' before 'const'\n 6007 | int LFS_LOCK(const struct lfs_config *cfg);\n      |     ~~~~~~~~^\n      |             )\nlfs.c:6008:6: error: expected identifier or '(' before 'void'\n 6008 | void LFS_UNLOCK(const struct lfs_config *cfg);\n      |      ^~~~~~~~~~\nlfs.c:6008:16: error: expected ')' before 'const'\n 6008 | void LFS_UNLOCK(const struct lfs_config *cfg);\n      |      ~~~~~~~~~~^\n      |                )\nlfs.c:6009:1: warning: useless type name in empty declaration\n 6009 | int LFS_TRACE(const char *fmt, ...);\n      | ^~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

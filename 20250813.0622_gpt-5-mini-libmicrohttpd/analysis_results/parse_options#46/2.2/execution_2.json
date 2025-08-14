@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c: In function 'parse_options_va':\ndaemon.c:6651:69: error: 'MHD_RESULT_OK' undeclared (first use in this function)\n 6651 |     probe_log_open_and_write(\"parse_options_va: returning %d\", (int)MHD_RESULT_OK);\n      |                                                                     ^~~~~~~~~~~~~\ndaemon.c:6651:69: note: each undeclared identifier is reported only once for each function it appears in\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

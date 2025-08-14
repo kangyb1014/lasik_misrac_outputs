@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "add_response_entry: ENTRY header=0x55e5b81350b9 content=0x55e5b81350b0\nadd_response_entry: about to call strlen(header), header=0x55e5b81350b9\nadd_response_entry: header=0x55e5b81350b9 header_len=13 content=0x55e5b81350b0 content_len=8\nadd_response_entry_n: called header=0x55e5b81350b9 header_len=13 content=0x55e5b81350b0 content_len=8\nadd_response_entry: add_response_entry_n returned 1 -> returning MHD_YES\n"
+}

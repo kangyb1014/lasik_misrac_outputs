@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_open(const char *path, int shm)\n{\n\tconst int flags = O_RDWR | O_CREAT | O_CLOEXEC;\n\tconst int mode = S_IRUSR | S_IWUSR;\n\tint fd;\n\n\tif (!path || !strlen(path))\n\t\treturn -EINVAL;\n\n\tfd = shm ? shm_open(path, flags, mode) : open(path, flags, mode);\n\treturn fd < 0 ? -errno : fd;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_open': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_open']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_open': {'callees': ['metal_shmem_open_generic', 'metal_open', 'metal_shmem_try_map'], 'callers': ['shmem_child']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "O_RDWR",
+    "O_CREAT",
+    "O_CLOEXEC",
+    "S_IRUSR",
+    "S_IWUSR",
+    "shm_open",
+    "open",
+    "strlen",
+    "errno",
+    "EINVAL",
+    "<fcntl.h>",
+    "<sys/stat.h>",
+    "<string.h>",
+    "<errno.h>",
+    "<sys/mman.h>"
+  ],
+  "explanation": "For checking the MISRA rule about language extensions we must inspect the actual definitions/declara\u00adtions of all non-language symbols used by metal_open to ensure none are implemented via compiler-specific extensions (builtins, __attribute__, __extension__, statement-expressions, typeof, inline asm, nonstandard keywords, thread-local hacks, etc.). Explaination per symbol:\n\n- O_RDWR, O_CREAT, O_CLOEXEC: these are file-open flag macros (normally from <fcntl.h>). Inspect their macro definitions to ensure they are plain integer macros and not defined via compiler extensions or nonstandard constructs.\n\n- S_IRUSR, S_IWUSR: permission-bit macros (normally from <sys/stat.h>). Check they are simple integer macros/constants and not implemented using compiler-specific extensions.\n\n- shm_open: POSIX shared-memory open function (declared either in <sys/mman.h> or <fcntl.h> depending on platform). Verify its declaration/definition is a standard library function prototype and not a compiler builtin or macro that relies on compiler-specific extensions.\n\n- open: POSIX open function (declared in <fcntl.h>). Inspect its declaration (and any macro wrapper) to ensure no language extensions are used.\n\n- strlen: C library string function (declared in <string.h>). Some C libraries or compilers may provide strlen as a builtin/inline that uses compiler intrinsics\u2014check the header/implementation to confirm no nonstandard extension is exposed as source-level language extension.\n\n- errno: macro/identifier (from <errno.h>). errno is commonly a macro that may expand to a function call or thread-local expression (e.g. (*__errno_location()) or __errno_location()). Inspect the exact definition to ensure it uses only standardized mechanisms and not compiler-specific extensions (e.g. compiler-only TLS keywords) that would violate the MISRA rule.\n\n- EINVAL: error-code macro (from <errno.h>). Ensure it is a plain integer macro constant and not defined via extensions.\n\n- Header symbols (<fcntl.h>, <sys/stat.h>, <string.h>, <errno.h>, <sys/mman.h>): include these headers' visible declarations/macros in the analysis. MISRA check requires examining the headers to confirm none of the above symbols are implemented using compiler-documented language extensions (builtins, nonstandard attributes, inline asm, statement expressions, typeof, etc.).\n\nIn short: inspect the macro definitions and function declarations (and any inline/wrapper code in the headers) for the listed symbols to determine whether any rely on compiler-specific language extensions. Only if such extensions are present should the MISRA rule be reported as violated."
+}

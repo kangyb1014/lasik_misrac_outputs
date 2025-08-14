@@ -1,0 +1,1384 @@
+[2025-08-12 14:45:35] INFO in main: Total 18 functions to analyze.
+[2025-08-12 14:45:35] INFO in main: Total 8 rules to analyze.
+[2025-08-12 14:45:36] INFO in main: Found 18 new or different functions to analyze.
+[2025-08-12 14:45:36] INFO in main: Total 144 analysis tasks to run.
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_try_map#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_open#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_linux_probe_driver#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_register#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_io_block_set#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_bus_find#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_device_open#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_register_generic_device#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_generic_dev_open#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#1.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#8.13: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#17.8: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#14.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_uio_dev_bind#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#21.17: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_register_generic#2.1: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_open_generic#21.14: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_register_generic#2.2: Close symbol agent started
+[2025-08-12 14:45:36] INFO in metal_shmem_register_generic#1.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_shmem_register_generic#14.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_shmem_register_generic#17.8: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_shmem_register_generic#8.13: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_shmem_register_generic#21.14: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_shmem_register_generic#21.17: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#2.1: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#14.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#1.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#17.8: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#2.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#21.14: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#21.17: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#1.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#2.1: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_open#8.13: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#1.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#8.13: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#2.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#21.14: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#14.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#17.8: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#2.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_map#21.17: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#14.2: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#8.13: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#2.1: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#17.8: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#21.14: Close symbol agent started
+[2025-08-12 14:45:37] INFO in metal_generic_dev_dma_map#21.17: Close symbol agent started
+[2025-08-12 14:45:52] INFO in metal_linux_probe_driver#8.13: Points agent started
+[2025-08-12 14:45:52] INFO in metal_device_open#21.14: Points agent started
+[2025-08-12 14:45:53] INFO in metal_register_generic_device#21.14: Points agent started
+[2025-08-12 14:45:53] INFO in metal_generic_dev_open#1.2: Points agent started
+[2025-08-12 14:45:54] INFO in metal_register_generic_device#2.1: Points agent started
+[2025-08-12 14:45:55] INFO in metal_bus_find#17.8: Points agent started
+[2025-08-12 14:45:55] INFO in metal_generic_dev_open#17.8: Points agent started
+[2025-08-12 14:45:55] INFO in metal_open#8.13: Points agent started
+[2025-08-12 14:45:55] INFO in metal_io_block_set#21.14: Points agent started
+[2025-08-12 14:45:55] INFO in metal_device_open#1.2: Points agent started
+[2025-08-12 14:45:55] INFO in metal_map#14.2: Points agent started
+[2025-08-12 14:45:55] INFO in metal_register_generic_device#17.8: Points agent started
+[2025-08-12 14:45:56] INFO in metal_register_generic_device#8.13: Points agent started
+[2025-08-12 14:45:56] INFO in metal_linux_probe_driver#1.2: Points agent started
+[2025-08-12 14:45:56] INFO in metal_shmem_register_generic#17.8: Points agent started
+[2025-08-12 14:45:57] INFO in metal_device_open#8.13: Points agent started
+[2025-08-12 14:45:57] INFO in metal_bus_register#8.13: Points agent started
+[2025-08-12 14:45:57] INFO in metal_bus_register#21.14: Points agent started
+[2025-08-12 14:45:57] INFO in metal_register_generic_device#14.2: Points agent started
+[2025-08-12 14:45:58] INFO in metal_generic_dev_dma_map#21.14: Points agent started
+[2025-08-12 14:45:58] INFO in metal_open#21.17: Points agent started
+[2025-08-12 14:45:58] INFO in metal_map#1.2: Points agent started
+[2025-08-12 14:45:58] INFO in metal_linux_probe_driver#17.8: Points agent started
+[2025-08-12 14:45:58] INFO in metal_open#14.2: Points agent started
+[2025-08-12 14:45:59] INFO in metal_generic_dev_dma_map#17.8: Points agent started
+[2025-08-12 14:45:59] INFO in metal_generic_dev_open#2.1: Points agent started
+[2025-08-12 14:46:00] INFO in metal_io_block_set#21.17: Points agent started
+[2025-08-12 14:46:00] INFO in metal_register_generic_device#1.2: Points agent started
+[2025-08-12 14:46:00] INFO in metal_device_open#14.2: Points agent started
+[2025-08-12 14:46:00] INFO in metal_shmem_register_generic#1.2: Points agent started
+[2025-08-12 14:46:00] INFO in metal_bus_register#21.17: Points agent started
+[2025-08-12 14:46:00] INFO in metal_shmem_register_generic#21.14: Points agent started
+[2025-08-12 14:46:00] INFO in metal_linux_probe_driver#2.1: Points agent started
+[2025-08-12 14:46:00] INFO in metal_bus_find#8.13: Points agent started
+[2025-08-12 14:46:00] INFO in metal_open#17.8: Points agent started
+[2025-08-12 14:46:00] INFO in metal_shmem_open_generic#21.14: Points agent started
+[2025-08-12 14:46:00] INFO in metal_bus_register#2.2: Points agent started
+[2025-08-12 14:46:00] INFO in metal_io_block_set#8.13: Points agent started
+[2025-08-12 14:46:01] INFO in metal_register_generic_device#21.14: No suspicious lines found for metal_register_generic_device#21.14.
+[2025-08-12 14:46:01] INFO in metal_generic_dev_open#8.13: Points agent started
+[2025-08-12 14:46:01] INFO in metal_bus_find#1.2: Points agent started
+[2025-08-12 14:46:01] INFO in metal_open#21.14: Points agent started
+[2025-08-12 14:46:01] INFO in metal_device_open#21.17: Points agent started
+[2025-08-12 14:46:01] INFO in metal_bus_find#21.17: Points agent started
+[2025-08-12 14:46:01] INFO in metal_shmem_open_generic#17.8: Points agent started
+[2025-08-12 14:46:02] INFO in metal_device_open#2.1: Points agent started
+[2025-08-12 14:46:02] INFO in metal_uio_dev_bind#1.2: Points agent started
+[2025-08-12 14:46:02] INFO in metal_shmem_open_generic#1.2: Points agent started
+[2025-08-12 14:46:02] INFO in metal_bus_register#1.2: Points agent started
+[2025-08-12 14:46:02] INFO in metal_generic_dev_open#2.2: Points agent started
+[2025-08-12 14:46:02] INFO in metal_shmem_register_generic#21.17: Points agent started
+[2025-08-12 14:46:02] INFO in metal_linux_probe_driver#14.2: Points agent started
+[2025-08-12 14:46:02] INFO in metal_bus_register#17.8: Points agent started
+[2025-08-12 14:46:03] INFO in metal_generic_dev_dma_map#1.2: Points agent started
+[2025-08-12 14:46:03] INFO in metal_open#8.13: No suspicious lines found for metal_open#8.13.
+[2025-08-12 14:46:03] INFO in metal_uio_dev_bind#8.13: Points agent started
+[2025-08-12 14:46:03] INFO in metal_map#21.14: Points agent started
+[2025-08-12 14:46:03] INFO in metal_shmem_open_generic#14.2: Points agent started
+[2025-08-12 14:46:03] INFO in metal_open#2.1: Points agent started
+[2025-08-12 14:46:03] INFO in metal_map#14.2: No suspicious lines found for metal_map#14.2.
+[2025-08-12 14:46:03] INFO in metal_uio_dev_bind#21.14: Points agent started
+[2025-08-12 14:46:03] INFO in metal_bus_register#14.2: Points agent started
+[2025-08-12 14:46:03] INFO in metal_uio_dev_open#21.17: Points agent started
+[2025-08-12 14:46:04] INFO in metal_io_block_set#1.2: Points agent started
+[2025-08-12 14:46:04] INFO in metal_device_open#1.2: No suspicious lines found for metal_device_open#1.2.
+[2025-08-12 14:46:04] INFO in metal_bus_find#14.2: Points agent started
+[2025-08-12 14:46:04] INFO in metal_open#1.2: Points agent started
+[2025-08-12 14:46:04] INFO in metal_shmem_try_map#1.2: Points agent started
+[2025-08-12 14:46:04] INFO in metal_shmem_register_generic#8.13: Points agent started
+[2025-08-12 14:46:04] INFO in metal_generic_dev_open#17.8: No suspicious lines found for metal_generic_dev_open#17.8.
+[2025-08-12 14:46:05] INFO in metal_generic_dev_open#14.2: Points agent started
+[2025-08-12 14:46:05] INFO in metal_map#2.1: Points agent started
+[2025-08-12 14:46:05] INFO in metal_generic_dev_dma_map#2.2: Points agent started
+[2025-08-12 14:46:05] INFO in metal_open#14.2: No suspicious lines found for metal_open#14.2.
+[2025-08-12 14:46:05] INFO in metal_generic_dev_dma_map#21.14: No suspicious lines found for metal_generic_dev_dma_map#21.14.
+[2025-08-12 14:46:05] INFO in metal_uio_dev_open#1.2: Points agent started
+[2025-08-12 14:46:05] INFO in metal_bus_find#21.14: Points agent started
+[2025-08-12 14:46:05] INFO in metal_shmem_try_map#21.14: Points agent started
+[2025-08-12 14:46:05] INFO in metal_uio_dev_dma_map#1.2: Close symbol agent started
+[2025-08-12 14:46:05] INFO in metal_shmem_register_generic#2.1: Points agent started
+[2025-08-12 14:46:06] INFO in metal_bus_register#2.1: Points agent started
+[2025-08-12 14:46:06] INFO in metal_linux_probe_driver#21.17: Points agent started
+[2025-08-12 14:46:06] INFO in metal_open#2.2: Points agent started
+[2025-08-12 14:46:06] INFO in metal_io_block_set#21.14: No suspicious lines found for metal_io_block_set#21.14.
+[2025-08-12 14:46:06] INFO in metal_device_open#17.8: Points agent started
+[2025-08-12 14:46:06] INFO in metal_uio_dev_bind#2.1: Points agent started
+[2025-08-12 14:46:06] INFO in metal_generic_dev_dma_map#21.17: Points agent started
+[2025-08-12 14:46:06] INFO in metal_generic_dev_open#21.14: Points agent started
+[2025-08-12 14:46:06] INFO in metal_register_generic_device#17.8: No suspicious lines found for metal_register_generic_device#17.8.
+[2025-08-12 14:46:06] INFO in metal_device_open#2.2: Points agent started
+[2025-08-12 14:46:06] INFO in metal_uio_dev_dma_map#2.1: Close symbol agent started
+[2025-08-12 14:46:06] INFO in metal_uio_dev_dma_map#2.2: Close symbol agent started
+[2025-08-12 14:46:07] INFO in metal_bus_find#2.2: Points agent started
+[2025-08-12 14:46:07] INFO in metal_bus_register#21.14: No suspicious lines found for metal_bus_register#21.14.
+[2025-08-12 14:46:07] INFO in metal_linux_probe_driver#21.14: Points agent started
+[2025-08-12 14:46:07] INFO in metal_linux_probe_driver#2.2: Points agent started
+[2025-08-12 14:46:07] INFO in metal_generic_dev_open#21.17: Points agent started
+[2025-08-12 14:46:07] INFO in metal_map#2.2: Points agent started
+[2025-08-12 14:46:07] INFO in metal_shmem_open_generic#8.13: Points agent started
+[2025-08-12 14:46:07] INFO in metal_uio_dev_dma_map#8.13: Close symbol agent started
+[2025-08-12 14:46:07] INFO in metal_shmem_register_generic#17.8: No suspicious lines found for metal_shmem_register_generic#17.8.
+[2025-08-12 14:46:08] INFO in metal_bus_find#17.8: No suspicious lines found for metal_bus_find#17.8.
+[2025-08-12 14:46:08] INFO in metal_shmem_try_map#2.1: Points agent started
+[2025-08-12 14:46:08] INFO in metal_open#21.14: No suspicious lines found for metal_open#21.14.
+[2025-08-12 14:46:08] INFO in metal_shmem_open_generic#21.14: No suspicious lines found for metal_shmem_open_generic#21.14.
+[2025-08-12 14:46:08] INFO in metal_register_generic_device#21.17: Points agent started
+[2025-08-12 14:46:08] INFO in metal_shmem_open_generic#2.2: Points agent started
+[2025-08-12 14:46:09] INFO in metal_uio_dev_bind#2.2: Points agent started
+[2025-08-12 14:46:09] INFO in metal_linux_probe_driver#14.2: No suspicious lines found for metal_linux_probe_driver#14.2.
+[2025-08-12 14:46:09] INFO in metal_linux_probe_driver#17.8: No suspicious lines found for metal_linux_probe_driver#17.8.
+[2025-08-12 14:46:09] INFO in metal_io_block_set#2.2: Points agent started
+[2025-08-12 14:46:09] INFO in metal_uio_dev_open#21.14: Points agent started
+[2025-08-12 14:46:09] INFO in metal_uio_dev_dma_map#14.2: Close symbol agent started
+[2025-08-12 14:46:09] INFO in metal_uio_dev_bind#14.2: Points agent started
+[2025-08-12 14:46:09] INFO in metal_shmem_try_map#2.2: Points agent started
+[2025-08-12 14:46:09] INFO in metal_map#8.13: Points agent started
+[2025-08-12 14:46:09] INFO in metal_uio_dev_dma_map#17.8: Close symbol agent started
+[2025-08-12 14:46:09] INFO in metal_shmem_register_generic#21.14: No suspicious lines found for metal_shmem_register_generic#21.14.
+[2025-08-12 14:46:09] INFO in metal_uio_dev_bind#17.8: Points agent started
+[2025-08-12 14:46:10] INFO in metal_uio_dev_dma_map#21.14: Close symbol agent started
+[2025-08-12 14:46:10] INFO in metal_uio_dev_dma_map#21.17: Close symbol agent started
+[2025-08-12 14:46:10] INFO in metal_map#21.14: No suspicious lines found for metal_map#21.14.
+[2025-08-12 14:46:10] INFO in metal_generic_dev_dma_map#14.2: Points agent started
+[2025-08-12 14:46:10] INFO in metal_virt2phys#1.2: Close symbol agent started
+[2025-08-12 14:46:10] INFO in metal_shmem_register_generic#14.2: Points agent started
+[2025-08-12 14:46:10] INFO in metal_shmem_open_generic#21.17: Points agent started
+[2025-08-12 14:46:10] INFO in metal_device_open#21.14: No suspicious lines found for metal_device_open#21.14.
+[2025-08-12 14:46:10] INFO in metal_virt2phys#2.1: Close symbol agent started
+[2025-08-12 14:46:11] INFO in metal_virt2phys#2.2: Close symbol agent started
+[2025-08-12 14:46:11] INFO in metal_device_open#14.2: Classifier agent started
+[2025-08-12 14:46:11] INFO in metal_virt2phys#8.13: Close symbol agent started
+[2025-08-12 14:46:12] INFO in metal_open#17.8: No suspicious lines found for metal_open#17.8.
+[2025-08-12 14:46:12] INFO in metal_generic_dev_dma_map#17.8: No suspicious lines found for metal_generic_dev_dma_map#17.8.
+[2025-08-12 14:46:12] INFO in metal_uio_dev_open#17.8: Points agent started
+[2025-08-12 14:46:12] INFO in metal_register_generic_device#14.2: No suspicious lines found for metal_register_generic_device#14.2.
+[2025-08-12 14:46:12] INFO in metal_generic_dev_open#1.2: No suspicious lines found for metal_generic_dev_open#1.2.
+[2025-08-12 14:46:12] INFO in metal_bus_register#14.2: No suspicious lines found for metal_bus_register#14.2.
+[2025-08-12 14:46:13] INFO in metal_uio_dev_bind#21.17: Points agent started
+[2025-08-12 14:46:13] INFO in metal_shmem_open_generic#17.8: No suspicious lines found for metal_shmem_open_generic#17.8.
+[2025-08-12 14:46:13] INFO in metal_uio_dev_open#2.2: Points agent started
+[2025-08-12 14:46:13] INFO in metal_generic_dev_dma_map#1.2: No suspicious lines found for metal_generic_dev_dma_map#1.2.
+[2025-08-12 14:46:13] INFO in metal_uio_dev_open#2.1: Points agent started
+[2025-08-12 14:46:13] INFO in metal_uio_dev_bind#21.14: No suspicious lines found for metal_uio_dev_bind#21.14.
+[2025-08-12 14:46:13] INFO in metal_virt2phys#14.2: Close symbol agent started
+[2025-08-12 14:46:13] INFO in metal_virt2phys#17.8: Close symbol agent started
+[2025-08-12 14:46:13] INFO in metal_uio_dev_bind#1.2: No suspicious lines found for metal_uio_dev_bind#1.2.
+[2025-08-12 14:46:13] INFO in metal_shmem_register_generic#1.2: No suspicious lines found for metal_shmem_register_generic#1.2.
+[2025-08-12 14:46:13] INFO in metal_register_generic_device#2.1: No suspicious lines found for metal_register_generic_device#2.1.
+[2025-08-12 14:46:13] INFO in metal_shmem_try_map#21.17: Points agent started
+[2025-08-12 14:46:14] INFO in metal_map#17.8: Points agent started
+[2025-08-12 14:46:14] INFO in metal_virt2phys#21.14: Close symbol agent started
+[2025-08-12 14:46:14] INFO in metal_generic_dev_dma_map#2.1: Points agent started
+[2025-08-12 14:46:14] INFO in metal_shmem_try_map#21.14: No suspicious lines found for metal_shmem_try_map#21.14.
+[2025-08-12 14:46:14] INFO in metal_virt2phys#21.17: Close symbol agent started
+[2025-08-12 14:46:14] INFO in metal_register_generic_device#1.2: No suspicious lines found for metal_register_generic_device#1.2.
+[2025-08-12 14:46:14] INFO in metal_bus_find#21.14: No suspicious lines found for metal_bus_find#21.14.
+[2025-08-12 14:46:15] INFO in metal_uio_read_map_attr#1.2: Close symbol agent started
+[2025-08-12 14:46:15] INFO in metal_generic_dev_open#21.14: No suspicious lines found for metal_generic_dev_open#21.14.
+[2025-08-12 14:46:15] INFO in metal_bus_register#1.2: No suspicious lines found for metal_bus_register#1.2.
+[2025-08-12 14:46:15] INFO in metal_uio_read_map_attr#2.1: Close symbol agent started
+[2025-08-12 14:46:15] INFO in metal_uio_read_map_attr#2.2: Close symbol agent started
+[2025-08-12 14:46:15] INFO in metal_bus_find#1.2: No suspicious lines found for metal_bus_find#1.2.
+[2025-08-12 14:46:16] INFO in metal_map#1.2: No suspicious lines found for metal_map#1.2.
+[2025-08-12 14:46:16] INFO in metal_open#2.1: No suspicious lines found for metal_open#2.1.
+[2025-08-12 14:46:16] INFO in metal_generic_dev_dma_map#8.13: Points agent started
+[2025-08-12 14:46:16] INFO in metal_bus_register#8.13: Classifier agent started
+[2025-08-12 14:46:16] INFO in metal_uio_read_map_attr#8.13: Close symbol agent started
+[2025-08-12 14:46:16] INFO in metal_uio_read_map_attr#14.2: Close symbol agent started
+[2025-08-12 14:46:16] INFO in metal_uio_read_map_attr#17.8: Close symbol agent started
+[2025-08-12 14:46:16] INFO in metal_uio_read_map_attr#21.14: Close symbol agent started
+[2025-08-12 14:46:17] INFO in metal_bus_register#17.8: No suspicious lines found for metal_bus_register#17.8.
+[2025-08-12 14:46:17] INFO in metal_uio_read_map_attr#21.17: Close symbol agent started
+[2025-08-12 14:46:17] INFO in metal_linux_probe_driver#21.17: No suspicious lines found for metal_linux_probe_driver#21.17.
+[2025-08-12 14:46:17] INFO in metal_shmem_register_generic#2.2: Points agent started
+[2025-08-12 14:46:17] INFO in metal_uio_dev_open#8.13: Points agent started
+[2025-08-12 14:46:17] INFO in metal_shmem_register_generic#14.2: No suspicious lines found for metal_shmem_register_generic#14.2.
+[2025-08-12 14:46:17] INFO in metal_io_block_set#1.2: No suspicious lines found for metal_io_block_set#1.2.
+[2025-08-12 14:46:18] INFO in metal_open#1.2: No suspicious lines found for metal_open#1.2.
+[2025-08-12 14:46:18] INFO in metal_shmem_try_map#17.8: Points agent started
+[2025-08-12 14:46:18] INFO in metal_linux_probe_driver#8.13: Classifier agent started
+[2025-08-12 14:46:18] INFO in metal_device_open#2.1: No suspicious lines found for metal_device_open#2.1.
+[2025-08-12 14:46:18] INFO in metal_generic_dev_open#2.1: No suspicious lines found for metal_generic_dev_open#2.1.
+[2025-08-12 14:46:19] INFO in metal_shmem_try_map#8.13: Points agent started
+[2025-08-12 14:46:19] INFO in metal_io_block_set#2.1: Points agent started
+[2025-08-12 14:46:19] INFO in metal_shmem_register_generic#21.17: Classifier agent started
+[2025-08-12 14:46:19] INFO in metal_io_block_set#17.8: Points agent started
+[2025-08-12 14:46:19] INFO in metal_register_generic_device#2.2: Points agent started
+[2025-08-12 14:46:19] INFO in metal_uio_dev_open#21.14: No suspicious lines found for metal_uio_dev_open#21.14.
+[2025-08-12 14:46:19] INFO in metal_uio_dev_bind#14.2: No suspicious lines found for metal_uio_dev_bind#14.2.
+[2025-08-12 14:46:20] INFO in metal_uio_dev_bind#17.8: No suspicious lines found for metal_uio_dev_bind#17.8.
+[2025-08-12 14:46:20] INFO in metal_uio_dev_open#21.17: No suspicious lines found for metal_uio_dev_open#21.17.
+[2025-08-12 14:46:20] INFO in metal_generic_dev_open#2.2: Classifier agent started
+[2025-08-12 14:46:20] INFO in metal_shmem_register_generic#8.13: No suspicious lines found for metal_shmem_register_generic#8.13.
+[2025-08-12 14:46:21] INFO in metal_shmem_open_generic#1.2: No suspicious lines found for metal_shmem_open_generic#1.2.
+[2025-08-12 14:46:21] INFO in metal_map#21.17: Points agent started
+[2025-08-12 14:46:21] INFO in metal_shmem_register_generic#2.1: No suspicious lines found for metal_shmem_register_generic#2.1.
+[2025-08-12 14:46:21] INFO in metal_device_open#8.13: Classifier agent started
+[2025-08-12 14:46:21] INFO in metal_generic_dev_open#21.17: Classifier agent started
+[2025-08-12 14:46:21] INFO in metal_bus_register#2.2: Classifier agent started
+[2025-08-12 14:46:21] INFO in metal_linux_probe_driver#1.2: Classifier agent started
+[2025-08-12 14:46:22] INFO in metal_linux_probe_driver#21.14: No suspicious lines found for metal_linux_probe_driver#21.14.
+[2025-08-12 14:46:22] INFO in metal_generic_dev_open#14.2: Classifier agent started
+[2025-08-12 14:46:22] INFO in metal_uio_dev_open#14.2: Points agent started
+[2025-08-12 14:46:23] INFO in metal_shmem_open_generic#21.17: Classifier agent started
+[2025-08-12 14:46:24] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:46:25] INFO in metal_register_generic_device#21.17: Classifier agent started
+[2025-08-12 14:46:25] INFO in metal_io_block_set#8.13: Classifier agent started
+[2025-08-12 14:46:25] INFO in metal_bus_register#2.1: Classifier agent started
+[2025-08-12 14:46:25] INFO in metal_bus_register#8.13: Classifier agent started
+[2025-08-12 14:46:26] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:46:26] INFO in metal_shmem_try_map#14.2: Points agent started
+[2025-08-12 14:46:26] INFO in metal_device_open#21.17: Classifier agent started
+[2025-08-12 14:46:26] INFO in metal_device_open#14.2: classifier finished.
+[2025-08-12 14:46:27] INFO in metal_generic_dev_dma_map#21.17: Classifier agent started
+[2025-08-12 14:46:28] INFO in metal_generic_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:46:28] INFO in metal_bus_register#21.17: Classifier agent started
+[2025-08-12 14:46:28] INFO in metal_register_generic_device#8.13: Classifier agent started
+[2025-08-12 14:46:28] INFO in metal_bus_find#21.17: Classifier agent started
+[2025-08-12 14:46:29] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:46:30] INFO in metal_generic_dev_open#2.2: classifier finished.
+[2025-08-12 14:46:30] INFO in metal_generic_dev_open#2.2: Test generator started
+[2025-08-12 14:46:30] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:46:31] INFO in metal_io_block_set#14.2: Points agent started
+[2025-08-12 14:46:31] INFO in metal_shmem_try_map#1.2: Classifier agent started
+[2025-08-12 14:46:31] INFO in metal_linux_probe_driver#1.2: Classifier agent started
+[2025-08-12 14:46:32] INFO in metal_generic_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:46:32] INFO in metal_shmem_register_generic#21.17: classifier finished.
+[2025-08-12 14:46:32] INFO in metal_shmem_register_generic#21.17: Test generator started
+[2025-08-12 14:46:32] INFO in metal_device_open#8.13: Classifier agent started
+[2025-08-12 14:46:32] INFO in metal_bus_register#2.2: Classifier agent started
+[2025-08-12 14:46:33] INFO in metal_shmem_open_generic#21.17: classifier finished.
+[2025-08-12 14:46:33] INFO in metal_shmem_open_generic#21.17: Test generator started
+[2025-08-12 14:46:33] INFO in metal_open#21.17: Classifier agent started
+[2025-08-12 14:46:33] INFO in metal_generic_dev_open#21.17: classifier finished.
+[2025-08-12 14:46:33] INFO in metal_generic_dev_open#21.17: Test generator started
+[2025-08-12 14:46:33] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:46:33] INFO in metal_shmem_try_map#2.1: No suspicious lines found for metal_shmem_try_map#2.1.
+[2025-08-12 14:46:33] INFO in metal_virt2phys#2.2: Points agent started
+[2025-08-12 14:46:34] INFO in metal_shmem_try_map#21.17: No suspicious lines found for metal_shmem_try_map#21.17.
+[2025-08-12 14:46:34] INFO in metal_map#17.8: Classifier agent started
+[2025-08-12 14:46:34] INFO in metal_shmem_open_generic#8.13: Classifier agent started
+[2025-08-12 14:46:34] INFO in metal_linux_probe_driver#8.13: Classifier agent started
+[2025-08-12 14:46:34] INFO in metal_bus_find#14.2: Classifier agent started
+[2025-08-12 14:46:35] INFO in metal_uio_dev_dma_map#8.13: Points agent started
+[2025-08-12 14:46:35] INFO in metal_virt2phys#17.8: Points agent started
+[2025-08-12 14:46:35] INFO in metal_shmem_register_generic#2.2: Classifier agent started
+[2025-08-12 14:46:35] INFO in metal_uio_read_map_attr#2.1: Points agent started
+[2025-08-12 14:46:35] INFO in metal_virt2phys#21.14: Points agent started
+[2025-08-12 14:46:35] INFO in metal_uio_dev_dma_map#1.2: Points agent started
+[2025-08-12 14:46:36] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:46:36] INFO in metal_uio_dev_dma_map#17.8: Points agent started
+[2025-08-12 14:46:36] INFO in metal_linux_probe_driver#2.1: Classifier agent started
+[2025-08-12 14:46:36] INFO in metal_io_block_set#2.2: Classifier agent started
+[2025-08-12 14:46:36] INFO in metal_generic_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:46:36] INFO in metal_bus_find#2.2: Classifier agent started
+[2025-08-12 14:46:36] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:46:37] INFO in metal_virt2phys#1.2: Points agent started
+[2025-08-12 14:46:37] INFO in metal_uio_dev_bind#2.1: Classifier agent started
+[2025-08-12 14:46:37] INFO in metal_shmem_open_generic#14.2: Classifier agent started
+[2025-08-12 14:46:37] INFO in metal_uio_read_map_attr#8.13: Points agent started
+[2025-08-12 14:46:37] INFO in metal_uio_dev_dma_map#21.14: Points agent started
+[2025-08-12 14:46:37] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:46:37] INFO in metal_virt2phys#8.13: Points agent started
+[2025-08-12 14:46:38] INFO in metal_generic_dev_dma_map#21.17: Classifier agent started
+[2025-08-12 14:46:38] INFO in metal_device_open#21.17: Classifier agent started
+[2025-08-12 14:46:38] INFO in metal_map#21.17: No suspicious lines found for metal_map#21.17.
+[2025-08-12 14:46:38] INFO in metal_uio_dev_open#1.2: Classifier agent started
+[2025-08-12 14:46:38] INFO in metal_io_block_set#17.8: Classifier agent started
+[2025-08-12 14:46:39] INFO in metal_register_generic_device#21.17: classifier finished.
+[2025-08-12 14:46:39] INFO in metal_register_generic_device#21.17: Test generator started
+[2025-08-12 14:46:39] INFO in metal_uio_read_map_attr#1.2: Points agent started
+[2025-08-12 14:46:39] INFO in metal_uio_dev_dma_map#2.2: Points agent started
+[2025-08-12 14:46:39] INFO in metal_bus_register#2.1: Classifier agent started
+[2025-08-12 14:46:40] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:46:40] INFO in metal_uio_dev_bind#21.17: Classifier agent started
+[2025-08-12 14:46:40] INFO in metal_uio_dev_dma_map#2.1: Points agent started
+[2025-08-12 14:46:40] INFO in metal_map#17.8: Classifier agent started
+[2025-08-12 14:46:40] INFO in metal_bus_find#2.1: Points agent started
+[2025-08-12 14:46:40] INFO in metal_io_block_set#8.13: Classifier agent started
+[2025-08-12 14:46:40] INFO in metal_device_open#17.8: Classifier agent started
+[2025-08-12 14:46:40] INFO in metal_uio_read_map_attr#17.8: Points agent started
+[2025-08-12 14:46:41] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:46:41] INFO in metal_shmem_try_map#17.8: Classifier agent started
+[2025-08-12 14:46:41] INFO in metal_shmem_try_map#1.2: Classifier agent started
+[2025-08-12 14:46:41] INFO in metal_shmem_register_generic#2.2: Classifier agent started
+[2025-08-12 14:46:41] INFO in metal_virt2phys#14.2: Points agent started
+[2025-08-12 14:46:41] INFO in metal_virt2phys#2.1: Points agent started
+[2025-08-12 14:46:41] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:46:41] INFO in metal_bus_register#21.17: Classifier agent started
+[2025-08-12 14:46:42] INFO in metal_linux_probe_driver#1.2: classifier finished.
+[2025-08-12 14:46:42] INFO in metal_linux_probe_driver#1.2: Test generator started
+[2025-08-12 14:46:42] INFO in metal_device_open#8.13: Classifier agent started
+[2025-08-12 14:46:42] INFO in metal_shmem_open_generic#8.13: Classifier agent started
+[2025-08-12 14:46:42] INFO in metal_uio_read_map_attr#14.2: Points agent started
+[2025-08-12 14:46:42] INFO in metal_virt2phys#17.8: No suspicious lines found for metal_virt2phys#17.8.
+[2025-08-12 14:46:42] INFO in metal_generic_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:46:43] INFO in metal_uio_read_map_attr#21.14: Points agent started
+[2025-08-12 14:46:43] INFO in metal_virt2phys#21.17: Points agent started
+[2025-08-12 14:46:43] INFO in metal_bus_register#8.13: Classifier agent started
+[2025-08-12 14:46:44] INFO in metal_virt2phys#21.14: No suspicious lines found for metal_virt2phys#21.14.
+[2025-08-12 14:46:44] INFO in metal_uio_dev_dma_map#21.17: Points agent started
+[2025-08-12 14:46:44] INFO in metal_linux_probe_driver#2.2: Classifier agent started
+[2025-08-12 14:46:45] INFO in metal_bus_find#21.17: Classifier agent started
+[2025-08-12 14:46:45] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:46:45] INFO in metal_linux_probe_driver#2.1: Classifier agent started
+[2025-08-12 14:46:45] INFO in metal_uio_dev_open#1.2: classifier finished.
+[2025-08-12 14:46:46] INFO in metal_uio_read_map_attr#2.2: Points agent started
+[2025-08-12 14:46:46] INFO in metal_generic_dev_open#14.2: Classifier agent started
+[2025-08-12 14:46:46] INFO in metal_generic_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:46:46] INFO in metal_uio_dev_dma_map#21.14: No suspicious lines found for metal_uio_dev_dma_map#21.14.
+[2025-08-12 14:46:46] INFO in metal_open#21.17: Classifier agent started
+[2025-08-12 14:46:46] INFO in metal_map#17.8: Classifier agent started
+[2025-08-12 14:46:46] INFO in metal_uio_dev_bind#2.1: Classifier agent started
+[2025-08-12 14:46:46] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:46:46] INFO in metal_register_generic_device#8.13: Classifier agent started
+[2025-08-12 14:46:47] INFO in metal_generic_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:46:47] INFO in metal_device_open#2.2: Classifier agent started
+[2025-08-12 14:46:47] INFO in metal_shmem_try_map#17.8: classifier finished.
+[2025-08-12 14:46:47] INFO in metal_shmem_try_map#17.8: Test generator started
+[2025-08-12 14:46:48] INFO in metal_device_open#21.17: Classifier agent started
+[2025-08-12 14:46:48] INFO in metal_shmem_try_map#1.2: classifier finished.
+[2025-08-12 14:46:48] INFO in metal_shmem_try_map#1.2: Test generator started
+[2025-08-12 14:46:48] INFO in metal_uio_dev_dma_map#14.2: Points agent started
+[2025-08-12 14:46:48] INFO in metal_bus_register#2.1: classifier finished.
+[2025-08-12 14:46:48] INFO in metal_bus_register#2.1: Test generator started
+[2025-08-12 14:46:49] INFO in metal_generic_dev_dma_map#21.17: classifier finished.
+[2025-08-12 14:46:49] INFO in metal_generic_dev_dma_map#21.17: Test generator started
+[2025-08-12 14:46:49] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:46:49] INFO in metal_uio_read_map_attr#21.17: Points agent started
+[2025-08-12 14:46:49] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:46:49] INFO in metal_bus_register#2.2: classifier finished.
+[2025-08-12 14:46:49] INFO in metal_bus_register#2.2: Test generator started
+[2025-08-12 14:46:49] INFO in metal_bus_find#14.2: classifier finished.
+[2025-08-12 14:46:49] INFO in metal_io_block_set#17.8: Classifier agent started
+[2025-08-12 14:46:49] INFO in metal_generic_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:46:50] INFO in metal_uio_dev_bind#21.17: Classifier agent started
+[2025-08-12 14:46:50] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:46:51] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:46:51] INFO in metal_io_block_set#2.2: classifier finished.
+[2025-08-12 14:46:51] INFO in metal_uio_dev_open#17.8: Classifier agent started
+[2025-08-12 14:46:51] INFO in metal_virt2phys#14.2: No suspicious lines found for metal_virt2phys#14.2.
+[2025-08-12 14:46:51] INFO in metal_open#2.2: Classifier agent started
+[2025-08-12 14:46:51] INFO in metal_uio_read_map_attr#21.14: No suspicious lines found for metal_uio_read_map_attr#21.14.
+[2025-08-12 14:46:51] INFO in metal_linux_probe_driver#8.13: classifier finished.
+[2025-08-12 14:46:51] INFO in metal_linux_probe_driver#8.13: Test generator started
+[2025-08-12 14:46:52] INFO in metal_uio_read_map_attr#17.8: No suspicious lines found for metal_uio_read_map_attr#17.8.
+[2025-08-12 14:46:52] INFO in metal_shmem_try_map#14.2: Classifier agent started
+[2025-08-12 14:46:52] INFO in metal_uio_read_map_attr#14.2: No suspicious lines found for metal_uio_read_map_attr#14.2.
+[2025-08-12 14:46:52] INFO in metal_uio_dev_dma_map#17.8: No suspicious lines found for metal_uio_dev_dma_map#17.8.
+[2025-08-12 14:46:52] INFO in metal_shmem_register_generic#2.2: Classifier agent started
+[2025-08-12 14:46:52] INFO in metal_generic_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_bus_register#8.13: classifier finished.
+[2025-08-12 14:46:53] INFO in metal_bus_register#8.13: Test generator started
+[2025-08-12 14:46:53] INFO in metal_shmem_open_generic#14.2: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_device_open#8.13: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_device_open#2.2: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_bus_find#2.2: Classifier agent started
+[2025-08-12 14:46:53] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:46:54] INFO in metal_device_open#17.8: Classifier agent started
+[2025-08-12 14:46:54] INFO in metal_linux_probe_driver#2.1: Classifier agent started
+[2025-08-12 14:46:54] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:46:54] INFO in metal_map#17.8: Classifier agent started
+[2025-08-12 14:46:54] INFO in metal_register_generic_device#2.2: Classifier agent started
+[2025-08-12 14:46:55] INFO in metal_uio_read_map_attr#1.2: No suspicious lines found for metal_uio_read_map_attr#1.2.
+[2025-08-12 14:46:56] INFO in metal_uio_dev_bind#2.1: Classifier agent started
+[2025-08-12 14:46:56] INFO in metal_generic_dev_open#14.2: Classifier agent started
+[2025-08-12 14:46:56] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:46:56] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:46:57] INFO in metal_device_open#21.17: classifier finished.
+[2025-08-12 14:46:57] INFO in metal_device_open#21.17: Test generator started
+[2025-08-12 14:46:57] INFO in metal_register_generic_device#8.13: Classifier agent started
+[2025-08-12 14:46:57] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:46:57] INFO in metal_generic_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:46:58] INFO in metal_shmem_open_generic#8.13: Classifier agent started
+[2025-08-12 14:46:58] INFO in metal_uio_dev_open#8.13: Classifier agent started
+[2025-08-12 14:46:58] INFO in metal_uio_dev_open#14.2: Classifier agent started
+[2025-08-12 14:46:59] INFO in metal_linux_probe_driver#2.2: Classifier agent started
+[2025-08-12 14:46:59] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:46:59] INFO in metal_bus_find#2.1: Classifier agent started
+[2025-08-12 14:46:59] INFO in metal_io_block_set#17.8: Classifier agent started
+[2025-08-12 14:46:59] INFO in metal_uio_dev_open#17.8: classifier finished.
+[2025-08-12 14:46:59] INFO in metal_uio_dev_open#17.8: Test generator started
+[2025-08-12 14:46:59] INFO in metal_virt2phys#8.13: Classifier agent started
+[2025-08-12 14:47:00] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:00] INFO in metal_bus_register#21.17: Classifier agent started
+[2025-08-12 14:47:00] INFO in metal_map#17.8: classifier finished.
+[2025-08-12 14:47:00] INFO in metal_map#17.8: Test generator started
+[2025-08-12 14:47:00] INFO in metal_open#21.17: Classifier agent started
+[2025-08-12 14:47:01] INFO in metal_uio_dev_bind#21.17: Classifier agent started
+[2025-08-12 14:47:01] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:47:01] INFO in metal_device_open#8.13: Classifier agent started
+[2025-08-12 14:47:02] INFO in metal_generic_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:02] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:47:02] INFO in metal_linux_probe_driver#2.1: Classifier agent started
+[2025-08-12 14:47:02] INFO in metal_open#2.2: Classifier agent started
+[2025-08-12 14:47:02] INFO in metal_device_open#2.2: Classifier agent started
+[2025-08-12 14:47:02] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:47:03] INFO in metal_uio_dev_bind#2.1: Classifier agent started
+[2025-08-12 14:47:03] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:03] INFO in metal_bus_find#21.17: Classifier agent started
+[2025-08-12 14:47:03] INFO in metal_device_open#17.8: classifier finished.
+[2025-08-12 14:47:03] INFO in metal_shmem_try_map#8.13: Classifier agent started
+[2025-08-12 14:47:03] INFO in metal_uio_read_map_attr#2.1: Classifier agent started
+[2025-08-12 14:47:04] INFO in metal_virt2phys#1.2: Classifier agent started
+[2025-08-12 14:47:04] INFO in metal_io_block_set#8.13: Classifier agent started
+[2025-08-12 14:47:04] INFO in metal_shmem_try_map#14.2: classifier finished.
+[2025-08-12 14:47:04] INFO in metal_shmem_try_map#14.2: Test generator started
+[2025-08-12 14:47:04] INFO in metal_generic_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:47:05] INFO in metal_generic_dev_open#21.17: Try building and executing test code for metal_generic_dev_open and 21.17.
+[2025-08-12 14:47:05] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:05] INFO in metal_uio_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:47:05] INFO in metal_shmem_open_generic#8.13: Classifier agent started
+[2025-08-12 14:47:05] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:47:06] INFO in metal_uio_read_map_attr#21.17: No suspicious lines found for metal_uio_read_map_attr#21.17.
+[2025-08-12 14:47:06] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:47:06] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:47:06] INFO in metal_virt2phys#8.13: classifier finished.
+[2025-08-12 14:47:06] INFO in metal_virt2phys#8.13: Test generator started
+[2025-08-12 14:47:06] INFO in metal_io_block_set#17.8: Classifier agent started
+[2025-08-12 14:47:07] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:47:07] INFO in metal_virt2phys#2.1: No suspicious lines found for metal_virt2phys#2.1.
+[2025-08-12 14:47:07] INFO in metal_shmem_open_generic#14.2: Classifier agent started
+[2025-08-12 14:47:07] ERROR in metal_generic_dev_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:08] INFO in metal_uio_dev_bind#21.17: Classifier agent started
+[2025-08-12 14:47:08] INFO in metal_device_open#2.2: Classifier agent started
+[2025-08-12 14:47:09] INFO in metal_generic_dev_dma_map#2.2: classifier finished.
+[2025-08-12 14:47:09] INFO in metal_generic_dev_dma_map#2.2: Test generator started
+[2025-08-12 14:47:09] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:47:09] INFO in metal_linux_probe_driver#2.1: Classifier agent started
+[2025-08-12 14:47:09] INFO in metal_generic_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:09] INFO in metal_register_generic_device#2.2: Classifier agent started
+[2025-08-12 14:47:09] INFO in metal_uio_read_map_attr#8.13: Classifier agent started
+[2025-08-12 14:47:10] INFO in metal_uio_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:10] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:47:11] INFO in metal_shmem_register_generic#2.2: Classifier agent started
+[2025-08-12 14:47:11] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:47:11] INFO in metal_virt2phys#2.2: Classifier agent started
+[2025-08-12 14:47:11] INFO in metal_generic_dev_open#14.2: Classifier agent started
+[2025-08-12 14:47:11] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:47:11] INFO in metal_virt2phys#1.2: Classifier agent started
+[2025-08-12 14:47:12] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:47:12] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:12] INFO in metal_uio_dev_dma_map#1.2: Classifier agent started
+[2025-08-12 14:47:12] INFO in metal_linux_probe_driver#1.2: Try building and executing test code for metal_linux_probe_driver and 1.2.
+[2025-08-12 14:47:12] INFO in metal_uio_read_map_attr#2.2: Classifier agent started
+[2025-08-12 14:47:12] INFO in metal_linux_probe_driver#2.2: Classifier agent started
+[2025-08-12 14:47:13] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:47:13] INFO in metal_generic_dev_open#2.2: Try building and executing test code for metal_generic_dev_open and 2.2.
+[2025-08-12 14:47:13] INFO in metal_uio_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:47:13] INFO in metal_bus_register#21.17: classifier finished.
+[2025-08-12 14:47:13] INFO in metal_bus_register#21.17: Test generator started
+[2025-08-12 14:47:13] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:47:13] INFO in metal_io_block_set#14.2: Classifier agent started
+[2025-08-12 14:47:14] INFO in metal_register_generic_device#8.13: Classifier agent started
+[2025-08-12 14:47:14] INFO in metal_open#2.2: Classifier agent started
+[2025-08-12 14:47:14] INFO in metal_uio_read_map_attr#2.1: Classifier agent started
+[2025-08-12 14:47:14] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:14] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:47:15] INFO in metal_uio_dev_bind#2.1: Classifier agent started
+[2025-08-12 14:47:15] INFO in metal_generic_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:47:15] INFO in metal_bus_find#21.17: Classifier agent started
+[2025-08-12 14:47:15] ERROR in metal_linux_probe_driver#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:15] ERROR in metal_generic_dev_open#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:15] INFO in metal_bus_register#8.13: Try building and executing test code for metal_bus_register and 8.13.
+[2025-08-12 14:47:16] INFO in metal_uio_dev_dma_map#21.17: Classifier agent started
+[2025-08-12 14:47:16] INFO in metal_register_generic_device#21.17: Try building and executing test code for metal_register_generic_device and 21.17.
+[2025-08-12 14:47:16] INFO in metal_bus_find#2.1: Classifier agent started
+[2025-08-12 14:47:16] INFO in metal_generic_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:17] INFO in metal_open#21.17: Classifier agent started
+[2025-08-12 14:47:17] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:47:17] INFO in metal_bus_register#2.2: Try building and executing test code for metal_bus_register and 2.2.
+[2025-08-12 14:47:18] INFO in metal_io_block_set#17.8: classifier finished.
+[2025-08-12 14:47:18] INFO in metal_io_block_set#17.8: Test generator started
+[2025-08-12 14:47:18] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:47:18] INFO in metal_shmem_try_map#1.2: Try building and executing test code for metal_shmem_try_map and 1.2.
+[2025-08-12 14:47:18] ERROR in metal_bus_register#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:18] INFO in metal_io_block_set#8.13: Classifier agent started
+[2025-08-12 14:47:18] ERROR in metal_register_generic_device#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:19] INFO in metal_shmem_try_map#8.13: Classifier agent started
+[2025-08-12 14:47:19] INFO in metal_uio_dev_bind#21.17: Classifier agent started
+[2025-08-12 14:47:19] INFO in metal_shmem_open_generic#8.13: Classifier agent started
+[2025-08-12 14:47:19] INFO in metal_bus_register#2.1: Try building and executing test code for metal_bus_register and 2.1.
+[2025-08-12 14:47:19] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:47:20] ERROR in metal_bus_register#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:20] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:20] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:47:20] INFO in metal_shmem_open_generic#21.17: Try building and executing test code for metal_shmem_open_generic and 21.17.
+[2025-08-12 14:47:20] INFO in metal_uio_dev_dma_map#1.2: Classifier agent started
+[2025-08-12 14:47:20] INFO in metal_shmem_try_map#17.8: Try building and executing test code for metal_shmem_try_map and 17.8.
+[2025-08-12 14:47:20] INFO in metal_uio_read_map_attr#8.13: Classifier agent started
+[2025-08-12 14:47:21] ERROR in metal_shmem_try_map#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:21] INFO in metal_virt2phys#1.2: Classifier agent started
+[2025-08-12 14:47:21] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:47:21] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:47:22] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:22] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:47:22] ERROR in metal_bus_register#2.1: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:22] INFO in metal_device_open#2.2: classifier finished.
+[2025-08-12 14:47:22] INFO in metal_uio_dev_bind#2.1: Classifier agent started
+[2025-08-12 14:47:23] INFO in metal_device_open#8.13: classifier finished.
+[2025-08-12 14:47:23] INFO in metal_device_open#8.13: Test generator started
+[2025-08-12 14:47:23] ERROR in metal_shmem_open_generic#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:23] INFO in metal_shmem_register_generic#2.2: classifier finished.
+[2025-08-12 14:47:23] INFO in metal_shmem_register_generic#2.2: Test generator started
+[2025-08-12 14:47:23] INFO in metal_uio_read_map_attr#2.2: Classifier agent started
+[2025-08-12 14:47:23] ERROR in metal_shmem_try_map#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:23] INFO in metal_bus_find#2.2: classifier finished.
+[2025-08-12 14:47:23] INFO in metal_bus_find#2.2: Test generator started
+[2025-08-12 14:47:23] INFO in metal_linux_probe_driver#2.1: classifier finished.
+[2025-08-12 14:47:23] INFO in metal_generic_dev_open#14.2: Classifier agent started
+[2025-08-12 14:47:24] INFO in metal_shmem_open_generic#21.17: Try fixing the test code, try count: 1/1
+[2025-08-12 14:47:24] INFO in metal_generic_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:24] INFO in metal_uio_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:47:24] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:47:24] INFO in metal_virt2phys#2.2: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_generic_dev_dma_map#21.17: Try building and executing test code for metal_generic_dev_dma_map and 21.17.
+[2025-08-12 14:47:25] INFO in metal_virt2phys#21.17: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_register_generic_device#2.2: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_uio_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_generic_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:25] INFO in metal_linux_probe_driver#8.13: Try building and executing test code for metal_linux_probe_driver and 8.13.
+[2025-08-12 14:47:26] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:26] INFO in metal_generic_dev_dma_map#14.2: classifier finished.
+[2025-08-12 14:47:26] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:47:26] INFO in metal_uio_dev_dma_map#21.17: classifier finished.
+[2025-08-12 14:47:26] INFO in metal_uio_dev_dma_map#21.17: Test generator started
+[2025-08-12 14:47:27] INFO in metal_register_generic_device#8.13: classifier finished.
+[2025-08-12 14:47:27] INFO in metal_register_generic_device#8.13: Test generator started
+[2025-08-12 14:47:27] INFO in metal_bus_find#2.1: classifier finished.
+[2025-08-12 14:47:27] INFO in metal_bus_find#2.1: Test generator started
+[2025-08-12 14:47:27] INFO in metal_shmem_try_map#8.13: Classifier agent started
+[2025-08-12 14:47:27] INFO in metal_uio_dev_dma_map#1.2: classifier finished.
+[2025-08-12 14:47:27] INFO in metal_uio_dev_dma_map#1.2: Test generator started
+[2025-08-12 14:47:27] ERROR in metal_generic_dev_dma_map#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:27] INFO in metal_io_block_set#14.2: Classifier agent started
+[2025-08-12 14:47:27] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:47:28] INFO in metal_generic_dev_dma_map#21.17: Try fixing the test code, try count: 1/1
+[2025-08-12 14:47:28] INFO in metal_uio_dev_open#14.2: Classifier agent started
+[2025-08-12 14:47:28] ERROR in metal_linux_probe_driver#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:28] INFO in metal_uio_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:47:29] INFO in metal_linux_probe_driver#2.2: Classifier agent started
+[2025-08-12 14:47:30] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:47:30] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:47:30] INFO in metal_open#21.17: Classifier agent started
+[2025-08-12 14:47:30] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:47:30] INFO in metal_uio_read_map_attr#2.1: Classifier agent started
+[2025-08-12 14:47:30] INFO in metal_uio_dev_bind#21.17: Classifier agent started
+[2025-08-12 14:47:31] INFO in metal_io_block_set#8.13: Classifier agent started
+[2025-08-12 14:47:31] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:47:31] INFO in metal_uio_read_map_attr#8.13: classifier finished.
+[2025-08-12 14:47:31] INFO in metal_uio_read_map_attr#8.13: Test generator started
+[2025-08-12 14:47:31] INFO in metal_linux_probe_driver#8.13: Running reviewer for metal_linux_probe_driver and rule 8.13.
+[2025-08-12 14:47:32] INFO in metal_virt2phys#2.2: Classifier agent started
+[2025-08-12 14:47:32] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:47:32] INFO in metal_shmem_open_generic#14.2: classifier finished.
+[2025-08-12 14:47:32] INFO in metal_shmem_open_generic#2.2: Classifier agent started
+[2025-08-12 14:47:32] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:47:32] INFO in metal_uio_dev_bind#2.1: classifier finished.
+[2025-08-12 14:47:32] INFO in metal_uio_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:32] INFO in metal_virt2phys#1.2: classifier finished.
+[2025-08-12 14:47:32] INFO in metal_virt2phys#1.2: Test generator started
+[2025-08-12 14:47:32] INFO in metal_virt2phys#8.13: Try building and executing test code for metal_virt2phys and 8.13.
+[2025-08-12 14:47:33] INFO in metal_open#2.2: classifier finished.
+[2025-08-12 14:47:33] INFO in metal_open#2.2: Test generator started
+[2025-08-12 14:47:33] INFO in metal_generic_dev_dma_map#2.1: classifier finished.
+[2025-08-12 14:47:33] INFO in metal_uio_read_map_attr#2.2: classifier finished.
+[2025-08-12 14:47:33] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:34] INFO in metal_shmem_try_map#8.13: Classifier agent started
+[2025-08-12 14:47:35] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:47:35] INFO in metal_generic_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:35] ERROR in metal_virt2phys#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:35] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:47:36] INFO in metal_uio_dev_dma_map#2.2: Classifier agent started
+[2025-08-12 14:47:36] INFO in metal_register_generic_device#2.2: Classifier agent started
+[2025-08-12 14:47:36] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:47:36] INFO in metal_map#17.8: Try building and executing test code for metal_map and 17.8.
+[2025-08-12 14:47:36] INFO in metal_generic_dev_open#8.13: classifier finished.
+[2025-08-12 14:47:36] INFO in metal_generic_dev_open#8.13: Test generator started
+[2025-08-12 14:47:36] INFO in metal_io_block_set#21.17: Classifier agent started
+[2025-08-12 14:47:36] INFO in metal_shmem_register_generic#21.17: Try building and executing test code for metal_shmem_register_generic and 21.17.
+[2025-08-12 14:47:37] INFO in metal_generic_dev_open#14.2: Classifier agent started
+[2025-08-12 14:47:38] INFO in metal_shmem_open_generic#8.13: Classifier agent started
+[2025-08-12 14:47:38] INFO in metal_uio_read_map_attr#2.1: Classifier agent started
+[2025-08-12 14:47:38] INFO in metal_shmem_open_generic#2.2: classifier finished.
+[2025-08-12 14:47:38] INFO in metal_uio_dev_bind#21.17: classifier finished.
+[2025-08-12 14:47:38] INFO in metal_uio_dev_bind#21.17: Test generator started
+[2025-08-12 14:47:39] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:47:39] INFO in metal_virt2phys#21.17: classifier finished.
+[2025-08-12 14:47:39] ERROR in metal_map#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:39] ERROR in metal_shmem_register_generic#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:40] INFO in metal_linux_probe_driver#2.2: classifier finished.
+[2025-08-12 14:47:40] INFO in metal_uio_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:40] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:47:40] INFO in metal_uio_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:40] INFO in metal_generic_dev_open#21.17: Running reviewer for metal_generic_dev_open and rule 21.17.
+[2025-08-12 14:47:40] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:47:41] INFO in metal_io_block_set#8.13: Classifier agent started
+[2025-08-12 14:47:42] INFO in metal_io_block_set#14.2: Classifier agent started
+[2025-08-12 14:47:42] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:47:42] INFO in metal_shmem_try_map#14.2: Try building and executing test code for metal_shmem_try_map and 14.2.
+[2025-08-12 14:47:43] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:43] INFO in metal_bus_register#21.17: Try building and executing test code for metal_bus_register and 21.17.
+[2025-08-12 14:47:43] INFO in metal_io_block_set#21.17: classifier finished.
+[2025-08-12 14:47:44] INFO in metal_virt2phys#2.2: Classifier agent started
+[2025-08-12 14:47:44] INFO in metal_uio_dev_dma_map#2.2: classifier finished.
+[2025-08-12 14:47:44] INFO in metal_uio_dev_dma_map#2.2: Test generator started
+[2025-08-12 14:47:44] INFO in metal_register_generic_device#2.2: Classifier agent started
+[2025-08-12 14:47:45] INFO in metal_open#21.17: Classifier agent started
+[2025-08-12 14:47:45] ERROR in metal_shmem_try_map#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:45] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:47:45] ERROR in metal_bus_register#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:46] INFO in metal_bus_find#2.1: Try building and executing test code for metal_bus_find and 2.1.
+[2025-08-12 14:47:46] INFO in metal_generic_dev_dma_map#2.2: Try building and executing test code for metal_generic_dev_dma_map and 2.2.
+[2025-08-12 14:47:47] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:47:47] INFO in metal_shmem_open_generic#21.17: Generated fix.
+[2025-08-12 14:47:47] INFO in metal_shmem_open_generic#21.17: Try building and executing test code for metal_shmem_open_generic and 21.17.
+[2025-08-12 14:47:47] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:47:47] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:47:48] INFO in metal_generic_dev_dma_map#8.13: classifier finished.
+[2025-08-12 14:47:48] INFO in metal_generic_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:47:48] INFO in metal_shmem_try_map#8.13: Classifier agent started
+[2025-08-12 14:47:48] INFO in metal_generic_dev_open#14.2: classifier finished.
+[2025-08-12 14:47:48] INFO in metal_uio_dev_open#8.13: Classifier agent started
+[2025-08-12 14:47:48] INFO in metal_uio_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:48] INFO in metal_linux_probe_driver#1.2: Running reviewer for metal_linux_probe_driver and rule 1.2.
+[2025-08-12 14:47:48] ERROR in metal_bus_find#2.1: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:48] INFO in metal_generic_dev_open#2.2: Running reviewer for metal_generic_dev_open and rule 2.2.
+[2025-08-12 14:47:48] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:47:49] INFO in metal_uio_dev_dma_map#14.2: Classifier agent started
+[2025-08-12 14:47:49] INFO in metal_io_block_set#8.13: classifier finished.
+[2025-08-12 14:47:49] ERROR in metal_generic_dev_dma_map#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:50] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:47:50] INFO in metal_linux_probe_driver#8.13: Reviewer result : True
+[2025-08-12 14:47:50] ERROR in metal_shmem_open_generic#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:50] INFO in metal_io_block_set#17.8: Try building and executing test code for metal_io_block_set and 17.8.
+[2025-08-12 14:47:50] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:47:50] INFO in metal_shmem_open_generic#21.17: Running reviewer for metal_shmem_open_generic and rule 21.17.
+[2025-08-12 14:47:50] INFO in metal_uio_dev_open#14.2: Classifier agent started
+[2025-08-12 14:47:51] INFO in metal_bus_register#8.13: Running reviewer for metal_bus_register and rule 8.13.
+[2025-08-12 14:47:51] INFO in metal_map#2.1: Classifier agent started
+[2025-08-12 14:47:52] INFO in metal_register_generic_device#21.17: Running reviewer for metal_register_generic_device and rule 21.17.
+[2025-08-12 14:47:52] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:47:53] INFO in metal_register_generic_device#2.2: Classifier agent started
+[2025-08-12 14:47:53] INFO in metal_bus_register#2.2: Running reviewer for metal_bus_register and rule 2.2.
+[2025-08-12 14:47:53] INFO in metal_shmem_open_generic#8.13: classifier finished.
+[2025-08-12 14:47:53] INFO in metal_shmem_open_generic#8.13: Test generator started
+[2025-08-12 14:47:53] ERROR in metal_io_block_set#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:54] INFO in metal_shmem_try_map#1.2: Running reviewer for metal_shmem_try_map and rule 1.2.
+[2025-08-12 14:47:54] INFO in metal_open#21.17: classifier finished.
+[2025-08-12 14:47:54] INFO in metal_open#21.17: Test generator started
+[2025-08-12 14:47:54] INFO in metal_bus_find#2.2: Try building and executing test code for metal_bus_find and 2.2.
+[2025-08-12 14:47:54] INFO in metal_register_generic_device#8.13: Try building and executing test code for metal_register_generic_device and 8.13.
+[2025-08-12 14:47:55] INFO in metal_generic_dev_open#21.17: Reviewer result : True
+[2025-08-12 14:47:55] INFO in metal_shmem_register_generic#2.2: Try building and executing test code for metal_shmem_register_generic and 2.2.
+[2025-08-12 14:47:55] INFO in metal_bus_register#2.1: Running reviewer for metal_bus_register and rule 2.1.
+[2025-08-12 14:47:56] INFO in metal_device_open#21.17: Try building and executing test code for metal_device_open and 21.17.
+[2025-08-12 14:47:56] INFO in metal_open#2.2: Try building and executing test code for metal_open and 2.2.
+[2025-08-12 14:47:56] INFO in metal_io_block_set#14.2: classifier finished.
+[2025-08-12 14:47:56] INFO in metal_io_block_set#14.2: Test generator started
+[2025-08-12 14:47:56] INFO in metal_uio_dev_dma_map#2.1: Classifier agent started
+[2025-08-12 14:47:56] INFO in metal_shmem_try_map#17.8: Running reviewer for metal_shmem_try_map and rule 17.8.
+[2025-08-12 14:47:56] INFO in metal_shmem_try_map#8.13: Classifier agent started
+[2025-08-12 14:47:57] INFO in metal_uio_dev_open#17.8: Try building and executing test code for metal_uio_dev_open and 17.8.
+[2025-08-12 14:47:57] ERROR in metal_bus_find#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:57] ERROR in metal_register_generic_device#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:58] INFO in metal_bus_find#2.2: Try fixing the test code, try count: 1/1
+[2025-08-12 14:47:58] ERROR in metal_shmem_register_generic#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:58] INFO in metal_uio_dev_bind#8.13: Classifier agent started
+[2025-08-12 14:47:58] ERROR in metal_device_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:59] ERROR in metal_open#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:47:59] INFO in metal_bus_find#21.17: Classifier agent started
+[2025-08-12 14:47:59] INFO in metal_map#2.1: classifier finished.
+[2025-08-12 14:47:59] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:47:59] INFO in metal_uio_dev_dma_map#14.2: classifier finished.
+[2025-08-12 14:47:59] INFO in metal_uio_dev_dma_map#14.2: Test generator started
+[2025-08-12 14:47:59] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:48:00] ERROR in metal_uio_dev_open#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:00] INFO in metal_virt2phys#1.2: Try building and executing test code for metal_virt2phys and 1.2.
+[2025-08-12 14:48:00] INFO in metal_map#8.13: Classifier agent started
+[2025-08-12 14:48:01] INFO in metal_io_block_set#2.1: Classifier agent started
+[2025-08-12 14:48:01] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:48:01] INFO in metal_virt2phys#2.2: Classifier agent started
+[2025-08-12 14:48:01] INFO in metal_uio_read_map_attr#8.13: Try building and executing test code for metal_uio_read_map_attr and 8.13.
+[2025-08-12 14:48:01] INFO in metal_linux_probe_driver#1.2: Reviewer result : False
+[2025-08-12 14:48:01] INFO in metal_linux_probe_driver#1.2: Test generator started
+[2025-08-12 14:48:01] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:48:02] INFO in metal_bus_register#8.13: Reviewer result : False
+[2025-08-12 14:48:02] INFO in metal_bus_register#8.13: Test generator started
+[2025-08-12 14:48:02] INFO in metal_uio_dev_dma_map#1.2: Try building and executing test code for metal_uio_dev_dma_map and 1.2.
+[2025-08-12 14:48:03] ERROR in metal_virt2phys#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:03] INFO in metal_uio_dev_open#8.13: classifier finished.
+[2025-08-12 14:48:03] INFO in metal_uio_dev_open#8.13: Test generator started
+[2025-08-12 14:48:03] INFO in metal_register_generic_device#2.2: classifier finished.
+[2025-08-12 14:48:04] ERROR in metal_uio_read_map_attr#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:04] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:48:04] INFO in metal_uio_dev_dma_map#21.17: Try building and executing test code for metal_uio_dev_dma_map and 21.17.
+[2025-08-12 14:48:05] INFO in metal_uio_dev_dma_map#2.1: classifier finished.
+[2025-08-12 14:48:05] INFO in metal_uio_dev_open#14.2: Classifier agent started
+[2025-08-12 14:48:05] ERROR in metal_uio_dev_dma_map#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:06] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:48:06] INFO in metal_device_open#8.13: Try building and executing test code for metal_device_open and 8.13.
+[2025-08-12 14:48:06] INFO in metal_generic_dev_open#8.13: Try building and executing test code for metal_generic_dev_open and 8.13.
+[2025-08-12 14:48:07] ERROR in metal_uio_dev_dma_map#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:07] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:48:07] INFO in metal_shmem_open_generic#21.17: Reviewer result : True
+[2025-08-12 14:48:07] INFO in metal_generic_dev_open#2.2: Reviewer result : False
+[2025-08-12 14:48:07] INFO in metal_shmem_try_map#17.8: Reviewer result : True
+[2025-08-12 14:48:07] INFO in metal_generic_dev_dma_map#21.17: Generated fix.
+[2025-08-12 14:48:07] INFO in metal_generic_dev_dma_map#21.17: Try building and executing test code for metal_generic_dev_dma_map and 21.17.
+[2025-08-12 14:48:07] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:48:08] INFO in metal_uio_dev_bind#8.13: classifier finished.
+[2025-08-12 14:48:08] INFO in metal_uio_dev_bind#8.13: Test generator started
+[2025-08-12 14:48:08] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:48:08] INFO in metal_virt2phys#8.13: Running reviewer for metal_virt2phys and rule 8.13.
+[2025-08-12 14:48:08] INFO in metal_bus_register#2.1: Reviewer result : False
+[2025-08-12 14:48:08] INFO in metal_bus_register#2.2: Reviewer result : False
+[2025-08-12 14:48:09] INFO in metal_shmem_try_map#8.13: classifier finished.
+[2025-08-12 14:48:09] INFO in metal_shmem_try_map#8.13: Test generator started
+[2025-08-12 14:48:09] ERROR in metal_device_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:09] INFO in metal_shmem_try_map#1.2: Reviewer result : False
+[2025-08-12 14:48:09] INFO in metal_shmem_try_map#1.2: Test generator started
+[2025-08-12 14:48:09] ERROR in metal_generic_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:10] ERROR in metal_generic_dev_dma_map#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:11] INFO in metal_register_generic_device#21.17: Reviewer result : True
+[2025-08-12 14:48:11] INFO in metal_bus_find#21.17: Classifier agent started
+[2025-08-12 14:48:11] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:48:12] INFO in metal_virt2phys#2.2: classifier finished.
+[2025-08-12 14:48:12] INFO in metal_map#17.8: Running reviewer for metal_map and rule 17.8.
+[2025-08-12 14:48:12] INFO in metal_shmem_register_generic#21.17: Running reviewer for metal_shmem_register_generic and rule 21.17.
+[2025-08-12 14:48:16] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:48:16] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:48:16] INFO in metal_map#8.13: classifier finished.
+[2025-08-12 14:48:16] INFO in metal_map#8.13: Test generator started
+[2025-08-12 14:48:18] INFO in metal_uio_dev_dma_map#2.2: Try building and executing test code for metal_uio_dev_dma_map and 2.2.
+[2025-08-12 14:48:18] INFO in metal_shmem_try_map#14.2: Running reviewer for metal_shmem_try_map and rule 14.2.
+[2025-08-12 14:48:19] INFO in metal_bus_register#21.17: Running reviewer for metal_bus_register and rule 21.17.
+[2025-08-12 14:48:19] INFO in metal_bus_find#8.13: Classifier agent started
+[2025-08-12 14:48:19] INFO in metal_io_block_set#14.2: Try building and executing test code for metal_io_block_set and 14.2.
+[2025-08-12 14:48:19] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:48:19] INFO in metal_shmem_open_generic#8.13: Try building and executing test code for metal_shmem_open_generic and 8.13.
+[2025-08-12 14:48:20] INFO in metal_uio_dev_bind#2.2: Classifier agent started
+[2025-08-12 14:48:20] INFO in metal_io_block_set#2.1: classifier finished.
+[2025-08-12 14:48:20] INFO in metal_io_block_set#2.1: Test generator started
+[2025-08-12 14:48:20] INFO in metal_uio_dev_open#14.2: Classifier agent started
+[2025-08-12 14:48:21] ERROR in metal_uio_dev_dma_map#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:21] INFO in metal_uio_dev_bind#21.17: Try building and executing test code for metal_uio_dev_bind and 21.17.
+[2025-08-12 14:48:21] INFO in metal_virt2phys#8.13: Reviewer result : True
+[2025-08-12 14:48:21] ERROR in metal_io_block_set#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:21] INFO in metal_bus_find#2.1: Running reviewer for metal_bus_find and rule 2.1.
+[2025-08-12 14:48:22] INFO in metal_bus_find#2.2: Generated fix.
+[2025-08-12 14:48:22] INFO in metal_bus_find#2.2: Try building and executing test code for metal_bus_find and 2.2.
+[2025-08-12 14:48:22] ERROR in metal_shmem_open_generic#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:22] INFO in metal_generic_dev_dma_map#2.2: Running reviewer for metal_generic_dev_dma_map and rule 2.2.
+[2025-08-12 14:48:22] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:48:23] INFO in metal_generic_dev_dma_map#8.13: Try building and executing test code for metal_generic_dev_dma_map and 8.13.
+[2025-08-12 14:48:24] ERROR in metal_uio_dev_bind#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:24] INFO in metal_map#2.2: Classifier agent started
+[2025-08-12 14:48:24] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:48:25] ERROR in metal_bus_find#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:26] ERROR in metal_generic_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:26] INFO in metal_io_block_set#17.8: Running reviewer for metal_io_block_set and rule 17.8.
+[2025-08-12 14:48:27] INFO in metal_generic_dev_dma_map#8.13: Try fixing the test code, try count: 1/1
+[2025-08-12 14:48:27] INFO in metal_map#17.8: Reviewer result : True
+[2025-08-12 14:48:27] INFO in metal_map#17.8: Test generator started
+[2025-08-12 14:48:28] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:48:28] INFO in metal_shmem_try_map#14.2: Reviewer result : True
+[2025-08-12 14:48:29] INFO in metal_shmem_register_generic#21.17: Reviewer result : True
+[2025-08-12 14:48:30] INFO in metal_register_generic_device#8.13: Running reviewer for metal_register_generic_device and rule 8.13.
+[2025-08-12 14:48:31] INFO in metal_bus_find#21.17: classifier finished.
+[2025-08-12 14:48:31] INFO in metal_bus_find#21.17: Test generator started
+[2025-08-12 14:48:31] INFO in metal_shmem_register_generic#2.2: Running reviewer for metal_shmem_register_generic and rule 2.2.
+[2025-08-12 14:48:31] INFO in metal_uio_dev_bind#2.2: classifier finished.
+[2025-08-12 14:48:31] INFO in metal_uio_dev_bind#2.2: Test generator started
+[2025-08-12 14:48:31] INFO in metal_uio_dev_dma_map#14.2: Try building and executing test code for metal_uio_dev_dma_map and 14.2.
+[2025-08-12 14:48:31] INFO in metal_uio_dev_open#2.1: Classifier agent started
+[2025-08-12 14:48:32] INFO in metal_device_open#21.17: Running reviewer for metal_device_open and rule 21.17.
+[2025-08-12 14:48:32] INFO in metal_open#2.2: Running reviewer for metal_open and rule 2.2.
+[2025-08-12 14:48:32] INFO in metal_open#21.17: Try building and executing test code for metal_open and 21.17.
+[2025-08-12 14:48:32] INFO in metal_map#2.2: classifier finished.
+[2025-08-12 14:48:32] INFO in metal_map#2.2: Test generator started
+[2025-08-12 14:48:33] ERROR in metal_uio_dev_open#14.2: Error in GPT API: 1 validation error for ClassifierResult
+  Invalid JSON: EOF while parsing a string at line 1 column 30 [type=json_invalid, input_value='{"scenario":"The loop uses the', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/json_invalid
+[2025-08-12 14:48:33] INFO in metal_uio_dev_open#17.8: Running reviewer for metal_uio_dev_open and rule 17.8.
+[2025-08-12 14:48:34] ERROR in metal_uio_dev_dma_map#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:35] ERROR in metal_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:36] INFO in metal_io_block_set#17.8: Reviewer result : True
+[2025-08-12 14:48:36] INFO in metal_io_block_set#17.8: Test generator started
+[2025-08-12 14:48:36] INFO in metal_virt2phys#1.2: Running reviewer for metal_virt2phys and rule 1.2.
+[2025-08-12 14:48:36] INFO in metal_bus_find#2.1: Reviewer result : False
+[2025-08-12 14:48:37] INFO in metal_uio_read_map_attr#8.13: Running reviewer for metal_uio_read_map_attr and rule 8.13.
+[2025-08-12 14:48:37] INFO in metal_shmem_try_map#2.2: Classifier agent started
+[2025-08-12 14:48:38] INFO in metal_uio_dev_dma_map#1.2: Running reviewer for metal_uio_dev_dma_map and rule 1.2.
+[2025-08-12 14:48:39] INFO in metal_bus_register#8.13: Try building and executing test code for metal_bus_register and 8.13.
+[2025-08-12 14:48:39] INFO in metal_map#8.13: Try building and executing test code for metal_map and 8.13.
+[2025-08-12 14:48:39] INFO in metal_bus_find#8.13: classifier finished.
+[2025-08-12 14:48:39] INFO in metal_bus_find#8.13: Test generator started
+[2025-08-12 14:48:40] INFO in metal_uio_dev_dma_map#21.17: Running reviewer for metal_uio_dev_dma_map and rule 21.17.
+[2025-08-12 14:48:40] INFO in metal_linux_probe_driver#1.2: Try building and executing test code for metal_linux_probe_driver and 1.2.
+[2025-08-12 14:48:41] INFO in metal_uio_dev_bind#8.13: Try building and executing test code for metal_uio_dev_bind and 8.13.
+[2025-08-12 14:48:42] ERROR in metal_bus_register#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:42] INFO in metal_device_open#8.13: Running reviewer for metal_device_open and rule 8.13.
+[2025-08-12 14:48:42] INFO in metal_bus_register#8.13: Try fixing the test code, try count: 1/1
+[2025-08-12 14:48:42] ERROR in metal_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:42] INFO in metal_bus_register#21.17: Reviewer result : False
+[2025-08-12 14:48:42] INFO in metal_bus_register#21.17: Test generator started
+[2025-08-12 14:48:42] INFO in metal_generic_dev_open#8.13: Running reviewer for metal_generic_dev_open and rule 8.13.
+[2025-08-12 14:48:43] INFO in metal_uio_dev_dma_map#8.13: Classifier agent started
+[2025-08-12 14:48:43] INFO in metal_uio_dev_open#17.8: Reviewer result : False
+[2025-08-12 14:48:43] INFO in metal_generic_dev_dma_map#21.17: Running reviewer for metal_generic_dev_dma_map and rule 21.17.
+[2025-08-12 14:48:43] ERROR in metal_linux_probe_driver#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:44] ERROR in metal_uio_dev_bind#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:44] INFO in metal_generic_dev_dma_map#2.2: Reviewer result : False
+[2025-08-12 14:48:44] INFO in metal_generic_dev_dma_map#2.2: Test generator started
+[2025-08-12 14:48:44] INFO in metal_linux_probe_driver#1.2: Try fixing the test code, try count: 1/1
+[2025-08-12 14:48:44] INFO in metal_register_generic_device#8.13: Reviewer result : False
+[2025-08-12 14:48:44] INFO in metal_register_generic_device#8.13: Test generator started
+[2025-08-12 14:48:44] INFO in metal_uio_dev_open#2.2: Classifier agent started
+[2025-08-12 14:48:45] INFO in metal_shmem_register_generic#2.2: Reviewer result : False
+[2025-08-12 14:48:46] INFO in metal_uio_dev_open#2.1: classifier finished.
+[2025-08-12 14:48:47] INFO in metal_device_open#21.17: Reviewer result : True
+[2025-08-12 14:48:47] INFO in metal_uio_dev_dma_map#1.2: Reviewer result : True
+[2025-08-12 14:48:47] INFO in metal_uio_dev_dma_map#1.2: Test generator started
+[2025-08-12 14:48:48] INFO in metal_shmem_try_map#8.13: Try building and executing test code for metal_shmem_try_map and 8.13.
+[2025-08-12 14:48:49] INFO in metal_uio_read_map_attr#8.13: Reviewer result : True
+[2025-08-12 14:48:50] INFO in metal_open#2.2: Reviewer result : True
+[2025-08-12 14:48:51] ERROR in metal_shmem_try_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:48:51] INFO in metal_shmem_try_map#2.2: classifier finished.
+[2025-08-12 14:48:53] INFO in metal_uio_dev_dma_map#8.13: classifier finished.
+[2025-08-12 14:48:53] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:48:54] INFO in metal_uio_dev_dma_map#2.2: Running reviewer for metal_uio_dev_dma_map and rule 2.2.
+[2025-08-12 14:48:54] INFO in metal_virt2phys#1.2: Reviewer result : False
+[2025-08-12 14:48:54] INFO in metal_virt2phys#1.2: Test generator started
+[2025-08-12 14:48:55] INFO in metal_io_block_set#14.2: Running reviewer for metal_io_block_set and rule 14.2.
+[2025-08-12 14:48:55] INFO in metal_uio_dev_open#2.2: classifier finished.
+[2025-08-12 14:48:55] INFO in metal_uio_dev_open#2.2: Test generator started
+[2025-08-12 14:48:55] INFO in metal_shmem_open_generic#8.13: Running reviewer for metal_shmem_open_generic and rule 8.13.
+[2025-08-12 14:48:55] INFO in metal_uio_dev_dma_map#21.17: Reviewer result : True
+[2025-08-12 14:48:56] INFO in metal_generic_dev_open#8.13: Reviewer result : False
+[2025-08-12 14:48:56] INFO in metal_generic_dev_open#8.13: Test generator started
+[2025-08-12 14:48:57] INFO in metal_uio_dev_bind#21.17: Running reviewer for metal_uio_dev_bind and rule 21.17.
+[2025-08-12 14:48:57] INFO in metal_generic_dev_dma_map#21.17: Reviewer result : True
+[2025-08-12 14:48:58] INFO in metal_bus_find#2.2: Running reviewer for metal_bus_find and rule 2.2.
+[2025-08-12 14:48:58] INFO in metal_io_block_set#2.1: Try building and executing test code for metal_io_block_set and 2.1.
+[2025-08-12 14:48:58] INFO in metal_uio_dev_open#14.2: Classifier agent started
+[2025-08-12 14:49:01] ERROR in metal_io_block_set#2.1: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:01] INFO in metal_uio_dev_open#8.13: Try building and executing test code for metal_uio_dev_open and 8.13.
+[2025-08-12 14:49:04] INFO in metal_bus_register#8.13: Generated fix.
+[2025-08-12 14:49:04] INFO in metal_bus_register#8.13: Try building and executing test code for metal_bus_register and 8.13.
+[2025-08-12 14:49:04] ERROR in metal_uio_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:04] INFO in metal_map#2.2: Try building and executing test code for metal_map and 2.2.
+[2025-08-12 14:49:04] INFO in metal_map#17.8: Try building and executing test code for metal_map and 17.8.
+[2025-08-12 14:49:04] INFO in metal_bus_find#21.17: Try building and executing test code for metal_bus_find and 21.17.
+[2025-08-12 14:49:05] INFO in metal_device_open#8.13: Reviewer result : False
+[2025-08-12 14:49:06] ERROR in metal_bus_register#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:07] ERROR in metal_map#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:07] INFO in metal_uio_dev_dma_map#14.2: Running reviewer for metal_uio_dev_dma_map and rule 14.2.
+[2025-08-12 14:49:07] ERROR in metal_map#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:07] ERROR in metal_bus_find#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:07] INFO in metal_shmem_try_map#1.2: Try building and executing test code for metal_shmem_try_map and 1.2.
+[2025-08-12 14:49:08] INFO in metal_open#21.17: Running reviewer for metal_open and rule 21.17.
+[2025-08-12 14:49:08] INFO in metal_io_block_set#14.2: Reviewer result : True
+[2025-08-12 14:49:08] INFO in metal_io_block_set#14.2: Test generator started
+[2025-08-12 14:49:08] INFO in metal_generic_dev_dma_map#8.13: Generated fix.
+[2025-08-12 14:49:08] INFO in metal_generic_dev_dma_map#8.13: Try building and executing test code for metal_generic_dev_dma_map and 8.13.
+[2025-08-12 14:49:09] INFO in metal_uio_dev_dma_map#2.2: Reviewer result : True
+[2025-08-12 14:49:09] INFO in metal_uio_dev_dma_map#2.2: Test generator started
+[2025-08-12 14:49:10] ERROR in metal_shmem_try_map#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:10] INFO in metal_uio_dev_bind#21.17: Reviewer result : True
+[2025-08-12 14:49:10] INFO in metal_uio_dev_bind#21.17: Test generator started
+[2025-08-12 14:49:11] ERROR in metal_generic_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:12] INFO in metal_generic_dev_dma_map#8.13: Running reviewer for metal_generic_dev_dma_map and rule 8.13.
+[2025-08-12 14:49:12] INFO in metal_shmem_open_generic#8.13: Reviewer result : True
+[2025-08-12 14:49:12] INFO in metal_shmem_open_generic#8.13: Test generator started
+[2025-08-12 14:49:12] INFO in metal_bus_find#8.13: Try building and executing test code for metal_bus_find and 8.13.
+[2025-08-12 14:49:14] INFO in metal_uio_dev_open#14.2: classifier finished.
+[2025-08-12 14:49:14] INFO in metal_uio_dev_open#14.2: Test generator started
+[2025-08-12 14:49:15] ERROR in metal_bus_find#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:15] INFO in metal_map#8.13: Running reviewer for metal_map and rule 8.13.
+[2025-08-12 14:49:17] INFO in metal_uio_dev_bind#8.13: Running reviewer for metal_uio_dev_bind and rule 8.13.
+[2025-08-12 14:49:17] INFO in metal_uio_dev_dma_map#1.2: Try building and executing test code for metal_uio_dev_dma_map and 1.2.
+[2025-08-12 14:49:18] INFO in metal_io_block_set#17.8: Try building and executing test code for metal_io_block_set and 17.8.
+[2025-08-12 14:49:18] INFO in metal_uio_dev_bind#2.2: Try building and executing test code for metal_uio_dev_bind and 2.2.
+[2025-08-12 14:49:19] INFO in metal_open#21.17: Reviewer result : True
+[2025-08-12 14:49:19] INFO in metal_open#21.17: Test generator started
+[2025-08-12 14:49:19] INFO in metal_bus_register#21.17: Try building and executing test code for metal_bus_register and 21.17.
+[2025-08-12 14:49:19] ERROR in metal_uio_dev_dma_map#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:21] ERROR in metal_io_block_set#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:21] INFO in metal_linux_probe_driver#1.2: Generated fix.
+[2025-08-12 14:49:21] INFO in metal_linux_probe_driver#1.2: Try building and executing test code for metal_linux_probe_driver and 1.2.
+[2025-08-12 14:49:21] ERROR in metal_uio_dev_bind#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:21] ERROR in metal_bus_register#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:22] INFO in metal_register_generic_device#8.13: Try building and executing test code for metal_register_generic_device and 8.13.
+[2025-08-12 14:49:22] INFO in metal_uio_dev_dma_map#14.2: Reviewer result : True
+[2025-08-12 14:49:23] INFO in metal_bus_find#2.2: Reviewer result : True
+[2025-08-12 14:49:23] INFO in metal_virt2phys#1.2: Try building and executing test code for metal_virt2phys and 1.2.
+[2025-08-12 14:49:24] INFO in metal_shmem_try_map#8.13: Running reviewer for metal_shmem_try_map and rule 8.13.
+[2025-08-12 14:49:24] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 14:49:24] ERROR in metal_linux_probe_driver#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:25] ERROR in metal_register_generic_device#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:26] ERROR in metal_virt2phys#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:27] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:28] INFO in metal_generic_dev_open#8.13: Try building and executing test code for metal_generic_dev_open and 8.13.
+[2025-08-12 14:49:28] INFO in metal_generic_dev_dma_map#8.13: Reviewer result : False
+[2025-08-12 14:49:28] INFO in metal_generic_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:49:30] ERROR in metal_generic_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:32] INFO in metal_map#8.13: Reviewer result : False
+[2025-08-12 14:49:32] INFO in metal_map#8.13: Test generator started
+[2025-08-12 14:49:32] INFO in metal_generic_dev_dma_map#2.2: Try building and executing test code for metal_generic_dev_dma_map and 2.2.
+[2025-08-12 14:49:34] INFO in metal_io_block_set#2.1: Running reviewer for metal_io_block_set and rule 2.1.
+[2025-08-12 14:49:34] ERROR in metal_generic_dev_dma_map#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:35] INFO in metal_generic_dev_dma_map#2.2: Try fixing the test code, try count: 1/1
+[2025-08-12 14:49:37] INFO in metal_uio_dev_open#8.13: Running reviewer for metal_uio_dev_open and rule 8.13.
+[2025-08-12 14:49:37] INFO in metal_uio_dev_bind#8.13: Reviewer result : False
+[2025-08-12 14:49:37] INFO in metal_uio_dev_bind#8.13: Test generator started
+[2025-08-12 14:49:40] INFO in metal_bus_register#8.13: Running reviewer for metal_bus_register and rule 8.13.
+[2025-08-12 14:49:40] INFO in metal_map#2.2: Running reviewer for metal_map and rule 2.2.
+[2025-08-12 14:49:40] INFO in metal_map#17.8: Running reviewer for metal_map and rule 17.8.
+[2025-08-12 14:49:40] INFO in metal_bus_find#21.17: Running reviewer for metal_bus_find and rule 21.17.
+[2025-08-12 14:49:41] INFO in metal_shmem_try_map#8.13: Reviewer result : False
+[2025-08-12 14:49:41] INFO in metal_shmem_try_map#8.13: Test generator started
+[2025-08-12 14:49:43] INFO in metal_shmem_open_generic#8.13: Try building and executing test code for metal_shmem_open_generic and 8.13.
+[2025-08-12 14:49:43] INFO in metal_uio_dev_open#2.2: Try building and executing test code for metal_uio_dev_open and 2.2.
+[2025-08-12 14:49:43] INFO in metal_shmem_try_map#1.2: Running reviewer for metal_shmem_try_map and rule 1.2.
+[2025-08-12 14:49:44] INFO in metal_uio_dev_dma_map#2.2: Try building and executing test code for metal_uio_dev_dma_map and 2.2.
+[2025-08-12 14:49:45] INFO in metal_io_block_set#14.2: Try building and executing test code for metal_io_block_set and 14.2.
+[2025-08-12 14:49:45] ERROR in metal_shmem_open_generic#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:46] INFO in metal_open#21.17: Try building and executing test code for metal_open and 21.17.
+[2025-08-12 14:49:46] ERROR in metal_uio_dev_open#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:47] ERROR in metal_uio_dev_dma_map#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:47] ERROR in metal_io_block_set#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:48] INFO in metal_bus_find#8.13: Running reviewer for metal_bus_find and rule 8.13.
+[2025-08-12 14:49:48] ERROR in metal_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:53] INFO in metal_uio_dev_dma_map#1.2: Running reviewer for metal_uio_dev_dma_map and rule 1.2.
+[2025-08-12 14:49:53] INFO in metal_map#17.8: Reviewer result : True
+[2025-08-12 14:49:53] INFO in metal_map#17.8: Test generator started
+[2025-08-12 14:49:53] INFO in metal_generic_dev_dma_map#8.13: Try building and executing test code for metal_generic_dev_dma_map and 8.13.
+[2025-08-12 14:49:54] INFO in metal_io_block_set#17.8: Running reviewer for metal_io_block_set and rule 17.8.
+[2025-08-12 14:49:54] INFO in metal_uio_dev_bind#2.2: Running reviewer for metal_uio_dev_bind and rule 2.2.
+[2025-08-12 14:49:54] INFO in metal_bus_register#8.13: Reviewer result : False
+[2025-08-12 14:49:55] INFO in metal_bus_register#21.17: Running reviewer for metal_bus_register and rule 21.17.
+[2025-08-12 14:49:56] ERROR in metal_generic_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:49:56] INFO in metal_io_block_set#2.1: Reviewer result : True
+[2025-08-12 14:49:57] INFO in metal_linux_probe_driver#1.2: Running reviewer for metal_linux_probe_driver and rule 1.2.
+[2025-08-12 14:49:58] INFO in metal_map#8.13: Try building and executing test code for metal_map and 8.13.
+[2025-08-12 14:49:58] INFO in metal_register_generic_device#8.13: Running reviewer for metal_register_generic_device and rule 8.13.
+[2025-08-12 14:49:59] INFO in metal_virt2phys#1.2: Running reviewer for metal_virt2phys and rule 1.2.
+[2025-08-12 14:50:00] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 14:50:00] INFO in metal_uio_dev_open#14.2: Try building and executing test code for metal_uio_dev_open and 14.2.
+[2025-08-12 14:50:00] INFO in metal_bus_find#21.17: Reviewer result : True
+[2025-08-12 14:50:00] INFO in metal_bus_find#21.17: Test generator started
+[2025-08-12 14:50:00] ERROR in metal_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:01] INFO in metal_map#2.2: Reviewer result : False
+[2025-08-12 14:50:01] INFO in metal_uio_dev_open#8.13: Reviewer result : False
+[2025-08-12 14:50:01] INFO in metal_uio_dev_open#8.13: Test generator started
+[2025-08-12 14:50:02] ERROR in metal_uio_dev_open#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:03] INFO in metal_io_block_set#17.8: Reviewer result : True
+[2025-08-12 14:50:03] INFO in metal_io_block_set#17.8: Test generator started
+[2025-08-12 14:50:03] INFO in metal_generic_dev_open#8.13: Running reviewer for metal_generic_dev_open and rule 8.13.
+[2025-08-12 14:50:04] INFO in metal_uio_dev_bind#21.17: Try building and executing test code for metal_uio_dev_bind and 21.17.
+[2025-08-12 14:50:05] INFO in metal_linux_probe_driver#1.2: Reviewer result : False
+[2025-08-12 14:50:05] INFO in metal_bus_find#8.13: Reviewer result : False
+[2025-08-12 14:50:05] INFO in metal_bus_find#8.13: Test generator started
+[2025-08-12 14:50:06] INFO in metal_uio_dev_bind#2.2: Reviewer result : False
+[2025-08-12 14:50:06] INFO in metal_uio_dev_bind#2.2: Test generator started
+[2025-08-12 14:50:07] ERROR in metal_uio_dev_bind#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:07] INFO in metal_shmem_try_map#1.2: Reviewer result : False
+[2025-08-12 14:50:08] INFO in metal_register_generic_device#8.13: Reviewer result : False
+[2025-08-12 14:50:08] INFO in metal_register_generic_device#8.13: Test generator started
+[2025-08-12 14:50:10] INFO in metal_bus_register#21.17: Reviewer result : True
+[2025-08-12 14:50:12] INFO in metal_shmem_try_map#8.13: Try building and executing test code for metal_shmem_try_map and 8.13.
+[2025-08-12 14:50:13] INFO in metal_virt2phys#1.2: Reviewer result : False
+[2025-08-12 14:50:13] INFO in metal_virt2phys#1.2: Test generator started
+[2025-08-12 14:50:13] INFO in metal_uio_dev_dma_map#1.2: Reviewer result : True
+[2025-08-12 14:50:14] INFO in metal_generic_dev_open#8.13: Reviewer result : True
+[2025-08-12 14:50:14] INFO in metal_generic_dev_open#8.13: Test generator started
+[2025-08-12 14:50:15] ERROR in metal_shmem_try_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:19] INFO in metal_shmem_open_generic#8.13: Running reviewer for metal_shmem_open_generic and rule 8.13.
+[2025-08-12 14:50:19] INFO in metal_uio_dev_open#2.2: Running reviewer for metal_uio_dev_open and rule 2.2.
+[2025-08-12 14:50:20] INFO in metal_uio_dev_dma_map#2.2: Running reviewer for metal_uio_dev_dma_map and rule 2.2.
+[2025-08-12 14:50:20] INFO in metal_io_block_set#14.2: Running reviewer for metal_io_block_set and rule 14.2.
+[2025-08-12 14:50:21] INFO in metal_open#21.17: Running reviewer for metal_open and rule 21.17.
+[2025-08-12 14:50:23] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 14:50:23] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:50:24] INFO in metal_map#17.8: Try building and executing test code for metal_map and 17.8.
+[2025-08-12 14:50:26] INFO in metal_bus_find#8.13: Try building and executing test code for metal_bus_find and 8.13.
+[2025-08-12 14:50:26] ERROR in metal_map#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:28] INFO in metal_generic_dev_dma_map#2.2: Generated fix.
+[2025-08-12 14:50:28] INFO in metal_generic_dev_dma_map#2.2: Try building and executing test code for metal_generic_dev_dma_map and 2.2.
+[2025-08-12 14:50:28] ERROR in metal_bus_find#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:29] INFO in metal_generic_dev_dma_map#8.13: Running reviewer for metal_generic_dev_dma_map and rule 8.13.
+[2025-08-12 14:50:31] ERROR in metal_generic_dev_dma_map#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:33] INFO in metal_uio_dev_open#2.2: Reviewer result : False
+[2025-08-12 14:50:33] INFO in metal_uio_dev_open#2.2: Test generator started
+[2025-08-12 14:50:33] INFO in metal_map#8.13: Running reviewer for metal_map and rule 8.13.
+[2025-08-12 14:50:34] INFO in metal_uio_dev_bind#2.2: Try building and executing test code for metal_uio_dev_bind and 2.2.
+[2025-08-12 14:50:35] INFO in metal_io_block_set#17.8: Try building and executing test code for metal_io_block_set and 17.8.
+[2025-08-12 14:50:36] INFO in metal_uio_dev_open#14.2: Running reviewer for metal_uio_dev_open and rule 14.2.
+[2025-08-12 14:50:36] INFO in metal_bus_find#21.17: Try building and executing test code for metal_bus_find and 21.17.
+[2025-08-12 14:50:36] INFO in metal_io_block_set#14.2: Reviewer result : True
+[2025-08-12 14:50:36] INFO in metal_io_block_set#14.2: Test generator started
+[2025-08-12 14:50:37] INFO in metal_uio_dev_bind#8.13: Try building and executing test code for metal_uio_dev_bind and 8.13.
+[2025-08-12 14:50:37] ERROR in metal_uio_dev_bind#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:38] ERROR in metal_io_block_set#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:39] INFO in metal_generic_dev_open#8.13: Try building and executing test code for metal_generic_dev_open and 8.13.
+[2025-08-12 14:50:39] ERROR in metal_bus_find#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:39] INFO in metal_uio_dev_dma_map#2.2: Reviewer result : False
+[2025-08-12 14:50:40] INFO in metal_shmem_open_generic#8.13: Reviewer result : False
+[2025-08-12 14:50:40] INFO in metal_shmem_open_generic#8.13: Test generator started
+[2025-08-12 14:50:40] ERROR in metal_uio_dev_bind#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:40] INFO in metal_uio_dev_bind#21.17: Running reviewer for metal_uio_dev_bind and rule 21.17.
+[2025-08-12 14:50:41] ERROR in metal_generic_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:44] INFO in metal_open#21.17: Reviewer result : False
+[2025-08-12 14:50:44] INFO in metal_open#21.17: Test generator started
+[2025-08-12 14:50:44] INFO in metal_virt2phys#1.2: Try building and executing test code for metal_virt2phys and 1.2.
+[2025-08-12 14:50:46] INFO in metal_map#8.13: Reviewer result : False
+[2025-08-12 14:50:46] INFO in metal_map#8.13: Test generator started
+[2025-08-12 14:50:46] INFO in metal_generic_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 14:50:46] INFO in metal_generic_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:50:47] ERROR in metal_virt2phys#1.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:48] INFO in metal_shmem_try_map#8.13: Running reviewer for metal_shmem_try_map and rule 8.13.
+[2025-08-12 14:50:48] INFO in metal_register_generic_device#8.13: Try building and executing test code for metal_register_generic_device and 8.13.
+[2025-08-12 14:50:51] INFO in metal_uio_dev_open#14.2: Reviewer result : True
+[2025-08-12 14:50:51] INFO in metal_uio_dev_open#14.2: Test generator started
+[2025-08-12 14:50:51] ERROR in metal_register_generic_device#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:52] INFO in metal_uio_dev_open#8.13: Try building and executing test code for metal_uio_dev_open and 8.13.
+[2025-08-12 14:50:52] INFO in metal_uio_dev_bind#21.17: Reviewer result : True
+[2025-08-12 14:50:52] INFO in metal_uio_dev_bind#21.17: Test generator started
+[2025-08-12 14:50:54] ERROR in metal_uio_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:50:57] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 14:50:59] INFO in metal_shmem_try_map#8.13: Reviewer result : False
+[2025-08-12 14:50:59] INFO in metal_shmem_try_map#8.13: Test generator started
+[2025-08-12 14:50:59] INFO in metal_map#17.8: Running reviewer for metal_map and rule 17.8.
+[2025-08-12 14:51:00] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:01] INFO in metal_bus_find#8.13: Running reviewer for metal_bus_find and rule 8.13.
+[2025-08-12 14:51:03] INFO in metal_io_block_set#14.2: Try building and executing test code for metal_io_block_set and 14.2.
+[2025-08-12 14:51:03] INFO in metal_shmem_open_generic#8.13: Try building and executing test code for metal_shmem_open_generic and 8.13.
+[2025-08-12 14:51:04] INFO in metal_generic_dev_dma_map#2.2: Running reviewer for metal_generic_dev_dma_map and rule 2.2.
+[2025-08-12 14:51:06] ERROR in metal_io_block_set#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:06] ERROR in metal_shmem_open_generic#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:10] INFO in metal_uio_dev_bind#2.2: Running reviewer for metal_uio_dev_bind and rule 2.2.
+[2025-08-12 14:51:11] INFO in metal_io_block_set#17.8: Running reviewer for metal_io_block_set and rule 17.8.
+[2025-08-12 14:51:11] INFO in metal_open#21.17: Try building and executing test code for metal_open and 21.17.
+[2025-08-12 14:51:12] INFO in metal_bus_find#21.17: Running reviewer for metal_bus_find and rule 21.17.
+[2025-08-12 14:51:12] INFO in metal_uio_dev_open#2.2: Try building and executing test code for metal_uio_dev_open and 2.2.
+[2025-08-12 14:51:13] INFO in metal_uio_dev_bind#8.13: Running reviewer for metal_uio_dev_bind and rule 8.13.
+[2025-08-12 14:51:13] INFO in metal_map#17.8: Reviewer result : True
+[2025-08-12 14:51:13] INFO in metal_map#17.8: Test generator started
+[2025-08-12 14:51:14] ERROR in metal_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:14] INFO in metal_generic_dev_open#8.13: Running reviewer for metal_generic_dev_open and rule 8.13.
+[2025-08-12 14:51:15] ERROR in metal_uio_dev_open#2.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:16] INFO in metal_generic_dev_dma_map#8.13: Try building and executing test code for metal_generic_dev_dma_map and 8.13.
+[2025-08-12 14:51:18] INFO in metal_bus_find#8.13: Reviewer result : False
+[2025-08-12 14:51:18] INFO in metal_bus_find#8.13: Test generator started
+[2025-08-12 14:51:18] INFO in metal_uio_dev_bind#2.2: Reviewer result : False
+[2025-08-12 14:51:19] ERROR in metal_generic_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:20] INFO in metal_virt2phys#1.2: Running reviewer for metal_virt2phys and rule 1.2.
+[2025-08-12 14:51:21] INFO in metal_generic_dev_dma_map#2.2: Reviewer result : False
+[2025-08-12 14:51:21] INFO in metal_map#8.13: Try building and executing test code for metal_map and 8.13.
+[2025-08-12 14:51:22] INFO in metal_io_block_set#17.8: Reviewer result : True
+[2025-08-12 14:51:22] INFO in metal_io_block_set#17.8: Test generator started
+[2025-08-12 14:51:24] ERROR in metal_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:24] INFO in metal_register_generic_device#8.13: Running reviewer for metal_register_generic_device and rule 8.13.
+[2025-08-12 14:51:25] INFO in metal_bus_find#21.17: Reviewer result : True
+[2025-08-12 14:51:25] INFO in metal_bus_find#21.17: Test generator started
+[2025-08-12 14:51:27] INFO in metal_uio_dev_bind#21.17: Try building and executing test code for metal_uio_dev_bind and 21.17.
+[2025-08-12 14:51:28] INFO in metal_uio_dev_open#8.13: Running reviewer for metal_uio_dev_open and rule 8.13.
+[2025-08-12 14:51:28] INFO in metal_generic_dev_open#8.13: Reviewer result : False
+[2025-08-12 14:51:28] INFO in metal_generic_dev_open#8.13: Test generator started
+[2025-08-12 14:51:30] ERROR in metal_uio_dev_bind#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:30] INFO in metal_shmem_try_map#8.13: Try building and executing test code for metal_shmem_try_map and 8.13.
+[2025-08-12 14:51:31] INFO in metal_uio_dev_open#14.2: Try building and executing test code for metal_uio_dev_open and 14.2.
+[2025-08-12 14:51:32] INFO in metal_uio_dev_bind#8.13: Reviewer result : False
+[2025-08-12 14:51:32] INFO in metal_uio_dev_bind#8.13: Test generator started
+[2025-08-12 14:51:33] INFO in metal_virt2phys#1.2: Reviewer result : True
+[2025-08-12 14:51:33] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 14:51:33] ERROR in metal_shmem_try_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:34] ERROR in metal_uio_dev_open#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:35] INFO in metal_bus_find#8.13: Try building and executing test code for metal_bus_find and 8.13.
+[2025-08-12 14:51:38] ERROR in metal_bus_find#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:39] INFO in metal_io_block_set#14.2: Running reviewer for metal_io_block_set and rule 14.2.
+[2025-08-12 14:51:39] INFO in metal_shmem_open_generic#8.13: Running reviewer for metal_shmem_open_generic and rule 8.13.
+[2025-08-12 14:51:41] INFO in metal_map#17.8: Try building and executing test code for metal_map and 17.8.
+[2025-08-12 14:51:43] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 14:51:43] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:51:43] INFO in metal_uio_dev_open#8.13: Reviewer result : True
+[2025-08-12 14:51:43] INFO in metal_uio_dev_open#8.13: Test generator started
+[2025-08-12 14:51:44] ERROR in metal_map#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:44] INFO in metal_register_generic_device#8.13: Reviewer result : False
+[2025-08-12 14:51:47] INFO in metal_open#21.17: Running reviewer for metal_open and rule 21.17.
+[2025-08-12 14:51:48] INFO in metal_uio_dev_open#2.2: Running reviewer for metal_uio_dev_open and rule 2.2.
+[2025-08-12 14:51:50] INFO in metal_io_block_set#14.2: Reviewer result : True
+[2025-08-12 14:51:52] INFO in metal_generic_dev_dma_map#8.13: Running reviewer for metal_generic_dev_dma_map and rule 8.13.
+[2025-08-12 14:51:52] INFO in metal_io_block_set#17.8: Try building and executing test code for metal_io_block_set and 17.8.
+[2025-08-12 14:51:55] ERROR in metal_io_block_set#17.8: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:51:57] INFO in metal_map#8.13: Running reviewer for metal_map and rule 8.13.
+[2025-08-12 14:51:59] INFO in metal_bus_find#21.17: Try building and executing test code for metal_bus_find and 21.17.
+[2025-08-12 14:52:01] INFO in metal_shmem_open_generic#8.13: Reviewer result : False
+[2025-08-12 14:52:01] INFO in metal_shmem_open_generic#8.13: Test generator started
+[2025-08-12 14:52:01] ERROR in metal_bus_find#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:03] INFO in metal_uio_dev_bind#21.17: Running reviewer for metal_uio_dev_bind and rule 21.17.
+[2025-08-12 14:52:05] INFO in metal_generic_dev_open#8.13: Try building and executing test code for metal_generic_dev_open and 8.13.
+[2025-08-12 14:52:06] INFO in metal_shmem_try_map#8.13: Running reviewer for metal_shmem_try_map and rule 8.13.
+[2025-08-12 14:52:06] INFO in metal_open#21.17: Reviewer result : False
+[2025-08-12 14:52:06] INFO in metal_open#21.17: Test generator started
+[2025-08-12 14:52:07] INFO in metal_uio_dev_open#14.2: Running reviewer for metal_uio_dev_open and rule 14.2.
+[2025-08-12 14:52:07] ERROR in metal_generic_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:08] INFO in metal_uio_dev_open#2.2: Reviewer result : True
+[2025-08-12 14:52:08] INFO in metal_map#8.13: Reviewer result : False
+[2025-08-12 14:52:08] INFO in metal_map#8.13: Test generator started
+[2025-08-12 14:52:11] INFO in metal_bus_find#8.13: Running reviewer for metal_bus_find and rule 8.13.
+[2025-08-12 14:52:11] INFO in metal_generic_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 14:52:11] INFO in metal_generic_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:52:13] INFO in metal_uio_dev_bind#8.13: Try building and executing test code for metal_uio_dev_bind and 8.13.
+[2025-08-12 14:52:15] ERROR in metal_uio_dev_bind#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:17] INFO in metal_map#17.8: Running reviewer for metal_map and rule 17.8.
+[2025-08-12 14:52:19] INFO in metal_shmem_try_map#8.13: Reviewer result : False
+[2025-08-12 14:52:19] INFO in metal_shmem_try_map#8.13: Test generator started
+[2025-08-12 14:52:19] INFO in metal_uio_dev_bind#21.17: Reviewer result : True
+[2025-08-12 14:52:19] INFO in metal_uio_dev_bind#21.17: Test generator started
+[2025-08-12 14:52:24] INFO in metal_shmem_open_generic#8.13: Try building and executing test code for metal_shmem_open_generic and 8.13.
+[2025-08-12 14:52:24] INFO in metal_uio_dev_open#14.2: Reviewer result : True
+[2025-08-12 14:52:24] INFO in metal_uio_dev_open#14.2: Test generator started
+[2025-08-12 14:52:24] INFO in metal_uio_dev_open#8.13: Try building and executing test code for metal_uio_dev_open and 8.13.
+[2025-08-12 14:52:26] ERROR in metal_shmem_open_generic#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:27] ERROR in metal_uio_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:28] INFO in metal_io_block_set#17.8: Running reviewer for metal_io_block_set and rule 17.8.
+[2025-08-12 14:52:29] INFO in metal_map#17.8: Reviewer result : True
+[2025-08-12 14:52:30] INFO in metal_bus_find#8.13: Reviewer result : False
+[2025-08-12 14:52:30] INFO in metal_bus_find#8.13: Test generator started
+[2025-08-12 14:52:34] INFO in metal_bus_find#21.17: Running reviewer for metal_bus_find and rule 21.17.
+[2025-08-12 14:52:35] INFO in metal_open#21.17: Try building and executing test code for metal_open and 21.17.
+[2025-08-12 14:52:37] INFO in metal_io_block_set#17.8: Reviewer result : True
+[2025-08-12 14:52:37] ERROR in metal_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:40] INFO in metal_generic_dev_open#8.13: Running reviewer for metal_generic_dev_open and rule 8.13.
+[2025-08-12 14:52:42] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 14:52:45] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:46] INFO in metal_bus_find#21.17: Reviewer result : True
+[2025-08-12 14:52:46] INFO in metal_bus_find#21.17: Test generator started
+[2025-08-12 14:52:47] INFO in metal_map#8.13: Try building and executing test code for metal_map and 8.13.
+[2025-08-12 14:52:47] INFO in metal_shmem_try_map#8.13: Try building and executing test code for metal_shmem_try_map and 8.13.
+[2025-08-12 14:52:48] INFO in metal_uio_dev_bind#8.13: Running reviewer for metal_uio_dev_bind and rule 8.13.
+[2025-08-12 14:52:49] INFO in metal_generic_dev_dma_map#8.13: Try building and executing test code for metal_generic_dev_dma_map and 8.13.
+[2025-08-12 14:52:50] ERROR in metal_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:50] ERROR in metal_shmem_try_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:52] ERROR in metal_generic_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:53] INFO in metal_bus_find#8.13: Try building and executing test code for metal_bus_find and 8.13.
+[2025-08-12 14:52:55] ERROR in metal_bus_find#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:52:59] INFO in metal_shmem_open_generic#8.13: Running reviewer for metal_shmem_open_generic and rule 8.13.
+[2025-08-12 14:53:00] INFO in metal_uio_dev_open#8.13: Running reviewer for metal_uio_dev_open and rule 8.13.
+[2025-08-12 14:53:04] INFO in metal_uio_dev_open#14.2: Try building and executing test code for metal_uio_dev_open and 14.2.
+[2025-08-12 14:53:07] ERROR in metal_uio_dev_open#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:53:10] INFO in metal_open#21.17: Running reviewer for metal_open and rule 21.17.
+[2025-08-12 14:53:14] INFO in metal_bus_find#21.17: Try building and executing test code for metal_bus_find and 21.17.
+[2025-08-12 14:53:14] INFO in metal_generic_dev_open#8.13: Reviewer result : False
+[2025-08-12 14:53:14] INFO in metal_uio_dev_bind#8.13: Reviewer result : False
+[2025-08-12 14:53:14] INFO in metal_uio_dev_bind#8.13: Test generator started
+[2025-08-12 14:53:16] ERROR in metal_bus_find#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:53:17] INFO in metal_uio_dev_open#8.13: Reviewer result : True
+[2025-08-12 14:53:17] INFO in metal_uio_dev_open#8.13: Test generator started
+[2025-08-12 14:53:18] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 14:53:23] INFO in metal_map#8.13: Running reviewer for metal_map and rule 8.13.
+[2025-08-12 14:53:23] INFO in metal_shmem_try_map#8.13: Running reviewer for metal_shmem_try_map and rule 8.13.
+[2025-08-12 14:53:25] INFO in metal_open#21.17: Reviewer result : False
+[2025-08-12 14:53:25] INFO in metal_open#21.17: Test generator started
+[2025-08-12 14:53:25] INFO in metal_generic_dev_dma_map#8.13: Running reviewer for metal_generic_dev_dma_map and rule 8.13.
+[2025-08-12 14:53:28] INFO in metal_bus_find#8.13: Running reviewer for metal_bus_find and rule 8.13.
+[2025-08-12 14:53:34] INFO in metal_map#8.13: Reviewer result : False
+[2025-08-12 14:53:34] INFO in metal_map#8.13: Test generator started
+[2025-08-12 14:53:34] INFO in metal_uio_dev_bind#21.17: Try building and executing test code for metal_uio_dev_bind and 21.17.
+[2025-08-12 14:53:36] ERROR in metal_uio_dev_bind#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:53:39] INFO in metal_generic_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 14:53:39] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 14:53:39] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 14:53:40] INFO in metal_uio_dev_open#14.2: Running reviewer for metal_uio_dev_open and rule 14.2.
+[2025-08-12 14:53:41] INFO in metal_shmem_open_generic#8.13: Reviewer result : False
+[2025-08-12 14:53:49] INFO in metal_bus_find#21.17: Running reviewer for metal_bus_find and rule 21.17.
+[2025-08-12 14:53:50] INFO in metal_shmem_try_map#8.13: Reviewer result : True
+[2025-08-12 14:53:54] INFO in metal_uio_dev_open#14.2: Reviewer result : True
+[2025-08-12 14:53:54] INFO in metal_uio_dev_open#14.2: Test generator started
+[2025-08-12 14:53:59] INFO in metal_bus_find#8.13: Reviewer result : True
+[2025-08-12 14:54:00] INFO in metal_uio_dev_bind#8.13: Try building and executing test code for metal_uio_dev_bind and 8.13.
+[2025-08-12 14:54:02] INFO in metal_uio_dev_open#8.13: Try building and executing test code for metal_uio_dev_open and 8.13.
+[2025-08-12 14:54:02] ERROR in metal_uio_dev_bind#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:54:04] INFO in metal_open#21.17: Try building and executing test code for metal_open and 21.17.
+[2025-08-12 14:54:04] ERROR in metal_uio_dev_open#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:54:07] ERROR in metal_open#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:54:09] INFO in metal_uio_dev_bind#21.17: Running reviewer for metal_uio_dev_bind and rule 21.17.
+[2025-08-12 14:54:10] INFO in metal_map#8.13: Try building and executing test code for metal_map and 8.13.
+[2025-08-12 14:54:12] INFO in metal_bus_find#21.17: Reviewer result : True
+[2025-08-12 14:54:13] ERROR in metal_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:54:29] INFO in metal_uio_dev_bind#21.17: Reviewer result : True
+[2025-08-12 14:54:29] INFO in metal_uio_dev_bind#21.17: Test generator started
+[2025-08-12 14:54:35] INFO in metal_uio_dev_bind#8.13: Running reviewer for metal_uio_dev_bind and rule 8.13.
+[2025-08-12 14:54:37] INFO in metal_uio_dev_open#8.13: Running reviewer for metal_uio_dev_open and rule 8.13.
+[2025-08-12 14:54:40] INFO in metal_open#21.17: Running reviewer for metal_open and rule 21.17.
+[2025-08-12 14:54:46] INFO in metal_map#8.13: Running reviewer for metal_map and rule 8.13.
+[2025-08-12 14:54:48] INFO in metal_uio_dev_open#8.13: Reviewer result : True
+[2025-08-12 14:54:50] INFO in metal_uio_dev_bind#8.13: Reviewer result : False
+[2025-08-12 14:54:50] INFO in metal_uio_dev_bind#8.13: Test generator started
+[2025-08-12 14:54:55] INFO in metal_uio_dev_open#14.2: Try building and executing test code for metal_uio_dev_open and 14.2.
+[2025-08-12 14:54:55] INFO in metal_map#8.13: Reviewer result : False
+[2025-08-12 14:54:55] INFO in metal_map#8.13: Test generator started
+[2025-08-12 14:54:57] ERROR in metal_uio_dev_open#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:54:58] INFO in metal_uio_dev_open#14.2: Try fixing the test code, try count: 1/1
+[2025-08-12 14:55:11] INFO in metal_open#21.17: Reviewer result : False
+[2025-08-12 14:55:13] INFO in metal_uio_dev_bind#21.17: Try building and executing test code for metal_uio_dev_bind and 21.17.
+[2025-08-12 14:55:16] ERROR in metal_uio_dev_bind#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:55:25] INFO in metal_map#8.13: Try building and executing test code for metal_map and 8.13.
+[2025-08-12 14:55:26] INFO in metal_uio_dev_bind#8.13: Try building and executing test code for metal_uio_dev_bind and 8.13.
+[2025-08-12 14:55:28] ERROR in metal_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:55:29] ERROR in metal_uio_dev_bind#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:55:39] INFO in metal_uio_dev_open#14.2: Generated fix.
+[2025-08-12 14:55:39] INFO in metal_uio_dev_open#14.2: Try building and executing test code for metal_uio_dev_open and 14.2.
+[2025-08-12 14:55:42] ERROR in metal_uio_dev_open#14.2: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:55:49] INFO in metal_uio_dev_bind#21.17: Running reviewer for metal_uio_dev_bind and rule 21.17.
+[2025-08-12 14:56:01] INFO in metal_map#8.13: Running reviewer for metal_map and rule 8.13.
+[2025-08-12 14:56:02] INFO in metal_uio_dev_bind#8.13: Running reviewer for metal_uio_dev_bind and rule 8.13.
+[2025-08-12 14:56:03] INFO in metal_uio_dev_bind#21.17: Reviewer result : True
+[2025-08-12 14:56:03] INFO in metal_uio_dev_bind#21.17: Test generator started
+[2025-08-12 14:56:12] INFO in metal_shmem_open_generic#2.1: Points agent started
+[2025-08-12 14:56:15] INFO in metal_uio_dev_open#14.2: Running reviewer for metal_uio_dev_open and rule 14.2.
+[2025-08-12 14:56:16] INFO in metal_map#8.13: Reviewer result : False
+[2025-08-12 14:56:26] INFO in metal_shmem_open_generic#2.1: No suspicious lines found for metal_shmem_open_generic#2.1.
+[2025-08-12 14:56:27] INFO in metal_uio_dev_open#14.2: Reviewer result : True
+[2025-08-12 14:56:34] INFO in metal_uio_dev_bind#8.13: Reviewer result : True
+[2025-08-12 14:56:44] INFO in metal_uio_dev_bind#21.17: Try building and executing test code for metal_uio_dev_bind and 21.17.
+[2025-08-12 14:56:46] ERROR in metal_uio_dev_bind#21.17: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 14:57:19] INFO in metal_uio_dev_bind#21.17: Running reviewer for metal_uio_dev_bind and rule 21.17.
+[2025-08-12 14:57:33] INFO in metal_uio_dev_bind#21.17: Reviewer result : True
+[2025-08-12 14:57:45] INFO in metal_uio_read_map_attr#2.1: classifier finished.
+[2025-08-12 15:04:20] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 15:04:22] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 15:04:55] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 15:05:08] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 15:05:08] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 15:05:38] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 15:05:41] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 15:06:14] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 15:06:30] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 15:06:30] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 15:07:03] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 15:07:06] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 15:07:39] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 15:08:16] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 15:08:16] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 15:08:46] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 15:08:49] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 15:09:22] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 15:09:43] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True
+[2025-08-12 15:09:43] INFO in metal_uio_dev_dma_map#8.13: Test generator started
+[2025-08-12 15:10:18] INFO in metal_uio_dev_dma_map#8.13: Try building and executing test code for metal_uio_dev_dma_map and 8.13.
+[2025-08-12 15:10:21] ERROR in metal_uio_dev_dma_map#8.13: Invalid working directory: /ssd_home/yeongbin/lasik/misrac_subjects/libmetal/builds/v2025.04.0/CMakeFiles/CMakeScratch/TryCompile-OpUO7y
+[2025-08-12 15:10:54] INFO in metal_uio_dev_dma_map#8.13: Running reviewer for metal_uio_dev_dma_map and rule 8.13.
+[2025-08-12 15:11:10] INFO in metal_uio_dev_dma_map#8.13: Reviewer result : True

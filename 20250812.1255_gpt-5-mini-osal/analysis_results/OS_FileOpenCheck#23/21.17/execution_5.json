@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp4x8z6nn3/src/src/os/shared/src/osapi-file.c: In function 'OS_FileOpenCheck':\n/tmp/tmp4x8z6nn3/src/src/os/shared/src/osapi-file.c:576:9: error: aggregate value used where an integer was expected\n  576 |         OS_FileOpenCheck_LogProbe(stream, Filename, (unsigned long)iter.token, \"before_cmp\");\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmp4x8z6nn3/src/src/os/shared/src/osapi-file.c:591:29: error: aggregate value used where an integer was expected\n  591 |                             (unsigned long)iter.token, (const void *)stream, (const void *)Filename, cmp_result);\n      |                             ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

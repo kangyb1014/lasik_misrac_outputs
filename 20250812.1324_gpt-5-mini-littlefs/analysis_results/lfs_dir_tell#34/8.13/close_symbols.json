@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nlfs_soff_t lfs_dir_tell(lfs_t *lfs, lfs_dir_t *dir) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_dir_tell(%p, %p)\", (void*)lfs, (void*)dir);\n\n    lfs_soff_t res = lfs_dir_tell_(lfs, dir);\n\n    LFS_TRACE(\"lfs_dir_tell -> %\"PRId32, res);\n    LFS_UNLOCK(lfs->cfg);\n    return res;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_dir_tell': {'callees': ['lfs_dir_tell_'], 'callers': []}, 'lfs_dir_tell_': {'callees': [], 'callers': ['lfs_dir_tell']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "lfs_dir_tell_",
+    "lfs_t (struct/typedef)",
+    "lfs_dir_t (struct/typedef)",
+    "lfs_soff_t (typedef)",
+    "type of lfs->cfg (the cfg typedef/struct used in lfs_t)",
+    "LFS_LOCK (macro or function signature)",
+    "LFS_UNLOCK (macro or function signature)",
+    "LFS_TRACE (macro definition)"
+  ],
+  "explanation": "lfs_dir_tell_: need the prototype and implementation to see whether it mutates lfs or dir (if it modifies pointed-to data then the pointers cannot be const). lfs_t (struct/typedef): to know the exact type of the first parameter and whether any of its members (or methods called on it) require mutation; also to find the type/name of the cfg member. lfs_dir_t (struct/typedef): to determine whether directory state is modified by this API (fields that must be written) so we can tell if dir could be const. lfs_soff_t (typedef): included to fully understand the return type (not a pointer but useful for completeness). type of lfs->cfg (the cfg typedef/struct used in lfs_t): required because LFS_LOCK/LFS_UNLOCK are passed lfs->cfg; the cfg type/signature may force non-const (or accept const) which affects whether lfs->cfg could be const-qualified. LFS_LOCK / LFS_UNLOCK (macro or function signatures): their parameter types determine whether passing lfs->cfg requires a non-const pointer (prevents const-qualification of cfg) or could accept const. LFS_TRACE (macro definition): it casts pointers to void* in the call site; the macro definition and its parameter types are needed to check whether any cast in the trace call discards const-qualification (possible MISRA violation)."
+}

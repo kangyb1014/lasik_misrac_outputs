@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmplb520r49/src/lib/system/linux/device.c: In function 'metal_uio_dev_open':\n/tmp/tmplb520r49/src/lib/system/linux/device.c:336:1: error: 'aio' undeclared (first use in this function); did you mean 'io'?\n  336 | aio = &ldev->device.regions[ldev->device.num_regions];\n      | ^~~\n      | io\n/tmp/tmplb520r49/src/lib/system/linux/device.c:336:1: note: each undeclared identifier is reported only once for each function it appears in\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:216: lib/CMakeFiles/metal-shared.dir/system/linux/device.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpz8x8etpq/src/src/os/shared/src/osapi-file.c: In function 'OS_CloseFileByName':\n/tmp/tmpz8x8etpq/src/src/os/shared/src/osapi-file.c:594:5: error: aggregate value used where an integer was expected\n  594 |     OS_CloseFileByName_Log(\"Iterator initialized: iter token (start)=%u\", (unsigned)iter.token);\n      |     ^~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmpz8x8etpq/src/src/os/shared/src/osapi-file.c:599:9: error: aggregate value used where an integer was expected\n  599 |         unsigned iter_token = (unsigned)iter.token;\n      |         ^~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

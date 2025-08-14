@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER metal_linux_probe_driver: bus='platform' drv='uio_pdrv_genirq' mod='uio_pdrv_genirq' sdrv=(nil)\nsysfs_open_driver called #1 with bus='platform' drv='uio_pdrv_genirq'\nsysfs_open_driver: returning NULL on call #1\nsnprintf returned 41, command='modprobe uio_pdrv_genirq > /dev/null 2>&1'\nsystem('modprobe uio_pdrv_genirq > /dev/null 2>&1') returned 256\nsysfs_open_driver called #2 with bus='platform' drv='uio_pdrv_genirq'\nsysfs_open_driver: returning NULL on call #2\nAfter modprobe attempt, sdrv=(nil)\nsnprintf returned 46, command='sudo modprobe uio_pdrv_genirq > /dev/null 2>&1'\n"
+}

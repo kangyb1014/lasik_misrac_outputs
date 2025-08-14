@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: ../libosal.a(os-impl-posix-dl-loader.c.o): warning: relocation against `probe' in read-only section `.text'\n/usr/bin/ld: ../libosal.a(os-impl-posix-dl-loader.c.o): in function `OS_ModuleLoad_Impl':\n/tmp/tmpa22_mw7b/src/src/os/portable/os-impl-posix-dl-loader.c:183: undefined reference to `probe'\n/usr/bin/ld: /tmp/tmpa22_mw7b/src/src/os/portable/os-impl-posix-dl-loader.c:185: undefined reference to `probe'\n/usr/bin/ld: warning: creating DT_TEXTREL in a PIE\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [tests/CMakeFiles/bin-sem-flush-test.dir/build.make:100: tests/bin-sem-flush-test] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:4560: tests/CMakeFiles/bin-sem-flush-test.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

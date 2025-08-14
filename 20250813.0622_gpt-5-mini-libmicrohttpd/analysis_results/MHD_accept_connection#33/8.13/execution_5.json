@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c: In function 'mhd_probe_log_entry':\ndaemon.c:3844:36: error: 'const struct MHD_Daemon' has no member named 'cred_callback_cls'; did you mean 'uri_log_callback_cls'?\n 3844 |                   (void *) daemon->cred_callback_cls);\n      |                                    ^~~~~~~~~~~~~~~~~\n      |                                    uri_log_callback_cls\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

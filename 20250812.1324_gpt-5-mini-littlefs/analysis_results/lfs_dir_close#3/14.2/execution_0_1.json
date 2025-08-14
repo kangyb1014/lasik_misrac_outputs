@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_dir_close_log':\nlfs.c:6363:5: error: unknown type name 'time_t'; did you mean 'size_t'?\n 6363 |     time_t t = time(NULL);\n      |     ^~~~~~\n      |     size_t\nlfs.c:6363:16: warning: implicit declaration of function 'time' [-Wimplicit-function-declaration]\n 6363 |     time_t t = time(NULL);\n      |                ^~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

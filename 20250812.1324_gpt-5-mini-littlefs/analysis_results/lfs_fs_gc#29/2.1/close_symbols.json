@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_fs_gc(lfs_t *lfs) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_fs_gc(%p)\", (void*)lfs);\n\n    err = lfs_fs_gc_(lfs);\n\n    LFS_TRACE(\"lfs_fs_gc -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_fs_gc': {'callees': ['lfs_fs_gc_'], 'callers': []}, 'lfs_fs_gc_': {'callees': ['lfs_fs_forceconsistency', 'lfs_pair_isnull', 'lfs_dir_fetch', 'lfs_dir_commit', 'lfs_alloc_scan'], 'callers': ['lfs_fs_gc']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "lfs_fs_gc_",
+    "lfs_fs_forceconsistency",
+    "lfs_pair_isnull",
+    "lfs_dir_fetch",
+    "lfs_dir_commit",
+    "lfs_alloc_scan",
+    "lfs_t (type and definition / lfs->cfg member type)"
+  ],
+  "explanation": "To decide whether any statement in lfs_fs_gc is unreachable you must know all called-symbol behavior and any macros that can perform non\u2011local control flow or unconditional returns.\n\n- LFS_LOCK: could be a macro or function that performs non-local control flow (longjmp/exit/abort) or otherwise never returns or always returns a particular value; this affects reachability of the rest of the function (the early return branch and whether subsequent code is executed).\n- LFS_UNLOCK: may perform non\u2011local control flow (or be a no-op); its definition is needed to know whether the code after lfs_fs_gc_ (the trace, unlock, and final return) is reachable or can be skipped by the unlock itself.\n- LFS_TRACE: often a macro; although typically side\u2011effect free, it could hide control flow (e.g. debug hooks that abort/return). Its expansion must be checked to rule out hidden non\u2011local exits that would make later statements unreachable.\n- lfs_fs_gc_: the called helper \u2014 its body/contract must be inspected to determine whether it ever returns normally. If lfs_fs_gc_ never returns (infinite loop, exit, longjmp) then the trace/unlock/return following the call are unreachable.\n- lfs_fs_forceconsistency, lfs_pair_isnull, lfs_dir_fetch, lfs_dir_commit, lfs_alloc_scan: these are direct callees of lfs_fs_gc_. Any of them could perform non\u2011local control flow or otherwise make lfs_fs_gc_ non\u2011returning; their implementations are needed to conclude whether lfs_fs_gc_ always returns and therefore whether code after its invocation in lfs_fs_gc is reachable.\n- lfs_t (type and lfs->cfg member type/definition): the type and the cfg member are required to fully understand LFS_LOCK/LFS_UNLOCK semantics (they take lfs->cfg) and any inlined behavior that depends on the cfg contents.\n\nCollecting these symbol definitions allows a static determination of whether any path through lfs_fs_gc leads to statements that can never be executed (MISRA C unreachable code)."
+}

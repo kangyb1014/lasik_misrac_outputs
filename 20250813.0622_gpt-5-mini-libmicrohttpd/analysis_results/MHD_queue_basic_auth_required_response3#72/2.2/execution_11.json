@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "basicauth.c: In function 'MHD_queue_basic_auth_required_response3':\nbasicauth.c:235:15: error: invalid storage class for function 'mhd_probe_log'\n  235 |   static void mhd_probe_log(const char *location,\n      |               ^~~~~~~~~~~~~\nmake[3]: *** [Makefile:2266: libmicrohttpd_la-basicauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

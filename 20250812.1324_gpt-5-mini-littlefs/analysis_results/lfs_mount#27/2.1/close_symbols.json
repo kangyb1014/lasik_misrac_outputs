@@ -1,0 +1,28 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_mount(lfs_t *lfs, const struct lfs_config *cfg) {\n    int err = LFS_LOCK(cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_mount(%p, %p {.context=%p, \"\n                \".read=%p, .prog=%p, .erase=%p, .sync=%p, \"\n                \".read_size=%\"PRIu32\", .prog_size=%\"PRIu32\", \"\n                \".block_size=%\"PRIu32\", .block_count=%\"PRIu32\", \"\n                \".block_cycles=%\"PRId32\", .cache_size=%\"PRIu32\", \"\n                \".lookahead_size=%\"PRIu32\", .read_buffer=%p, \"\n                \".prog_buffer=%p, .lookahead_buffer=%p, \"\n                \".name_max=%\"PRIu32\", .file_max=%\"PRIu32\", \"\n                \".attr_max=%\"PRIu32\"})\",\n            (void*)lfs, (void*)cfg, cfg->context,\n            (void*)(uintptr_t)cfg->read, (void*)(uintptr_t)cfg->prog,\n            (void*)(uintptr_t)cfg->erase, (void*)(uintptr_t)cfg->sync,\n            cfg->read_size, cfg->prog_size, cfg->block_size, cfg->block_count,\n            cfg->block_cycles, cfg->cache_size, cfg->lookahead_size,\n            cfg->read_buffer, cfg->prog_buffer, cfg->lookahead_buffer,\n            cfg->name_max, cfg->file_max, cfg->attr_max);\n\n    err = lfs_mount_(lfs, cfg);\n\n    LFS_TRACE(\"lfs_mount -> %d\", err);\n    LFS_UNLOCK(cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_mount': {'callees': ['lfs_mount_'], 'callers': []}, 'lfs_mount_': {'callees': ['lfs_init', 'lfs_pair_isnull', 'lfs_tortoise_detectcycles', 'lfs_dir_fetchmatch', 'lfs_tag_isdelete', 'lfs_dir_get', 'lfs_superblock_fromle32', 'lfs_fs_disk_version_major', 'lfs_fs_disk_version_minor', 'lfs_fs_prepsuperblock', 'lfs_min', 'lfs_dir_getgstate', 'lfs_gstate_iszero', 'lfs_tag_isvalid', 'lfs_alloc_drop', 'lfs_unmount_'], 'callers': ['lfs_mount']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "lfs_mount_",
+    "lfs_init",
+    "lfs_pair_isnull",
+    "lfs_tortoise_detectcycles",
+    "lfs_dir_fetchmatch",
+    "lfs_tag_isdelete",
+    "lfs_dir_get",
+    "lfs_superblock_fromle32",
+    "lfs_fs_disk_version_major",
+    "lfs_fs_disk_version_minor",
+    "lfs_fs_prepsuperblock",
+    "lfs_min",
+    "lfs_dir_getgstate",
+    "lfs_gstate_iszero",
+    "lfs_tag_isvalid",
+    "lfs_alloc_drop",
+    "lfs_unmount_",
+    "struct lfs_config",
+    "lfs_t"
+  ],
+  "explanation": "To check for unreachable code in lfs_mount we must understand which calls/constructs can change control flow or never return. Briefly:\n\n- LFS_LOCK: macro/function called at start. Its definition may return non-zero, longjmp/exit, or otherwise alter control flow; needed to determine whether subsequent statements can ever execute.\n- LFS_UNLOCK: used at function end. If LFS_LOCK can force early return or LFS_UNLOCK is a no-op/macro that can alter flow, this affects reachability of the unlock/return sequence.\n- LFS_TRACE: logging macro/function used before and after lfs_mount_. It may be compiled out or expand to code that affects flow (e.g., contains return/abort under some build); need its definition to determine if those trace lines are reachable.\n- lfs_mount_: the sole callee of lfs_mount. Whether lfs_mount_ always returns (or can call exit/longjmp/infinite loop) determines reachability of the trace/unlock/return that follow the call.\n- All direct callees of lfs_mount_ (lfs_init, lfs_pair_isnull, lfs_tortoise_detectcycles, lfs_dir_fetchmatch, lfs_tag_isdelete, lfs_dir_get, lfs_superblock_fromle32, lfs_fs_disk_version_major, lfs_fs_disk_version_minor, lfs_fs_prepsuperblock, lfs_min, lfs_dir_getgstate, lfs_gstate_iszero, lfs_tag_isvalid, lfs_alloc_drop, lfs_unmount_): these are called (directly or indirectly) by lfs_mount_. Their implementations must be inspected to see if any of them (or code paths through them) cause non-returning behavior (exit/abort/longjmp) or otherwise make parts of lfs_mount unreachable.\n- struct lfs_config and lfs_t: the types and their fields are used by LFS_LOCK and the trace call; their layout and any associated annotations/macros may affect whether LFS_LOCK/LFS_TRACE expand to code that changes control flow (for example, compile-time configuration switches or asserts that depend on struct contents).\n\nProviding these symbols (the lock/trace macros, the lfs_mount_ implementation and its callees, and the key types) lets the next analyst determine whether any statements in lfs_mount are proven impossible to reach (and therefore violate the MISRA unreachable-code rule)."
+}

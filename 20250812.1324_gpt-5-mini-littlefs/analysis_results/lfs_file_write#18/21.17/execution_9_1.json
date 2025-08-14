@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_file_write':\nlfs.c:6310:16: error: void value not ignored as it ought to be\n 6310 |     int err2 = LFS_UNLOCK(lfs->cfg);\n      |                ^~~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

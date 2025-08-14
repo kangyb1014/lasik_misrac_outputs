@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpdx9be0a8/src/src/os/shared/src/osapi-file.c: In function 'OS_rename':\n/tmp/tmpdx9be0a8/src/src/os/shared/src/osapi-file.c:354:17: error: invalid storage class for function 'log_probe'\n  354 |     static void log_probe(const char *fmt, ...)\n      |                 ^~~~~~~~~\n/tmp/tmpdx9be0a8/src/src/os/shared/src/osapi-file.c:420:23: error: aggregate value used where an integer was expected\n  420 |                       (unsigned int)iter.token, (void *)stream, (int)stream->socket_domain);\n      |                       ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

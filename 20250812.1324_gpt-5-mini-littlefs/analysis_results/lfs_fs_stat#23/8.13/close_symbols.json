@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_fs_stat(lfs_t *lfs, struct lfs_fsinfo *fsinfo) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_fs_stat(%p, %p)\", (void*)lfs, (void*)fsinfo);\n\n    err = lfs_fs_stat_(lfs, fsinfo);\n\n    LFS_TRACE(\"lfs_fs_stat -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_fs_stat': {'callees': ['lfs_fs_stat_'], 'callers': []}, 'lfs_fs_stat_': {'callees': ['lfs_gstate_needssuperblock', 'lfs_fs_disk_version', 'lfs_dir_fetch', 'lfs_dir_get', 'lfs_superblock_fromle32'], 'callers': ['lfs_fs_stat']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "lfs_fs_stat_",
+    "lfs_t",
+    "struct lfs_fsinfo",
+    "lfs->cfg type (definition of the type of the cfg member)",
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "lfs_gstate_needssuperblock",
+    "lfs_fs_disk_version",
+    "lfs_dir_fetch",
+    "lfs_dir_get",
+    "lfs_superblock_fromle32"
+  ],
+  "explanation": "- lfs_fs_stat_: The body of lfs_fs_stat simply forwards its pointers to lfs_fs_stat_; you must inspect lfs_fs_stat_ to see whether it mutates the objects pointed to by its lfs and fsinfo parameters (i.e. whether those pointers must be non-const).\n- lfs_t: The definition of the filesystem context type is required to know what lfs points to and whether its members (and their types) are modified or could be const-qualified.\n- struct lfs_fsinfo: The definition of the fsinfo structure is required to know which fields might be written by lfs_fs_stat_ or callees; if fsinfo is only read it could be const.\n- lfs->cfg type (definition of the type of the cfg member): lfs_fs_stat calls LFS_LOCK(lfs->cfg) and LFS_UNLOCK(lfs->cfg); the type and semantics of cfg and whether the lock APIs take/modify it determine if lfs->cfg must be mutable, affecting whether lfs can be const.\n- LFS_LOCK and LFS_UNLOCK: Their declarations/macros show the parameter types and whether they modify the pointed-to object; if they accept non-const pointers they prevent making lfs or its cfg member const.\n- LFS_TRACE: Declaration/macro shows how pointers are used (usually cast to void*) and whether it modifies the pointed-to data; if it only reads for logging, it does not prevent const qualification.\n- lfs_gstate_needssuperblock, lfs_fs_disk_version, lfs_dir_fetch, lfs_dir_get, lfs_superblock_fromle32: These are direct callees (via lfs_fs_stat_). You need their prototypes/definitions to see whether they take pointers to lfs or fsinfo (or subobjects) and whether they modify those pointees; any callee that writes through a pointer prevents that pointer from being const.\n\nCollecting these symbols (function bodies/prototypes and the indicated type definitions/macros) lets the next analyst determine whether the pointers passed into lfs_fs_stat (and the lfs->cfg member) are only read and therefore can be const-qualified per the MISRA guideline, or whether they are written and must remain non-const."
+}

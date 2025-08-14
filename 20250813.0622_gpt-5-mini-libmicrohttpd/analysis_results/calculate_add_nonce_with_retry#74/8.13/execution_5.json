@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c: In function 'calculate_add_nonce_with_retry':\ndigestauth.c:1843:41: error: 'struct DigestAlgorithm' has no member named 'hashing'\n 1843 |                    digest_size, (int) da->hashing);\n      |                                         ^~\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "simplepost.c:31:25: error: expected identifier or '(' before numeric constant\n   31 | #define POSTBUFFERSIZE  512\n      |                         ^~~\nsimplepost.c:137:21: note: in expansion of macro 'POSTBUFFERSIZE'\n  137 | static const size_t POSTBUFFERSIZE = 1024;\n      |                     ^~~~~~~~~~~~~~\nmake[4]: *** [Makefile:649: simplepost.o] Error 1\nmake[3]: *** [Makefile:685: all-recursive] Error 1\nmake[2]: *** [Makefile:764: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER metal_linux_probe_driver: lbus=0x7f97b9debb60, lbus->bus_name='platform', ldrv=0x7f97b9debbc0, ldrv->drv_name='uio_pdrv_genirq', ldrv->mod_name='uio_pdrv_genirq'\nENTER metal_linux_probe_driver: lbus=0x55718b670260, lbus->bus_name='platform', ldrv=0x55718b6702c0, ldrv->drv_name='uio_pdrv_genirq', ldrv->mod_name='uio_pdrv_genirq'\n"
+}

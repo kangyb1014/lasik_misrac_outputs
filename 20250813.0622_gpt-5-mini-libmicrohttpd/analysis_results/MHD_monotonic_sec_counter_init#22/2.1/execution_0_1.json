@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "In file included from /usr/include/time.h:33,\n                 from mhd_mono_clock.c:2:\nmhd_mono_clock.c:82:29: error: expected identifier or '(' before numeric constant\n   82 | #define _MHD_UNWANTED_CLOCK CLOCK_REALTIME\n      |                             ^~~~~~~~~~~~~~\nmhd_mono_clock.c:159:12: note: in expansion of macro '_MHD_UNWANTED_CLOCK'\n  159 | const long _MHD_UNWANTED_CLOCK = -1L;\n      |            ^~~~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2133: libmicrohttpd_la-mhd_mono_clock.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

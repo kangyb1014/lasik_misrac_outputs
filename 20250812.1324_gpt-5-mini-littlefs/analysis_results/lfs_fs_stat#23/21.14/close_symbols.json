@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_fs_stat(lfs_t *lfs, struct lfs_fsinfo *fsinfo) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_fs_stat(%p, %p)\", (void*)lfs, (void*)fsinfo);\n\n    err = lfs_fs_stat_(lfs, fsinfo);\n\n    LFS_TRACE(\"lfs_fs_stat -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_fs_stat': {'callees': ['lfs_fs_stat_'], 'callers': []}, 'lfs_fs_stat_': {'callees': ['lfs_gstate_needssuperblock', 'lfs_fs_disk_version', 'lfs_dir_fetch', 'lfs_dir_get', 'lfs_superblock_fromle32'], 'callers': ['lfs_fs_stat']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "lfs_fs_stat_",
+    "lfs_gstate_needssuperblock",
+    "lfs_fs_disk_version",
+    "lfs_dir_fetch",
+    "lfs_dir_get",
+    "lfs_superblock_fromle32",
+    "memcmp",
+    "LFS_TRACE",
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "lfs_t",
+    "struct lfs_fsinfo"
+  ],
+  "explanation": "To determine if lfs_fs_stat violates the MISRA rule about using memcmp to compare null-terminated strings you must inspect not only the wrapper but any code it calls (and related types/macros) because memcmp could appear there or be hidden by macros. Explanations:\n\n- lfs_fs_stat_: The direct implementation called by lfs_fs_stat; it is the primary place to look for any memcmp usage or string comparisons.\n- lfs_gstate_needssuperblock, lfs_fs_disk_version, lfs_dir_fetch, lfs_dir_get, lfs_superblock_fromle32: These are the immediate callees of lfs_fs_stat_. Any of them might call memcmp (directly or indirectly) on buffers that are actually null-terminated strings; their bodies/prototypes must be inspected to decide compliance.\n- memcmp: The standard function named in the MISRA rule. You must locate any calls to memcmp (and inspect the arguments) to determine whether those calls compare null-terminated strings (which would violate the rule).\n- LFS_TRACE: Logging/trace macro or function that may perform string operations or call helpers that use memcmp; inspect its definition to ensure it doesn't hide a prohibited memcmp usage.\n- LFS_LOCK, LFS_UNLOCK: Lock/unlock macros or functions used by lfs_fs_stat; inspect their definitions in case they expand to code that uses memcmp or string comparisons.\n- lfs_t, struct lfs_fsinfo: The types of the function parameters. Their field types (pointers vs fixed-length buffers) determine whether data passed to memcmp would be null-terminated strings. You need these type definitions to judge whether memcmp is being used to compare null-terminated strings or raw memory blocks.\n\nInspecting the listed symbols (function bodies, macro definitions, and the types) is sufficient to find any memcmp usage reachable from lfs_fs_stat and to determine whether such usage compares null-terminated strings (thus violating the MISRA rule)."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c: In function 'MHD_stop_daemon':\ndaemon.c:9312:17: error: cannot convert to a pointer type\n 9312 |                 (void *)daemon->tid);\n      |                 ^\ndaemon.c:9445:7: error: cannot convert to a pointer type\n 9445 |       mhd_probe_log(\"MHD_stop_daemon: joined thread tid=%p\", (void *)daemon->tid);\n      |       ^~~~~~~~~~~~~\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpvq_2pjuu/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketAddrToString_Impl_probe':\n/tmp/tmpvq_2pjuu/src/src/os/portable/os-impl-bsd-sockets.c:703:9: error: cannot convert to a pointer type\n  703 |         const unsigned char *bytes = (const unsigned char *)Addr->AddrData;\n      |         ^~~~~\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

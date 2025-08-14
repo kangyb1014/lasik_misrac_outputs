@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c: In function 'mhd_probe_log':\nconnection.c:7879:13: error: aggregate value used where an integer was expected\n 7879 |             (void *) (uintptr_t) connection->tid,\n      |             ^\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmphka53b0q/src/src/os/shared/src/osapi-filesys.c: In function 'os_translatepath_log':\n/tmp/tmphka53b0q/src/src/os/shared/src/osapi-filesys.c:701:19: error: storage size of 'tm_buf' isn't known\n  701 |         struct tm tm_buf;\n      |                   ^~~~~~\n/tmp/tmphka53b0q/src/src/os/shared/src/osapi-filesys.c:713:23: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  713 |     vfprintf(fp, fmt, ap);\n      |                       ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-filesys.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-filesys.dir/__/__/os/shared/src/osapi-filesys.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3663: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-filesys.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int\nmhd_tool_get_sys_cpu_count_sysconf_fallback_ (void)\n{\n  int ret = -1;\n#if defined(HAVE_SYSCONF) && \\\n  (defined(HAS_DECL__SC_CRAY_NCPU) || defined(HAS_DECL__SC_NPROCESSORS_CONF))\n  long value = -1;\n#ifdef HAS_DECL__SC_CRAY_NCPU\n  if (0 >= value)\n    value = sysconf (_SC_CRAY_NCPU);\n#endif /* HAS_DECL__SC_CRAY_NCPU */\n#ifdef HAS_DECL__SC_NPROCESSORS_CONF\n  if (0 >= value)\n    value = sysconf (_SC_NPROCESSORS_CONF);\n#endif /* HAS_DECL__SC_NPROCESSORS_CONF */\n  if (0 >= value)\n    return -1;\n  ret = (int) value;\n  if ((long) ret != value)\n    return -1; /* Overflow */\n#endif /* HAVE_SYSCONF &&\n          (HAS_DECL__SC_CRAY_NCPU || HAS_DECL__SC_NPROCESSORS_CONF) */\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'mhd_tool_get_sys_cpu_count_sysconf_fallback_': {'callees': [], 'callers': ['mhd_tool_get_system_cpu_count']}, 'mhd_tool_get_system_cpu_count': {'callees': ['mhd_tool_get_sys_cpu_count_special_api_', 'mhd_tool_get_sys_cpu_count_sysctl_', 'mhd_tool_get_sys_cpu_count_sysconf_', 'mhd_tool_get_proc_cpu_count', 'mhd_tool_get_sys_cpu_count_sysctl_fallback_', 'mhd_tool_get_sys_cpu_count_sysconf_fallback_'], 'callers': ['detect_cpu_core_count']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "HAVE_SYSCONF",
+    "HAS_DECL__SC_CRAY_NCPU",
+    "HAS_DECL__SC_NPROCESSORS_CONF",
+    "_SC_CRAY_NCPU",
+    "_SC_NPROCESSORS_CONF",
+    "sysconf",
+    "INT_MIN",
+    "INT_MAX",
+    "LONG_MIN",
+    "LONG_MAX",
+    "sizeof(int)",
+    "sizeof(long)"
+  ],
+  "explanation": "- HAVE_SYSCONF: controls whether the entire sysconf-based block is compiled. If undefined the block is not present; to decide whether code is present (and therefore potentially unreachable) the preprocessor definition must be known.  \n- HAS_DECL__SC_CRAY_NCPU and HAS_DECL__SC_NPROCESSORS_CONF: each controls inclusion of the corresponding sysconf call and its surrounding if. Knowing which of these are defined determines which statements exist and whether later checks can ever be reached.  \n- _SC_CRAY_NCPU and _SC_NPROCESSORS_CONF: the integer constants passed to sysconf. Their presence/definition is tied to the HAS_DECL_* macros; they identify which sysconf queries are attempted. (Needed to know whether the sysconf calls compile and to map to documented sysconf semantics for those keys.)  \n- sysconf: the function called to obtain values. You must know its return type and documented return semantics for the queried keys (possible return range, whether it can legitimately return 0 or negative values, and whether -1 indicates error or a valid value) to decide if branches such as \"if (0 >= value)\" and the subsequent \"return -1\" are reachable.  \n- INT_MIN / INT_MAX and LONG_MIN / LONG_MAX (or equivalently sizeof(int) and sizeof(long)): to determine whether the cast/check \"if ((long) ret != value)\" can ever be true on the target platform. If int and long ranges are identical the overflow check is unreachable; if long is wider it may be reachable. These limits (or type sizes) are required to decide whether that code path can execute."
+}

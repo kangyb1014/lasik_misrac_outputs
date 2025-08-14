@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\ncompress_buf (z_stream *strm, const void *src, size_t src_size, size_t *offset,\n              void **dest, size_t *dest_size,\n              void *tmp)\n{\n  unsigned int have;\n  enum MHD_Result ret;\n  int flush;\n  void *tmp_dest;\n  *dest = NULL;\n  *dest_size = 0;\n  do\n  {\n    if (src_size > CHUNK)\n    {\n      strm->avail_in = CHUNK;\n      src_size -= CHUNK;\n      flush = Z_NO_FLUSH;\n    }\n    else\n    {\n      strm->avail_in = (uInt) src_size;\n      flush = Z_SYNC_FLUSH;\n    }\n    *offset += strm->avail_in;\n    strm->next_in = (const Bytef *) src;\n    do\n    {\n      strm->avail_out = CHUNK;\n      strm->next_out = tmp;\n      ret = (Z_OK == deflate (strm, flush)) ? MHD_YES : MHD_NO;\n      have = CHUNK - strm->avail_out;\n      *dest_size += have;\n      tmp_dest = realloc (*dest, *dest_size);\n      if (NULL == tmp_dest)\n      {\n        free (*dest);\n        *dest = NULL;\n        return MHD_NO;\n      }\n      *dest = tmp_dest;\n      memcpy (((uint8_t *) (*dest)) + ((*dest_size) - have), tmp, have);\n    }\n    while (0 == strm->avail_out);\n  }\n  while (flush != Z_SYNC_FLUSH);\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'compress_buf': {'callees': [], 'callers': ['read_cb']}, 'read_cb': {'callees': ['compress_buf'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "enum MHD_Result",
+    "MHD_YES",
+    "MHD_NO",
+    "z_stream",
+    "uInt",
+    "Bytef",
+    "CHUNK",
+    "Z_NO_FLUSH",
+    "Z_SYNC_FLUSH",
+    "Z_OK",
+    "deflate",
+    "realloc",
+    "free",
+    "memcpy",
+    "uint8_t",
+    "size_t",
+    "NULL"
+  ],
+  "explanation": "For checking whether compress_buf uses any compiler language extensions you must inspect the definitions/declarations of every external symbol, type and macro used in the function because any of those definitions can themselves employ compiler-specific extensions (attributes, nonstandard keywords, statement-expressions, typeof, inline assembly, packed/aligned pragmas, etc.). Reason for each symbol:\n\n- enum MHD_Result: the enum definition may use compiler-specific extensions (e.g. attributes, underlying-type specifiers, or nonstandard enum features). The function returns and uses this type.\n- MHD_YES / MHD_NO: these result constants/macros may be defined via macros or enum values that use extensions; they determine return construction.\n- z_stream: the struct type from zlib used for strm may contain compiler-specific attributes, bitfields, packed members, or other extensions in its definition.\n- uInt / Bytef: these typedefs (zlib types) may be macros/typedefs that map to compiler-specific types or use extensions; casts in the function use these types.\n- CHUNK: a macro constant \u2014 its definition could use statement expressions or other compiler-specific macro extensions.\n- Z_NO_FLUSH / Z_SYNC_FLUSH / Z_OK: zlib macros/constants \u2014 definitions might involve compiler extensions or unusual constructs that affect semantics used in the function.\n- deflate: the external function declaration might use compiler-specific attributes or calling-convention extensions that affect usage/diagnosis.\n- realloc / free / memcpy: standard library functions \u2014 their declarations could be wrapped by macros or attributes in platform headers; inspect to ensure no extensions are introduced that the function relies on.\n- uint8_t / size_t / NULL: standard typedefs/macros from headers; they are small enough to sometimes be defined via compiler builtins or macros with extensions (or platform headers may use extensions), so check their definitions if strict MISRA conformance is required.\n\nBy examining these symbols' definitions/declarations you can determine whether any nonstandard language extensions are present that would make compress_buf violate the stated MISRA rule."
+}

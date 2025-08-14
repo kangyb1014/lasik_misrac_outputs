@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c: In function 'queue_auth_required_response3_inner':\ndigestauth.c:3635:33: error: 'struct DigestAlgorithm' has no member named 'hashing'\n 3635 |     hashing_val = (da ? (int) da->hashing : -1);\n      |                                 ^~\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

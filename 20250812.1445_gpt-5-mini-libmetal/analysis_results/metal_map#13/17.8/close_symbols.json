@@ -1,0 +1,26 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_map(int fd, off_t offset, size_t size, int expand, int flags,\n\t      void **result)\n{\n\tint prot = PROT_READ | PROT_WRITE, error;\n\tvoid *mem;\n\n\tflags |= MAP_SHARED;\n\n\tif (fd < 0) {\n\t\tfd = -1;\n\t\tflags = MAP_PRIVATE | MAP_ANONYMOUS;\n\t} else if (expand) {\n\t\toff_t reqsize = offset + size;\n\t\tstruct stat stat;\n\n\t\terror = flock(fd, LOCK_EX) < 0 ? -errno : 0;\n\t\tif (!error)\n\t\t\terror = fstat(fd, &stat);\n\t\tif (!error && stat.st_size < reqsize)\n\t\t\terror = ftruncate(fd, reqsize);\n\t\tif (!error)\n\t\t\tflock(fd, LOCK_UN);\n\t\tif (error)\n\t\t\treturn -errno;\n\t}\n\n\tmem = mmap(NULL, size, prot, flags, fd, offset);\n\tif (mem == MAP_FAILED)\n\t\treturn -errno;\n\t*result = mem;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_map': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_try_map']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "fd",
+    "offset",
+    "size",
+    "expand",
+    "flags",
+    "result",
+    "MAP_SHARED",
+    "MAP_PRIVATE",
+    "MAP_ANONYMOUS",
+    "PROT_READ",
+    "PROT_WRITE",
+    "MAP_FAILED",
+    "mmap",
+    "flock",
+    "fstat",
+    "ftruncate",
+    "errno",
+    "struct stat (stat.st_size)",
+    "metal_uio_dev_open",
+    "metal_shmem_try_map"
+  ],
+  "explanation": "Explain why each symbol is needed for checking the MISRA rule (\"A function parameter should not be modified\"):\n\n- fd: parameter that is assigned to (fd = -1). Needed to determine whether the function modifies the parameter variable (violation).\n- offset: parameter present; include to confirm it is not a pointer and is not modified (type/usage check).\n- size: parameter present; include to confirm it is not modified (type/usage check).\n- expand: parameter present and used in a conditional; include to confirm it is not modified.\n- flags: parameter that is modified in place (flags |= MAP_SHARED). Required to assess if the code violates the rule by changing a parameter variable.\n- result: pointer parameter (void **). Required to verify that the code writes to *result (allowed: modifying the pointed-to object) and does not reassign result itself (which would be a violation).\n- MAP_SHARED, MAP_PRIVATE, MAP_ANONYMOUS: macros/constants used in assignments to flags. Needed to confirm these are simple bitmask constants (no side effects) so the operation is a straightforward modification of the parameter variable.\n- PROT_READ, PROT_WRITE: flags passed to mmap; include to confirm these are constants and do not affect parameter semantics.\n- MAP_FAILED: used to check mmap return. Needed to reason about return path and whether *result assignment occurs; not related to parameter modification but necessary to understand control flow.\n- mmap: call used to produce mem assigned to *result. Needed to confirm that assignment is to the pointed-to object (allowed) and does not modify the pointer parameter itself.\n- flock, fstat, ftruncate: called when expand is true and operating on fd. Included to understand the control flow that leads to fd being modified and whether subsequent use could indicate parameter modification issues.\n- errno: used for error returns (-errno). Included to confirm the error-handling expressions do not implicitly modify parameters.\n- struct stat (stat.st_size): used to decide whether to call ftruncate. Included to understand control flow and confirm no hidden modification of parameters.\n- metal_uio_dev_open, metal_shmem_try_map: callers of metal_map. Include callers to allow cross-checking how arguments (especially flags and fd) are passed (by value, literals, or variables) and whether modifying the parameter inside metal_map could have observable effects on callers (useful contextual information though the MISRA rule is evaluated in the callee itself).\n\nThese symbols provide the type/constant definitions and control-flow context necessary to determine whether the function assigns to parameter variables (violating MISRA) versus only modifying objects pointed to by pointer parameters (allowed)."
+}
