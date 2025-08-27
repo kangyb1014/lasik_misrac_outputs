@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemFlush: entered with sem_id=3735928559\nOS_ObjectIdGetById returned -35\ntoken raw bytes (size=20): 0000000000000000000000000000000000000000\nOS_BinSemFlush returning -35\nOS_BinSemFlush: entered with sem_id=0\nOS_ObjectIdGetById returned -35\ntoken raw bytes (size=20): 0000000000000000000000000000000000000000\nOS_BinSemFlush returning -35\n"
+}

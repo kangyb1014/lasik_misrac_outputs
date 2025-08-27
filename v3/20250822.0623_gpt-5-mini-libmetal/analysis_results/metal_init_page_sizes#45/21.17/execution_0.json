@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ADD_PAGE_SIZE_CALL: label=_metal.tmp_path path_ptr=0x7f57a97daaa6 expected_index=0 PATH_MAX=4096\nADD_HUGE_PAGE_SIZE: size=2097152 shift=21 flags=0x54040000 path_ptr=(nil) expected_index=1 PATH_MAX=4096\nADD_HUGE_PAGE_SIZE: size=1073741824 shift=30 flags=0x78040000 path_ptr=(nil) expected_index=1 PATH_MAX=4096\nQSORT_CALL: num_page_sizes=1\nADD_PAGE_SIZE_CALL: label=_metal.tmp_path path_ptr=0x55c64b0fea6e expected_index=0 PATH_MAX=4096\nADD_HUGE_PAGE_SIZE: size=2097152 shift=21 flags=0x54040000 path_ptr=(nil) expected_index=1 PATH_MAX=4096\nADD_HUGE_PAGE_SIZE: size=1073741824 shift=30 flags=0x78040000 path_ptr=(nil) expected_index=1 PATH_MAX=4096\nQSORT_CALL: num_page_sizes=1\n"
+}

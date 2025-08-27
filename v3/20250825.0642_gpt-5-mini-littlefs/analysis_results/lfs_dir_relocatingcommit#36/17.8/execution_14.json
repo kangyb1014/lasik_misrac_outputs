@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_dir_relocatingcommit':\nlfs.c:2273:5: error: too many arguments to function 'lfs_log_probe_fmt'\n 2273 |     lfs_log_probe_fmt(\"  lfs=%p dir=%p off=%ld etag=%ld count=%ld attrcount=%ld\",\n      |     ^~~~~~~~~~~~~~~~~\nlfs.c:2253:13: note: declared here\n 2253 | static void lfs_log_probe_fmt(const char *fmt, void *p1, long v2, long v3, long v4) {\n      |             ^~~~~~~~~~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

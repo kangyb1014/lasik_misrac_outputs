@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTRY lfs_dir_getinfo: lfs=0x7fff857c6fc0 dir=0x7fff857c6eb8 id=1 info=0x7fff857c7060 lfs->name_max=255\nBEFORE name lfs_dir_get: id=1 requested_len=256 info->name=0x7fff857c7068\nAFTER name lfs_dir_get: tag=2098240\nNAME SAMPLE: first_64_bytes_or_until_NUL='1111111111111111111111111111111111111111111111111111111111111111' (sample_len=64)\nINFO TYPE after name read: type=2\nBEFORE struct lfs_dir_get for CTZ: id=1 sizeof(ctz)=8 &ctz=0x7fff857c6e1c\nAFTER struct lfs_dir_get for CTZ: tag=2098240\nNOT CTZSTRUCT: setting info->size=0\n"
+}

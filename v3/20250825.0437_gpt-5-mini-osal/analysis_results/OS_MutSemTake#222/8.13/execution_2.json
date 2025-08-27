@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Stage: entry | sem_id: 3735928559 | return_code: 0 | token_ptr: (nil) | mutex_ptr: (nil)\nStage: ObjectIdGetById_failed | sem_id: 3735928559 | return_code: -35 | token_ptr: (nil) | mutex_ptr: (nil)\nStage: entry | sem_id: 0 | return_code: 0 | token_ptr: (nil) | mutex_ptr: (nil)\nStage: ObjectIdGetById_failed | sem_id: 0 | return_code: -35 | token_ptr: (nil) | mutex_ptr: (nil)\n"
+}

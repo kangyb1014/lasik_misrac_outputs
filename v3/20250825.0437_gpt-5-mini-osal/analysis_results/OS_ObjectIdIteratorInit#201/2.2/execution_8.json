@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpqmslv22g/src/src/os/shared/src/osapi-idmap.c: In function 'OS_ObjectIdIteratorInit':\n/tmp/tmpqmslv22g/src/src/os/shared/src/osapi-idmap.c:1294:15: error: aggregate value used where an integer was expected\n 1294 |               (long)ret, (unsigned long)iter->token);\n      |               ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:216: CMakeFiles/osal.dir/src/os/shared/src/osapi-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

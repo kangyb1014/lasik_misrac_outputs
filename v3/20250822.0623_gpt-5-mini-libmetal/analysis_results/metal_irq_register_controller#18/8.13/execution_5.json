@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: metal_irq_register_controller cntr=0x7f8a5a334cc0\nCONTROLLER_STATE: cntr=0x7f8a5a334cc0 irq_base(request)=0 irq_num=1023 node_ptr=0x7f8a5a334ce0\nALLOCATE_RESULT: requested_base=0 irq_num=1023 allocated_base=0\nASSIGNED_IRQ_BASE: cntr=0x7f8a5a334cc0 irq_base=0\nADDED_TO_LIST: cntr=0x7f8a5a334cc0 node=0x7f8a5a334ce0\nEXIT: metal_irq_register_controller cntr=0x7f8a5a334cc0 returning 0\nENTER: metal_irq_register_controller cntr=0x562cdff474e0\nCONTROLLER_STATE: cntr=0x562cdff474e0 irq_base(request)=0 irq_num=1023 node_ptr=0x562cdff47500\nALLOCATE_RESULT: requested_base=0 irq_num=1023 allocated_base=0\nASSIGNED_IRQ_BASE: cntr=0x562cdff474e0 irq_base=0\nADDED_TO_LIST: cntr=0x562cdff474e0 node=0x562cdff47500\nEXIT: metal_irq_register_controller cntr=0x562cdff474e0 returning 0\n"
+}

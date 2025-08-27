@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "\n--- OS_BinSemGetInfo ENTRY ---\nsem_id = -559038737, bin_prop ptr = 0x7ffff3903780\nAfter memset: sizeof(bin_prop) = 28, sizeof(bin_prop->name) = 20\nOS_ObjectIdGetById returned -35, token addr = 0x7ffff3903730\n--- OS_BinSemGetInfo EXIT (return -35) ---\n\n--- OS_BinSemGetInfo ENTRY ---\nsem_id = 0, bin_prop ptr = 0x7ffff3903780\nAfter memset: sizeof(bin_prop) = 28, sizeof(bin_prop->name) = 20\nOS_ObjectIdGetById returned -35, token addr = 0x7ffff3903730\n--- OS_BinSemGetInfo EXIT (return -35) ---\n"
+}

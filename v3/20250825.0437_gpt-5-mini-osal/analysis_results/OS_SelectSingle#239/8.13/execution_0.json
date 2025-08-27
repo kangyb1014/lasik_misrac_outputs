@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Stage: entry\n  objid: 0\n  msecs: 0\n  StateFlags ptr: 0x7ffda9ac7674\n  *StateFlags: 0x00000008\n  return_code (so far): -1\n  token @0x7ffda9ac7640 size=20 bytes:\n    02 00 00 00 00 7f 00 00 fe ff ff ff fe ff ff ff 90 76 ac a9 \n---\nStage: after_ObjectIdGetById\n  objid: 0\n  msecs: 0\n  StateFlags ptr: 0x7ffda9ac7674\n  *StateFlags: 0x00000008\n  return_code (so far): -35\n  token @0x7ffda9ac7640 size=20 bytes:\n    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 \n---\n"
+}

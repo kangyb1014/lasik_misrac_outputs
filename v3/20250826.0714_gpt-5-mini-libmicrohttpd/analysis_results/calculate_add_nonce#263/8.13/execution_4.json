@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c:1741:27: error: no member named 'hashing' in 'struct DigestAlgorithm'\n 1741 |           (int) (da ? da->hashing : -1),\n      |                       ~~  ^\n1 error generated.\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

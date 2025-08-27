@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int metal_linux_irq_notify(void)\n{\n\tuint64_t val = 1;\n\tint ret;\n\n\tret = write(irq_notify_fd, &val, sizeof(val));\n\tif (ret < 0) {\n\t\tmetal_log(METAL_LOG_ERROR, \"%s failed\\n\", __func__);\n\t}\n\treturn ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_irq_notify': {'callees': [], 'callers': ['metal_linux_irq_set_enable', 'metal_linux_irq_shutdown']}, 'metal_linux_irq_set_enable': {'callees': ['metal_mutex_acquire', 'metal_bitmap_set_bit', 'metal_bitmap_clear_bit', 'metal_mutex_release', 'metal_linux_irq_notify'], 'callers': []}, 'metal_linux_irq_shutdown': {'callees': ['metal_linux_irq_notify', 'metal_mutex_deinit'], 'callers': ['metal_sys_finish']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_log",
+    "METAL_LOG_ERROR",
+    "irq_notify_fd",
+    "memcpy",
+    "memmove",
+    "memset",
+    "memcmp",
+    "strcpy",
+    "strncpy",
+    "strcat",
+    "strncat",
+    "strlen",
+    "strspn",
+    "vsnprintf",
+    "snprintf",
+    "vfprintf",
+    "(any global/static buffers used by metal_log, with their symbol names and sizes)"
+  ],
+  "explanation": "- metal_log: The target calls metal_log(\"%s failed\\n\", __func__). To determine whether any string.h functions are invoked (and whether they access out-of-bounds memory) you must inspect metal_log's implementation and its call chain.\n- METAL_LOG_ERROR: The log level/flag may change how metal_log formats or copies messages (different code paths, buffer selection); include its definition to follow the control flow in metal_log.\n- irq_notify_fd: Although the write() call does not use string.h, include the declaration/type of irq_notify_fd to confirm no hidden wrappers/overloads or macros around write that might perform string operations.\n- memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, strspn: These are the Standard Library string/memory functions named by the MISRA rule. They must be checked in metal_log (and any functions it calls) to see whether any pointer/size arguments could lead to out-of-bounds accesses given the format string and the __func__ argument.\n- vsnprintf, snprintf, vfprintf: These formatting functions are commonly used by logging implementations to build messages; while not in <string.h>, their use affects buffer sizing and may be followed by string.h calls \u2014 include them to determine how buffers are filled and whether subsequent string.h calls could overflow.\n- (any global/static buffers used by metal_log, with their symbol names and sizes): If metal_log writes into a fixed-size buffer (e.g., a log buffer), you must have the exact symbol names and buffer sizes to determine whether any string/memory operations could access beyond the buffer bounds.\n\nIn short: the key missing symbol is the metal_log implementation and all symbols it references (its internal buffers and any string.h functions it or its callees use). Inspecting those symbols is necessary to decide compliance with the MISRA rule for the target function."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_probe_dump_state':\nlfs.c:6181:83: error: 'const struct lfs_file_config' has no member named 'buffer_size'\n 6181 |             lfs_probe_log(\"[probe] file->cfg->buffer_size=%u\", (unsigned)file->cfg->buffer_size);\n      |                                                                                   ^~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

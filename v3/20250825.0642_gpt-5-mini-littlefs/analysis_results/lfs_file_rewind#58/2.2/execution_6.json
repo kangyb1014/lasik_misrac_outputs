@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:6302:5: error: expected identifier or '(' before 'void'\n 6302 | int LFS_LOCK(void *cfg);\n      |     ^~~~~~~~\nlfs.c:6302:13: error: expected ')' before 'void'\n 6302 | int LFS_LOCK(void *cfg);\n      |     ~~~~~~~~^\n      |             )\nlfs.c:6303:6: error: expected identifier or '(' before 'void'\n 6303 | void LFS_UNLOCK(void *cfg);\n      |      ^~~~~~~~~~\nlfs.c:6303:16: error: expected ')' before 'void'\n 6303 | void LFS_UNLOCK(void *cfg);\n      |      ~~~~~~~~~~^\n      |                )\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

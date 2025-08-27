@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemGetInfo START: sem_id=-559038737, mut_prop=0x7fffee8a8b70\nOS_MutSemGetInfo: cleared mut_prop (24 bytes)\nOS_MutSemGetInfo: OS_ObjectIdGetById returned -35\nOS_MutSemGetInfo: OS_ObjectIdGetById failed, exiting with code -35\nOS_MutSemGetInfo START: sem_id=0, mut_prop=0x7fffee8a8b70\nOS_MutSemGetInfo: cleared mut_prop (24 bytes)\nOS_MutSemGetInfo: OS_ObjectIdGetById returned -35\nOS_MutSemGetInfo: OS_ObjectIdGetById failed, exiting with code -35\n"
+}

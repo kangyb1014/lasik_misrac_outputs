@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid UtMemFill(void *Memory, uint32 Length)\n{\n    uint32 i;\n    uint8 *Byte_ptr = Memory;\n\n    for (i = 0; i < Length; i++)\n    {\n        Byte_ptr[i] = i;\n    }\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memcmp",
+    "any project-specific wrappers around memcmp (e.g. OS_MemCmp, Utils_MemCmp)",
+    "strcmp",
+    "strncmp",
+    "strcpy",
+    "strncpy",
+    "strlen",
+    "memcpy",
+    "memset",
+    "malloc",
+    "calloc",
+    "free",
+    "all callers of UtMemFill (every symbol that calls UtMemFill)",
+    "all symbols that read/compare the buffer passed as Memory after UtMemFill (functions that take the same buffer pointer)",
+    "typedefs/definitions of uint8 and uint32"
+  ],
+  "explanation": "Why each symbol is required:\n- memcmp: The MISRA rule targets use of the standard memcmp. You must see any direct calls to memcmp to determine if memcmp is being used to compare null-terminated strings that might have been filled by UtMemFill.\n- any project-specific wrappers around memcmp (e.g. OS_MemCmp, Utils_MemCmp): Projects often wrap standard library calls. These wrappers may internally call memcmp or implement equivalent behavior; they must be inspected the same way as memcmp.\n- strcmp, strncmp, strcpy, strncpy, strlen: These standard string functions indicate places where buffers are treated as NUL-terminated strings. If any of these functions are used on buffers that were filled via UtMemFill, it shows string semantics are expected and so use of memcmp on those buffers would be suspect.\n- memcpy, memset: These memory functions are related to how the buffer content is produced/modified. Knowing whether other memory operations are used (and how) helps determine if the buffer contains a C string (NUL-terminated) or raw binary data.\n- malloc, calloc, free: Allocation/deallocation sites (or project allocators) show the provenance and lifetime of the Memory buffer. Callers that allocate a buffer as a string (e.g. initialized with zeros via calloc) vs. raw byte storage matter for assessing whether subsequent memcmp comparisons would be comparing C strings.\n- all callers of UtMemFill (every symbol that calls UtMemFill): UtMemFill itself only writes bytes; to decide if the MISRA rule is violated you must inspect all call sites to see how the filled buffer is used (as a string or as binary data) and whether any of those call sites use memcmp to compare it as a null-terminated string.\n- all symbols that read/compare the buffer passed as Memory after UtMemFill (functions that take the same buffer pointer): Any function that later reads or compares the same buffer (especially using memcmp or wrapper) is necessary to determine if a memcmp is being used to compare a NUL-terminated string originating from UtMemFill.\n- typedefs/definitions of uint8 and uint32: Confirm the exact underlying types (e.g. uint8 mapped to unsigned char) because interpretation as character type vs. raw byte can affect whether the buffer is intended as a string and whether memcmp usage would be comparing strings.\n\nInclude these symbols (and their definitions/implementations) in the next-agent prompt so that the agent can trace callers and consumers of UtMemFill and determine whether any memcmp (or equivalent) comparison treats the buffer as a null-terminated string, which would violate the MISRA rule."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemTake: called sem_id=-559038737, &token=0x7ffd634690b0, token_size=20\nOS_ObjectIdGetById returned -35 for sem_id=-559038737\nOS_BinSemTake: skipping Impl call due to return_code=-35\nOS_BinSemTake: exiting with return_code=-35\nOS_BinSemTake: called sem_id=0, &token=0x7ffd634690b0, token_size=20\nOS_ObjectIdGetById returned -35 for sem_id=0\nOS_BinSemTake: skipping Impl call due to return_code=-35\nOS_BinSemTake: exiting with return_code=-35\n"
+}

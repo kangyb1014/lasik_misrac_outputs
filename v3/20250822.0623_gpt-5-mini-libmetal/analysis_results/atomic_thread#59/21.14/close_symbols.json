@@ -1,0 +1,11 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_fetch_add",
+    "atomic_int",
+    "atomic_test_count",
+    "memcmp",
+    "(any transitive callees of atomic_fetch_add)"
+  ],
+  "explanation": "- atomic_fetch_add: This is the only function called by atomic_thread. To determine whether the target function (directly or indirectly) uses memcmp on null-terminated strings you must inspect the implementation or expansion of atomic_fetch_add (it could be a macro or wrapper that itself calls other functions).\n- atomic_int: The type of the argument pointed to by arg. Its definition could be a typedef or a struct that pulls in other functions or wrappers; you must confirm it is a plain integer type and does not hide string comparisons via conversion functions.\n- atomic_test_count: The loop bound is a symbol that may be a macro, function-like expression, or global whose definition could include calls to other functions (including memcmp). Inspecting its definition rules out indirect uses of memcmp that would make the MISRA rule applicable.\n- memcmp: The MISRA rule targets use of the standard memcmp function to compare null-terminated strings. The analysis must check for any calls to memcmp in the target function and in any functions it calls (directly or transitively).\n- (any transitive callees of atomic_fetch_add): If atomic_fetch_add expands to or calls other functions, those must be included so the analyzer can search their bodies for uses of memcmp on null-terminated strings.\n\nOnly these symbols are required to decide whether atomic_thread (or its callees/related definitions) violates the MISRA rule about using memcmp to compare null-terminated strings."
+}

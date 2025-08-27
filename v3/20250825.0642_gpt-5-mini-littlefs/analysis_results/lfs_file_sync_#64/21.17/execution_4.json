@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_file_sync_log':\nlfs.c:3479:39: error: 'const struct lfs_config' has no member named 'attr_count'\n 3479 |                     (unsigned)lfs->cfg->attr_count,\n      |                                       ^~\nlfs.c:3480:36: error: 'const struct lfs_config' has no member named 'attrs'\n 3480 |                     (void*)lfs->cfg->attrs);\n      |                                    ^~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

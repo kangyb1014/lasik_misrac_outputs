@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "1755844255 pid=2319494 stage=before_write val=1 ret=-1\n1755844255 pid=2319494 stage=after_write val=1 ret=8\n1755844256 pid=2319943 stage=before_write val=1 ret=-1\n1755844256 pid=2319943 stage=after_write val=1 ret=8\n"
+}

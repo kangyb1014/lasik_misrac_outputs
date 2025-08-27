@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:2279:3: error: function definition is not allowed here\n 2279 |   {\n      |   ^\nconnection.c:2304:3: error: call to undeclared function 'probe_log_connection_reply'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n 2304 |   probe_log_connection_reply (c, r, \"entry\");\n      |   ^\nconnection.c:2304:3: note: did you mean 'check_connection_reply'?\nconnection.c:2269:1: note: 'check_connection_reply' declared here\n 2269 | check_connection_reply (struct MHD_Connection *connection)\n      | ^\n2 errors generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

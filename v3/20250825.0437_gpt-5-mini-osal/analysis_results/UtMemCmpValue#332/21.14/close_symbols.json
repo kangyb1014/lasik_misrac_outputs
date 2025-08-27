@@ -1,0 +1,15 @@
+{
+  "user_message": "Target function code is:\n```c\nbool UtMemCmpValue(const void *Memory, uint8 Value, uint32 Length)\n{\n    uint32       i;\n    const uint8 *Byte_ptr = Memory;\n\n    for (i = 0; i < Length; i++)\n    {\n        if (Byte_ptr[i] != Value)\n        {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memcmp",
+    "strcmp",
+    "strncmp",
+    "strlen",
+    "uint8",
+    "uint32",
+    "bool",
+    "All callers of UtMemCmpValue (caller function symbols)",
+    "Global/static buffer symbols that are passed as Memory by callers"
+  ],
+  "explanation": "- memcmp: the MISRA rule specifically prohibits using the Standard Library memcmp to compare null\u2011terminated strings. Include memcmp so the analyzer can detect any direct use or replacement wrappers in the same translation unit or reachable call sites.  \n- strcmp, strncmp: these string comparison functions are relevant to decide whether string semantics are intended; callers might use these or be used instead of memcmp. Their presence helps determine whether data passed to UtMemCmpValue is a null\u2011terminated string (i.e., whether string comparison semantics are expected).  \n- strlen: used to discover if callers compute lengths from null\u2011terminated strings before calling memory comparison routines; presence of strlen or length-derived calls indicates the data is treated as a C string.  \n- uint8, uint32, bool: typedef/define symbols for these types are required to understand the exact signedness/width and semantics of the Memory and Length parameters (e.g., whether uint8 is unsigned char, which affects whether a byte buffer could be a C string).  \n- All callers of UtMemCmpValue (caller function symbols): to determine whether this function is ever used to compare null\u2011terminated strings you must inspect call sites \u2014 their argument expressions, whether they pass pointers to char/string buffers, and how Length is derived. Include all caller symbols from the static call graph.  \n- Global/static buffer symbols that are passed as Memory by callers: if callers pass named global or static buffers, their declarations (type, initializer, and intended use) are needed to decide if those buffers are null\u2011terminated strings.  \nThese symbols let the next analyzer determine whether UtMemCmpValue is being used (directly or indirectly) to compare null\u2011terminated strings and therefore whether the MISRA rule prohibition on memcmp for string comparison is relevant."
+}

@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_open(const char *path, int shm)\n{\n\tconst int flags = O_RDWR | O_CREAT | O_CLOEXEC;\n\tconst int mode = S_IRUSR | S_IWUSR;\n\tint fd;\n\n\tif (!path || !strlen(path))\n\t\treturn -EINVAL;\n\n\tfd = shm ? shm_open(path, flags, mode) : open(path, flags, mode);\n\treturn fd < 0 ? -errno : fd;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_open': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_open']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_open': {'callees': ['metal_shmem_open_generic', 'metal_open', 'metal_shmem_try_map'], 'callers': ['shmem_child']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "strlen",
+    "shm_open",
+    "open",
+    "errno",
+    "EINVAL",
+    "O_RDWR",
+    "O_CREAT",
+    "O_CLOEXEC",
+    "S_IRUSR",
+    "S_IWUSR"
+  ],
+  "explanation": "strlen \u2014 need to confirm its prototype takes a const char * and does not modify the pointer or the pointed-to object. shm_open \u2014 verify its prototype (takes const char *) and whether any macro/wrapper could modify the path parameter or the pointer value. open \u2014 same as shm_open: check prototype and whether any macro/wrapper could modify the path argument. errno \u2014 used in the return expression; check whether errno is a macro or lvalue that could expand to something that affects parameters (and to understand error reporting semantics). EINVAL \u2014 constant used for early return; include to verify no side effects. O_RDWR, O_CREAT, O_CLOEXEC, S_IRUSR, S_IWUSR \u2014 flag/mode macros used in calls; include to ensure none expand to expressions that could modify function parameters (macros can expand unexpectedly).\n\nThese symbols are all the external functions/macros whose definitions or macro expansions could legally hide modifications to the function parameters; verifying their prototypes/definitions is sufficient to determine whether metal_open itself modifies its parameters (which would violate the MISRA rule)."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "response.c:1945:3: error: call to undeclared function 'MHD_probe_log_upgrade_state_'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n 1945 |   MHD_probe_log_upgrade_state_ (connection, daemon, \"entry\", 0);\n      |   ^\n1 error generated.\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

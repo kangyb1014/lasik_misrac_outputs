@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'probe_log':\nlfs.c:4663:9: warning: implicit declaration of function 'localtime_r'; did you mean 'localtime'? [-Wimplicit-function-declaration]\n 4663 |     if (localtime_r(&t, &tm_buf)) {\n      |         ^~~~~~~~~~~\n      |         localtime\nlfs.c: At top level:\nlfs.c:4687:45: error: expected identifier or '(' before '{' token\n 4687 | static void LFS_TRACE(const char *fmt, ...) {\n      |                                             ^\nlfs.c:4683:13: warning: 'LFS_UNLOCK' defined but not used [-Wunused-function]\n 4683 | static void LFS_UNLOCK(void *cfg) {\n      |             ^~~~~~~~~~\nlfs.c:4678:12: warning: 'LFS_LOCK' defined but not used [-Wunused-function]\n 4678 | static int LFS_LOCK(void *cfg) {\n      |            ^~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

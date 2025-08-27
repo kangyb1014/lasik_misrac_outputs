@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpkh5ohv9s/src/src/os/shared/src/osapi-filesys.c: In function 'OS_FileSysAddFixedMap':\n/tmp/tmpkh5ohv9s/src/src/os/shared/src/osapi-filesys.c:339:5: error: aggregate value used where an integer was expected\n  339 |     OS_Probe_Log(\"ObjectIdAllocateNew returned %ld (token=%lu)\", (long)return_code, (unsigned long)token);\n      |     ^~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:188: CMakeFiles/osal.dir/src/os/shared/src/osapi-filesys.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

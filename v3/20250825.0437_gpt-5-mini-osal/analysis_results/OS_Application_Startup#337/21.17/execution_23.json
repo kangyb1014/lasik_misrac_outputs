@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: ../../ut_assert/libut_assert.a(utbsp.c.o): warning: relocation against `OS_timecb_table' in read-only section `.text'\n/usr/bin/ld: ../../ut_assert/libut_assert.a(utbsp.c.o): in function `probe_log_state':\n/tmp/tmpk6vt52p_/src/ut_assert/src/utbsp.c:264: undefined reference to `OS_timecb_table'\n/usr/bin/ld: /tmp/tmpk6vt52p_/src/ut_assert/src/utbsp.c:265: undefined reference to `OS_timecb_table'\n/usr/bin/ld: warning: creating DT_TEXTREL in a PIE\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [unit-test-coverage/vxworks/CMakeFiles/coverage-vxworks-binsem-testrunner.dir/build.make:111: unit-test-coverage/vxworks/coverage-vxworks-binsem-testrunner] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:1170: unit-test-coverage/vxworks/CMakeFiles/coverage-vxworks-binsem-testrunner.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

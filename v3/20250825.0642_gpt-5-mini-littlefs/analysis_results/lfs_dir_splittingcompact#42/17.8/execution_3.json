@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_dir_splittingcompact':\nlfs.c:2250:62: error: 'ssize_t' undeclared (first use in this function); did you mean 'size_t'?\n 2250 |             lfs_log_probe(\"ERR: lfs_fs_size_ returned %zd\", (ssize_t)size);\n      |                                                              ^~~~~~~\n      |                                                              size_t\nlfs.c:2250:62: note: each undeclared identifier is reported only once for each function it appears in\nlfs.c:2250:70: error: expected ')' before 'size'\n 2250 |             lfs_log_probe(\"ERR: lfs_fs_size_ returned %zd\", (ssize_t)size);\n      |                          ~                                           ^~~~\n      |                                                                      )\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

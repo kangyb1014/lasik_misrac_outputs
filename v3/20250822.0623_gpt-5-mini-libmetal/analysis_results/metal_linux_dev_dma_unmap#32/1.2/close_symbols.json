@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void metal_linux_dev_dma_unmap(struct metal_bus *bus,\n\t\t\t\t      struct metal_device *device,\n\t\t\t\t      uint32_t dir,\n\t\t\t\t      struct metal_sg *sg,\n\t\t\t\t      int nents)\n{\n\tstruct linux_device *ldev = to_linux_device(device);\n\tstruct linux_bus *lbus = to_linux_bus(bus);\n\n\tldev->ldrv->dev_dma_unmap(lbus, ldev, dir, sg,\n\t\t\t\t       nents);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_dev_dma_unmap': {'callees': ['to_linux_device', 'to_linux_bus'], 'callers': []}, 'to_linux_device': {'callees': [], 'callers': ['metal_linux_dev_close', 'metal_linux_dev_irq_ack', 'metal_linux_dev_dma_map', 'metal_linux_dev_dma_unmap', 'metal_linux_get_device_property']}, 'to_linux_bus': {'callees': [], 'callers': ['metal_linux_dev_open', 'metal_linux_dev_close', 'metal_linux_bus_close', 'metal_linux_dev_irq_ack', 'metal_linux_dev_dma_map', 'metal_linux_dev_dma_unmap']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "to_linux_device",
+    "to_linux_bus",
+    "container_of (or other macro used by to_linux_device/to_linux_bus)",
+    "offsetof (if used by the above macros)",
+    "typeof (GCC extension \u2014 check if used by the above macros)",
+    "struct linux_device (definition)",
+    "struct linux_bus (definition)",
+    "struct linux_driver (definition of ldrv)",
+    "linux_driver::dev_dma_unmap (function\u2011pointer declaration/signature)",
+    "struct metal_device (definition)",
+    "struct metal_bus (definition)",
+    "struct metal_sg (definition)"
+  ],
+  "explanation": "You must inspect the implementations of to_linux_device and to_linux_bus (and any macros they expand to) because these are the points where compiler extensions commonly appear (for example container_of implementations often use GCC typeof or statement expressions). Provide the exact macro(s) used (container_of, offsetof) and whether typeof or other GCC builtins/operators are used so the analyzer can detect language extensions. The struct definitions (linux_device, linux_bus, linux_driver, metal_device, metal_bus, metal_sg) and the linux_driver::dev_dma_unmap prototype are required to check whether any struct member declarations or function-pointer types carry compiler-specific attributes or use nonstandard extensions (for example __attribute__, nested function pointers, or unusual calling conventions). Inspecting these symbols lets the next agent determine if any language extensions are present in the casts/macros, member declarations, or function-pointer declarations invoked by metal_linux_dev_dma_unmap."
+}

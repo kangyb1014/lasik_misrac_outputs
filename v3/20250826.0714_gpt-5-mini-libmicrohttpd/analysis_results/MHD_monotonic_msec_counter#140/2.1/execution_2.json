@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "mhd_mono_clock.c:501:2: error: unterminated conditional directive\n  501 | #if _WIN32_WINNT >= 0x0600\n      |  ^\nmhd_mono_clock.c:500:2: error: unterminated conditional directive\n  500 | #if defined(_WIN32)\n      |  ^\nmhd_mono_clock.c:520:1: error: expected '}'\n  520 | \n      | ^\nmhd_mono_clock.c:464:1: note: to match this '{'\n  464 | {\n      | ^\n3 errors generated.\nmake[3]: *** [Makefile:2133: libmicrohttpd_la-mhd_mono_clock.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

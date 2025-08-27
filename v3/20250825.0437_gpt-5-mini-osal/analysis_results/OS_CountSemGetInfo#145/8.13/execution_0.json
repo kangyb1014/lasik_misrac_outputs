@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[1756098030] Enter OS_CountSemGetInfo: sem_id=3735928559, count_prop=0x7fff2c841540\n[1756098030] Parameter check passed (count_prop != NULL)\n[1756098030] count_prop zeroed\n[1756098030] OS_ObjectIdGetById returned -35\n[1756098030] OS_CountSemGetInfo: ObjectIdGetById failed, skipping record access\n[1756098030] Exit OS_CountSemGetInfo returning -35\n[1756098030] Enter OS_CountSemGetInfo: sem_id=0, count_prop=0x7fff2c841540\n[1756098030] Parameter check passed (count_prop != NULL)\n[1756098030] count_prop zeroed\n[1756098030] OS_ObjectIdGetById returned -35\n[1756098030] OS_CountSemGetInfo: ObjectIdGetById failed, skipping record access\n[1756098030] Exit OS_CountSemGetInfo returning -35\n"
+}

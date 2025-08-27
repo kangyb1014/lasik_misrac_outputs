@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp6y3o3s_w/src/src/os/shared/src/osapi-common.c: In function 'OS_API_Teardown_LogProbe':\n/tmp/tmp6y3o3s_w/src/src/os/shared/src/osapi-common.c:276:15: error: storage size of 'tm' isn't known\n  276 |     struct tm tm;\n      |               ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-common.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-common.dir/__/__/os/shared/src/osapi-common.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3291: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-common.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

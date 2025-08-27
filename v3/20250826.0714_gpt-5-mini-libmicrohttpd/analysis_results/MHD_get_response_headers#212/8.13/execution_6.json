@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[BEFORE_ITER] header_index=1, pos=0x7fd4a0008fa0\n  kind=1\n  header_ptr=0x7fd4a0008f60, header_str=MyHeader\n  value_ptr=0x7fd4a0008f80, value_str=MyValueToo\n  iterator_ptr=(nil)\n\n[BEFORE_ITER] header_index=1, pos=0x7fd498000cf0\n  kind=1\n  header_ptr=0x7fd498000cb0, header_str=MyHeader\n  value_ptr=0x7fd498000cd0, value_str=MyValueToo\n  iterator_ptr=(nil)\n\n[BEFORE_ITER] header_index=1, pos=0x7fd490008fa0\n  kind=1\n  header_ptr=0x7fd490008f60, header_str=MyHeader\n  value_ptr=0x7fd490008f80, value_str=MyValueToo\n  iterator_ptr=(nil)\n\n[BEFORE_ITER] header_index=1, pos=0x5631078135d0\n  kind=1\n  header_ptr=0x56310780f4e0, header_str=MyHeader\n  value_ptr=0x56310780e410, value_str=MyValueToo\n  iterator_ptr=(nil)\n\n"
+}

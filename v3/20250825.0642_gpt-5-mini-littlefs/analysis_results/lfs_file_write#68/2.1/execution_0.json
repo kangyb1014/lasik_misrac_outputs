@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_file_write':\nlfs.c:6234:5: warning: ISO C forbids nested functions [-Wpedantic]\n 6234 |     static void probe_log(const char *stage, lfs_t *lfs_p, lfs_file_t *file_p,\n      |     ^~~~~~\nlfs.c:6234:17: error: invalid storage class for function 'probe_log'\n 6234 |     static void probe_log(const char *stage, lfs_t *lfs_p, lfs_file_t *file_p,\n      |                 ^~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

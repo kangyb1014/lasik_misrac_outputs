@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid metal_default_log_handler(enum metal_log_level level,\n\t\t\t       const char *format, ...)\n{\n#ifdef DEFAULT_LOGGER_ON\n\tchar msg[1024];\n\tva_list args;\n\tstatic const char * const level_strs[] = {\n\t\t\"metal: emergency: \",\n\t\t\"metal: alert:     \",\n\t\t\"metal: critical:  \",\n\t\t\"metal: error:     \",\n\t\t\"metal: warning:   \",\n\t\t\"metal: notice:    \",\n\t\t\"metal: info:      \",\n\t\t\"metal: debug:     \",\n\t};\n\n\tva_start(args, format);\n\tvsnprintf(msg, sizeof(msg), format, args);\n\tva_end(args);\n\n\tif (level <= METAL_LOG_EMERGENCY || level > METAL_LOG_DEBUG)\n\t\tlevel = METAL_LOG_EMERGENCY;\n\n\tfprintf(stderr, \"%s%s\", level_strs[level], msg);\n#else\n\t(void)level;\n\t(void)format;\n#endif\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "DEFAULT_LOGGER_ON",
+    "enum metal_log_level",
+    "METAL_LOG_EMERGENCY",
+    "METAL_LOG_DEBUG",
+    "vsnprintf",
+    "fprintf",
+    "stderr",
+    "FILE",
+    "size_t",
+    "va_list",
+    "va_start",
+    "va_end"
+  ],
+  "explanation": "DEFAULT_LOGGER_ON: controls whether the body with pointer usage is actually compiled; if undefined/off the body is excluded and pointer-const issues do not apply. enum metal_log_level: needed to determine the valid range/semantic of 'level' and whether indexing into level_strs can use a value that affects pointer usage. METAL_LOG_EMERGENCY, METAL_LOG_DEBUG: numerical values used in the bounds check; necessary to decide whether level_strs[level] can be out-of-range or whether level can be coerced/truncated (which could change which pointer is used). vsnprintf: prototype (int vsnprintf(char *str, size_t size, const char *format, va_list ap)) is required to check const-qualification of its format parameter and the types it expects/produces (ensures no const-discard of pointers). fprintf: prototype (int fprintf(FILE *stream, const char *format, ...)) is required to check the const-qualification of its format parameter and to reason about passing const char * and char * via variadic %s (possible const-discard issues). stderr and FILE: type of the stream argument to fprintf; include stderr/FILE to confirm their declarations and any const-qualification that might affect pointer rules. size_t: used by vsnprintf; its declaration is part of the prototype analysis. va_list, va_start, va_end: the stdarg types/macros are needed to verify how the variadic arguments are formed/passed to vsnprintf and whether any pointer conversions or const-qualification issues arise there."
+}

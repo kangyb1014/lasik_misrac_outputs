@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: metal_linux_irq_shutdown\nACTION: setting irq_handling_stop = true\nSTATE: irq_handling_stop=1\nEVENT: called metal_linux_irq_notify()\nCALL: pthread_join(irq_pthread) returned 0\nINFO: about to close irq_notify_fd=5\nRESULT: close(irq_notify_fd=5) returned 0\nEXIT: metal_linux_irq_shutdown\nENTER: metal_linux_irq_shutdown\nACTION: setting irq_handling_stop = true\nSTATE: irq_handling_stop=1\nEVENT: called metal_linux_irq_notify()\nCALL: pthread_join(irq_pthread) returned 0\nINFO: about to close irq_notify_fd=5\nRESULT: close(irq_notify_fd=5) returned 0\nEXIT: metal_linux_irq_shutdown\n"
+}

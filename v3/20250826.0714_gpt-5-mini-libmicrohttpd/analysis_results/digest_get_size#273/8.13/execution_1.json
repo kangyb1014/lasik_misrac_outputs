@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c:371:29: error: no member named 'uninitialised' in 'struct DigestAlgorithm'\n  371 |               da ? (int)da->uninitialised : -1,\n      |                         ~~  ^\ndigestauth.c:372:29: error: no member named 'algo_selected' in 'struct DigestAlgorithm'\n  372 |               da ? (int)da->algo_selected : -1,\n      |                         ~~  ^\n2 errors generated.\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

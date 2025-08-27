@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "lfs_dir_needsrelocation called\n  lfs=0x7ffe6595c328, cfg=0x7ffe6595ccb0, dir=0x7ffe6595bf58\n  block_cycles=4294967295\n  dir->rev=4294967295\n  rev+1=4294967296\n  denom=((block_cycles+1)|1)=1\n  intermediate: (block_cycles>0)=1, (rev+1)%denom=0\n  result (needs_relocation)=1\n---\n"
+}

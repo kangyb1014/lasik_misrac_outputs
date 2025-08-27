@@ -1,0 +1,103 @@
+{
+  "total_runs": {
+    "classifier": 1921,
+    "build_fix": 10,
+    "reviewer": 328,
+    "close_symbol": 750,
+    "predict_log": 0,
+    "frags": 750,
+    "test_generator": 169,
+    "simple_baseline": 0
+  },
+  "total_agent_fails": {
+    "classifier": 1,
+    "build_fix": 0,
+    "reviewer": 0,
+    "close_symbol": 1,
+    "predict_log": 0,
+    "frags": 1,
+    "test_generator": 0,
+    "simple_baseline": 0
+  },
+  "total_api_tries": {
+    "classifier": 1921,
+    "build_fix": 10,
+    "reviewer": 328,
+    "close_symbol": 750,
+    "predict_log": 0,
+    "frags": 750,
+    "test_generator": 169,
+    "simple_baseline": 0
+  },
+  "total_api_success": {
+    "classifier": 1920,
+    "build_fix": 10,
+    "reviewer": 328,
+    "close_symbol": 749,
+    "predict_log": 0,
+    "frags": 749,
+    "test_generator": 169,
+    "simple_baseline": 0
+  },
+  "total_api_fails": {
+    "classifier": 0,
+    "build_fix": 0,
+    "reviewer": 0,
+    "close_symbol": 0,
+    "predict_log": 0,
+    "frags": 0,
+    "test_generator": 0,
+    "simple_baseline": 0
+  },
+  "input_tokens": {
+    "classifier": 1804443,
+    "build_fix": 15629,
+    "reviewer": 476714,
+    "close_symbol": 402827,
+    "predict_log": 0,
+    "frags": 665942,
+    "test_generator": 122471,
+    "simple_baseline": 0
+  },
+  "output_tokens": {
+    "classifier": 1384828,
+    "build_fix": 23358,
+    "reviewer": 345717,
+    "close_symbol": 1374182,
+    "predict_log": 0,
+    "frags": 1191052,
+    "test_generator": 408029,
+    "simple_baseline": 0
+  },
+  "total_tokens": {
+    "classifier": 3189271,
+    "build_fix": 38987,
+    "reviewer": 822431,
+    "close_symbol": 1777009,
+    "predict_log": 0,
+    "frags": 1856994,
+    "test_generator": 530500,
+    "simple_baseline": 0
+  },
+  "total_classifier_positives": 331,
+  "classifier_execution_results": {
+    "success": 157,
+    "parse_failed": 0,
+    "compile_failed": 10,
+    "empty_test_log": 2
+  },
+  "total_build_fix_tries": 10,
+  "build_fix_execution_results": {
+    "success": 9,
+    "parse_failed": 0,
+    "compile_failed": 1,
+    "empty_test_log": 0
+  },
+  "review_results": {
+    "positive": 196,
+    "negative": 132
+  },
+  "elapsed_time": "00:16:28",
+  "start_time": "2025-08-22 06:23:29",
+  "end_time": "2025-08-22 06:39:57"
+}

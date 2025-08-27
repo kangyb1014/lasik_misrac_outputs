@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "\n===== OS_API_Teardown ENTRY: 1756097729 =====\nOS_API_Teardown: Calling OS_DeleteAllObjects()\nOS_API_Teardown: Returned from OS_DeleteAllObjects()\nOS_API_Teardown: Calling OS_ApplicationShutdown(true)\nOS_API_Teardown: Returned from OS_ApplicationShutdown(true)\n===== OS_API_Teardown EXIT =====\n\n===== OS_API_Teardown ENTRY: 1756097729 =====\nOS_API_Teardown: Calling OS_DeleteAllObjects()\nOS_API_Teardown: Returned from OS_DeleteAllObjects()\nOS_API_Teardown: Calling OS_ApplicationShutdown(true)\nOS_API_Teardown: Returned from OS_ApplicationShutdown(true)\n===== OS_API_Teardown EXIT =====\n"
+}

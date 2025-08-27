@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_Posix_BinSemAcquireMutex(pthread_mutex_t *mut)\n{\n    struct timespec timeout;\n\n    if (clock_gettime(CLOCK_REALTIME, &timeout) != 0)\n    {\n        return OS_SEM_FAILURE;\n    }\n\n    timeout.tv_sec += OS_POSIX_BINSEM_MAX_WAIT_SECONDS;\n\n    if (pthread_mutex_timedlock(mut, &timeout) != 0)\n    {\n        return OS_SEM_FAILURE;\n    }\n\n    return OS_SUCCESS;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_Posix_BinSemAcquireMutex': {'callees': [], 'callers': ['OS_BinSemGive_Impl', 'OS_BinSemFlush_Impl', 'OS_GenericBinSemTake_Impl']}, 'OS_BinSemGive_Impl': {'callees': ['OS_ObjectIndexFromToken', 'OS_Posix_BinSemAcquireMutex'], 'callers': ['OS_BinSemGive']}, 'OS_BinSemFlush_Impl': {'callees': ['OS_ObjectIndexFromToken', 'OS_Posix_BinSemAcquireMutex'], 'callers': ['OS_BinSemFlush']}, 'OS_GenericBinSemTake_Impl': {'callees': ['OS_ObjectIndexFromToken', 'OS_Posix_BinSemAcquireMutex'], 'callers': ['OS_BinSemTake_Impl', 'OS_BinSemTimedWait_Impl']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "int32",
+    "pthread_mutex_t",
+    "struct timespec",
+    "clock_gettime",
+    "CLOCK_REALTIME",
+    "pthread_mutex_timedlock",
+    "OS_POSIX_BINSEM_MAX_WAIT_SECONDS",
+    "OS_SEM_FAILURE",
+    "OS_SUCCESS",
+    "<time.h>",
+    "<pthread.h>",
+    "<stdint.h>"
+  ],
+  "explanation": "For each symbol below we need its definition/expansion to determine whether any compiler language extensions are being used (e.g. __attribute__, __extension__, asm, typeof, statement-expr ({...}), compiler builtins, or other vendor-specific keywords). - int32: Inspect the typedef/definition to ensure it is a plain typedef (e.g. to int32_t) and not using compiler-specific keywords or extensions. - pthread_mutex_t: Check the pthread type definition (often in <pthread.h>) for any compiler-specific constructs or attributes. - struct timespec: Check the struct definition (from <time.h>) to ensure no extension is used in its declaration (and to confirm tv_sec type). - clock_gettime: Examine the declaration/implementation/wrapper to see if it is a macro, inline wrapper, or uses compiler-specific attributes or builtins. - CLOCK_REALTIME: Expand the macro/constant to verify it does not rely on non\u2011standard extension tokens. - pthread_mutex_timedlock: As with clock_gettime, inspect declaration/implementation for macros, inline wrappers, or compiler-specific attributes/keywords. - OS_POSIX_BINSEM_MAX_WAIT_SECONDS: Expand this macro to ensure it does not contain compiler extensions (e.g. statement expressions, gcc-specific suffixes or attributes). - OS_SEM_FAILURE and OS_SUCCESS: Expand/inspect these macros or enum constants to ensure they are standard constant definitions and do not use extensions. - <time.h>, <pthread.h>, <stdint.h>: Include the header definitions where the above POSIX/standard symbols are declared; headers can contain inline functions, macros, or attributes that are compiler extensions. Checking these symbols and their headers is necessary to conclusively determine whether the target function or any referenced type/macro/function employs a compiler-specific language extension that would violate the MISRA rule."
+}

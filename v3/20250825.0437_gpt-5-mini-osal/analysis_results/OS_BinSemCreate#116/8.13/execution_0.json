@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpinhuq8un/src/src/os/shared/src/osapi-binsem.c: In function 'OS_BinSemCreate':\n/tmp/tmpinhuq8un/src/src/os/shared/src/osapi-binsem.c:106:17: error: invalid storage class for function 'os_binsem_log'\n  106 |     static void os_binsem_log(const char *stage, const osal_id_t *id, const char *name, uint32 init_val, uint32 opts, int32 rc, const void *token_ptr)\n      |                 ^~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:76: CMakeFiles/osal.dir/src/os/shared/src/osapi-binsem.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

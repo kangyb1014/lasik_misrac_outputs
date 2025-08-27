@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_SelectMultiple_Impl: entry ReadSet=(nil) WriteSet=0x7ffff6ed9381 msecs=1\nfd_set initialized: rd_set=0x7ffff6ed9290 wr_set=0x7ffff6ed9210\nReadSet is NULL, skipping OS_FdSet_ConvertIn_Impl for read side\nAbout to call OS_FdSet_ConvertIn_Impl for WriteSet=0x7ffff6ed9381 (maxfd=-1)\nWriteSet pre-ConvertIn: 0x7ffff6ed9381 bytes[00 00 00 00 00 00 00 00 DF 3B C0 7D 99 19 28 A0 93 ED F6 FF 7F 00 00 00 00 00 00 ]\nOS_FdSet_ConvertIn_Impl returned 0 (maxfd=-1) for WriteSet=0x7ffff6ed9381\nwr_set post-ConvertIn (partial): 0x7ffff6ed9210 bytes[00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ]\nNo valid file descriptors found (maxfd=-1), setting return_code=OS_ERR_INVALID_ID\nNo ConvertOut calls because return_code != OS_SUCCESS (-16)\nOS_SelectMultiple_Impl: exit with return_code=-16\n"
+}

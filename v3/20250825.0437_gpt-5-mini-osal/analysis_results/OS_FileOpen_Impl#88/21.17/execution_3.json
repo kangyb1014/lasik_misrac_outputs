@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpfeuxgt5v/src/src/os/portable/os-impl-posix-files.c: In function 'OS_FileOpen_Impl':\n/tmp/tmpfeuxgt5v/src/src/os/portable/os-impl-posix-files.c:79:17: error: invalid storage class for function 'probe_log'\n   79 |     static void probe_log(const char *fmt, ...)\n      |                 ^~~~~~~~~\n/tmp/tmpfeuxgt5v/src/src/os/portable/os-impl-posix-files.c:94:19: error: invalid storage class for function 'safe_strnlen'\n   94 |     static size_t safe_strnlen(const char *s, size_t maxlen)\n      |                   ^~~~~~~~~~~~\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:342: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-posix-files.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

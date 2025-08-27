@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:2291:3: error: call to undeclared function 'probe_log_state'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n 2291 |   probe_log_state (c);\n      |   ^\nconnection.c:2291:3: note: did you mean 'probe_log_ptrs'?\nconnection.c:2271:1: note: 'probe_log_ptrs' declared here\n 2271 | probe_log_ptrs (const char *event, const void *c, const void *r)\n      | ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

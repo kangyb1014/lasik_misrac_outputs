@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nconst char *UtAssert_GetCaseTypeAbbrev(UtAssert_CaseType_t CaseType)\n{\n    const char *AbbrevStr;\n\n    switch (CaseType)\n    {\n        case UTASSERT_CASETYPE_ABORT:\n            AbbrevStr = \"ABORT\";\n            break;\n        case UTASSERT_CASETYPE_FAILURE:\n            AbbrevStr = \"FAIL\";\n            break;\n        case UTASSERT_CASETYPE_MIR:\n            AbbrevStr = \"MIR\";\n            break;\n        case UTASSERT_CASETYPE_TSF:\n            AbbrevStr = \"TSF\";\n            break;\n        case UTASSERT_CASETYPE_TTF:\n            AbbrevStr = \"TTF\";\n            break;\n        case UTASSERT_CASETYPE_WARN:\n            AbbrevStr = \"WARN\";\n            break;\n        case UTASSERT_CASETYPE_NA:\n            AbbrevStr = \"N/A\";\n            break;\n        case UTASSERT_CASETYPE_BEGIN:\n            AbbrevStr = \"BEGIN\";\n            break;\n        case UTASSERT_CASETYPE_END:\n            AbbrevStr = \"END\";\n            break;\n        case UTASSERT_CASETYPE_PASS:\n            AbbrevStr = \"PASS\";\n            break;\n        case UTASSERT_CASETYPE_INFO:\n            AbbrevStr = \"INFO\";\n            break;\n        case UTASSERT_CASETYPE_FLOW:\n            AbbrevStr = \"FLOW\";\n            break;\n        case UTASSERT_CASETYPE_DEBUG:\n            AbbrevStr = \"DEBUG\";\n            break;\n        default:\n            /* do not return NULL, as the result may be directly passed to C library functions */\n            AbbrevStr = \"OTHER\";\n            break;\n    }\n\n    return AbbrevStr;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'UtAssert_GetCaseTypeAbbrev': {'callees': [], 'callers': ['UT_BSP_DoText']}, 'UT_BSP_DoText': {'callees': ['UT_BSP_Lock', 'OS_BSP_ConsoleOutput_Impl', 'UtAssert_GetCaseTypeAbbrev', 'OS_BSP_ConsoleSetMode_Impl', 'UT_BSP_Unlock', 'OS_BSP_Shutdown_Impl'], 'callers': ['UtAssert_DoReport', 'UtAssert_DoTestSegmentReport', 'UtAssert_EndTest', 'UtAssert_Abort', 'UtAssert_Message', 'UtMessage', 'UtPrintx', 'UT_BSP_Setup', 'UT_BSP_StartTestSegment']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nControlling expressions shall not be invariant. Here are exceptions to this rule:\n1. Invariants that are used to create infinite loops are permitted.\n2. A do-while loop with an essentially Boolean controlling expression that evaluates to false and satisfies the constraints and semantics for an integer constant expression is permitted.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "UtAssert_CaseType_t",
+    "UTASSERT_CASETYPE_ABORT",
+    "UTASSERT_CASETYPE_FAILURE",
+    "UTASSERT_CASETYPE_MIR",
+    "UTASSERT_CASETYPE_TSF",
+    "UTASSERT_CASETYPE_TTF",
+    "UTASSERT_CASETYPE_WARN",
+    "UTASSERT_CASETYPE_NA",
+    "UTASSERT_CASETYPE_BEGIN",
+    "UTASSERT_CASETYPE_END",
+    "UTASSERT_CASETYPE_PASS",
+    "UTASSERT_CASETYPE_INFO",
+    "UTASSERT_CASETYPE_FLOW",
+    "UTASSERT_CASETYPE_DEBUG",
+    "UT_BSP_DoText"
+  ],
+  "explanation": "- UtAssert_CaseType_t: needed to know whether the controlling expression (CaseType) is an enum/typedef and whether its values are compile-time constants or can vary at runtime.\\n- UTASSERT_CASETYPE_* (all enumerators listed): the actual definitions/values of these case labels are required to determine if the switch is effectively switching over a compile-time constant or an invariant set (e.g., if they are #defines or have fixed single value semantics that could make the expression invariant).\\n- UT_BSP_DoText: this function is the caller that directly invokes UtAssert_GetCaseTypeAbbrev (per the call graph). Its implementation determines what value is passed into CaseType; inspecting it is necessary to determine whether CaseType can vary at runtime or is always a constant/invariant in actual use."
+}

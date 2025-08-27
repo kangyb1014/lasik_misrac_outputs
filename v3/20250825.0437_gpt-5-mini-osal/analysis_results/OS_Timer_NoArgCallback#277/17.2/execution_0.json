@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp8rk5m1ej/src/src/os/shared/src/osapi-time.c: In function 'OS_Timer_NoArgCallback':\n/tmp/tmp8rk5m1ej/src/src/os/shared/src/osapi-time.c:255:47: error: expected ')' before 'PRIxPTR'\n  255 |         fprintf(log, \"Conv.timer_cb ptr = 0x%\" PRIxPTR \"\\n\", (uintptr_t)fp_bits);\n      |                ~                              ^~~~~~~~\n      |                                               )\n/tmp/tmp8rk5m1ej/src/src/os/shared/src/osapi-time.c:54:1: note: 'PRIxPTR' is defined in header '<inttypes.h>'; did you forget to '#include <inttypes.h>'?\n   53 | #include \"os-shared-task.h\"\n  +++ |+#include <inttypes.h>\n   54 | \ngmake[2]: *** [CMakeFiles/osal.dir/build.make:370: CMakeFiles/osal.dir/src/os/shared/src/osapi-time.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER OS_GetErrorName: error_num=-1, err_name_ptr=(nil)\nSearching GLOBAL table at 0x55a1c21f74c0, first entry: Number=0, Name=0x55a1c21eaed8\nEvaluate GLOBAL while condition: (Error->Name != NULL)=true, (Error->Number != error_num)=true\nGLOBAL loop iterate: current entry addr=0x55a1c21f74c0, Number=0, Name=OS_SUCCESS\nGLOBAL loop advanced to addr=0x55a1c21f74d0, Number=-1, Name=0x55a1c21eaee3\nAfter GLOBAL search: entry addr=0x55a1c21f74d0, Number=-1, Name=0x55a1c21eaee3\nFound in GLOBAL table: Number=-1, Name=OS_ERROR\nMatch found: copying name 'OS_ERROR' into provided buffer\n"
+}

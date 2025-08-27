@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpwh4p17zf/src/src/os/shared/src/osapi-timebase.c: In function 'OS_TimeBaseGetFreeRun':\n/tmp/tmpwh4p17zf/src/src/os/shared/src/osapi-timebase.c:372:5: error: aggregate value used where an integer was expected\n  372 |     probe_log(\"OBJGET_RET\", \"OS_ObjectIdGetById returned %d (token=%u)\", (int)return_code, (unsigned)token);\n      |     ^~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:356: CMakeFiles/osal.dir/src/os/shared/src/osapi-timebase.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

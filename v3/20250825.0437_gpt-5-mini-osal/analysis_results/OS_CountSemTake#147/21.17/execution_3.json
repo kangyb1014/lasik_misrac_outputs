@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[OS_CountSemTake] enter: sem_id=3735928559, OS_ObjectIdGetById_return=-35\n[OS_CountSemTake] token_addr=0x7ffdf63db9d0, token_size=20\n[OS_CountSemTake] OS_ObjectIdGetById failed, skipping OS_CountSemTake_Impl\n[OS_CountSemTake] enter: sem_id=0, OS_ObjectIdGetById_return=-35\n[OS_CountSemTake] token_addr=0x7ffdf63db9d0, token_size=20\n[OS_CountSemTake] OS_ObjectIdGetById failed, skipping OS_CountSemTake_Impl\n"
+}

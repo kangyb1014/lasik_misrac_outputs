@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[probe] STAGE: entry\n[probe] lfs=0x7fff46a0c958, file=0x7fff46a0c6f0\n[probe] lfs->cfg=0x7fff46a0c860\n[probe] lfs->cfg->cache_size=64\n[probe] file->cfg=0x15937e23\n"
+}

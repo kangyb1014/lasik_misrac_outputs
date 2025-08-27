@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_Milli2Ticks(uint32 milli_seconds, int *ticks)\n{\n    uint64 num_of_ticks;\n    int32  return_code = OS_SUCCESS;\n\n    num_of_ticks = (((uint64)milli_seconds * OS_SharedGlobalVars.TicksPerSecond) + 999) / 1000;\n\n    /* Check against maximum int32 (limit from some OS's) */\n    if (num_of_ticks <= INT_MAX)\n    {\n        *ticks = (int)num_of_ticks;\n    }\n    else\n    {\n        return_code = OS_ERROR;\n        *ticks      = 0;\n    }\n\n    return return_code;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_SharedGlobalVars",
+    "OS_SharedGlobalVars.TicksPerSecond",
+    "OS_SUCCESS",
+    "OS_ERROR",
+    "INT_MAX",
+    "uint32",
+    "uint64",
+    "int32",
+    "memcmp",
+    "<string.h> (or the translation-unit that may #define/declare memcmp)",
+    "any macros used to define OS_SUCCESS/OS_ERROR/OS_SharedGlobalVars"
+  ],
+  "explanation": "For checking the MISRA rule forbidding use of memcmp to compare null-terminated strings you must determine whether memcmp is used directly in this function or is pulled in indirectly via macros/definitions referenced by this function. Explanations:\n\n- OS_SharedGlobalVars: The global variable referenced in the expression could be a macro or an accessor that expands to code; inspect its definition to ensure it does not expand/forward to a function that uses memcmp.\n- OS_SharedGlobalVars.TicksPerSecond: The member access might be implemented via macros or inline accessors; examine the member definition (and any accessor macros) to confirm no hidden calls to memcmp.\n- OS_SUCCESS and OS_ERROR: These identifiers may be macros (or inline expressions) \u2014 examine their definitions to ensure they do not expand to code that invokes memcmp.\n- INT_MAX: Although ordinarily a constant, check its definition inclusion to ensure no unexpected macro side-effects in this translation unit.\n- uint32, uint64, int32: The typedefs or macros that supply these types should be checked to ensure they are plain typedefs/macros and do not hide function-like behavior that could call memcmp (rare but necessary for a sound static check).\n- memcmp: The symbol itself must be present/checked so the analyzer can detect any direct calls from this function or from macros expanded here.\n- <string.h> (or the translation unit that declares/defines memcmp): Include/headers and local replacements/overrides need inspection to detect any local implementation or macro that compares strings using memcmp.\n- any macros used to define OS_SUCCESS/OS_ERROR/OS_SharedGlobalVars: A generic entry to ensure all related macro definitions in headers are examined for hidden use of memcmp.\n\nTogether these symbols let a follow-up analyzer determine whether OS_Milli2Ticks contains, or expands to, any use of memcmp (directly or indirectly) that could be used to compare null-terminated strings, which would violate the MISRA rule."
+}

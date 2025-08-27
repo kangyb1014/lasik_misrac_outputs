@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_init: enter\niter: lbus=0x7fabfa273b60 bus_name=platform\nmetal_linux_probe_bus(0x7fabfa273b60) returned 0; valid now=1\niter: lbus=0x7fabfa274dc8 bus_name=pci\nmetal_linux_probe_bus(0x7fabfa274dc8) returned 0; valid now=2\nmetal_linux_bus_init: exit valid=2 return=0\nmetal_linux_bus_init: enter\niter: lbus=0x55822dff7260 bus_name=platform\nmetal_linux_probe_bus(0x55822dff7260) returned 0; valid now=1\niter: lbus=0x55822dff84c8 bus_name=pci\nmetal_linux_probe_bus(0x55822dff84c8) returned 0; valid now=2\nmetal_linux_bus_init: exit valid=2 return=0\n"
+}

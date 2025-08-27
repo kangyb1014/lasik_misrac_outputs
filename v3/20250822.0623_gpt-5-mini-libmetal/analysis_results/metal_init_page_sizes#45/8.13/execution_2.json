@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "event=base_page path=0x7f2d72872a79 path_str=\"/tmp\" size=4096 shift=12 flags=0x0\nevent=hugetlb_count path=(nil) size=2 shift=0 flags=0x0\nevent=hugetlb_multi_candidate path=(nil) size=2097152 shift=21 flags=0x54040000\nevent=hugetlb_multi_candidate path=(nil) size=1073741824 shift=30 flags=0x78040000\nevent=before_qsort path=(nil) size=0 shift=1 flags=0x0\nevent=init_page_sizes_complete path=(nil) size=4096 shift=12 flags=0x1\nevent=base_page path=0x561cf6a9fa41 path_str=\"/tmp\" size=4096 shift=12 flags=0x0\nevent=hugetlb_count path=(nil) size=2 shift=0 flags=0x0\nevent=hugetlb_multi_candidate path=(nil) size=2097152 shift=21 flags=0x54040000\nevent=hugetlb_multi_candidate path=(nil) size=1073741824 shift=30 flags=0x78040000\nevent=before_qsort path=(nil) size=0 shift=1 flags=0x0\nevent=init_page_sizes_complete path=(nil) size=4096 shift=12 flags=0x1\n"
+}

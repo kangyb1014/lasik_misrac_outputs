@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_linux_bus_init(void)\n{\n\tstruct linux_bus *lbus;\n\tint valid = 0;\n\n\tfor_each_linux_bus(lbus)\n\t\tvalid += metal_linux_probe_bus(lbus) ? 0 : 1;\n\n\treturn valid ? 0 : -ENODEV;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_bus_init': {'callees': ['metal_linux_probe_bus'], 'callers': ['metal_sys_init']}, 'metal_linux_probe_bus': {'callees': ['metal_linux_probe_driver', 'metal_linux_bus_close', 'metal_linux_register_bus'], 'callers': ['metal_linux_bus_init']}, 'metal_sys_init': {'callees': ['metal_init_page_sizes', 'metal_linux_bus_init', 'metal_linux_irq_init'], 'callers': ['metal_init']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "for_each_linux_bus (macro/iteration implementation)",
+    "linux bus list head / iterator state used by for_each_linux_bus (e.g. the global list variable the macro walks)",
+    "metal_linux_probe_bus (full definition)",
+    "metal_linux_probe_driver (definition) - callee of metal_linux_probe_bus",
+    "metal_linux_bus_close (definition) - callee of metal_linux_probe_bus",
+    "metal_linux_register_bus (definition) - callee of metal_linux_probe_bus",
+    "metal_sys_init (definition) - caller of metal_linux_bus_init",
+    "metal_init (definition) - caller chain above metal_sys_init"
+  ],
+  "explanation": "To prove whether any code in metal_linux_bus_init is unreachable you must know: (1) how the loop is implemented \u2014 the for_each_linux_bus macro and the underlying list/iterator it walks (if that list is always empty the loop body is unreachable); (2) the behavior of metal_linux_probe_bus (it might be non\u2011returning, always return a constant, or change global state), so include its full definition; (3) metal_linux_probe_bus's callees (metal_linux_probe_driver, metal_linux_bus_close, metal_linux_register_bus) because their side effects or attributes (e.g. __noreturn, infinite loops, unconditional exits) can make subsequent statements in the loop or function unreachable; and (4) the call chain above metal_linux_bus_init (metal_sys_init and metal_init) if you must decide whether the entire function is ever invoked in the program (a function that is never reachable from program start would itself be unreachable code). These symbols are required to determine all control\u2011flow/side\u2011effect cases that affect reachability of code inside metal_linux_bus_init."
+}

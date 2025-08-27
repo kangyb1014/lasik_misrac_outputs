@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpt0a5cezb/src/src/os/shared/src/osapi-time.c: In function 'OS_TimerGetInfo_log':\n/tmp/tmpt0a5cezb/src/src/os/shared/src/osapi-time.c:508:15: error: storage size of 'tm_buf' isn't known\n  508 |     struct tm tm_buf;\n      |               ^~~~~~\n/tmp/tmpt0a5cezb/src/src/os/shared/src/osapi-time.c:518:23: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  518 |     vfprintf(fp, fmt, ap);\n      |                       ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-time.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-time.dir/__/__/os/shared/src/osapi-time.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:4407: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-time.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

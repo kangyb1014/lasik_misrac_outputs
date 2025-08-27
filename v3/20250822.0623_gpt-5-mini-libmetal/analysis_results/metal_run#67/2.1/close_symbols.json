@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_run(int threads, metal_thread_t child, void *arg)\n{\n\tpthread_t tids[threads];\n\tint error, ts_created;\n\n\terror = metal_run_noblock(threads, child, arg, tids, &ts_created);\n\n\tmetal_finish_threads(ts_created, (void *)tids);\n\n\treturn error;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_run': {'callees': ['metal_run_noblock', 'metal_finish_threads'], 'callers': ['atomic', 'mutex', 'shmem', 'condition', 'spinlock']}, 'metal_run_noblock': {'callees': [], 'callers': ['condition', 'metal_run']}, 'metal_finish_threads': {'callees': [], 'callers': ['condition', 'metal_run']}, 'atomic': {'callees': ['metal_run'], 'callers': []}, 'mutex': {'callees': ['metal_mutex_init', 'metal_run', 'metal_mutex_deinit'], 'callers': []}, 'shmem': {'callees': ['metal_run'], 'callers': []}, 'condition': {'callees': ['metal_run_noblock', 'metal_run', 'metal_finish_threads'], 'callers': []}, 'spinlock': {'callees': ['metal_run'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_run_noblock",
+    "metal_finish_threads",
+    "exit",
+    "_Exit",
+    "abort",
+    "pthread_exit",
+    "longjmp",
+    "__attribute__((noreturn))",
+    "_Noreturn",
+    "metal_thread_t"
+  ],
+  "explanation": "- metal_run_noblock: The caller; whether this function ever returns (or is annotated as non\u2011returning) directly determines if the subsequent calls (metal_finish_threads and the final return) in metal_run are reachable. You need its prototype and full definition/body for reachability analysis.\n- metal_finish_threads: If this function is non\u2011returning (or annotated as such) then the final return in metal_run would be unreachable. You need its prototype and definition.\n- exit, _Exit, abort, pthread_exit, longjmp: Standard library/system functions that do not return (or transfer control out of the normal call/return flow). metal_run_noblock or metal_finish_threads may call one of these (directly or transitively); any such call makes subsequent code unreachable. Their presence/usage must be checked in the callees' bodies.\n- __attribute__((noreturn)) and _Noreturn: Compiler/language attributes that can mark a function as non\u2011returning. The analysis must detect these annotations on metal_run_noblock, metal_finish_threads, or any transitive callees to prove unreachable code.\n- metal_thread_t: The thread\u2011function type passed as child; metal_run_noblock may invoke the child and the child\u2019s signature/semantics (or known implementations) could affect whether control returns. Knowing this type and any known child implementations used in the project is required for a complete reachability assessment."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER OS_BinSemTimedWait: sem_id=3735928559, msecs=1000\ntoken address = 0x7fff3179bc10, sizeof(token) = 20\nOS_ObjectIdGetById returned -35\ntoken BEFORE calling Impl (len=20):\n  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 \n  00 00 00 00 \nEXIT OS_BinSemTimedWait: return_code=-35\n\nENTER OS_BinSemTimedWait: sem_id=0, msecs=1000\ntoken address = 0x7fff3179bc10, sizeof(token) = 20\nOS_ObjectIdGetById returned -35\ntoken BEFORE calling Impl (len=20):\n  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 \n  00 00 00 00 \nEXIT OS_BinSemTimedWait: return_code=-35\n\n"
+}

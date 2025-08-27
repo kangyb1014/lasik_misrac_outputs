@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[1756099302] OS_SelectMultiple ENTRY\n    ReadSet pointer:  (nil) (NULL)\n    WriteSet pointer: 0x7ffe8d1fdf81 (non-NULL)\n    msecs: 1\n    Note: probes do not dereference the pointers; they are logged only as addresses.\n\n[1756099302] OS_SelectMultiple BEFORE calling OS_SelectMultiple_Impl\n    Forwarding ReadSet: (nil)\n    Forwarding WriteSet: 0x7ffe8d1fdf81\n    Forwarding msecs: 1\n\n[1756099302] OS_SelectMultiple RETURN\n    return_code: -16\n\n"
+}

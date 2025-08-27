@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpvtky95gi/src/src/os/portable/os-impl-bsd-sockets.c: In function 'os_socketconnect_probe':\n/tmp/tmpvtky95gi/src/src/os/portable/os-impl-bsd-sockets.c:308:19: error: storage size of 'tmbuf' isn't known\n  308 |         struct tm tmbuf;\n      |                   ^~~~~\n/tmp/tmpvtky95gi/src/src/os/portable/os-impl-bsd-sockets.c:321:23: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  321 |     vfprintf(fp, fmt, ap);\n      |                       ^~\ngmake[2]: *** [unit-test-coverage/vxworks/CMakeFiles/utobj_coverage-vxworks-bsd-sockets.dir/build.make:76: unit-test-coverage/vxworks/CMakeFiles/utobj_coverage-vxworks-bsd-sockets.dir/__/__/os/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:2645: unit-test-coverage/vxworks/CMakeFiles/utobj_coverage-vxworks-bsd-sockets.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

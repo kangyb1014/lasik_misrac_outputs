@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:5277:95: error: operand of type 'struct MHD_itc_' where arithmetic or pointer type is required\n 5277 |     mhd_probe_log (\"about to populate itc entry: poll_count=%u, itc=%p\", poll_count, (void *) daemon->itc);\n      |                                                                                               ^~~~~~~~~~~\n1 error generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

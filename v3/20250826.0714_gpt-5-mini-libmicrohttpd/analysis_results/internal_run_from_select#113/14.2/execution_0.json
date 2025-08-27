@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:4591:2: error: unterminated conditional directive\n 4591 | #if defined(HTTPS_SUPPORT) && defined(UPGRADE_SUPPORT)\n      |  ^\ndaemon.c:9937:22: error: expected '}'\n 9937 | /* end of daemon.c */\n      |                      ^\ndaemon.c:4493:1: note: to match this '{'\n 4493 | {\n      | ^\n2 errors generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

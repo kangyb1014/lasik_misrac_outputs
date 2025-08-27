@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:2313:45: error: no member named 'set' in 'struct MHD_Reply_Properties'\n 2313 |                     (unsigned) (c->rp.props.set),\n      |                                 ~~~~~~~~~~~ ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

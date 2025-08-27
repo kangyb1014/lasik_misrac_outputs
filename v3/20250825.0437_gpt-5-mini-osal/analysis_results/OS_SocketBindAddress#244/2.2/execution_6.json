@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp6xcp395k/src/src/os/shared/src/osapi-sockets.c: In function 'OS_SocketBindAddress':\n/tmp/tmp6xcp395k/src/src/os/shared/src/osapi-sockets.c:311:80: error: invalid operands to binary % (have 'char *' and 'char *')\n  311 |                 OS_ProbeLog(\"OS_SocketBindAddress: Bind success: created name \"%\" and updated state to 0x%08lx\", (const void *)stream->stream_name, (unsigned long)stream->stream_state);\n      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n      |                             |                                                  |\n      |                             char *                                             char *\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:328: CMakeFiles/osal.dir/src/os/shared/src/osapi-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:9108:54: error: operand of type 'MHD_thread_handle_ID_' (aka 'struct _MHD_thread_handle_ID_') where arithmetic or pointer type is required\n 9108 |               (void *) daemon->worker_pool, (void *) daemon->tid);\n      |                                                      ^~~~~~~~~~~\ndaemon.c:9290:43: error: operand of type 'MHD_thread_handle_ID_' (aka 'struct _MHD_thread_handle_ID_') where arithmetic or pointer type is required\n 9290 |                    (void *) pos, (void *) pos->tid);\n      |                                           ^~~~~~~~\n2 errors generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

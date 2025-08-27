@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_open(const char *path, int shm)\n{\n\tconst int flags = O_RDWR | O_CREAT | O_CLOEXEC;\n\tconst int mode = S_IRUSR | S_IWUSR;\n\tint fd;\n\n\tif (!path || !strlen(path))\n\t\treturn -EINVAL;\n\n\tfd = shm ? shm_open(path, flags, mode) : open(path, flags, mode);\n\treturn fd < 0 ? -errno : fd;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_open': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_open']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_open': {'callees': ['metal_shmem_open_generic', 'metal_open', 'metal_shmem_try_map'], 'callers': ['shmem_child']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "strlen",
+    "open",
+    "shm_open",
+    "errno",
+    "EINVAL",
+    "O_RDWR",
+    "O_CREAT",
+    "O_CLOEXEC",
+    "S_IRUSR",
+    "S_IWUSR",
+    "<string.h>",
+    "<fcntl.h>",
+    "<sys/stat.h>",
+    "<errno.h>",
+    "<sys/mman.h>"
+  ],
+  "explanation": "For MISRA check of \"Language extensions should not be used\" we must know whether any identifiers used by metal_open are compiler-specific extensions (not standard C). Each listed symbol is required to determine provenance/standardness:\n- strlen: standard C library function; confirm it is not a compiler intrinsic/extension on the target toolchain.\n- open: POSIX file-open function; check whether it is a compiler/library extension or available as standard on the target platform.\n- shm_open: POSIX shared-memory open; often a POSIX extension (not ISO C); required to decide if this is a language/library extension.\n- errno: externally defined macro/variable for error codes; inspect whether the toolchain treats errno specially (implementation-defined behavior or extension).\n- EINVAL: errno macro for invalid argument; needed to confirm it is a standard errno constant and not a compiler-specific symbol.\n- O_RDWR, O_CREAT, O_CLOEXEC: file-opening flag macros \u2014 O_CLOEXEC in particular is a POSIX/Linux extension; required to determine if any used flag is a non\u2011standard extension.\n- S_IRUSR, S_IWUSR: permission mode macros (from sys/stat); confirm these are POSIX/OS macros, not compiler extensions.\n- <string.h>, <fcntl.h>, <sys/stat.h>, <errno.h>, <sys/mman.h>: headers where the above symbols are declared. Inspecting these headers (or the toolchain documentation) shows whether the symbols are part of ISO C, POSIX, or compiler/vendor extensions.\nUse these symbols/headers to check standards provenance (ISO C vs POSIX vs vendor extension) and to decide if metal_open uses any compiler language extensions that would violate the MISRA rule."
+}

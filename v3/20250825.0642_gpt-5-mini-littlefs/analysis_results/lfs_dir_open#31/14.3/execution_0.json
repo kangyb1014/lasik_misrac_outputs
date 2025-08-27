@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:521:20: error: expected identifier or '(' before 'int'\n  521 | static inline void LFS_ASSERT(int expr) { (void)expr; }\n      |                    ^~~~~~~~~~\nlfs.c:521:30: error: expected ')' before '?' token\n  521 | static inline void LFS_ASSERT(int expr) { (void)expr; }\n      |                    ~~~~~~~~~~^\n      |                              )\nlfs.c:523:1: error: expected identifier or '(' before '{' token\n  523 | {\n      | ^\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_sys_init: entered\nTMPDIR not set, using default '/tmp'\n_metal.tmp_path address: 0x55caab8317f8, current value: (nil)\nAbout to assign tmp_path (ptr=0x7f6878fb4a06, val='/tmp') to _metal.tmp_path\nAssigned _metal.tmp_path = 0x7f6878fb4a06 (string='/tmp')\nseed read from /dev/urandom: 0x73d79a72\nmetal_init_page_sizes returned 0\nmetal_linux_bus_init returned 0\n_metal.pagemap_fd = 5\nmetal_sys_init: completed successfully\nmetal_sys_init: entered\nTMPDIR not set, using default '/tmp'\n_metal.tmp_path address: 0x55fff4b2a498, current value: (nil)\nAbout to assign tmp_path (ptr=0x55fff4b1c9ce, val='/tmp') to _metal.tmp_path\nAssigned _metal.tmp_path = 0x55fff4b1c9ce (string='/tmp')\nseed read from /dev/urandom: 0x2ab06c3f\nmetal_init_page_sizes returned 0\nmetal_linux_bus_init returned 0\n_metal.pagemap_fd = 5\nmetal_sys_init: completed successfully\n"
+}

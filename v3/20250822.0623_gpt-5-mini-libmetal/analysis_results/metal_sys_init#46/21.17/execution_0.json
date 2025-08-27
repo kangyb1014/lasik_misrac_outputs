@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER metal_sys_init\ntmp_path='/tmp'\nPATH_MAX=4096\n_metal (addr) = 0x564eb9af47a0\n_metal.page_sizes (addr) = 0x564eb9af4800\nseed read from /dev/urandom = 3601003029\nCalling metal_init_page_sizes()\nmetal_init_page_sizes() returned 0\nCalling metal_linux_bus_init()\nmetal_linux_bus_init() returned 0\nOpening /proc/self/pagemap\nCalling metal_linux_irq_init()\nEXIT metal_sys_init (return 0)\nENTER metal_sys_init\ntmp_path='/tmp'\nPATH_MAX=4096\n_metal (addr) = 0x5587c04c6480\n_metal.page_sizes (addr) = 0x5587c04c64e0\nseed read from /dev/urandom = 3131238622\nCalling metal_init_page_sizes()\nmetal_init_page_sizes() returned 0\nCalling metal_linux_bus_init()\nmetal_linux_bus_init() returned 0\nOpening /proc/self/pagemap\nCalling metal_linux_irq_init()\nEXIT metal_sys_init (return 0)\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpernv6msk/src/src/os/shared/src/osapi-filesys.c: In function 'OS_chkfs_log_after':\n/tmp/tmpernv6msk/src/src/os/shared/src/osapi-filesys.c:632:46: error: 'OS_object_token_t' {aka 'const struct OS_object_token'} has no member named 'id'\n  632 |         fprintf(f, \"  token->id: %d\\n\", token->id);\n      |                                              ^~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:188: CMakeFiles/osal.dir/src/os/shared/src/osapi-filesys.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

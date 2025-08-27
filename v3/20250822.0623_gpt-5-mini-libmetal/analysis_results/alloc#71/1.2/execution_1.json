@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "alloc: entry\nalloc: metal_allocate_memory(1000) returned 0x5649cc8bd520\nalloc: freeing ptr=0x5649cc8bd520\nalloc: freed ptr=0x5649cc8bd520\nalloc: returning 0\nalloc: entry\nalloc: metal_allocate_memory(1000) returned 0x55b9c240f520\nalloc: freeing ptr=0x55b9c240f520\nalloc: freed ptr=0x55b9c240f520\nalloc: returning 0\n"
+}

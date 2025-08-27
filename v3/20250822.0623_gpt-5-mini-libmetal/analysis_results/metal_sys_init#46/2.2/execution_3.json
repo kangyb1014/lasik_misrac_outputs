@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[metal_sys_init] before metal_unused\n params_ptr=0x7ffcb47d02c0\n &params_variable=0x7ffcb47d01f8\n tmp_path=/tmp\n seed=570679177\n pagemap_fd=4\n\n[metal_sys_init] after metal_unused\n params_ptr=0x7ffcb47d02c0\n &params_variable=0x7ffcb47d01f8\n tmp_path=/tmp\n seed=570679177\n pagemap_fd=4\n\n[metal_sys_init] before metal_unused\n params_ptr=0x7ffd28e928e0\n &params_variable=0x7ffd28e92818\n tmp_path=/tmp\n seed=301940783\n pagemap_fd=4\n\n[metal_sys_init] after metal_unused\n params_ptr=0x7ffd28e928e0\n &params_variable=0x7ffd28e92818\n tmp_path=/tmp\n seed=301940783\n pagemap_fd=4\n\n"
+}

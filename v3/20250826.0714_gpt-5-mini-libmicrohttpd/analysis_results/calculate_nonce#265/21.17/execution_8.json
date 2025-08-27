@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[calculate_nonce] stage=entry nonce_time=79 mthd_e=1 method_ptr=0x7f2200000df0\n            rnd_size=8 saddr_size=16 uri_len=8 realm_len=16 bind_options=0x00000000\n            method_bytes[0..255]: 47 45 54 00 (NUL at 3)\n[calculate_nonce] stage=exit nonce_time=79 mthd_e=1 method_ptr=0x7f2200000df0\n            rnd_size=8 saddr_size=16 uri_len=8 realm_len=16 bind_options=0x00000000\n            method_bytes[0..255]: 47 45 54 00 (NUL at 3)\n[calculate_nonce] stage=entry nonce_time=115 mthd_e=1 method_ptr=0x7f2b84000df0\n            rnd_size=8 saddr_size=16 uri_len=8 realm_len=16 bind_options=0x00000000\n            method_bytes[0..255]: 47 45 54 00 (NUL at 3)\n[calculate_nonce] stage=exit nonce_time=115 mthd_e=1 method_ptr=0x7f2b84000df0\n            rnd_size=8 saddr_size=16 uri_len=8 realm_len=16 bind_options=0x00000000\n            method_bytes[0..255]: 47 45 54 00 (NUL at 3)\n"
+}

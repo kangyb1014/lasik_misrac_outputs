@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_init: start\niter=0 lbus_ptr=0x7f1b8f466b60\niter=0 probe_ret=0\niter=0 valid=1\niter=1 lbus_ptr=0x7f1b8f467dc8\niter=1 probe_ret=0\niter=1 valid=2\nmetal_linux_bus_init: end valid=2 return=0\nmetal_linux_bus_init: start\niter=0 lbus_ptr=0x55b41348a260\niter=0 probe_ret=0\niter=0 valid=1\niter=1 lbus_ptr=0x55b41348b4c8\niter=1 probe_ret=0\niter=1 valid=2\nmetal_linux_bus_init: end valid=2 return=0\n"
+}

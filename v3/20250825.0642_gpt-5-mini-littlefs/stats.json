@@ -1,0 +1,103 @@
+{
+  "total_runs": {
+    "classifier": 3565,
+    "build_fix": 58,
+    "reviewer": 625,
+    "close_symbol": 1100,
+    "predict_log": 0,
+    "frags": 1100,
+    "test_generator": 617,
+    "simple_baseline": 0
+  },
+  "total_agent_fails": {
+    "classifier": 0,
+    "build_fix": 0,
+    "reviewer": 0,
+    "close_symbol": 1,
+    "predict_log": 0,
+    "frags": 9,
+    "test_generator": 2,
+    "simple_baseline": 0
+  },
+  "total_api_tries": {
+    "classifier": 3565,
+    "build_fix": 58,
+    "reviewer": 625,
+    "close_symbol": 1100,
+    "predict_log": 0,
+    "frags": 1100,
+    "test_generator": 617,
+    "simple_baseline": 0
+  },
+  "total_api_success": {
+    "classifier": 3565,
+    "build_fix": 58,
+    "reviewer": 625,
+    "close_symbol": 1099,
+    "predict_log": 0,
+    "frags": 1091,
+    "test_generator": 615,
+    "simple_baseline": 0
+  },
+  "total_api_fails": {
+    "classifier": 0,
+    "build_fix": 0,
+    "reviewer": 0,
+    "close_symbol": 0,
+    "predict_log": 0,
+    "frags": 0,
+    "test_generator": 0,
+    "simple_baseline": 0
+  },
+  "input_tokens": {
+    "classifier": 11949382,
+    "build_fix": 116696,
+    "reviewer": 2353507,
+    "close_symbol": 1322939,
+    "predict_log": 0,
+    "frags": 2943254,
+    "test_generator": 599628,
+    "simple_baseline": 0
+  },
+  "output_tokens": {
+    "classifier": 3078423,
+    "build_fix": 140621,
+    "reviewer": 798205,
+    "close_symbol": 2360073,
+    "predict_log": 0,
+    "frags": 2494761,
+    "test_generator": 1672237,
+    "simple_baseline": 0
+  },
+  "total_tokens": {
+    "classifier": 15027805,
+    "build_fix": 257317,
+    "reviewer": 3151712,
+    "close_symbol": 3683012,
+    "predict_log": 0,
+    "frags": 5438015,
+    "test_generator": 2271865,
+    "simple_baseline": 0
+  },
+  "total_classifier_positives": 627,
+  "classifier_execution_results": {
+    "success": 377,
+    "parse_failed": 7,
+    "compile_failed": 51,
+    "empty_test_log": 180
+  },
+  "total_build_fix_tries": 58,
+  "build_fix_execution_results": {
+    "success": 31,
+    "parse_failed": 4,
+    "compile_failed": 15,
+    "empty_test_log": 8
+  },
+  "review_results": {
+    "positive": 404,
+    "negative": 221
+  },
+  "elapsed_time": "02:51:25",
+  "start_time": "2025-08-25 06:42:38",
+  "end_time": "2025-08-25 09:34:04"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_close: entry filedes=0\nOS_close: OS_ObjectIdGetById returned -16\nOS_close: exit returning -16\nOS_close: entry filedes=0\nOS_close: OS_ObjectIdGetById returned -16\nOS_close: exit returning -16\nOS_close: entry filedes=0\nOS_close: OS_ObjectIdGetById returned -16\nOS_close: exit returning -16\n"
+}

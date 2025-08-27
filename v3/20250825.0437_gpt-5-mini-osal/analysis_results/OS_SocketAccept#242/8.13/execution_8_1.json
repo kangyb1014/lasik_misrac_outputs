@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c: In function 'OS_SocketAccept':\n/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c:344:47: error: invalid initializer\n  344 |     OS_object_token_t            sock_token = 0;\n      |                                               ^\n/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c:345:47: error: invalid initializer\n  345 |     OS_object_token_t            conn_token = 0;\n      |                                               ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:328: CMakeFiles/osal.dir/src/os/shared/src/osapi-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

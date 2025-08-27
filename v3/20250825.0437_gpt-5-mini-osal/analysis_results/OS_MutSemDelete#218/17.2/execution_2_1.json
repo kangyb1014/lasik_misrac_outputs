@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: OS_MutSemDelete(sem_id=0)\nAfter OS_ObjectIdGetById: return_code=-35, token_addr=0x7ffed0aab040\nSkipping delete implementation since ObjectIdGetById returned -35\nEXIT: OS_MutSemDelete -> -35\n"
+}

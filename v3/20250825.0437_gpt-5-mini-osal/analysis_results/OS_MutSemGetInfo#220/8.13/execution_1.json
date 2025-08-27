@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER OS_MutSemGetInfo: sem_id=3735928559, mut_prop=0x7ffe78760a50\nOS_ObjectIdGetById returned -35 (sem_id=3735928559)\nEXIT OS_MutSemGetInfo: return_code=-35\nENTER OS_MutSemGetInfo: sem_id=0, mut_prop=0x7ffe78760a50\nOS_ObjectIdGetById returned -35 (sem_id=0)\nEXIT OS_MutSemGetInfo: return_code=-35\n"
+}

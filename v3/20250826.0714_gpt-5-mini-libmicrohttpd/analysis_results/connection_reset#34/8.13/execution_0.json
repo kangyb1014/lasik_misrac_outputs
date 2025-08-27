@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:1299:13: error: static declaration of 'MHD_connection_close_' follows non-static declaration\n 1299 | static void MHD_connection_close_(struct MHD_Connection *c, int status)\n      |             ^\n./connection.h:160:1: note: previous declaration is here\n  160 | MHD_connection_close_ (struct MHD_Connection *connection,\n      | ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

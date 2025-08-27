@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: OS_BinSemGetInfo sem_id=3735928559 bin_prop=0x7fffe8aecd20\nOS_ObjectIdGetById returned -35 for sem_id=3735928559; token_addr=0x7fffe8aeccd0\nSkipping table lookup and impl; returning -35\nEXIT: OS_BinSemGetInfo sem_id=3735928559 return_code=-35\nENTER: OS_BinSemGetInfo sem_id=0 bin_prop=0x7fffe8aecd20\nOS_ObjectIdGetById returned -35 for sem_id=0; token_addr=0x7fffe8aeccd0\nSkipping table lookup and impl; returning -35\nEXIT: OS_BinSemGetInfo sem_id=0 return_code=-35\n"
+}

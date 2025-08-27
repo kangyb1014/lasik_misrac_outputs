@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[OS_MutSemGetInfo] entry: sem_id=3735928559 return_code=0 token_ptr=(nil) record_ptr=(nil)\n[OS_MutSemGetInfo] after_ObjectIdGetById: sem_id=3735928559 return_code=-35 token_ptr=0x7ffe56765580 record_ptr=(nil)\n[OS_MutSemGetInfo] entry: sem_id=0 return_code=0 token_ptr=(nil) record_ptr=(nil)\n[OS_MutSemGetInfo] after_ObjectIdGetById: sem_id=0 return_code=-35 token_ptr=0x7ffe56765580 record_ptr=(nil)\n"
+}

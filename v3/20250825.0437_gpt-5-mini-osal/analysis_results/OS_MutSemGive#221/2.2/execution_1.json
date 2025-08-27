@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemGive: entry sem_id=3735928559\nOS_MutSemGive: OS_ObjectIdGetById returned -35 for sem_id=3735928559\nOS_MutSemGive: exit sem_id=3735928559 return_code=-35\nOS_MutSemGive: entry sem_id=0\nOS_MutSemGive: OS_ObjectIdGetById returned -35 for sem_id=0\nOS_MutSemGive: exit sem_id=0 return_code=-35\n"
+}

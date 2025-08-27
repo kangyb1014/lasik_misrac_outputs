@@ -1,0 +1,11 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void metal_uio_dev_dma_unmap(struct linux_bus *lbus,\n\t\t\t\t    struct linux_device *ldev,\n\t\t\t\t    uint32_t dir,\n\t\t\t\t    struct metal_sg *sg,\n\t\t\t\t    int nents)\n{\n\t(void) lbus;\n\t(void) ldev;\n\t(void) dir;\n\t(void) sg;\n\t(void) nents;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "All direct callers of metal_uio_dev_dma_unmap (every function that contains a call to metal_uio_dev_dma_unmap)",
+    "Any code that takes the address of metal_uio_dev_dma_unmap (expressions like &metal_uio_dev_dma_unmap) \u2014 function pointer variables, arrays, struct initializers, or assignment sites",
+    "Any function-pointer tables, vtables or driver ops structs defined in the same translation unit (or initialized there) that could contain metal_uio_dev_dma_unmap",
+    "The translation unit (C source file) that defines metal_uio_dev_dma_unmap (to find indirect uses via macros, static inline wrappers, or conditional compilation)",
+    "Build/export metadata or symbol lists (e.g. linker script, EXPORT_SYMBOL-like lists, device-driver registration code) that might expose or register the function outside the TU"
+  ],
+  "explanation": "To decide whether this static function is unreachable (dead code) you must know all possible ways it can be invoked. Direct callers show explicit calls. Any place that takes its address (function\u2011pointer variables, arrays, struct initializers) or inserts it into driver ops/tables can make it reachable indirectly. Because the function has internal linkage (static), reachability is limited to its translation unit, so the entire C file must be inspected for macroized/conditional uses or address\u2011taking. Finally, build/linker or registration metadata can indicate uses not visible as normal calls (e.g. exported/registered callbacks), so those symbols must be checked as well."
+}

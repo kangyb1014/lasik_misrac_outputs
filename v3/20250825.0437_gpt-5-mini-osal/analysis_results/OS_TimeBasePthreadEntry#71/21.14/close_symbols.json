@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *OS_TimeBasePthreadEntry(void *arg)\n{\n    OS_VoidPtrValueWrapper_t local_arg;\n\n    /* cppcheck-suppress unreadVariable // intentional use of other union member */\n    local_arg.opaque_arg = arg;\n    OS_TimeBase_CallbackThread(local_arg.id);\n\n    return NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_TimeBasePthreadEntry': {'callees': ['OS_TimeBase_CallbackThread'], 'callers': []}, 'OS_TimeBase_CallbackThread': {'callees': ['OS_TaskRegister_Impl', 'OS_ObjectIdGetById', 'OS_ObjectIndexFromToken', 'OS_ObjectIdRelease', 'OS_TaskDelay_Impl', 'OS_TimeBaseLock_Impl', 'OS_ObjectIdEqual', 'OS_TimeBaseUnlock_Impl', 'OS_ObjectIdFromToken'], 'callers': ['OS_TimeBasePthreadEntry']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_TimeBase_CallbackThread",
+    "OS_VoidPtrValueWrapper_t (definition)",
+    "OS_TaskRegister_Impl",
+    "OS_ObjectIdGetById",
+    "OS_ObjectIndexFromToken",
+    "OS_ObjectIdRelease",
+    "OS_TaskDelay_Impl",
+    "OS_TimeBaseLock_Impl",
+    "OS_ObjectIdEqual",
+    "OS_TimeBaseUnlock_Impl",
+    "OS_ObjectIdFromToken",
+    "memcmp",
+    "strcmp",
+    "strncmp",
+    "project string/memory-compare wrappers or macros (e.g. OS_MEMCMP, OS_STRCMP, OS_STRNCMP)"
+  ],
+  "explanation": "Why each symbol is required:\n- OS_TimeBase_CallbackThread: This is the direct callee. Its implementation must be inspected to see whether it (or functions it calls) uses memcmp to compare null-terminated strings.\n- OS_VoidPtrValueWrapper_t (definition): The local union/struct determines what local_arg.id actually represents when OS_TimeBase_CallbackThread(local_arg.id) is called. If id contains a char * (string) or is derived from the opaque pointer, that changes whether memcmp might be used on a NUL-terminated string later.\n- OS_TaskRegister_Impl, OS_ObjectIdGetById, OS_ObjectIndexFromToken, OS_ObjectIdRelease, OS_TaskDelay_Impl, OS_TimeBaseLock_Impl, OS_ObjectIdEqual, OS_TimeBaseUnlock_Impl, OS_ObjectIdFromToken: These are the callees listed in the static call graph of OS_TimeBase_CallbackThread. Any of them might call memcmp (directly or via wrappers) to compare identifiers/strings; therefore their implementations must be inspected to detect misuse of memcmp on null-terminated strings.\n- memcmp: The MISRA rule specifically forbids using the standard memcmp to compare null-terminated strings. You must check for direct uses of memcmp in the above functions.\n- strcmp, strncmp: These are the correct string comparison functions for NUL-terminated strings; include them to distinguish whether code uses the appropriate API instead of memcmp (or to see wrappers that forward to these).\n- project string/memory-compare wrappers or macros (e.g. OS_MEMCMP, OS_STRCMP, OS_STRNCMP): Projects often wrap standard functions behind macros or helper functions. These wrappers/macros must be checked because they may expand to memcmp or otherwise perform comparisons that violate the rule.\n\nIn short: to determine if OS_TimeBasePthreadEntry (via OS_TimeBase_CallbackThread and its callees) violates the memcmp-on-NT-string rule you need the implementation/source or prototypes of OS_TimeBase_CallbackThread, the full set of functions it calls (listed above), the definition of the union used to pass the argument, and any uses/wrappers of memcmp/strcmp/strncmp so you can detect direct or indirect calls that compare NUL-terminated strings with memcmp."
+}

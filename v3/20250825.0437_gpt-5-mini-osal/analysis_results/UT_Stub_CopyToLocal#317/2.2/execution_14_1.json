@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp9y1_dlt9/src/ut_assert/src/utstubs.c:181:49: error: incompatible types when initializing type 'UT_EntryType_t' using type 'void *'\n  181 | static UT_StubTableEntry_t UT_Test_Stub = { { { NULL, 0u, 0u } } };\n      |                                                 ^~~~\ngmake[2]: *** [ut_assert/CMakeFiles/ut_assert.dir/build.make:104: ut_assert/CMakeFiles/ut_assert.dir/src/utstubs.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:788: ut_assert/CMakeFiles/ut_assert.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpsdictqtz/src/src/os/shared/src/osapi-module.c: In function 'OS_ModuleUnload_Log':\n/tmp/tmpsdictqtz/src/src/os/shared/src/osapi-module.c:283:5: error: unknown type name 'pid_t'\n  283 |     pid_t pid = getpid();\n      |     ^~~~~\n/tmp/tmpsdictqtz/src/src/os/shared/src/osapi-module.c:289:22: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  289 |     vfprintf(f, fmt, ap);\n      |                      ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-module.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-module.dir/__/__/os/shared/src/osapi-module.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3849: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-module.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

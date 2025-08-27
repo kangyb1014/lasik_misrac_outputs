@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_TaskGetInfo ENTRY: task_id=3735928559, task_prop=0x7fffa8c969e0\nOS_TaskGetInfo: task_prop after memset: name=\"\" creator=0 stack_size=0 priority=0\nOS_TaskGetInfo: OS_ObjectIdGetById returned -35, token_ptr=0x7fffa8c96890\nOS_TaskGetInfo ENTRY: task_id=0, task_prop=0x7fffa8c969e0\nOS_TaskGetInfo: task_prop after memset: name=\"\" creator=0 stack_size=0 priority=0\nOS_TaskGetInfo: OS_ObjectIdGetById returned -35, token_ptr=0x7fffa8c96890\n"
+}

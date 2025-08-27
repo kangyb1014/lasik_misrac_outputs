@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:3734:35: error: no member named 'tls_state' in 'struct MHD_Connection'\n 3734 |                  (int)connection->tls_state,\n      |                       ~~~~~~~~~~  ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

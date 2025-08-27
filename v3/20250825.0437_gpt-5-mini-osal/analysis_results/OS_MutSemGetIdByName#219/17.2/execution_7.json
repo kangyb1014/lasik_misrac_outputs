@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemGetIdByName: stage=entry, sem_id_ptr=(nil), sem_name=Name, return_code=-1\nOS_MutSemGetIdByName: stage=entry, sem_id_ptr=0x7ffefbf8059c, sem_name=<NULL>, return_code=-1\nOS_MutSemGetIdByName: stage=entry, sem_id_ptr=0x7ffefbf8059c, sem_name=YYYYYYYYYYYYYYYYYYYYYYYYYYYYY, return_code=-1\nOS_MutSemGetIdByName: stage=before_OS_ObjectIdFindByName, sem_id_ptr=0x7ffefbf8059c, sem_name=YYYYYYYYYYYYYYYYYYYYYYYYYYYYY, return_code=-1\nOS_MutSemGetIdByName: stage=after_OS_ObjectIdFindByName, sem_id_ptr=0x7ffefbf8059c, sem_name=YYYYYYYYYYYYYYYYYYYYYYYYYYYYY, return_code=-13\nOS_MutSemGetIdByName: stage=entry, sem_id_ptr=0x7ffefbf8059c, sem_name=NotFound, return_code=-1\nOS_MutSemGetIdByName: stage=before_OS_ObjectIdFindByName, sem_id_ptr=0x7ffefbf8059c, sem_name=NotFound, return_code=-1\nOS_MutSemGetIdByName: stage=after_OS_ObjectIdFindByName, sem_id_ptr=0x7ffefbf8059c, sem_name=NotFound, return_code=-17\n"
+}

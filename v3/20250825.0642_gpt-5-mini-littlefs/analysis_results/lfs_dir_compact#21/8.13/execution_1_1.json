@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: lfs_dir_compact; lfs=0x7ffe19e07268, dir=0x7ffe19e06e98, source=0x7ffe19e06e98, begin=0, end=1, attrcount=3\n  dir->pair[0]=0x00000001, dir->pair[1]=0x00000000\n  dir->rev=0xffffffff\nENTER: lfs_dir_compact; lfs=0x7ffe19e07268, dir=0x7ffe19e06e98, source=0x7ffe19e06e98, begin=0, end=1, attrcount=0\n  dir->pair[0]=0x00000001, dir->pair[1]=0x00000000\n  dir->rev=0xffffffff\n"
+}

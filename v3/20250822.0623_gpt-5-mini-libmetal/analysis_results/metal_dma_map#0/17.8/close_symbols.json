@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_dma_map(struct metal_device *dev,\n\t\t  uint32_t dir,\n\t\t  struct metal_sg *sg_in,\n\t\t  int nents_in,\n\t\t  struct metal_sg *sg_out)\n{\n\tint nents_out;\n\n\tif (!dev || !sg_in || !sg_out)\n\t\treturn -EINVAL;\n\tif (!dev->bus->ops.dev_dma_map)\n\t\treturn -ENODEV;\n\n\t/* memory barrier */\n\tif (dir == METAL_DMA_DEV_R)\n\t\t/* If it is device read, apply memory write fence. */\n\t\tatomic_thread_fence(memory_order_release);\n\telse\n\t\t/* If it is device write or r/w, apply memory r/w fence. */\n\t\tatomic_thread_fence(memory_order_acq_rel);\n\tnents_out = dev->bus->ops.dev_dma_map(dev->bus,\n\t\t\tdev, dir, sg_in, nents_in, sg_out);\n\treturn nents_out;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "struct metal_device",
+    "struct metal_bus",
+    "struct metal_bus_ops",
+    "dev_dma_map (dev->bus->ops.dev_dma_map member)",
+    "struct metal_sg",
+    "atomic_thread_fence",
+    "memory_order_release",
+    "memory_order_acq_rel",
+    "METAL_DMA_DEV_R",
+    "EINVAL",
+    "ENODEV"
+  ],
+  "explanation": "For checking the MISRA rule (function parameter shall not be modified) we must ensure no parameter identifier (dev, dir, sg_in, nents_in, sg_out) is reassigned or implicitly modified via macros/expansions used in this function. The listed symbols are required because:\n\n- struct metal_device: verify that \"dev\" is a plain parameter and that \"bus\" is a struct field access (not a macro or operator with side effects).\n- struct metal_bus and struct metal_bus_ops: confirm that \"bus\" and \"ops\" are structure members and inspect the type/layout so that dev->bus->ops.dev_dma_map is a member access (not a macro) and to locate the dev_dma_map member.\n- dev_dma_map (dev->bus->ops.dev_dma_map member): examine its declaration/definition to ensure it is a function pointer (or ordinary function) and not a function-like macro that could expand to code that reassigns the local parameter identifiers (e.g., assigns to dev, sg_in, sg_out, nents_in or dir).\n- struct metal_sg: ensure sg_in/sg_out are plain pointer types (not macros) and to check any potential macro-based accessors.\n- atomic_thread_fence and memory_order_release / memory_order_acq_rel: confirm these are library functions/constants (or harmless macros) and do not expand into code that modifies the function parameters.\n- METAL_DMA_DEV_R: confirm this is a simple constant/macro without side effects used in the conditional (to rule out any hidden parameter modification).\n- EINVAL and ENODEV: verify these are simple error-code macros/constants (no unexpected side effects).\n\nNote: The body of the callee (dev_dma_map implementation) need not be checked for this MISRA rule insofar as a callee modifying the object pointed to is allowed; we only need to ensure no macro or expansion in this function reassigns the parameter identifiers themselves."
+}

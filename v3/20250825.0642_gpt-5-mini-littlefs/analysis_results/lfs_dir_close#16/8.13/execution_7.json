@@ -1,0 +1,75 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory
+  lfs.c:2773:16: error: redefinition of 'struct lfs_config'
+   2773 | typedef struct lfs_config {
+        |                ^~~~~~~~~~
+  In file included from lfs.c:17:
+  lfs.h:157:8: note: originally defined here
+    157 | struct lfs_config {
+        |        ^~~~~~~~~~
+  lfs.c:2790:1: error: expected identifier or '(' before '{' token
+   2790 | {
+        | ^
+  lfs.c: In function 'LFS_UNLOCK':
+  lfs.c:2809:53: error: unknown type name 'n'
+   2809 |     /* Capture and log cfg state on unlock entry. */n
+        |                                                     ^
+  lfs.c:2810:13: error: expected declaration specifiers or '...' before string constant
+   2810 |     lfs_log(\"LFS_UNLOCK (entry): cfg=%p, cfg->dummy=%d\", (void*)cfg, cfg ? cfg->dummy : -1);
+        |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  lfs.c:2810:58: error: expected declaration specifiers or '...' before '(' token
+   2810 |     lfs_log(\"LFS_UNLOCK (entry): cfg=%p, cfg->dummy=%d\", (void*)cfg, cfg ? cfg->dummy : -1);
+        |                                                          ^
+  lfs.c:2810:70: error: expected declaration specifiers or '...' before 'cfg'
+   2810 |     lfs_log(\"LFS_UNLOCK (entry): cfg=%p, cfg->dummy=%d\", (void*)cfg, cfg ? cfg->dummy : -1);
+        |                                                                      ^~~
+  lfs.c: In function 'lfs_dir_close_':
+  lfs.c:2819:95: error: 'const struct lfs_config' has no member named 'dummy'
+   2819 |             (void*)lfs, (void*)dir, (void*)(lfs ? lfs->cfg : NULL), lfs && lfs->cfg ? lfs->cfg->dummy : -1);
+        |                                                                                               ^~
+  lfs.c: In function 'lfs_init':
+  lfs.c:4252:14: warning: assignment to 'const struct lfs_config *' from incompatible pointer type 'const struct lfs_config *' [-Wincompatible-pointer-types]
+   4252 |     lfs->cfg = cfg;
+        |              ^
+  lfs.c:4253:27: error: 'const struct lfs_config' has no member named 'block_count'
+   4253 |     lfs->block_count = cfg->block_count;  // May be 0
+  //       |                           ^~
+  // lfs.c: In function 'lfs_format_':
+  // lfs.c:4452:9: error: 'const struct lfs_config' has no member named 'block_count'
+  //  4452 |         LFS_ASSERT(cfg->block_count != 0);
+  //       |         ^~~~~~~~~~
+  // lfs.c: At top level:
+  // lfs.c:6022:5: error: conflicting types for 'lfs_format'; have 'int(lfs_t *, const struct lfs_config *)' {aka 'int(struct lfs *, const struct lfs_config *)'}
+  //  6022 | int lfs_format(lfs_t *lfs, const struct lfs_config *cfg) {
+  //       |     ^~~~~~~~~~
+  // In file included from lfs.c:17:
+  // lfs.h:483:5: note: previous declaration of 'lfs_format' with type 'int(lfs_t *, const struct lfs_config *)' {aka 'int(struct lfs *, const struct lfs_config *)'}
+  //   483 | int lfs_format(lfs_t *lfs, const struct lfs_config *config);
+  //       |     ^~~~~~~~~~
+  // lfs.c:6052:5: error: conflicting types for 'lfs_mount'; have 'int(lfs_t *, const struct lfs_config *)' {aka 'int(struct lfs *, const struct lfs_config *)'}
+  //  6052 | int lfs_mount(lfs_t *lfs, const struct lfs_config *cfg) {
+  //       |     ^~~~~~~~~
+  // In file included from lfs.c:17:
+  // lfs.h:494:5: note: previous declaration of 'lfs_mount' with type 'int(lfs_t *, const struct lfs_config *)' {aka 'int(struct lfs *, const struct lfs_config *)'}
+  //   494 | int lfs_mount(lfs_t *lfs, const struct lfs_config *config);
+  //       |     ^~~~~~~~~
+  // lfs.c: In function 'lfs_dir_close':
+  // lfs.c:6411:90: error: 'const struct lfs_config' has no member named 'dummy'
+  //  6411 |         lfs_log(\"STATE: lfs->cfg=%p, cfg->dummy=%d\", (void*)lfs->cfg, lfs->cfg ? lfs->cfg->dummy : -1);
+  //       |                                                                                          ^~
+  // lfs.c:6433:82: error: 'const struct lfs_config' has no member named 'dummy'
+  //  6433 |         lfs_log(\"BEFORE_UNLOCK: cfg=%p, cfg->dummy=%d\", (void*)lfs->cfg, lfs->cfg->dummy);
+  //       |                                                                                  ^~
+  // lfs.c:6443:81: error: 'const struct lfs_config' has no member named 'dummy'
+  //  6443 |         lfs_log(\"AFTER_UNLOCK: cfg=%p, cfg->dummy=%d\", (void*)lfs->cfg, lfs->cfg->dummy);
+  //       |                                                                                 ^~
+  // At top level:
+  // lfs.c:2807:13: warning: 'LFS_UNLOCK' defined but not used [-Wunused-function]
+  //  2807 | static void LFS_UNLOCK(lfs_config_t *cfg)
+  //       |             ^~~~~~~~~~
+  // lfs.c:2800:12: warning: 'LFS_LOCK' defined but not used [-Wunused-function]
+  //  2800 | static int LFS_LOCK(lfs_config_t *cfg)
+  //       |            ^~~~~~~~
+  // make: *** [Makefile:529: lfs.o] Error 1"
+}

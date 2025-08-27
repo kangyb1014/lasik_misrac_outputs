@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid OS_TaskEntryPoint(osal_id_t task_id)\n{\n    osal_task_entry task_entry;\n\n    if (OS_TaskPrepare(task_id, &task_entry) == OS_SUCCESS)\n    {\n        if (task_entry != NULL)\n        {\n            (*task_entry)();\n        }\n    }\n\n    /* If the function returns, treat as a normal exit and do the proper cleanup */\n    OS_TaskExit();\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_TaskEntryPoint': {'callees': ['OS_TaskPrepare', 'OS_TaskExit'], 'callers': ['OS_PthreadTaskEntry']}, 'OS_TaskPrepare': {'callees': ['OS_ObjectIdGetById', 'OS_ObjectIndexFromToken', 'OS_TaskMatch_Impl', 'OS_ObjectIdRelease', 'OS_TaskRegister_Impl', 'OS_NotifyEvent'], 'callers': ['OS_TaskEntryPoint']}, 'OS_TaskExit': {'callees': ['OS_TaskGetId_Impl', 'OS_ObjectIdGetById', 'OS_TaskDetach_Impl', 'OS_ObjectIdFinalizeDelete', 'OS_TaskExit_Impl', 'UT_ExecuteBasicHandler'], 'callers': ['OS_TaskEntryPoint']}, 'OS_PthreadTaskEntry': {'callees': ['OS_TaskEntryPoint'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_TaskPrepare",
+    "osal_task_entry",
+    "OS_TaskExit",
+    "OS_ObjectIdGetById",
+    "OS_ObjectIndexFromToken",
+    "OS_TaskMatch_Impl",
+    "OS_ObjectIdRelease",
+    "OS_TaskRegister_Impl",
+    "OS_NotifyEvent",
+    "OS_TaskGetId_Impl",
+    "OS_TaskDetach_Impl",
+    "OS_ObjectIdFinalizeDelete",
+    "OS_TaskExit_Impl",
+    "UT_ExecuteBasicHandler",
+    "OS_PthreadTaskEntry"
+  ],
+  "explanation": "To determine whether OS_TaskEntryPoint calls itself (directly or indirectly) you must examine every symbol it invokes and any function-pointer targets it returns: \n- OS_TaskPrepare: assigns/returns the osal_task_entry pointer and may call other functions that could create an indirect call back to OS_TaskEntryPoint. \n- osal_task_entry: the function-pointer type and the concrete function(s) that can be returned by OS_TaskPrepare must be inspected to see if any target calls OS_TaskEntryPoint. \n- OS_TaskExit: called unconditionally at the end; its implementation (and what it calls) might invoke OS_TaskEntryPoint directly or indirectly. \n- OS_ObjectIdGetById, OS_ObjectIndexFromToken, OS_TaskMatch_Impl, OS_ObjectIdRelease, OS_TaskRegister_Impl, OS_NotifyEvent: callers from OS_TaskPrepare \u2014 each must be checked for any call chains that could reach OS_TaskEntryPoint. \n- OS_TaskGetId_Impl, OS_TaskDetach_Impl, OS_ObjectIdFinalizeDelete, OS_TaskExit_Impl, UT_ExecuteBasicHandler: callers from OS_TaskExit \u2014 each must be checked for any call chains that could reach OS_TaskEntryPoint. \n- OS_PthreadTaskEntry: the known caller of OS_TaskEntryPoint; include it to verify there are no cycles where a callee calls back into this pthread-entry wrapper or is otherwise involved in an indirect recursion. \n\nInspecting the implementations of these symbols (and any further callees they reference) is required to prove the absence or presence of direct or indirect recursion per the MISRA rule."
+}

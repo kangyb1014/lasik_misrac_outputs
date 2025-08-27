@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: OS_MutSemGetInfo sem_id=0xdeadbeef mut_prop=0x7ffc215c1810\nAfter memset: mut_prop=0x7ffc215c1810 sizeof(OS_mut_sem_prop_t)=24\nOS_ObjectIdGetById returned -35; token=0x7ffc215c16b0\nEXIT: OS_MutSemGetInfo sem_id=0xdeadbeef return=-35\nENTER: OS_MutSemGetInfo sem_id=(nil) mut_prop=0x7ffc215c1810\nAfter memset: mut_prop=0x7ffc215c1810 sizeof(OS_mut_sem_prop_t)=24\nOS_ObjectIdGetById returned -35; token=0x7ffc215c16b0\nEXIT: OS_MutSemGetInfo sem_id=(nil) return=-35\n"
+}

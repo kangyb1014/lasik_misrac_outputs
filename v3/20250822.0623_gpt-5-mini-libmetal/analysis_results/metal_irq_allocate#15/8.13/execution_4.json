@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter metal_irq_allocate: irq_base=0, irq_num=1023\ninitial range to check: [0, 1023) (irq_tocheck=0, irq_end_tocheck=1023)\nexit metal_irq_allocate -> returning 0\nenter metal_irq_allocate: irq_base=0, irq_num=1023\ninitial range to check: [0, 1023) (irq_tocheck=0, irq_end_tocheck=1023)\nexit metal_irq_allocate -> returning 0\n"
+}

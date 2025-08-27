@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:1131:18: error: redefinition of 'MHD_HEADER_KIND' as different kind of symbol\n 1131 | static const int MHD_HEADER_KIND = 1;\n      |                  ^\n../../src/include/microhttpd.h:2260:3: note: previous definition is here\n 2260 |   MHD_HEADER_KIND = 1,\n      |   ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp5ubc54qq/src/src/os/shared/src/osapi-file.c: In function 'OS_FDGetInfo':\n/tmp/tmp5ubc54qq/src/src/os/shared/src/osapi-file.c:522:5: error: aggregate value used where an integer was expected\n  522 |     os_fdgetinfo_log(\"OS_ObjectIdGetById returned: %d, token=%lld\", return_code, (long long)token);\n      |     ^~~~~~~~~~~~~~~~\n/tmp/tmp5ubc54qq/src/src/os/shared/src/osapi-file.c:552:9: error: aggregate value used where an integer was expected\n  552 |         os_fdgetinfo_log(\"OS_ObjectIdRelease called for token=%lld\", (long long)token);\n      |         ^~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

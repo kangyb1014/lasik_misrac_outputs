@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp8rk5m1ej/src/src/os/shared/src/osapi-time.c: In function 'OS_Timer_NoArgCallback':\n/tmp/tmp8rk5m1ej/src/src/os/shared/src/osapi-time.c:223:33: error: storage size of 'Conv' isn't known\n  223 |     union OS_Timer_ArgWrapper_t Conv;\n      |                                 ^~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:370: CMakeFiles/osal.dir/src/os/shared/src/osapi-time.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

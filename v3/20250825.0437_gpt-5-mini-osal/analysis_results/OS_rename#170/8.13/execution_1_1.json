@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpbcw0qpg7/src/src/os/shared/src/osapi-file.c: In function 'log_probe':\n/tmp/tmpbcw0qpg7/src/src/os/shared/src/osapi-file.c:368:19: error: storage size of 'tm_buf' isn't known\n  368 |         struct tm tm_buf;\n      |                   ^~~~~~\n/tmp/tmpbcw0qpg7/src/src/os/shared/src/osapi-file.c:380:23: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  380 |     vfprintf(fp, fmt, ap);\n      |                       ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-file.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-file.dir/__/__/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3601: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-file.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

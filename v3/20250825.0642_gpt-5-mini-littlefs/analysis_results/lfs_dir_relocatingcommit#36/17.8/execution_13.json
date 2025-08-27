@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_dir_relocatingcommit':\nlfs.c:2337:148: error: 'struct lfs_dir_commit_commit' has no member named 'c'\n 2337 |         lfs_log_probe_367(\"prepared commit_data at %p (contains lfs=%p commit=%p)\", (void*)&commit_data, (void*)commit_data.lfs, (void*)commit_data.c);\n      |                                                                                                                                                    ^\nlfs.c:2345:85: error: 'struct lfs_dir_commit_commit' has no member named 'c'\n 2345 |                 err, (void*)&commit_data, (void*)commit_data.lfs, (void*)commit_data.c);\n      |                                                                                     ^\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

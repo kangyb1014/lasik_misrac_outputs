@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *OS_PthreadTaskEntry(void *arg)\n{\n    OS_VoidPtrValueWrapper_t local_arg;\n\n    /* cppcheck-suppress unreadVariable // intentional use of other union member */\n    local_arg.opaque_arg = arg;\n    OS_TaskEntryPoint(local_arg.id); /* Never returns */\n\n    return NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_PthreadTaskEntry': {'callees': ['OS_TaskEntryPoint'], 'callers': []}, 'OS_TaskEntryPoint': {'callees': ['OS_TaskPrepare', 'OS_TaskExit'], 'callers': ['OS_PthreadTaskEntry']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_VoidPtrValueWrapper_t",
+    "OS_TaskEntryPoint",
+    "OS_TaskPrepare",
+    "OS_TaskExit",
+    "memcpy",
+    "memmove",
+    "memset",
+    "memcmp",
+    "strcpy",
+    "strncpy",
+    "strcat",
+    "strncat",
+    "strlen",
+    "strspn"
+  ],
+  "explanation": "1) OS_VoidPtrValueWrapper_t: The target function writes arg into local_arg.opaque_arg and then reads local_arg.id. You must know the union/struct layout and the exact type of the member 'id' (and any aliasing/representation) to determine whether a pointer is being converted, truncated, or misinterpreted \u2014 this affects whether later string functions receive valid pointers and lengths.\n\n2) OS_TaskEntryPoint: This is the direct callee and receives local_arg.id. To decide MISRA string-rule compliance you must inspect OS_TaskEntryPoint's implementation (or prototype) to see whether it (or functions it calls) invokes any string.h routines using the passed value and whether buffers/lengths are validated.\n\n3) OS_TaskPrepare and OS_TaskExit: These are callees of OS_TaskEntryPoint per the static call graph. They must be inspected because they (or other downstream functions they call) may perform string operations on data derived from the id/arg; any out-of-bounds use could originate here.\n\n4) Standard string.h functions (memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, strspn): The MISRA rule specifically concerns these functions. Include their occurrences/usages in the code reachable from OS_TaskEntryPoint/OS_TaskPrepare/OS_TaskExit so you can examine argument values (pointers and lengths) and determine whether any call can access beyond object bounds.\n\nIn short: to determine whether OS_PthreadTaskEntry causes a violation you need the definition of the union member types used for the argument conversion and the bodies/prototypes of OS_TaskEntryPoint and its downstream callees (OS_TaskPrepare/OS_TaskExit), and you must locate any uses of the listed string.h functions in those functions to check pointer/length correctness."
+}

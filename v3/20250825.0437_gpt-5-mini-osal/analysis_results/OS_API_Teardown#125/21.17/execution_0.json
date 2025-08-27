@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_API_Teardown: entry\nOS_API_Teardown: calling OS_DeleteAllObjects()\nOS_API_Teardown: returned from OS_DeleteAllObjects()\nOS_API_Teardown: calling OS_ApplicationShutdown(true)\nOS_API_Teardown: returned from OS_ApplicationShutdown(true)\nOS_API_Teardown: exit\nOS_API_Teardown: entry\nOS_API_Teardown: calling OS_DeleteAllObjects()\nOS_API_Teardown: returned from OS_DeleteAllObjects()\nOS_API_Teardown: calling OS_ApplicationShutdown(true)\nOS_API_Teardown: returned from OS_ApplicationShutdown(true)\nOS_API_Teardown: exit\n"
+}

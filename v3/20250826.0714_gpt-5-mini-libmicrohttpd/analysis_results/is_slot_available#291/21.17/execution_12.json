@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[is_slot_available] event=entry nn=0x55a42e00d250 new_nonce=0x7f3fd0008f03 new_nonce_len=44 nn->nonce_size=77 nn->nc=0 nn->nonce[0]=0 memcmp_res=-1\n[is_slot_available] event=slot_empty nn=0x55a42e00d250 new_nonce=0x7f3fd0008f03 new_nonce_len=44 nn->nonce_size=77 nn->nc=0 nn->nonce[0]=0 memcmp_res=-1\n[is_slot_available] event=entry nn=0x55a31569fdf0 new_nonce=0x7f01a8008f07 new_nonce_len=76 nn->nonce_size=77 nn->nc=0 nn->nonce[0]=0 memcmp_res=-1\n[is_slot_available] event=slot_empty nn=0x55a31569fdf0 new_nonce=0x7f01a8008f07 new_nonce_len=76 nn->nonce_size=77 nn->nc=0 nn->nonce[0]=0 memcmp_res=-1\n"
+}

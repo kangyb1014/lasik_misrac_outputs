@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpurl6f21k/src/src/os/shared/src/osapi-idmap.c: In function 'OS_ObjectIdConvertToken':\n/tmp/tmpurl6f21k/src/src/os/shared/src/osapi-idmap.c:434:15: error: missing terminating \" character\n  434 |     log_probe(\"Obtained obj=%p, expected_id=%\n      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmpurl6f21k/src/src/os/shared/src/osapi-idmap.c:449:1: error: expected expression before 'int32'\n  449 | int32 OS_ObjectIdFindNextMatch(OS_ObjectMatchFunc_t MatchFunc, void *arg, OS_object_token_t *token)\n      | ^~~~~\n/tmp/tmpurl6f21k/src/src/os/shared/src/osapi-idmap.c:1394:1: error: expected declaration or statement at end of input\n 1394 | }\n      | ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:216: CMakeFiles/osal.dir/src/os/shared/src/osapi-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

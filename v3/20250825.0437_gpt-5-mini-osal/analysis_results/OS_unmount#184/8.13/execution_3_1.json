@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp90eo6fkf/src/src/os/shared/src/osapi-filesys.c: In function 'OS_unmount_log':\n/tmp/tmp90eo6fkf/src/src/os/shared/src/osapi-filesys.c:503:22: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  503 |     vfprintf(f, fmt, ap);\n      |                      ^~\n/usr/bin/ld: CMakeFiles/utobj_coverage-shared-filesys.dir/__/__/os/shared/src/osapi-filesys.c.o: in function `OS_unmount':\n/tmp/tmp90eo6fkf/src/src/os/shared/src/osapi-filesys.c:546: undefined reference to `OS_ObjectTableGet'\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/coverage-shared-filesys-testrunner.dir/build.make:110: unit-test-coverage/shared/coverage-shared-filesys-testrunner] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3699: unit-test-coverage/shared/CMakeFiles/coverage-shared-filesys-testrunner.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

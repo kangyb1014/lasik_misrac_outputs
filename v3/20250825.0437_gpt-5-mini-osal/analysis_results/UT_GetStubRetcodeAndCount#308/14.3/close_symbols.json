@@ -1,0 +1,27 @@
+{
+  "user_message": "Target function code is:\n```c\nbool UT_GetStubRetcodeAndCount(UT_EntryKey_t FuncKey, int32 *Retcode, int32 *Count)\n{\n    UT_StubTableEntry_t *StubPtr;\n    bool                 Result;\n\n    StubPtr = UT_GetStubEntry(FuncKey, UT_ENTRYTYPE_COUNTER);\n    if (StubPtr != NULL)\n    {\n        *Count   = StubPtr->Data.Rc.Count;\n        *Retcode = StubPtr->Data.Rc.Value;\n        Result   = true;\n    }\n    else\n    {\n        Result = false;\n    }\n\n    return Result;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'UT_GetStubRetcodeAndCount': {'callees': ['UT_GetStubEntry'], 'callers': []}, 'UT_GetStubEntry': {'callees': [], 'callers': ['UT_ConfigureGenericStubReturnValue', 'UT_ClearDeferredRetcode', 'UT_ClearDefaultReturnValue', 'UT_GetStubRetcodeAndCount', 'UT_GetStubCount', 'UT_Stub_RegisterReturnType', 'UT_Stub_GetReturnValuePtr', 'UT_SetDataBuffer', 'UT_GetDataBuffer', 'UT_Stub_CopyToLocal', 'UT_Stub_CopyFromLocal', 'UT_DoSetHookFunction', 'UT_Stub_RegisterContextWithMetaData', 'UT_Stub_CopyToReturnValue', 'UT_Stub_FindRetvalConfig', 'UT_DefaultStubImplWithArgs', 'UT_ExecuteBasicHandler', 'UT_ExecuteVaHandler']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nControlling expressions shall not be invariant. Here are exceptions to this rule:\n1. Invariants that are used to create infinite loops are permitted.\n2. A do-while loop with an essentially Boolean controlling expression that evaluates to false and satisfies the constraints and semantics for an integer constant expression is permitted.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "UT_GetStubEntry",
+    "UT_StubTableEntry_t",
+    "UT_EntryKey_t",
+    "UT_ENTRYTYPE_COUNTER",
+    "stub registry / global(s) used by UT_GetStubEntry (e.g. the UT stub table variable and its initialization)",
+    "UT_Stub_RegisterReturnType",
+    "UT_ConfigureGenericStubReturnValue",
+    "UT_ClearDeferredRetcode",
+    "UT_ClearDefaultReturnValue",
+    "UT_Stub_GetReturnValuePtr",
+    "UT_SetDataBuffer",
+    "UT_GetDataBuffer",
+    "UT_Stub_CopyToLocal",
+    "UT_Stub_CopyFromLocal",
+    "UT_Stub_CopyToReturnValue",
+    "UT_Stub_FindRetvalConfig",
+    "UT_DoSetHookFunction",
+    "UT_Stub_RegisterContextWithMetaData",
+    "UT_DefaultStubImplWithArgs",
+    "UT_ExecuteBasicHandler",
+    "UT_ExecuteVaHandler"
+  ],
+  "explanation": "To decide whether the controlling expression (StubPtr != NULL) is invariant, the analyzer must know whether StubPtr can vary at runtime. The following symbols are required:\n\n- UT_GetStubEntry: the implementation determines whether it can ever return NULL or non-NULL for given inputs and global state (so it directly decides invariance).\n- UT_StubTableEntry_t: the struct type of the returned pointer; confirms layout (Data.Rc.Count/Value) and whether any pointer aliasing/constantness could make the pointer always non-NULL.\n- UT_EntryKey_t: the key type used to look up entries; needed to know whether different FuncKey values can produce different results from UT_GetStubEntry.\n- UT_ENTRYTYPE_COUNTER: the constant passed into UT_GetStubEntry; its meaning may restrict or fix the lookup space and thus affect whether the call is invariant.\n- stub registry / global(s) used by UT_GetStubEntry (e.g. the internal stub table and its init): to determine whether the underlying table is mutable, prepopulated, or fixed at compile/startup (invariant) or can be changed at runtime.\n\nAdditionally, callers and mutators of the stub registry are relevant because they can change the registry contents (thus making UT_GetStubEntry non-invariant):\n- UT_Stub_RegisterReturnType, UT_ConfigureGenericStubReturnValue, UT_ClearDeferredRetcode, UT_ClearDefaultReturnValue, UT_Stub_RegisterContextWithMetaData: functions that register, configure, or clear stub entries and therefore change whether a lookup finds an entry.\n- UT_Stub_GetReturnValuePtr, UT_Stub_CopyToReturnValue, UT_Stub_CopyToLocal, UT_Stub_CopyFromLocal, UT_Stub_FindRetvalConfig, UT_SetDataBuffer, UT_GetDataBuffer: helpers that read/modify stored return-data or metadata associated with entries and thus affect table state/visibility.\n- UT_DoSetHookFunction, UT_DefaultStubImplWithArgs, UT_ExecuteBasicHandler, UT_ExecuteVaHandler: handlers/hooks that may create, modify or rely on stub entries at runtime.\n\nExamining the above symbols (implementations and the global data they touch) is necessary to prove whether the expression StubPtr != NULL can ever evaluate to both true and false during program execution. If UT_GetStubEntry's behavior and the registry are constant/fixed such that the result is always the same for all possible execution contexts, the controlling expression would be an invariant and needs to be flagged; otherwise it is not invariant and MISRA C rule is satisfied."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp_mqj_xqd/src/src/os/shared/src/osapi-sockets.c: In function 'probe_log':\n/tmp/tmp_mqj_xqd/src/src/os/shared/src/osapi-sockets.c:499:15: error: storage size of 'tm_buf' isn't known\n  499 |     struct tm tm_buf;\n      |               ^~~~~~\n/tmp/tmp_mqj_xqd/src/src/os/shared/src/osapi-sockets.c:521:22: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  521 |     vfprintf(f, fmt, args);\n      |                      ^~~~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-sockets.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-sockets.dir/__/__/os/shared/src/osapi-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:4221: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-sockets.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

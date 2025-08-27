@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_DirCreate_Impl(const char *local_path, uint32 access)\n{\n    struct stat st;\n    int32       return_code;\n\n    if (mkdir(local_path, S_IFDIR | S_IRWXU | S_IRWXG | S_IRWXO) < 0)\n    {\n        return_code = OS_ERROR;\n\n        if (errno == EEXIST)\n        {\n            /* Success if already exists and is a directory */\n            if (stat(local_path, &st) == 0 && S_ISDIR(st.st_mode))\n            {\n                return_code = OS_SUCCESS;\n            }\n        }\n    }\n    else\n    {\n        return_code = OS_SUCCESS;\n    }\n\n    return return_code;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_DirCreate_Impl': {'callees': [], 'callers': ['OS_mkdir']}, 'OS_mkdir': {'callees': ['OS_TranslatePath', 'OS_DirCreate_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mkdir",
+    "stat",
+    "struct stat (st_mode)",
+    "S_ISDIR",
+    "errno",
+    "EEXIST",
+    "S_IFDIR",
+    "S_IRWXU",
+    "S_IRWXG",
+    "S_IRWXO",
+    "OS_ERROR",
+    "OS_SUCCESS",
+    "int32",
+    "uint32",
+    "memcmp"
+  ],
+  "explanation": "To determine whether this function violates the MISRA rule banning use of memcmp to compare null-terminated strings you need the following additional symbols and why:\n\n- mkdir\n  - The function calls mkdir. To know whether any string comparison (particularly memcmp on NUL-terminated paths) occurs inside this call you must inspect its implementation or wrapper.\n\n- stat\n  - The function calls stat. Inspecting stat's implementation ensures it does not perform forbidden memcmp-on-string usage on the pathname argument or other internal NUL-terminated strings.\n\n- struct stat (st_mode)\n  - The code uses a struct stat instance and tests its st_mode via S_ISDIR; the struct layout is required to confirm S_ISDIR usage is only bit tests (not string comparisons).\n\n- S_ISDIR\n  - This macro determines whether the returned mode indicates a directory. You must confirm it is a bit-test macro (no string comparisons) and thus cannot hide memcmp usage.\n\n- errno\n  - errno is read to check EEXIST; you must confirm no hidden string comparisons are performed when querying or setting errno in the used environment.\n\n- EEXIST\n  - The specific error constant compared against errno; included to inspect any related macros or wrappers that might perform string ops.\n\n- S_IFDIR, S_IRWXU, S_IRWXG, S_IRWXO\n  - These file-mode constants are used in the mkdir call flags. Confirming their definitions (macros/constants) shows they are just constants and not wrappers that could invoke memcmp.\n\n- OS_ERROR, OS_SUCCESS\n  - Return-code constants used by the function; inspect their definitions to ensure they are simple constants (no hidden functions/macros that could use memcmp).\n\n- int32, uint32\n  - Type definitions used in the signature; ensure their typedefs are straightforward and not implemented via macros that might include string comparisons.\n\n- memcmp\n  - The rule of interest references memcmp. You must inspect the memcmp symbol itself and search call chains from mkdir/stat (and any macros above) to memcmp to determine whether any code reachable from this function performs memcmp on NUL-terminated strings.\n\nIn short: inspect the implementations/definitions of the system calls and macros the function uses (mkdir, stat, S_ISDIR and the constants/macros) plus the memcmp symbol so you can detect any direct or transitive uses of memcmp on null-terminated strings. Also confirm that the error/status macros/types (errno, EEXIST, OS_ERROR, OS_SUCCESS, int32/uint32) are simple definitions and do not hide string comparisons."
+}

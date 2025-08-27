@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmplul38l7v/src/src/os/shared/src/osapi-binsem.c: In function 'OS_BinSemTake_LogProbe':\n/tmp/tmplul38l7v/src/src/os/shared/src/osapi-binsem.c:223:27: error: 'TIME_UTC' undeclared (first use in this function)\n  223 |     if (timespec_get(&ts, TIME_UTC) == 0)\n      |                           ^~~~~~~~\n/tmp/tmplul38l7v/src/src/os/shared/src/osapi-binsem.c:223:27: note: each undeclared identifier is reported only once for each function it appears in\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-binsem.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-binsem.dir/__/__/os/shared/src/osapi-binsem.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3167: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-binsem.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

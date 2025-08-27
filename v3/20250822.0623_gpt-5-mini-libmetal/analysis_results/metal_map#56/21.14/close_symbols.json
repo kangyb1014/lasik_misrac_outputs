@@ -1,0 +1,25 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_map(int fd, off_t offset, size_t size, int expand, int flags,\n\t      void **result)\n{\n\tint prot = PROT_READ | PROT_WRITE, error;\n\tvoid *mem;\n\n\tflags |= MAP_SHARED;\n\n\tif (fd < 0) {\n\t\tfd = -1;\n\t\tflags = MAP_PRIVATE | MAP_ANONYMOUS;\n\t} else if (expand) {\n\t\toff_t reqsize = offset + size;\n\t\tstruct stat stat;\n\n\t\terror = flock(fd, LOCK_EX) < 0 ? -errno : 0;\n\t\tif (!error)\n\t\t\terror = fstat(fd, &stat);\n\t\tif (!error && stat.st_size < reqsize)\n\t\t\terror = ftruncate(fd, reqsize);\n\t\tif (!error)\n\t\t\tflock(fd, LOCK_UN);\n\t\tif (error)\n\t\t\treturn -errno;\n\t}\n\n\tmem = mmap(NULL, size, prot, flags, fd, offset);\n\tif (mem == MAP_FAILED)\n\t\treturn -errno;\n\t*result = mem;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_map': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_try_map']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mmap",
+    "MAP_FAILED",
+    "PROT_READ",
+    "PROT_WRITE",
+    "MAP_SHARED",
+    "MAP_PRIVATE",
+    "MAP_ANONYMOUS",
+    "NULL",
+    "fstat",
+    "ftruncate",
+    "flock",
+    "LOCK_EX",
+    "LOCK_UN",
+    "errno",
+    "struct stat",
+    "off_t",
+    "size_t",
+    "memcmp",
+    "string.h"
+  ],
+  "explanation": "Each listed symbol appears (directly or indirectly) in metal_map and is needed to determine whether any use of memcmp on null\u2011terminated strings could occur inside metal_map or via macros/inline replacements:\n- mmap, MAP_FAILED, PROT_READ, PROT_WRITE, MAP_SHARED, MAP_PRIVATE, MAP_ANONYMOUS, NULL: these are the mapping API and constants used in metal_map; their definitions must be checked to ensure none expand to or call memcmp or perform string comparisons.\n- fstat, ftruncate: system calls used when expand is true; their declarations/definitions should be inspected to ensure they do not internally use memcmp in a way that causes a MISRA violation to be attributed to this call site.\n- flock, LOCK_EX, LOCK_UN: file-locking API used around fstat/ftruncate; verify their implementations/macros do not call memcmp on C strings.\n- errno: used to return error codes as -errno; check errno is not a macro that could hide a string comparison.\n- struct stat: member st_size is read; include to check any hidden macro access that could use memcmp.\n- off_t, size_t: used for argument types; include for completeness when inspecting related headers for hidden memcmp usage.\n- memcmp, string.h: explicitly include the memcmp symbol and its header so the analyzer can confirm whether memcmp is referenced directly or indirectly (via macros/wrappers) anywhere reachable from metal_map.\n\nTogether these symbols let the next analyst inspect all declarations, macros, and inline implementations reachable from metal_map to determine definitively whether memcmp is used to compare null\u2011terminated strings in this function or through anything it invokes or expands to."
+}

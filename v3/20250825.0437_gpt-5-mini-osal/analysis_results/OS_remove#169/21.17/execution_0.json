@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_remove: stage=entry\n  input path: /drive3/select_test.txt\n  translate_ret: -1\n  local_path: (null)\n  remove_ret: -1\n----\nOS_remove: stage=after_translate\n  input path: /drive3/select_test.txt\n  translate_ret: -108\n  local_path (len=6, max=128): \"#\u007f\"\n  remove_ret: -1\n----\nOS_remove: stage=entry\n  input path: /drive3/select_test.txt\n  translate_ret: -1\n  local_path: (null)\n  remove_ret: -1\n----\nOS_remove: stage=after_translate\n  input path: /drive3/select_test.txt\n  translate_ret: -108\n  local_path (len=6, max=128): \"#\u007f\"\n  remove_ret: -1\n----\nOS_remove: stage=entry\n  input path: /drive3/select_test.txt\n  translate_ret: -1\n  local_path: (null)\n  remove_ret: -1\n----\nOS_remove: stage=after_translate\n  input path: /drive3/select_test.txt\n  translate_ret: -108\n  local_path (len=6, max=128): \"#\u007f\"\n  remove_ret: -1\n----\n"
+}

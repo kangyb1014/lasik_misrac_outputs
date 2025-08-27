@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "response.c:244:1: error: static declaration of 'MHD_add_response_entry_no_check_' follows non-static declaration\n  244 | MHD_add_response_entry_no_check_ (struct MHD_Response *response,\n      | ^\n./response.h:91:1: note: previous declaration is here\n   91 | MHD_add_response_entry_no_check_ (struct MHD_Response *response,\n      | ^\n1 error generated.\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

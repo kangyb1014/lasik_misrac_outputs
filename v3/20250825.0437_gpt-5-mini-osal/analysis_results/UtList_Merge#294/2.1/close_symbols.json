@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid UtList_Merge(UtListNode_t *TagHead1, UtListNode_t *TagHead2)\n{\n    UtListNode_t *Tail1 = TagHead1->Prev;\n    UtListNode_t *Tail2 = TagHead2->Prev;\n\n    Tail1->Next    = TagHead2;\n    Tail2->Next    = TagHead1;\n    TagHead1->Prev = Tail2;\n    TagHead2->Prev = Tail1;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'UtList_Merge': {'callees': [], 'callers': ['UtTest_Run']}, 'UtTest_Run': {'callees': ['UT_BSP_Lock', 'UtList_GetHead', 'UtList_Merge', 'UT_BSP_Unlock', 'UtList_GetNext', 'UtList_GetObject', 'UtAssert_BeginTest', 'UtAssert_SetContext', 'UtAssert_EndTest', 'UtList_Destroy', 'UT_BSP_EndTest', 'UtAssert_GetCounters'], 'callers': ['OS_Application_Run']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "UtTest_Run",
+    "OS_Application_Run",
+    "main (program entry / startup)",
+    "OS/task startup or registration function(s) that invoke OS_Application_Run (e.g. OS_TaskCreate/AppMain)",
+    "UT_BSP_Lock",
+    "UT_BSP_Unlock",
+    "UtList_GetHead",
+    "UtList_GetNext",
+    "UtList_GetObject",
+    "UtList_Destroy",
+    "UtAssert_BeginTest",
+    "UtAssert_SetContext",
+    "UtAssert_EndTest",
+    "UT_BSP_EndTest",
+    "UtAssert_GetCounters"
+  ],
+  "explanation": "To decide whether UtList_Merge is unreachable (violates the MISRA rule), you must examine its call chain and any code that can prevent its call from executing. Reasons each symbol is required:\n- UtTest_Run: direct caller of UtList_Merge (per the call graph). You must inspect UtTest_Run source to see the exact call site and whether that call is inside conditionals, behind early returns, or otherwise unreachable.\n- OS_Application_Run: caller of UtTest_Run. If UtTest_Run is never invoked at runtime, UtList_Merge may be effectively unreachable. You need OS_Application_Run to determine whether it invokes UtTest_Run in reachable code.\n- main (program entry / startup): to determine whether OS_Application_Run itself is ever invoked from program startup; if the program entry point never reaches OS_Application_Run, the whole chain may be unreachable.\n- OS/task startup or registration function(s) that invoke OS_Application_Run (e.g. OS_TaskCreate/AppMain): in many embedded/OS designs OS_Application_Run may be scheduled/registered rather than directly called from main; these symbols (or their implementations) must be checked to determine actual runtime invocation.\n- UT_BSP_Lock, UT_BSP_Unlock, UtList_GetHead, UtList_GetNext, UtList_GetObject, UtList_Destroy, UtAssert_BeginTest, UtAssert_SetContext, UtAssert_EndTest, UT_BSP_EndTest, UtAssert_GetCounters: these are other functions called by UtTest_Run (shown in the call graph). Their behavior can affect control flow inside UtTest_Run (for example, they might abort the test, longjmp, call exit, or conditionally prevent later code from running). To conclude that the UtList_Merge call site is reachable you must ensure none of these intervening calls cause the call to be skipped at runtime.\n\nIn addition to the above symbols, you should examine build-time configuration (preprocessor macros, conditional compilation units) and the link map to confirm that UtList_Merge (and its callers) are actually included in the build and not removed by configuration \u2014 these are not single function symbols but are necessary artifacts for a complete unreachable-code analysis."
+}

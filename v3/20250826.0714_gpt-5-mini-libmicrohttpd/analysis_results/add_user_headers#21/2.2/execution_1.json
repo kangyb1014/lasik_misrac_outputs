@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:2503:114: error: extraneous ')' before ';'\n 2503 |       mhd_probe_log(\"After resetting flags: add_close=%d add_keep_alive=%d\", (int)add_close, (int)add_keep_alive));\n      |                                                                                                                  ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

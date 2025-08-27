@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_sys_init: before metal_unused: params=0x7fffa86cff30\nmetal_sys_init: after metal_unused: params=0x7fffa86cff30\nmetal_sys_init: params_before=0x7fffa86cff30 params_after=0x7fffa86cff30 equal=1\nmetal_sys_init: before metal_unused: params=0x7ffe9e3e7650\nmetal_sys_init: after metal_unused: params=0x7ffe9e3e7650\nmetal_sys_init: params_before=0x7ffe9e3e7650 params_after=0x7ffe9e3e7650 equal=1\n"
+}

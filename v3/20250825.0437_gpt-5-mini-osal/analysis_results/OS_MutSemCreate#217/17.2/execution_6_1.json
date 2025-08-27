@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpgx9d1e1u/src/src/os/shared/src/osapi-mutex.c: In function 'OS_ProbeLog':\n/tmp/tmpgx9d1e1u/src/src/os/shared/src/osapi-mutex.c:109:48: error: 'O_APPEND' undeclared (first use in this function)\n  109 |     fd = open(\"/tmp/logs/2176.txt\", O_WRONLY | O_APPEND | O_CREAT, 0644);\n      |                                                ^~~~~~~~\n/tmp/tmpgx9d1e1u/src/src/os/shared/src/osapi-mutex.c:109:48: note: each undeclared identifier is reported only once for each function it appears in\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-mutex.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-mutex.dir/__/__/os/shared/src/osapi-mutex.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3911: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-mutex.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_unmount: entry\n  mountpoint ptr: 0x556168fa7290\n  mountpoint (preview): '/drive3'\n  mountpoint length (strlen): 7\n  max_allowed (sizeof virtual_mountpt): 64\nOS_unmount: OS_ObjectIdGetBySearch returned -17\nOS_unmount: final return code (mapped) -17\nOS_unmount: entry\n  mountpoint ptr: 0x556168fa7290\n  mountpoint (preview): '/drive3'\n  mountpoint length (strlen): 7\n  max_allowed (sizeof virtual_mountpt): 64\nOS_unmount: OS_ObjectIdGetBySearch returned -17\nOS_unmount: final return code (mapped) -17\nOS_unmount: entry\n  mountpoint ptr: 0x556168fa7290\n  mountpoint (preview): '/drive3'\n  mountpoint length (strlen): 7\n  max_allowed (sizeof virtual_mountpt): 64\nOS_unmount: OS_ObjectIdGetBySearch returned -17\nOS_unmount: final return code (mapped) -17\n"
+}

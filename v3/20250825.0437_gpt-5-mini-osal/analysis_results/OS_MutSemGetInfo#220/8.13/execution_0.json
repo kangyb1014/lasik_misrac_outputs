@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemGetInfo: called sem_id=3735928559 mut_prop=0x7ffecc012180\nOS_MutSemGetInfo: mut_prop cleared (size=24)\nOS_MutSemGetInfo: OS_ObjectIdGetById returned -35 token_addr=0x7ffecc012130\nOS_MutSemGetInfo: OS_ObjectIdGetById failed with -35 for sem_id=3735928559\nOS_MutSemGetInfo: returning -35\nOS_MutSemGetInfo: called sem_id=0 mut_prop=0x7ffecc012180\nOS_MutSemGetInfo: mut_prop cleared (size=24)\nOS_MutSemGetInfo: OS_ObjectIdGetById returned -35 token_addr=0x7ffecc012130\nOS_MutSemGetInfo: OS_ObjectIdGetById failed with -35 for sem_id=0\nOS_MutSemGetInfo: returning -35\n"
+}

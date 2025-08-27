@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemGetInfo ENTRY: sem_id=3735928559, bin_prop=0x7ffea1069df0\nOS_ObjectIdGetById returned -35\nOS_ObjectIdGetById failed, returning -35\nOS_BinSemGetInfo EXIT: return_code=-35\nOS_BinSemGetInfo ENTRY: sem_id=0, bin_prop=0x7ffea1069df0\nOS_ObjectIdGetById returned -35\nOS_ObjectIdGetById failed, returning -35\nOS_BinSemGetInfo EXIT: return_code=-35\n"
+}

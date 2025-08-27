@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:6360:8: error: redefinition of 'struct lfs_mlist'\n 6360 | struct lfs_mlist { struct lfs_mlist *next; };\n      |        ^~~~~~~~~\nIn file included from lfs.c:15:\nlfs.h:440:12: note: originally defined here\n  440 |     struct lfs_mlist {\n      |            ^~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

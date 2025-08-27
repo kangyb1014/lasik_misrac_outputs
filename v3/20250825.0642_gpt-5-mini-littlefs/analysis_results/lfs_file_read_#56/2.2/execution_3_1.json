@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "lfs_file_flush: lfs=0x7ffd9a8b9458 file=0x7ffd9a8b91f0 flags=0x00020902\nlfs_file_flush: lfs=0x7ffd9a8b9458 file=0x7ffd9a8b9258 flags=0x00020902\nlfs_file_flush: lfs=0x7ffd9a8b9458 file=0x7ffd9a8b92c0 flags=0x00020902\nENTER lfs_file_read_: lfs=0x7ffd9a8b9458 file=0x7ffd9a8b93f0 flags=0x00100001 size=5\nlfs_file_read_: file NOT in WRITING state (flags=0x00100001)\nlfs_file_flushedread: lfs=0x7ffd9a8b9458 file=0x7ffd9a8b93f0 flags=0x00100001 size=5\nEXIT lfs_file_read_: lfs_file_flushedread returned 5\n"
+}

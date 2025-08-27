@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpok763ps2/src/src/os/shared/src/osapi-task.c: In function 'OS_TaskCreate':\n/tmp/tmpok763ps2/src/src/os/shared/src/osapi-task.c:218:13: error: aggregate value used where an integer was expected\n  218 |             fprintf(osal_probe_log, \"OS_TaskCreate: enter (token=%u, name=\\\"%s\\\")\\n\", (unsigned int)token, task_name ? task_name : \"(null)\");\n      |             ^~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:342: CMakeFiles/osal.dir/src/os/shared/src/osapi-task.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

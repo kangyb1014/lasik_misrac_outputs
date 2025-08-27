@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_OpenCreate: after_translate\n  return_code=-108\n  token_addr=0x7fffb54dbad0\n  stream_addr=(nil)\n  path='/drive3/select_test.txt'\n  path_len=23\n  local_path=''\n  local_path_len=0\n\nOS_OpenCreate: after_translate\n  return_code=-108\n  token_addr=0x7fffb54dbad0\n  stream_addr=(nil)\n  path='/drive3/select_test.txt'\n  path_len=23\n  local_path=''\n  local_path_len=0\n\nOS_OpenCreate: after_translate\n  return_code=-108\n  token_addr=0x7fffb54dbad0\n  stream_addr=(nil)\n  path='/drive3/select_test.txt'\n  path_len=23\n  local_path=''\n  local_path_len=0\n\n"
+}

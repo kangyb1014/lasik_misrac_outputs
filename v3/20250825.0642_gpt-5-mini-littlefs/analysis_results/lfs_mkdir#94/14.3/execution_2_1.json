@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "After LFS_LOCK: err=0, lfs=0x7ffd3c3b1758, cfg=0x7ffd3c3b1660, path=\"breakfast\"\nTRACE: lfs_mkdir(0x7ffd3c3b1758, \"breakfast\")\nEntered lfs_mkdir_(lfs=0x7ffd3c3b1758, path=\"breakfast\")\nAfter lfs_mkdir_: err=0\nTRACE: lfs_mkdir -> 0\nReturning from lfs_mkdir with err=0\n"
+}

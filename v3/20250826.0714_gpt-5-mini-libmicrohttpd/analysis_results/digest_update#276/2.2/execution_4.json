@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c:565:22: error: no member named 'uninitialised' in 'struct DigestAlgorithm'\n  565 |             (int)da->uninitialised,\n      |                  ~~  ^\ndigestauth.c:566:22: error: no member named 'algo_selected' in 'struct DigestAlgorithm'\n  566 |             (int)da->algo_selected,\n      |                  ~~  ^\ndigestauth.c:567:22: error: no member named 'ready_for_hashing' in 'struct DigestAlgorithm'\n  567 |             (int)da->ready_for_hashing);\n      |                  ~~  ^\n3 errors generated.\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

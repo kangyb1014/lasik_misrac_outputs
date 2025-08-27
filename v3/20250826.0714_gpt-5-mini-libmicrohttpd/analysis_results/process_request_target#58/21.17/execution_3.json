@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:5568:3: error: function definition is not allowed here\n 5568 |   {\n      |   ^\nconnection.c:5688:5: error: call to undeclared function 'probe_log_state'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n 5688 |     probe_log_state (c, \"before_replace_question\", 0U);\n      |     ^\nconnection.c:5730:3: error: call to undeclared function 'probe_log_state'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n 5730 |   probe_log_state (c, \"done\", 0U);\n      |   ^\n3 errors generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

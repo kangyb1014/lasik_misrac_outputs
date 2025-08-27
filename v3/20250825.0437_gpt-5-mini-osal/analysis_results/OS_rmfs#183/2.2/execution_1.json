@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[OS_rmfs] entry: devname=\"/ramdev3\" code=0 token=(nil)\n[OS_rmfs] after_ObjectIdGetByName: devname=\"/ramdev3\" code=-17 token=0x7ffdf84acad0\n[OS_rmfs] name_not_found: devname=\"/ramdev3\" code=-17 token=(nil)\n[OS_rmfs] exit: devname=\"/ramdev3\" code=-17 token=(nil)\n[OS_rmfs] entry: devname=\"/ramdev3\" code=0 token=(nil)\n[OS_rmfs] after_ObjectIdGetByName: devname=\"/ramdev3\" code=-17 token=0x7ffdf84acad0\n[OS_rmfs] name_not_found: devname=\"/ramdev3\" code=-17 token=(nil)\n[OS_rmfs] exit: devname=\"/ramdev3\" code=-17 token=(nil)\n[OS_rmfs] entry: devname=\"/ramdev3\" code=0 token=(nil)\n[OS_rmfs] after_ObjectIdGetByName: devname=\"/ramdev3\" code=-17 token=0x7ffdf84acad0\n[OS_rmfs] name_not_found: devname=\"/ramdev3\" code=-17 token=(nil)\n[OS_rmfs] exit: devname=\"/ramdev3\" code=-17 token=(nil)\n"
+}

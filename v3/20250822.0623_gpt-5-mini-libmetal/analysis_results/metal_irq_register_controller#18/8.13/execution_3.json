@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter metal_irq_register_controller: cntr=0x7f01a40afcc0\ncntr->node address = 0x7f01a40afce0\nmetal_irq_allocate returned irq_base = 0\nassigned cntr->irq_base = 0\nmetal_list_add_tail called with node = 0x7f01a40afce0; returning 0\nenter metal_irq_register_controller: cntr=0x5591714464e0\ncntr->node address = 0x559171446500\nmetal_irq_allocate returned irq_base = 0\nassigned cntr->irq_base = 0\nmetal_list_add_tail called with node = 0x559171446500; returning 0\n"
+}

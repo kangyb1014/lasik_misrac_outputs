@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c: In function 'OS_TaskDelete':\n/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c:272:23: error: 'OS_task_internal_record_t' has no member named 'delete_hook'\n  272 |     delete_hook = task->delete_hook;\n      |                       ^~\n/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c:283:9: error: 'OS_task_internal_record_t' has no member named 'active'\n  283 |     task->active = 0;\n      |         ^~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:342: CMakeFiles/osal.dir/src/os/shared/src/osapi-task.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

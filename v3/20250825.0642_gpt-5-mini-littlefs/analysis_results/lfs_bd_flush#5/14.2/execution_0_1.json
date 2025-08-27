@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:185:37: error: expected ')' before '-' token\n  185 | static const uint32_t LFS_BLOCK_NULL   = (uint32_t)-1;\n      |                       ~~~~~~~~~~~~~~^\n      |                                     )\nlfs.c:186:39: error: expected ')' before '-' token\n  186 | static const uint32_t LFS_BLOCK_INLINE = (uint32_t)-2;\n      |                       ~~~~~~~~~~~~~~~~^\n      |                                       )\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

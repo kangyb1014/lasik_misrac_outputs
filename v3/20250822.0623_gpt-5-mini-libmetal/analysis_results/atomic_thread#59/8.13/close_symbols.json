@@ -1,0 +1,10 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_int",
+    "atomic_fetch_add",
+    "atomic_test_count",
+    "NULL"
+  ],
+  "explanation": "atomic_int: need the typedef/definition to know the exact underlying type (e.g. typedef _Atomic int) and whether it already carries any const/atomic qualifiers. This determines whether a pointer-to-atomic_int should or could be declared const. atomic_fetch_add: need the function/macro prototype and semantics (parameter types and whether it modifies the pointed object). If its first parameter is a non-const atomic_int * and it performs modification, the pointer cannot be const, so no MISRA violation for using void * -> atomic_int *. atomic_test_count: the external loop control variable; its type/constness is needed to check whether the function only reads external state (helps reasoning about whether the function could accept a pointer-to-const). NULL: the definition/type of NULL (macro) to confirm return compatibility with void * (not directly about pointer-to-const but required to fully reason about pointer usage in the function)."
+}

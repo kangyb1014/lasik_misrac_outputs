@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp81t1_z5f/src/src/os/shared/src/osapi-timebase.c: In function 'OS_TimeBaseCreate':\n/tmp/tmp81t1_z5f/src/src/os/shared/src/osapi-timebase.c:161:9: error: aggregate value used where an integer was expected\n  161 |         probe_logf(\"Allocated token (raw) = 0x%llx\", (unsigned long long)(uintptr_t) token);\n      |         ^~~~~~~~~~\n/tmp/tmp81t1_z5f/src/src/os/shared/src/osapi-timebase.c:182:9: error: aggregate value used where an integer was expected\n  182 |         probe_logf(\"Calling OS_TimeBaseCreate_Impl for token=0x%llx\", (unsigned long long)(uintptr_t) token);\n      |         ^~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:356: CMakeFiles/osal.dir/src/os/shared/src/osapi-timebase.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "2025-08-26 08:22:35 - setup_epoll_fd: entry - HAVE_MESSAGES defined; daemon=0x556895775a40\n2025-08-26 08:22:35 - Calling epoll_create1 (EPOLL_CLOEXEC)\n2025-08-26 08:22:35 - epoll create returned fd=4\n2025-08-26 08:22:35 - setup_epoll_fd: returning fd=4\n2025-08-26 08:22:35 - setup_epoll_fd: entry - HAVE_MESSAGES defined; daemon=0x5568957763f0\n2025-08-26 08:22:35 - Calling epoll_create1 (EPOLL_CLOEXEC)\n2025-08-26 08:22:35 - epoll create returned fd=4\n2025-08-26 08:22:35 - setup_epoll_fd: returning fd=4\n2025-08-26 08:22:35 - setup_epoll_fd: entry - HAVE_MESSAGES defined; daemon=0x556895776698\n2025-08-26 08:22:35 - Calling epoll_create1 (EPOLL_CLOEXEC)\n2025-08-26 08:22:35 - epoll create returned fd=5\n2025-08-26 08:22:35 - setup_epoll_fd: returning fd=5\n"
+}

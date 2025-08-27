@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "entry: lfs=0x7ffd448f7eb8, path=\"hello\", type=65, buffer=0x561bd4156462, size=4, err=0\nsuccess: lfs=0x7ffd448f7eb8, path=\"hello\", type=65, buffer=0x561bd4156462, size=4, err=0\nentry: lfs=0x7ffd448f7eb8, path=\"hello\", type=66, buffer=0x561bd4156467, size=6, err=0\nsuccess: lfs=0x7ffd448f7eb8, path=\"hello\", type=66, buffer=0x561bd4156467, size=6, err=0\nentry: lfs=0x7ffd448f7eb8, path=\"hello\", type=67, buffer=0x561bd415646e, size=5, err=0\nsuccess: lfs=0x7ffd448f7eb8, path=\"hello\", type=67, buffer=0x561bd415646e, size=5, err=0\n"
+}

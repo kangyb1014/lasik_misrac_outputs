@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "postprocessor.c:637:41: error: \\x used with no following hex digits\n  637 |     probe_log(\"loop iter: line=%p char='\\x%02x' (%c) eq=%d\",\n      |                                         ^~\n1 error generated.\nmake[3]: *** [Makefile:2210: libmicrohttpd_la-postprocessor.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

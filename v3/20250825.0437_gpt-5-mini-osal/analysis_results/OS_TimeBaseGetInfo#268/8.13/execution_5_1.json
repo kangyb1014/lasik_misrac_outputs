@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp6mn_bojz/src/src/os/shared/src/osapi-timebase.c: In function 'OS_TimeBaseGetInfo':\n/tmp/tmp6mn_bojz/src/src/os/shared/src/osapi-timebase.c:333:18: error: 'OS_timebase_prop_t' has no member named 'options'\n  333 |     timebase_prop->options = 0u;\n      |                  ^~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:356: CMakeFiles/osal.dir/src/os/shared/src/osapi-timebase.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

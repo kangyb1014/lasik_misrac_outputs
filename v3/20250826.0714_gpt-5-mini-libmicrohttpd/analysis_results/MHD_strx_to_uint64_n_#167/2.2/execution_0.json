@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "mhd_str.c:1431:49: error: expected ')'\n 1431 |   fprintf(f, \"MHD_strx: i=%zu maxlen=%zu res=%\" PRIu64 \" digit=%d first_cmp=%d second_cmp=%d combined=%d\\n\",\n      |                                                 ^\nmhd_str.c:1431:10: note: to match this '('\n 1431 |   fprintf(f, \"MHD_strx: i=%zu maxlen=%zu res=%\" PRIu64 \" digit=%d first_cmp=%d second_cmp=%d combined=%d\\n\",\n      |          ^\n1 error generated.\nmake[3]: *** [Makefile:2140: libmicrohttpd_la-mhd_str.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

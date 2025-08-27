@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:4265:16: error: static declaration of 'MHD_get_timeout64' follows non-static declaration\n 4265 | static int64_t MHD_get_timeout64(struct MHD_Connection *conn)\n      |                ^\n../../src/include/microhttpd.h:3249:1: note: previous declaration is here\n 3249 | MHD_get_timeout64 (struct MHD_Daemon *daemon,\n      | ^\n1 error generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

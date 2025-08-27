@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_dir_relocatingcommit':\nlfs.c:2415:36: error: 'oldpair' undeclared (first use in this function); did you mean 'pair'?\n 2415 |     lfs_probe_log_pairs(\"oldpair\", oldpair);\n      |                                    ^~~~~~~\n      |                                    pair\nlfs.c:2415:36: note: each undeclared identifier is reported only once for each function it appears in\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

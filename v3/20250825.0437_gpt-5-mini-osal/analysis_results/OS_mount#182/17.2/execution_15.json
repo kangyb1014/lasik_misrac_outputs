@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_mount ENTRY: devname='/ramdev3' mountpoint='/drive3'\nBefore OS_ObjectIdGetByName: devname='/ramdev3'\nAfter OS_ObjectIdGetByName: return_code=-17\nBefore final return check: interim return_code=-17\nMapping non-success return to OS_ERR_NAME_NOT_FOUND (was -17)\nOS_mount EXIT: return=-17\nOS_mount ENTRY: devname='/ramdev3' mountpoint='/drive3'\nBefore OS_ObjectIdGetByName: devname='/ramdev3'\nAfter OS_ObjectIdGetByName: return_code=-17\nBefore final return check: interim return_code=-17\nMapping non-success return to OS_ERR_NAME_NOT_FOUND (was -17)\nOS_mount EXIT: return=-17\nOS_mount ENTRY: devname='/ramdev3' mountpoint='/drive3'\nBefore OS_ObjectIdGetByName: devname='/ramdev3'\nAfter OS_ObjectIdGetByName: return_code=-17\nBefore final return check: interim return_code=-17\nMapping non-success return to OS_ERR_NAME_NOT_FOUND (was -17)\nOS_mount EXIT: return=-17\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: ../../ut_assert/libut_assert.a(utbsp.c.o):/tmp/tmpk6vt52p_/src/ut_assert/src/utbsp.c:248: multiple definition of `OS_timecb_table'; ../ut-stubs/libut_osapi_table_stubs.a(osapi-shared-timecb-table-stubs.c.o):/tmp/tmpk6vt52p_/src/src/unit-test-coverage/ut-stubs/src/osapi-shared-timecb-table-stubs.c:32: first defined here\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/coverage-shared-timebase-testrunner.dir/build.make:110: unit-test-coverage/shared/coverage-shared-timebase-testrunner] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:4381: unit-test-coverage/shared/CMakeFiles/coverage-shared-timebase-testrunner.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

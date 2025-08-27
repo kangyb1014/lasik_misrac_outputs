@@ -1,0 +1,33 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_API_Impl_Init(osal_objtype_t idtype)\n{\n    int32 return_code;\n\n    return_code = OS_Posix_TableMutex_Init(idtype);\n    if (return_code != OS_SUCCESS)\n    {\n        return return_code;\n    }\n\n    switch (idtype)\n    {\n        case OS_OBJECT_TYPE_OS_TASK:\n            return_code = OS_Posix_TaskAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_QUEUE:\n            return_code = OS_Posix_QueueAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_BINSEM:\n            return_code = OS_Posix_BinSemAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_COUNTSEM:\n            return_code = OS_Posix_CountSemAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_MUTEX:\n            return_code = OS_Posix_MutexAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_MODULE:\n            return_code = OS_Posix_ModuleAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_TIMEBASE:\n            return_code = OS_Posix_TimeBaseAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_STREAM:\n            return_code = OS_Posix_StreamAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_DIR:\n            return_code = OS_Posix_DirAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_FILESYS:\n            return_code = OS_Posix_FileSysAPI_Impl_Init();\n            break;\n        case OS_OBJECT_TYPE_OS_CONDVAR:\n            return_code = OS_Posix_CondVarAPI_Impl_Init();\n            break;\n        default:\n            break;\n    }\n\n    return return_code;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_API_Impl_Init': {'callees': ['OS_Posix_TableMutex_Init', 'OS_Posix_TaskAPI_Impl_Init', 'OS_Posix_QueueAPI_Impl_Init', 'OS_Posix_BinSemAPI_Impl_Init', 'OS_Posix_CountSemAPI_Impl_Init', 'OS_Posix_MutexAPI_Impl_Init', 'OS_Posix_ModuleAPI_Impl_Init', 'OS_Posix_TimeBaseAPI_Impl_Init', 'OS_Posix_StreamAPI_Impl_Init', 'OS_Posix_DirAPI_Impl_Init', 'OS_Posix_FileSysAPI_Impl_Init', 'OS_Posix_CondVarAPI_Impl_Init'], 'callers': ['OS_API_Init']}, 'OS_Posix_TableMutex_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_TaskAPI_Impl_Init': {'callees': ['OS_Posix_GetSchedulerParams'], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_QueueAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_BinSemAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_CountSemAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_MutexAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_ModuleAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_TimeBaseAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_StreamAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_DirAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_FileSysAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_Posix_CondVarAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_API_Init': {'callees': ['OS_ObjectIdInit', 'OS_API_Impl_Init', 'OS_TaskAPI_Init', 'OS_QueueAPI_Init', 'OS_BinSemAPI_Init', 'OS_CountSemAPI_Init', 'OS_MutexAPI_Init', 'OS_ModuleAPI_Init', 'OS_TimeBaseAPI_Init', 'OS_TimerCbAPI_Init', 'OS_FileAPI_Init', 'OS_DirAPI_Init', 'OS_FileSysAPI_Init', 'OS_ConsoleAPI_Init', 'OS_CondVarAPI_Init', 'OS_NetworkAPI_Init', 'OS_SocketAPI_Init', 'UT_Stub_RegisterReturnType', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': ['OS_Application_Startup']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_Posix_TableMutex_Init",
+    "OS_Posix_TaskAPI_Impl_Init",
+    "OS_Posix_QueueAPI_Impl_Init",
+    "OS_Posix_BinSemAPI_Impl_Init",
+    "OS_Posix_CountSemAPI_Impl_Init",
+    "OS_Posix_MutexAPI_Impl_Init",
+    "OS_Posix_ModuleAPI_Impl_Init",
+    "OS_Posix_TimeBaseAPI_Impl_Init",
+    "OS_Posix_StreamAPI_Impl_Init",
+    "OS_Posix_DirAPI_Impl_Init",
+    "OS_Posix_FileSysAPI_Impl_Init",
+    "OS_Posix_CondVarAPI_Impl_Init",
+    "OS_Posix_GetSchedulerParams",
+    "OS_SUCCESS",
+    "osal_objtype_t",
+    "int32",
+    "OS_OBJECT_TYPE_OS_TASK",
+    "OS_OBJECT_TYPE_OS_QUEUE",
+    "OS_OBJECT_TYPE_OS_BINSEM",
+    "OS_OBJECT_TYPE_OS_COUNTSEM",
+    "OS_OBJECT_TYPE_OS_MUTEX",
+    "OS_OBJECT_TYPE_OS_MODULE",
+    "OS_OBJECT_TYPE_OS_TIMEBASE",
+    "OS_OBJECT_TYPE_OS_STREAM",
+    "OS_OBJECT_TYPE_OS_DIR",
+    "OS_OBJECT_TYPE_OS_FILESYS",
+    "OS_OBJECT_TYPE_OS_CONDVAR"
+  ],
+  "explanation": "The target function itself does not call any <string.h> routines, so any potential MISRA C string/buffer violations must come from functions it invokes or from control/data values that determine which callees run. Include: 1) All direct callees (OS_Posix_TableMutex_Init, OS_Posix_TaskAPI_Impl_Init, OS_Posix_QueueAPI_Impl_Init, OS_Posix_BinSemAPI_Impl_Init, OS_Posix_CountSemAPI_Impl_Init, OS_Posix_MutexAPI_Impl_Init, OS_Posix_ModuleAPI_Impl_Init, OS_Posix_TimeBaseAPI_Impl_Init, OS_Posix_StreamAPI_Impl_Init, OS_Posix_DirAPI_Impl_Init, OS_Posix_FileSysAPI_Impl_Init, OS_Posix_CondVarAPI_Impl_Init) \u2014 each may internally use memcpy/strcpy/etc.; their implementations must be inspected to determine any out\u2011of\u2011bounds accesses. 2) OS_Posix_GetSchedulerParams \u2014 called by OS_Posix_TaskAPI_Impl_Init (present in the static call graph), so its code must be examined for string functions. 3) Control and type symbols (OS_SUCCESS, osal_objtype_t, int32, and all OS_OBJECT_TYPE_* enum constants used in the switch) \u2014 these determine which initialization path(s) execute and whether the initial TableMutex init short\u2011circuits; they are needed to reason about reachable callees and correct argument/size semantics when following data flow into the callees. Together these symbols give the call targets and control/context needed to assess any use of <string.h> functions for potential out\u2011of\u2011bounds accesses."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_dir_find_match':\nlfs.c:1488:68: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]\n 1488 |                         unsigned char c = (unsigned char)name->name[i];\n      |                                                                    ^\nlfs.c:1488:68: warning: dereferencing 'void *' pointer\nlfs.c:1488:43: error: invalid use of void expression\n 1488 |                         unsigned char c = (unsigned char)name->name[i];\n      |                                           ^\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:802:11: error: redefinition of 'MHD_NO' as different kind of symbol\n  802 | const int MHD_NO = 0;\n      |           ^\n../../src/include/microhttpd.h:162:3: note: previous definition is here\n  162 |   MHD_NO = 0,\n      |   ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

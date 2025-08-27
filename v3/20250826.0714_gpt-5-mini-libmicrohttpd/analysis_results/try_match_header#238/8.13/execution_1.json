@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "postprocessor.c:598:18: error: redefinition of 'MHD_YES' as different kind of symbol\n  598 | static const int MHD_YES = 1;\n      |                  ^\n../../src/include/microhttpd.h:167:3: note: previous definition is here\n  167 |   MHD_YES = 1\n      |   ^\npostprocessor.c:599:18: error: redefinition of 'MHD_NO' as different kind of symbol\n  599 | static const int MHD_NO  = 0;\n      |                  ^\n../../src/include/microhttpd.h:162:3: note: previous definition is here\n  162 |   MHD_NO = 0,\n      |   ^\n2 errors generated.\nmake[3]: *** [Makefile:2210: libmicrohttpd_la-postprocessor.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

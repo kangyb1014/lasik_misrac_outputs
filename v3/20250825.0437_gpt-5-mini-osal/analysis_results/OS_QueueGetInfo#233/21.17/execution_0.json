@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_QueueGetInfo ENTER: queue_id=0xdeadbeef, queue_prop=0x7ffeb9b5ed70\nmemset done: queue_prop=0x7ffeb9b5ed70, sizeof(OS_queue_prop_t)=24, name_size=20\nOS_ObjectIdGetById returned -35\nOS_QueueGetInfo EXIT: return_code=-35\nOS_QueueGetInfo ENTER: queue_id=0x0, queue_prop=0x7ffeb9b5ed70\nmemset done: queue_prop=0x7ffeb9b5ed70, sizeof(OS_queue_prop_t)=24, name_size=20\nOS_ObjectIdGetById returned -35\nOS_QueueGetInfo EXIT: return_code=-35\n"
+}

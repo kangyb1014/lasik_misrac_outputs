@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:2646:5: warning: no previous prototype for 'LFS_LOCK' [-Wmissing-prototypes]\n 2646 | int LFS_LOCK(const void *cfg)\n      |     ^~~~~~~~\nlfs.c:2652:6: warning: no previous prototype for 'LFS_UNLOCK' [-Wmissing-prototypes]\n 2652 | void LFS_UNLOCK(const void *cfg)\n      |      ^~~~~~~~~~\nlfs.c:2658:1: error: expected identifier or '(' before '{' token\n 2658 | {\n      | ^\nlfs.c:2667:5: warning: no previous prototype for 'lfs_mkdir_' [-Wmissing-prototypes]\n 2667 | int lfs_mkdir_(lfs_t *lfs, const char *path)\n      |     ^~~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

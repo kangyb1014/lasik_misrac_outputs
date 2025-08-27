@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpy0joq476/src/src/os/shared/src/osapi-common.c: In function 'OS_API_Init':\n/tmp/tmpy0joq476/src/src/os/shared/src/osapi-common.c:159:49: error: 'OS_SharedGlobalVars_t' {aka 'struct OS_shared_global_vars'} has no member named 'DebugLevel'\n  159 |                        (long)OS_SharedGlobalVars.DebugLevel,\n      |                                                 ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:104: CMakeFiles/osal.dir/src/os/shared/src/osapi-common.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

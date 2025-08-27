@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "--- OS_TaskGetInfo ENTRY ---\ntask_prop=0x7ffcbaa23c20\nmemset task_prop done\nOS_ObjectIdGetById returned -35, token_addr=0x7ffcbaa23be0\n--- OS_TaskGetInfo EXIT return_code=-35 ---\n\n--- OS_TaskGetInfo ENTRY ---\ntask_prop=0x7ffcbaa23c20\nmemset task_prop done\nOS_ObjectIdGetById returned -35, token_addr=0x7ffcbaa23be0\n--- OS_TaskGetInfo EXIT return_code=-35 ---\n\n"
+}

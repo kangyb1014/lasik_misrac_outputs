@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[metal_sys_init] tmp_path='/tmp'\n[metal_sys_init] /dev/urandom opened successfully\n[metal_sys_init] seed read from /dev/urandom: 0x20eb6db8 (552299960)\n[metal_sys_init] srand called with seed=0x20eb6db8\n[metal_sys_init] metal_init_page_sizes() returned 0\n[metal_sys_init] metal_linux_bus_init() returned 0\n[metal_sys_init] /proc/self/pagemap opened, fd=4\n[metal_sys_init] _metal.pagemap_fd=4\n[metal_sys_init] completed, returning 0\n[metal_sys_init] tmp_path='/tmp'\n[metal_sys_init] /dev/urandom opened successfully\n[metal_sys_init] seed read from /dev/urandom: 0x6b9039ea (1804614122)\n[metal_sys_init] srand called with seed=0x6b9039ea\n[metal_sys_init] metal_init_page_sizes() returned 0\n[metal_sys_init] metal_linux_bus_init() returned 0\n[metal_sys_init] /proc/self/pagemap opened, fd=4\n[metal_sys_init] _metal.pagemap_fd=4\n[metal_sys_init] completed, returning 0\n"
+}

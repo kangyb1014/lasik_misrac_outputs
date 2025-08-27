@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER MHD_destroy_response: response=0x55aa77147820\nMHD_destroy_response: locking mutex 0x55aa77147860\nMHD_destroy_response: mutex 0x55aa77147860 locked\nMHD_destroy_response: current reference_count before decrement = 1\nMHD_destroy_response: reference_count reached 0; mutex 0x55aa77147860 destroyed\nMHD_destroy_response: data_iov pointer before check = (nil)\nMHD_destroy_response: data_iov is NULL -> skipping free (note: free(NULL) would be a no-op)\nMHD_destroy_response: freeing header node 0x55aa771479a0, header=0x55aa77147960, value=0x55aa77147980, next=(nil)\nMHD_destroy_response: freed header node 0x55aa771479a0\nMHD_destroy_response: freed response 0x55aa77147820 and exiting\n"
+}

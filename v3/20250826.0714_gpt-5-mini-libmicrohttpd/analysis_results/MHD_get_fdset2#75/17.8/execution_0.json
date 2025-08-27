@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:1218:23: error: no member named 'fdset_size' in 'struct MHD_Daemon'\n 1218 |               daemon->fdset_size,\n      |               ~~~~~~  ^\ndaemon.c:1219:23: error: no member named 'fdset_size_set_by_app' in 'struct MHD_Daemon'\n 1219 |               daemon->fdset_size_set_by_app,\n      |               ~~~~~~  ^\n2 errors generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

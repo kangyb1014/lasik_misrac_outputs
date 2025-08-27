@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:1042:87: error: operand of type 'struct MHD_itc_' where arithmetic or pointer type is required\n 1042 |     mhd_probe_printf(\"internal_get_fdset2: ITC valid, itc=%p, reader_fd=%d\", (void *) daemon->itc, (int) MHD_itc_r_fd_ (daemon->itc));\n      |                                                                                       ^~~~~~~~~~~\n1 error generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

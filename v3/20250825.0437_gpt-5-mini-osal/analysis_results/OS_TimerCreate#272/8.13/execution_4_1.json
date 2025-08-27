@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "In file included from /tmp/tmp6zbk86ld/src/src/os/shared/src/osapi-time.c:55:\n/tmp/tmp6zbk86ld/src/src/os/shared/src/osapi-time.c: In function 'OS_TimerCreate':\n/tmp/tmp6zbk86ld/src/src/os/shared/inc/os-shared-time.h:34:40: error: expected identifier or '(' before numeric constant\n   34 | #define TIMECB_FLAG_DEDICATED_TIMEBASE 0x1\n      |                                        ^~~\n/tmp/tmp6zbk86ld/src/src/os/shared/src/osapi-time.c:348:15: note: in expansion of macro 'TIMECB_FLAG_DEDICATED_TIMEBASE'\n  348 |     const int TIMECB_FLAG_DEDICATED_TIMEBASE = 1;\n      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:370: CMakeFiles/osal.dir/src/os/shared/src/osapi-time.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

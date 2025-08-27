@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpf5fdy9i1/src/src/os/portable/os-impl-posix-io.c: In function 'OS_GenericWrite_Impl_log':\n/tmp/tmpf5fdy9i1/src/src/os/portable/os-impl-posix-io.c:234:24: error: aggregate value used where an integer was expected\n  234 |                        (unsigned long long)(*token), (const void *)token,\n      |                        ^\n/tmp/tmpf5fdy9i1/src/src/os/portable/os-impl-posix-io.c:246:24: error: aggregate value used where an integer was expected\n  246 |                        (unsigned long long)(*token), (const void *)token,\n      |                        ^\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:328: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-posix-io.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

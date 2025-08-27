@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_TaskInstallDeleteHandler: entry\nOS_TaskInstallDeleteHandler: task_id = 0\nOS_TaskInstallDeleteHandler: OS_ObjectIdGetById returned -35\nOS_TaskInstallDeleteHandler: not OS_SUCCESS, skipping install (return_code=-35)\nOS_TaskInstallDeleteHandler: exit with return_code=-35\n"
+}

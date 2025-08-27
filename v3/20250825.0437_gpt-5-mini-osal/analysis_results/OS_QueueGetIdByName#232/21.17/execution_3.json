@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpo4lphngz/src/src/os/shared/src/osapi-queue.c:234:20: error: 'LOCAL_OBJID_TYPE' redeclared as different kind of symbol\n  234 | extern const int32 LOCAL_OBJID_TYPE;\n      |                    ^~~~~~~~~~~~~~~~\n/tmp/tmpo4lphngz/src/src/os/shared/src/osapi-queue.c:67:5: note: previous definition of 'LOCAL_OBJID_TYPE' with type 'enum <anonymous>'\n   67 |     LOCAL_OBJID_TYPE  = OS_OBJECT_TYPE_OS_QUEUE\n      |     ^~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:286: CMakeFiles/osal.dir/src/os/shared/src/osapi-queue.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

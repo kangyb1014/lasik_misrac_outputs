@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter: cntr=0x7f00a52b0d00 irq_base=0 irq_num=1023 node=0x7f00a52b0d20 compared_node=(nil)\nno existing controller found: attempting to allocate IRQ base\nmetal_irq_allocate called with requested_base=0 irq_num=1023\nmetal_irq_allocate: allocating base=0\nassigned irq_base=0 to controller 0x7f00a52b0d00\ncontroller added to irq_cntrs: returning 0\nenter: cntr=0x56037e526520 irq_base=0 irq_num=1023 node=0x56037e526540 compared_node=(nil)\nno existing controller found: attempting to allocate IRQ base\nmetal_irq_allocate called with requested_base=0 irq_num=1023\nmetal_irq_allocate: allocating base=0\nassigned irq_base=0 to controller 0x56037e526520\ncontroller added to irq_cntrs: returning 0\n"
+}

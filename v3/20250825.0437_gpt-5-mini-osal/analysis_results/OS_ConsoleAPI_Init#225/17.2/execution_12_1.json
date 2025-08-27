@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpw3eh77zv/src/src/os/shared/src/osapi-printf.c: In function 'probe_logf':\n/tmp/tmpw3eh77zv/src/src/os/shared/src/osapi-printf.c:106:22: error: cast specifies array type\n  106 |     vfprintf(f, fmt, (va_list)ap);\n      |                      ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:272: CMakeFiles/osal.dir/src/os/shared/src/osapi-printf.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

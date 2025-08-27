@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: metal_linux_irq_init\nmemset: irqs cleared (size=16368)\ncalling eventfd for IRQ handling\neventfd returned: 5 (errno=0)\ninitializing irq_lock\nregistering linux IRQ controller\nmetal_irq_register_controller returned: 0\ncreating IRQ handling thread\npthread_create returned: 0\nEXIT: metal_linux_irq_init -> 0\nENTER: metal_linux_irq_init\nmemset: irqs cleared (size=16368)\ncalling eventfd for IRQ handling\neventfd returned: 5 (errno=0)\ninitializing irq_lock\nregistering linux IRQ controller\nmetal_irq_register_controller returned: 0\ncreating IRQ handling thread\npthread_create returned: 0\nEXIT: metal_linux_irq_init -> 0\n"
+}

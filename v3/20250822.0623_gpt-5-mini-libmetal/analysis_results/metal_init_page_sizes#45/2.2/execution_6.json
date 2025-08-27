@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_init_page_sizes: after system page add: system_page=4096, page_shift=12, num_page_sizes=1\nmetal_init_page_sizes: before qsort: num_page_sizes=1\nmetal_init_page_sizes: single page size detected \u2014 qsort will be invoked but is a no-op (potential dead code)\nmetal_init_page_sizes: after qsort: num_page_sizes=1\nmetal_init_page_sizes: after system page add: system_page=4096, page_shift=12, num_page_sizes=1\nmetal_init_page_sizes: before qsort: num_page_sizes=1\nmetal_init_page_sizes: single page size detected \u2014 qsort will be invoked but is a no-op (potential dead code)\nmetal_init_page_sizes: after qsort: num_page_sizes=1\n"
+}

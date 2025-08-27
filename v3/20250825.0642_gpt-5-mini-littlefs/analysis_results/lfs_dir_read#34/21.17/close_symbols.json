@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_dir_read(lfs_t *lfs, lfs_dir_t *dir, struct lfs_info *info) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_dir_read(%p, %p, %p)\",\n            (void*)lfs, (void*)dir, (void*)info);\n\n    err = lfs_dir_read_(lfs, dir, info);\n\n    LFS_TRACE(\"lfs_dir_read -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_dir_read': {'callees': ['lfs_dir_read_'], 'callers': []}, 'lfs_dir_read_': {'callees': ['lfs_dir_fetch', 'lfs_dir_getinfo'], 'callers': ['lfs_dir_read']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "lfs_dir_read_",
+    "lfs_dir_fetch",
+    "lfs_dir_getinfo",
+    "lfs_t",
+    "lfs_dir_t",
+    "struct lfs_info",
+    "type of lfs->cfg (configuration struct)",
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "buffer-size macros used in lfs_info/dir (e.g. LFS_NAME_MAX)"
+  ],
+  "explanation": "To decide if lfs_dir_read (or its callees) violate the MISRA rule on bounds for string.h functions, the analyzer needs the immediately called function implementations and the data they operate on plus any macros that affect buffer sizes or tracing:\n\n- lfs_dir_read_: direct callee of lfs_dir_read; it may call string.h functions or pass pointers/lengths to other helpers.\n- lfs_dir_fetch and lfs_dir_getinfo: callees of lfs_dir_read_ (from the static call graph) that may perform memory/string operations; their bodies must be inspected for memcpy/strcpy/strlen/etc. and for correct length checks.\n- lfs_t, lfs_dir_t, struct lfs_info: definitions of these types are required to know the sizes and layout of buffers and pointer fields that may be the targets/sources of string.h calls (e.g., char name[] fields, buffer lengths, offsets).\n- type of lfs->cfg (configuration struct): lfs_dir_read uses lfs->cfg in lock/unlock calls; cfg may also contain limits (block sizes, name limits) used by downstream code to bound string/memory operations.\n- LFS_LOCK, LFS_UNLOCK: macros or functions used by lfs_dir_read; their definitions can reveal side effects or internal use of string/memory functions (and influence where/when buffers are accessed).\n- LFS_TRACE: tracing macro/function may expand to code that uses snprintf/memcpy/etc.; include its definition to ensure it does not itself cause out-of-bounds string accesses.\n- buffer-size macros used in lfs_info/dir (e.g., LFS_NAME_MAX): any constant macros that define array sizes or limits used by string operations must be known to check that lengths passed to memcpy/strncpy/strncat/etc. are within bounds.\n\nProvide the source/prototypes/definitions for the above symbols so the next agent can inspect all uses of standard string.h functions and the sizes/limits of their destination/source objects."
+}

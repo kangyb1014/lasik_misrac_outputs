@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_open(const char *path, int shm)\n{\n\tconst int flags = O_RDWR | O_CREAT | O_CLOEXEC;\n\tconst int mode = S_IRUSR | S_IWUSR;\n\tint fd;\n\n\tif (!path || !strlen(path))\n\t\treturn -EINVAL;\n\n\tfd = shm ? shm_open(path, flags, mode) : open(path, flags, mode);\n\treturn fd < 0 ? -errno : fd;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_open': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_open']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_open': {'callees': ['metal_shmem_open_generic', 'metal_open', 'metal_shmem_try_map'], 'callers': ['shmem_child']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "strlen",
+    "open",
+    "shm_open",
+    "errno",
+    "EINVAL",
+    "O_RDWR",
+    "O_CREAT",
+    "O_CLOEXEC",
+    "S_IRUSR",
+    "S_IWUSR"
+  ],
+  "explanation": "For a MISRA C unreachable-code analysis we must know all external symbols whose semantics can affect which statements are ever executed or what branches are taken.\n\n- strlen: The conditional uses !strlen(path). To determine whether the strlen() call can be invoked (and whether it can cause undefined behaviour or always returns non-zero/zero) we must know the actual semantics/implementation of strlen used by the project. This affects reachability of the return after the check.\n\n- open: The returned value fd may come from open(). To determine whether the fd < 0 branch is reachable (and thus whether the return -errno path is reachable) we must know open()'s failure behaviour (return value and errno side-effect).\n\n- shm_open: Same reason as open(): when shm is true fd is set from shm_open(), so we must know its return/errno behaviour to decide reachability of the error-return branch.\n\n- errno: The code returns -errno on failure. We must know how errno is provided (macro/extern int) and whether it is set by open/shm_open on failure; its presence/semantics affect whether the error-return expression is meaningful and reachable.\n\n- EINVAL: The function returns -EINVAL when path is NULL or empty. To reason about reachability we must know the value/definition of EINVAL (and whether it might be redefined) to confirm this return is a reachable, meaningful branch.\n\n- O_RDWR, O_CREAT, O_CLOEXEC, S_IRUSR, S_IWUSR: These flags/modes are passed to open/shm_open. While they do not directly affect control flow in this function, their project definitions could be macros with side effects or unusual expansions that alter behaviour or introduce unreachable code; therefore their definitions should be known to fully reason about reachability of the calls and subsequent branches."
+}

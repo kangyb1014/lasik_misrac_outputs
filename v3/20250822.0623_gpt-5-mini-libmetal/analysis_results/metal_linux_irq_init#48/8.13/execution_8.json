@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: metal_linux_irq_init\nSTATE: irqs zeroed (sizeof=16368)\nCALL: eventfd -> irq_notify_fd=5\nCALL: metal_mutex_init(&irq_lock)\nSTATE: irq_handling_stop=0\nCALL: metal_irq_register_controller(&linux_irq_cntr) -> ret=0\nCALL: pthread_create(&irq_pthread, NULL, metal_linux_irq_handling, NULL) -> ret=0\nEXIT: metal_linux_irq_init -> success (0)\nENTER: metal_linux_irq_init\nSTATE: irqs zeroed (sizeof=16368)\nCALL: eventfd -> irq_notify_fd=5\nCALL: metal_mutex_init(&irq_lock)\nSTATE: irq_handling_stop=0\nCALL: metal_irq_register_controller(&linux_irq_cntr) -> ret=0\nCALL: pthread_create(&irq_pthread, NULL, metal_linux_irq_handling, NULL) -> ret=0\nEXIT: metal_linux_irq_init -> success (0)\n"
+}

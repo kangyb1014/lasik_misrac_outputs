@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:5954:18: error: use of undeclared identifier 'MHD_HDRLine_READING_DATA_ERROR'; did you mean 'MHD_HDR_LINE_READING_DATA_ERROR'?\n 5954 |           return MHD_HDRLine_READING_DATA_ERROR; /* Error in the request */\n      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n      |                  MHD_HDR_LINE_READING_DATA_ERROR\nconnection.c:5703:3: note: 'MHD_HDR_LINE_READING_DATA_ERROR' declared here\n 5703 |   MHD_HDR_LINE_READING_DATA_ERROR,\n      |   ^\n1 error generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

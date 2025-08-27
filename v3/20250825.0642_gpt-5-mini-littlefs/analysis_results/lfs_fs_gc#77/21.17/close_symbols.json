@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_fs_gc(lfs_t *lfs) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_fs_gc(%p)\", (void*)lfs);\n\n    err = lfs_fs_gc_(lfs);\n\n    LFS_TRACE(\"lfs_fs_gc -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_fs_gc': {'callees': ['lfs_fs_gc_'], 'callers': []}, 'lfs_fs_gc_': {'callees': ['lfs_fs_forceconsistency', 'lfs_pair_isnull', 'lfs_dir_fetch', 'lfs_dir_commit', 'lfs_alloc_scan'], 'callers': ['lfs_fs_gc']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "lfs_fs_gc_",
+    "lfs_fs_forceconsistency",
+    "lfs_pair_isnull",
+    "lfs_dir_fetch",
+    "lfs_dir_commit",
+    "lfs_alloc_scan",
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "lfs_t",
+    "lfs->cfg (configuration object / type definition, e.g. lfs_config)",
+    "data structure definitions used by callees (e.g. lfs_pair, lfs_dir, lfs_block_t)",
+    "string.h functions potentially used by the above (e.g. memcpy, memmove, memset, strcpy, strncpy, strcat, strncat, strlen, memcmp, strspn)"
+  ],
+  "explanation": "For MISRA C checks about out\u2011of\u2011bounds accesses by string.h routines you must inspect any code that the target calls (directly and indirectly) and any macros that run inside the target: \n\n- lfs_fs_gc_: called directly by lfs_fs_gc; its body may call string functions or pass buffers/sizes leading to violations. \n- lfs_fs_forceconsistency, lfs_pair_isnull, lfs_dir_fetch, lfs_dir_commit, lfs_alloc_scan: these are the callees of lfs_fs_gc_ per the call graph; each must be examined for use of string.h functions and for the sizes/limits of the buffers they manipulate. \n- LFS_LOCK, LFS_UNLOCK: macros/functions invoked by lfs_fs_gc for locking; their implementations may use string/formatting functions or manipulate buffers (e.g. for diagnostics) and must be checked. \n- LFS_TRACE: logging/trace macro used in lfs_fs_gc; logging usually formats strings and can call snprintf/strncpy/etc. Its implementation must be checked for safe usage. \n- lfs_t: the target's primary type; its definition is needed to locate member types and buffer sizes used or passed to callees. \n- lfs->cfg (configuration object / its type definition, e.g. lfs_config): lock/trace macros take lfs->cfg; its fields (buffer sizes, pointers, callbacks) affect whether string functions are called and with what sizes. \n- data structure definitions used by callees (e.g. lfs_pair, lfs_dir, lfs_block_t): to determine the actual storage sizes and bounds of objects passed to string.h functions inside callees. \n- string.h functions potentially used by the above (memcpy, memmove, memset, strcpy, strncpy, strcat, strncat, strlen, memcmp, strspn): to verify their call sites in the code above and ensure length/size arguments and buffers are correctly bounded.\n\nCollecting the source/definitions of these symbols allows a reviewer to trace all uses of standard string routines, inspect buffer sizes and length arguments, and determine whether any call can access beyond an object's bounds."
+}

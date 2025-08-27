@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "2025-08-22T06:33:17 PID=2405667: enter spinlock(): threads=10\n2025-08-22T06:33:17 PID=2405667: calling metal_run(threads=10, spinlock_thread, &lock)\n2025-08-22T06:33:17 PID=2405667: metal_run returned error=0, errno=17\n2025-08-22T06:33:17 PID=2405667: exit spinlock(): returning error=0\n2025-08-22T06:33:18 PID=2405843: enter spinlock(): threads=10\n2025-08-22T06:33:18 PID=2405843: calling metal_run(threads=10, spinlock_thread, &lock)\n2025-08-22T06:33:18 PID=2405843: metal_run returned error=0, errno=17\n2025-08-22T06:33:18 PID=2405843: exit spinlock(): returning error=0\n"
+}

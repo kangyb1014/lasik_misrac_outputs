@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpi5kt94zu/src/src/os/shared/src/osapi-idmap.c: In function 'OS_ProbeLog':\n/tmp/tmpi5kt94zu/src/src/os/shared/src/osapi-idmap.c:1432:22: error: cast specifies array type\n 1432 |     vfprintf(f, fmt, (va_list)ap);\n      |                      ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:216: CMakeFiles/osal.dir/src/os/shared/src/osapi-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

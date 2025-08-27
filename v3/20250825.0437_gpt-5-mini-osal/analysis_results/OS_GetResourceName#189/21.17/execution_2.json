@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpi5kt94zu/src/src/os/shared/src/osapi-idmap.c: In function 'OS_ProbeLog':\n/tmp/tmpi5kt94zu/src/src/os/shared/src/osapi-idmap.c:1418:15: error: storage size of 'tmv' isn't known\n 1418 |     struct tm tmv;\n      |               ^~~\n/tmp/tmpi5kt94zu/src/src/os/shared/src/osapi-idmap.c:1430:22: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n 1430 |     vfprintf(f, fmt, ap);\n      |                      ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-idmap.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-idmap.dir/__/__/os/shared/src/osapi-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3787: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-idmap.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

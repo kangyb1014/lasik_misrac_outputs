@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "connection.c:4594:19: warning: missing terminating ' character [-Winvalid-pp-token]\n 4594 |           if ((';'' == buffer_head[num_dig]) ||\n      |                   ^\nconnection.c:4594:19: error: expected ')'\nconnection.c:4594:15: note: to match this '('\n 4594 |           if ((';'' == buffer_head[num_dig]) ||\n      |               ^\nconnection.c:4598:11: error: expected ')'\n 4598 |           { /* Chunk extension */\n      |           ^\nconnection.c:4594:14: note: to match this '('\n 4594 |           if ((';'' == buffer_head[num_dig]) ||\n      |              ^\nconnection.c:4678:9: error: expected statement\n 4678 |         }\n      |         ^\n1 warning and 3 errors generated.\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

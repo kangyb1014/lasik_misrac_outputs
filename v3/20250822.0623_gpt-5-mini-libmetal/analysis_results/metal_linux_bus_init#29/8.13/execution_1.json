@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_init: enter\niter 0: lbus=0x7f83ff9c2b60 bus_name=(null)\niter 0: metal_linux_probe_bus returned 0\niter 1: lbus=0x7f83ff9c3dc8 bus_name=(null)\niter 1: metal_linux_probe_bus returned 0\nmetal_linux_bus_init: exit valid=2 ret=0\nmetal_linux_bus_init: enter\niter 0: lbus=0x55cd575f5260 bus_name=(null)\niter 0: metal_linux_probe_bus returned 0\niter 1: lbus=0x55cd575f64c8 bus_name=(null)\niter 1: metal_linux_probe_bus returned 0\nmetal_linux_bus_init: exit valid=2 ret=0\n"
+}

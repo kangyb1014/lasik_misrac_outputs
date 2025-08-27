@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp3q_lvu6x/src/src/os/shared/src/osapi-module.c: In function 'OS_ModuleUnload':\n/tmp/tmp3q_lvu6x/src/src/os/shared/src/osapi-module.c:279:17: error: invalid storage class for function 'OS_ModuleUnload_Log'\n  279 |     static void OS_ModuleUnload_Log(const char *stage,\n      |                 ^~~~~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:230: CMakeFiles/osal.dir/src/os/shared/src/osapi-module.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

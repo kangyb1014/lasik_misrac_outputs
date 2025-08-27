@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTRY: sem_id=(nil) sem_name=0x55ce70309ee9 return_code=-1\nENTRY: sem_id=0x7ffe6ae4f8dc sem_name=(nil) return_code=-1\nENTRY: sem_id=0x7ffe6ae4f8dc sem_name=0x7ffe6ae4f8e0 return_code=-1\nAFTER_POINTER_CHECKS: sem_id=0x7ffe6ae4f8dc sem_name=0x7ffe6ae4f8e0 return_code=-1\nAFTER_LOOKUP: sem_id=0x7ffe6ae4f8dc sem_name=0x7ffe6ae4f8e0 return_code=-13\nENTRY: sem_id=0x7ffe6ae4f8dc sem_name=0x55ce70309f7d return_code=-1\nAFTER_POINTER_CHECKS: sem_id=0x7ffe6ae4f8dc sem_name=0x55ce70309f7d return_code=-1\nAFTER_LOOKUP: sem_id=0x7ffe6ae4f8dc sem_name=0x55ce70309f7d return_code=-17\n"
+}

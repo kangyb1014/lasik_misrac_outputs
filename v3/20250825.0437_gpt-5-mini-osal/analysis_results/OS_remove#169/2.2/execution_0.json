@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_remove: entry path=/drive3/select_test.txt\nOS_remove: OS_TranslatePath -> -108\nOS_remove: skipping OS_FileRemove_Impl due to translate failure -108\nOS_remove: exit returning -108\nOS_remove: entry path=/drive3/select_test.txt\nOS_remove: OS_TranslatePath -> -108\nOS_remove: skipping OS_FileRemove_Impl due to translate failure -108\nOS_remove: exit returning -108\nOS_remove: entry path=/drive3/select_test.txt\nOS_remove: OS_TranslatePath -> -108\nOS_remove: skipping OS_FileRemove_Impl due to translate failure -108\nOS_remove: exit returning -108\n"
+}

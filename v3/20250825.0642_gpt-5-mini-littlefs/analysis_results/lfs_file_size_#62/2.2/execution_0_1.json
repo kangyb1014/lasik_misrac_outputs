@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:3856:27: error: 'LFS_F_WRITING' redeclared as different kind of symbol\n 3856 | static const unsigned int LFS_F_WRITING = 1u;\n      |                           ^~~~~~~~~~~~~\nIn file included from lfs.c:15:\nlfs.h:139:5: note: previous definition of 'LFS_F_WRITING' with type 'enum lfs_open_flags'\n  139 |     LFS_F_WRITING = 0x020000, // File has been written since last flush\n      |     ^~~~~~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

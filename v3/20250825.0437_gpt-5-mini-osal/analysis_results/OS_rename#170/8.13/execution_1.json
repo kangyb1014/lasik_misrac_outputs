@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "In file included from /tmp/tmpbcw0qpg7/src/src/os/shared/src/osapi-file.c:51:\n/tmp/tmpbcw0qpg7/src/src/os/shared/inc/os-shared-idmap.h:100:40: error: expected identifier or '(' before '&' token\n  100 | #define OS_OBJECT_TABLE_GET(tbl, tok) (&tbl[OS_ObjectIndexFromToken(&(tok))])\n      |                                        ^\n/tmp/tmpbcw0qpg7/src/src/os/shared/src/osapi-file.c:395:30: note: in expansion of macro 'OS_OBJECT_TABLE_GET'\n  395 | OS_stream_internal_record_t *OS_OBJECT_TABLE_GET(void *table, int token);\n      |                              ^~~~~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

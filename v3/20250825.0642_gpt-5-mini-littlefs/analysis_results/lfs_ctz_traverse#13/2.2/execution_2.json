@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_ctz_traverse':\nlfs.c:3072:13: error: redefinition of 'err'\n 3072 |         int err = lfs_bd_read(lfs,\n      |             ^~~\nlfs.c:3054:13: note: previous definition of 'err' with type 'int'\n 3054 |         int err = cb(data, head);\n      |             ^~~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

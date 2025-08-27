@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_OpenCreate ENTRY: filedes_ptr=0x5628013bf608, path=/drive3/select_test.txt, flags=3, access_mode=2\nInitialized *filedes to OS_OBJECT_ID_UNDEFINED\nOS_TranslatePath failed with -108\nOS_OpenCreate EXIT: return_code=-108\nOS_OpenCreate ENTRY: filedes_ptr=0x5628013bf608, path=/drive3/select_test.txt, flags=3, access_mode=2\nInitialized *filedes to OS_OBJECT_ID_UNDEFINED\nOS_TranslatePath failed with -108\nOS_OpenCreate EXIT: return_code=-108\nOS_OpenCreate ENTRY: filedes_ptr=0x5628013bf608, path=/drive3/select_test.txt, flags=3, access_mode=2\nInitialized *filedes to OS_OBJECT_ID_UNDEFINED\nOS_TranslatePath failed with -108\nOS_OpenCreate EXIT: return_code=-108\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c:1628:9: error: use of undeclared identifier 'MHD_DAUTHBind_NONCE_NONE'; did you mean 'MHD_DAUTH_BIND_NONCE_NONE'?\n 1628 |   if ( (MHD_DAUTHBind_NONCE_NONE == bind_options) ||\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n      |         MHD_DAUTH_BIND_NONCE_NONE\n../../src/include/microhttpd.h:1612:3: note: 'MHD_DAUTH_BIND_NONCE_NONE' declared here\n 1612 |   MHD_DAUTH_BIND_NONCE_NONE = 0,\n      |   ^\n1 error generated.\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,1 @@
+<model: gpt-5-mini, program: libmetal, version: v2025.04.0 (v9), target_func: None, misra_rule: ['1.2', '2.1', '2.2', '8.13', '14.2', '14.3', '17.2', '17.8', '21.14', '21.17'], output_dir: /ssd_home/yeongbin/lasik/output/20250822.0623_gpt-5-mini-libmetal, target_file: None, continuation_mode: None, continuation_dir: None>

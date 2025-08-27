@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER lfs_format_: lfs=0x7ffceb6c13e8, cfg=0x7ffceb6c1d70\ncfg->block_count=2048\ncfg->block_size=512\ncfg->block_cycles=4294967295\ncfg->read_size=16\ncfg->prog_size=16\ncfg->lookahead_size=16\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "daemon.c:4099:32: error: no member named 'tls_session' in 'struct MHD_Connection'\n 4099 |                  (void *) pos->tls_session,\n      |                           ~~~  ^\ndaemon.c:4101:39: error: operand of type 'MHD_thread_handle_ID_' (aka 'struct _MHD_thread_handle_ID_') where arithmetic or pointer type is required\n 4101 |                  (unsigned long long) pos->tid,\n      |                                       ^~~~~~~~\n2 errors generated.\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter lfs_ctz_traverse: lfs=0x7ffd612a0698 pcache=0x7ffd612a0478 rcache=0x7ffd612a0698 head=1410 size=64548 cb=0x5585953365c2 data=0x7ffd612a0698\ncomputed index=127 (size-1=64547)\ncalling callback cb with head=1410\ncb returned 0\nabout to call lfs_bd_read: head=1410 count=1 readbytes=4\npcache pointer before lfs_bd_read = 0x7ffd612a0478\npcache->buffer (guessed addr) = 0x1c0ffffffff; first 16 bytes:\n"
+}

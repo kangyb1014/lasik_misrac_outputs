@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_TaskDelay_Impl(uint32 millisecond)\n{\n    struct timespec sleep_end;\n    int             status;\n\n    clock_gettime(CLOCK_MONOTONIC, &sleep_end);\n    sleep_end.tv_sec += millisecond / 1000;\n    sleep_end.tv_nsec += 1000000 * (millisecond % 1000);\n\n    if (sleep_end.tv_nsec >= 1000000000)\n    {\n        sleep_end.tv_nsec -= 1000000000;\n        ++sleep_end.tv_sec;\n    }\n\n    do\n    {\n        status = clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &sleep_end, NULL);\n    } while (status == EINTR);\n\n    if (status != 0)\n    {\n        return OS_ERROR;\n    }\n    else\n    {\n        return OS_SUCCESS;\n    }\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_TaskDelay_Impl': {'callees': [], 'callers': ['OS_TaskDelay', 'OS_TimeBase_CallbackThread']}, 'OS_TaskDelay': {'callees': ['OS_TaskDelay_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': ['OS_DeleteAllObjects']}, 'OS_TimeBase_CallbackThread': {'callees': ['OS_TaskRegister_Impl', 'OS_ObjectIdGetById', 'OS_ObjectIndexFromToken', 'OS_ObjectIdRelease', 'OS_TaskDelay_Impl', 'OS_TimeBaseLock_Impl', 'OS_ObjectIdEqual', 'OS_TimeBaseUnlock_Impl', 'OS_ObjectIdFromToken'], 'callers': ['OS_TimeBasePthreadEntry']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "int32",
+    "uint32",
+    "struct timespec",
+    "clock_gettime",
+    "clock_nanosleep",
+    "CLOCK_MONOTONIC",
+    "TIMER_ABSTIME",
+    "EINTR",
+    "OS_ERROR",
+    "OS_SUCCESS",
+    "1000000",
+    "1000000000"
+  ],
+  "explanation": "int32, uint32: confirm the parameter 'millisecond' is a by-value integer type (not a macro or disguised pointer/alias) so it cannot be modified via indirection. struct timespec: shows the members (tv_sec, tv_nsec) and their types so you can verify only sleep_end is modified, not the parameter. clock_gettime: prototype/semantics to confirm it only writes to the timespec passed and does not touch function parameters. clock_nanosleep: prototype/semantics to confirm it accepts a timespec pointer and does not modify 'millisecond' (no hidden aliasing). CLOCK_MONOTONIC, TIMER_ABSTIME: constants used in the calls \u2014 include to check for any macro expansions that could reference other objects. EINTR: error code used in the loop condition \u2014 include to verify status comparison logic and that no side effect modifies the parameter. OS_ERROR, OS_SUCCESS: return macros to confirm they are simple constants (not function-like macros that could reference parameters). 1000000, 1000000000: numeric constants used in arithmetic on millisecond-derived values \u2014 include to ensure they are plain literals/macros (no weird macro expansions that could refer to or modify the parameter)."
+}

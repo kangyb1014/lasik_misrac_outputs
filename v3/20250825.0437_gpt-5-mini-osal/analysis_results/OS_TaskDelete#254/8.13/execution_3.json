@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c: In function 'OS_TaskDelete':\n/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c:260:29: error: missing terminating \" character\n  260 |     OS_TaskDelete_LogPrintf(\"OS_TaskDelete: ENTRY task_id=%\n      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c:269:1: error: expected expression before 'void'\n  269 | void OS_TaskExit()\n      | ^~~~\n/tmp/tmpthn53e6u/src/src/os/shared/src/osapi-task.c:469:1: error: expected declaration or statement at end of input\n  469 | }\n      | ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:342: CMakeFiles/osal.dir/src/os/shared/src/osapi-task.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

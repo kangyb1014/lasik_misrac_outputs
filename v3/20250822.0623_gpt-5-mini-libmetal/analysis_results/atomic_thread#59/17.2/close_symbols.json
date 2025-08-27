@@ -1,0 +1,11 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_fetch_add",
+    "atomic_test_count",
+    "__atomic_fetch_add",
+    "__sync_fetch_and_add",
+    "(all callees of atomic_fetch_add)"
+  ],
+  "explanation": "- atomic_fetch_add: The target function directly calls atomic_fetch_add; you must inspect its definition (or macro) to determine whether it calls, directly or indirectly, atomic_thread.\n- atomic_test_count: Although used only as a loop bound, it might be a macro or accessor that expands to or calls functions; confirm it is not a function that could lead back to atomic_thread.\n- __atomic_fetch_add and __sync_fetch_and_add: atomic_fetch_add is often implemented as a macro that expands to compiler built\u2011ins or wrappers (these common intrinsics). Check these symbols because recursion could occur through such expansions or their helper functions.\n- (all callees of atomic_fetch_add): If atomic_fetch_add calls other functions, you must examine those callees (and their callees transitively) to ensure none calls atomic_thread.  In short: inspect the full implementation chain reachable from atomic_fetch_add to prove absence of direct or indirect self\u2011calls."
+}

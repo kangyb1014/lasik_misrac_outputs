@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter lfs_mkdir: lfs=0x7fff84762eb8, path=\"breakfast\"\nLFS_LOCK called with cfg=0x7fff84762dc0\nafter LFS_LOCK: err=0\nTRACE: lfs_mkdir(0x7fff84762eb8, \"breakfast\")\nenter lfs_mkdir_ (stub): lfs=0x7fff84762eb8, path=\"breakfast\"\nTRACE: lfs_mkdir -> 0\nabout to call LFS_UNLOCK with cfg=0x7fff84762dc0\nLFS_UNLOCK executed with cfg=0x7fff84762dc0 (no-op)\nreturned from LFS_UNLOCK, returning err=0\n"
+}

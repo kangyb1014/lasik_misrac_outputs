@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_irq_register_controller: entry cntr=0x7f3ba8a73c80\nmetal_irq_register_controller: starting iteration over irq_cntrs\nmetal_irq_register_controller: allocating irq numbers, requested base=0 num=1023\nmetal_irq_register_controller: allocated irq_base=0, adding controller to list\nmetal_irq_register_controller: added controller, returning 0\nmetal_irq_register_controller: entry cntr=0x561d2aeb64a0\nmetal_irq_register_controller: starting iteration over irq_cntrs\nmetal_irq_register_controller: allocating irq numbers, requested base=0 num=1023\nmetal_irq_register_controller: allocated irq_base=0, adding controller to list\nmetal_irq_register_controller: added controller, returning 0\n"
+}

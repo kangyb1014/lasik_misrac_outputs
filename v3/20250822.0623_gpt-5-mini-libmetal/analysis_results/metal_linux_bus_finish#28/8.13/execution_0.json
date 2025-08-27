@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_finish: enter\nloop: lbus=0x7f3cc3178b60 bus_name=platform\nmetal_bus_find: found bus=0x7f3cc3178b60 for bus_name=platform, unregistering\nloop: lbus=0x7f3cc3179dc8 bus_name=pci\nmetal_bus_find: found bus=0x7f3cc3179dc8 for bus_name=pci, unregistering\nmetal_linux_bus_finish: exit\nmetal_linux_bus_finish: enter\nloop: lbus=0x55ec78dcc260 bus_name=platform\nmetal_bus_find: found bus=0x55ec78dcc260 for bus_name=platform, unregistering\nloop: lbus=0x55ec78dcd4c8 bus_name=pci\nmetal_bus_find: found bus=0x55ec78dcd4c8 for bus_name=pci, unregistering\nmetal_linux_bus_finish: exit\n"
+}

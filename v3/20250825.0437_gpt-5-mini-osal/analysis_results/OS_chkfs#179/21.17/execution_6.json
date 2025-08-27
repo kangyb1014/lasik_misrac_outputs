@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp2il7ljeu/src/src/os/shared/src/osapi-filesys.c: In function 'os_chkfs_log':\n/tmp/tmp2il7ljeu/src/src/os/shared/src/osapi-filesys.c:624:49: error: 'OS_CHKFS_LOG_MAX' undeclared (first use in this function)\n  624 |         size_t len = safe_strnlen(name, (size_t)OS_CHKFS_LOG_MAX);\n      |                                                 ^~~~~~~~~~~~~~~~\n/tmp/tmp2il7ljeu/src/src/os/shared/src/osapi-filesys.c:624:49: note: each undeclared identifier is reported only once for each function it appears in\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:188: CMakeFiles/osal.dir/src/os/shared/src/osapi-filesys.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

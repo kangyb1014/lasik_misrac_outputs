@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_irq_init: entry\n  &irq_handling_stop=0x7f6de2701220 initial_value=0\nmetal_linux_irq_init: before assignment irq_handling_stop=0\nmetal_linux_irq_init: after assignment irq_handling_stop=0\nmetal_linux_irq_init: success irq_notify_fd=5 irq_handling_stop=0\nmetal_linux_irq_init: entry\n  &irq_handling_stop=0x5618276c39e0 initial_value=0\nmetal_linux_irq_init: before assignment irq_handling_stop=0\nmetal_linux_irq_init: after assignment irq_handling_stop=0\nmetal_linux_irq_init: success irq_notify_fd=5 irq_handling_stop=0\n"
+}

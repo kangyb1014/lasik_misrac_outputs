@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[OS_BinSemGetInfo] stage=after_clear sem_id=3735928559 ret=-1 token=(nil) record=(nil)\n    bin_prop->name=\"(null)\" bin_prop->creator=0\n[OS_BinSemGetInfo] stage=after_getbyid sem_id=3735928559 ret=-35 token=0x7ffed8858eb0 record=(nil)\n    bin_prop->name=\"(null)\" bin_prop->creator=0\n[OS_BinSemGetInfo] stage=return sem_id=3735928559 ret=-35 token=(nil) record=(nil)\n    bin_prop->name=\"(null)\" bin_prop->creator=0\n[OS_BinSemGetInfo] stage=after_clear sem_id=0 ret=-1 token=(nil) record=(nil)\n    bin_prop->name=\"(null)\" bin_prop->creator=0\n[OS_BinSemGetInfo] stage=after_getbyid sem_id=0 ret=-35 token=0x7ffed8858eb0 record=(nil)\n    bin_prop->name=\"(null)\" bin_prop->creator=0\n[OS_BinSemGetInfo] stage=return sem_id=0 ret=-35 token=(nil) record=(nil)\n    bin_prop->name=\"(null)\" bin_prop->creator=0\n"
+}

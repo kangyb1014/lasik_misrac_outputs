@@ -1,0 +1,24 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_map(int fd, off_t offset, size_t size, int expand, int flags,\n\t      void **result)\n{\n\tint prot = PROT_READ | PROT_WRITE, error;\n\tvoid *mem;\n\n\tflags |= MAP_SHARED;\n\n\tif (fd < 0) {\n\t\tfd = -1;\n\t\tflags = MAP_PRIVATE | MAP_ANONYMOUS;\n\t} else if (expand) {\n\t\toff_t reqsize = offset + size;\n\t\tstruct stat stat;\n\n\t\terror = flock(fd, LOCK_EX) < 0 ? -errno : 0;\n\t\tif (!error)\n\t\t\terror = fstat(fd, &stat);\n\t\tif (!error && stat.st_size < reqsize)\n\t\t\terror = ftruncate(fd, reqsize);\n\t\tif (!error)\n\t\t\tflock(fd, LOCK_UN);\n\t\tif (error)\n\t\t\treturn -errno;\n\t}\n\n\tmem = mmap(NULL, size, prot, flags, fd, offset);\n\tif (mem == MAP_FAILED)\n\t\treturn -errno;\n\t*result = mem;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_map': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_try_map']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mmap",
+    "MAP_FAILED",
+    "PROT_READ",
+    "PROT_WRITE",
+    "MAP_SHARED",
+    "MAP_PRIVATE",
+    "MAP_ANONYMOUS",
+    "flock",
+    "LOCK_EX",
+    "LOCK_UN",
+    "fstat",
+    "ftruncate",
+    "struct stat",
+    "st_size",
+    "off_t",
+    "size_t",
+    "errno",
+    "NULL"
+  ],
+  "explanation": "To determine whether metal_map uses any compiler language extensions you must inspect the definitions and declarations of all library calls, macros and types used in the function body because an extension can be introduced through a macro, typedef, or header declaration. For each symbol:\n\n- mmap: verify whether mmap is a plain function declaration or a macro/wrapper that uses compiler extensions (e.g. __attribute__, inline assembly, __asm__, __extension__, GCC builtins, thread-local magic, or non-standard linkage).\n- MAP_FAILED: macro value may perform pointer/integer casts or use extension constructs; check its definition for casts or compiler-specific tokens.\n- PROT_READ, PROT_WRITE: macros; their definitions could be built from extensions or use nonstandard expressions.\n- MAP_SHARED, MAP_PRIVATE, MAP_ANONYMOUS: mapping flags are macros; confirm they are simple integer constants and not implemented via extension-specific constructs or aliases that use compiler extensions.\n- flock: check whether flock is declared as a normal library function or a macro/inline wrapper that uses compiler-specific attributes or extensions.\n- LOCK_EX, LOCK_UN: macros for flock; check they are plain integer constants.\n- fstat, ftruncate: verify prototypes do not use compiler-specific attributes or nonstandard extensions in their declarations.\n- struct stat: the struct definition (and member types) may use compiler extensions (e.g. bitfields with implementation-specific attributes, anonymous unions/structs, flexible array members declared with GNU extensions) \u2014 inspect the definition, especially st_size.\n- st_size: the member type and any attributes on it (off_t, possible padding or extension-specific qualifiers) must be checked for extensions.\n- off_t: typedef may be provided via headers using implementation-specific typedefs or macros; check if it relies on extensions (large-file macros, hidden attributes, or nonstandard typedef patterns).\n- size_t: standard typedef but confirm header does not use extensions in its definition.\n- errno: errno may be a macro that expands to a function call or thread-local expression (__errno_location(), __thread, or other compiler-specific mechanism). Such expansion could use extensions; inspect errno's definition.\n- NULL: verify that NULL macro is a standard integer/void* constant and not defined using compiler-specific constructs.\n\nInspecting the above symbols (and the headers that declare/define them: typically <sys/mman.h>, <sys/file.h> or <fcntl.h>, <sys/stat.h>, <unistd.h>, <errno.h>, <stddef.h>) is necessary to conclude whether the code uses any compiler-documented language extensions. Only by examining these definitions can you reliably report MISRA violations about language extensions."
+}

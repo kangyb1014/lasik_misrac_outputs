@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "2025-08-22 06:33:42 probe: event=enter_alloc, func=probe_log, ptr=(nil), errno=0\n2025-08-22 06:33:42 probe: event=after_allocate, func=probe_log, ptr=0x559feef2e520, errno=0\n2025-08-22 06:33:42 probe: event=after_free, func=probe_log, ptr=0x559feef2e520, errno=0\n2025-08-22 06:33:42 probe: event=exit_alloc_success, func=probe_log, ptr=0x559feef2e520, errno=0\n2025-08-22 06:33:42 probe: event=enter_alloc, func=probe_log, ptr=(nil), errno=0\n2025-08-22 06:33:42 probe: event=after_allocate, func=probe_log, ptr=0x562855b6e520, errno=0\n2025-08-22 06:33:42 probe: event=after_free, func=probe_log, ptr=0x562855b6e520, errno=0\n2025-08-22 06:33:42 probe: event=exit_alloc_success, func=probe_log, ptr=0x562855b6e520, errno=0\n"
+}

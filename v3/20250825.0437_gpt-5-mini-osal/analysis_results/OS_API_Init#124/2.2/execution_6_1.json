@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "In file included from /tmp/tmpy0joq476/src/src/os/shared/inc/os-shared-idmap.h:29,\n                 from /tmp/tmpy0joq476/src/src/os/shared/src/osapi-common.c:57:\n/tmp/tmpy0joq476/src/src/os/inc/osapi-idmap.h:39:36: error: expected identifier before numeric constant\n   39 | #define OS_OBJECT_TYPE_OS_TASK     0x01 /**< @brief Object task type */\n      |                                    ^~~~\n/tmp/tmpy0joq476/src/src/os/shared/src/osapi-common.c:114:5: note: in expansion of macro 'OS_OBJECT_TYPE_OS_TASK'\n  114 |     OS_OBJECT_TYPE_OS_TASK = 0,\n      |     ^~~~~~~~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:104: CMakeFiles/osal.dir/src/os/shared/src/osapi-common.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

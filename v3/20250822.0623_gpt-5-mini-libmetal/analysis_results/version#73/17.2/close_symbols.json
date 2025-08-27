@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int version(void)\n{\n\tchar ver_def[16], ver_dyn[16];\n\n\tsnprintf(ver_def, sizeof(ver_def), \"%d.%d.%d\",\n\t\t METAL_VER_MAJOR,\n\t\t METAL_VER_MINOR,\n\t\t METAL_VER_PATCH);\n\n\tsnprintf(ver_dyn, sizeof(ver_dyn), \"%d.%d.%d\",\n\t\t metal_ver_major(), metal_ver_minor(), metal_ver_patch());\n\n\treturn (strcmp(ver_def, METAL_VER) +\n\t\tstrcmp(ver_dyn, metal_ver()));\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'version': {'callees': ['metal_ver_major', 'metal_ver_minor', 'metal_ver_patch', 'metal_ver'], 'callers': []}, 'metal_ver_major': {'callees': [], 'callers': ['version']}, 'metal_ver_minor': {'callees': [], 'callers': ['version']}, 'metal_ver_patch': {'callees': [], 'callers': ['version']}, 'metal_ver': {'callees': [], 'callers': ['version']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_ver_major",
+    "metal_ver_minor",
+    "metal_ver_patch",
+    "metal_ver",
+    "METAL_VER_MAJOR",
+    "METAL_VER_MINOR",
+    "METAL_VER_PATCH",
+    "METAL_VER",
+    "snprintf",
+    "strcmp"
+  ],
+  "explanation": "- metal_ver_major, metal_ver_minor, metal_ver_patch, metal_ver: must inspect the bodies of these functions to determine whether they (directly or indirectly) call version (i.e. form recursion). Any call chain from these functions back to version would violate the MISRA rule.  \n- METAL_VER_MAJOR, METAL_VER_MINOR, METAL_VER_PATCH, METAL_VER: these macros/constants must be checked to ensure they do not expand to expressions that perform function calls (which could introduce indirect recursion).  \n- snprintf, strcmp: verify these are the standard library implementations (or harmless macros/wrappers). If they are replaced by project-specific macros or wrappers, they might call user code that could lead back to version; confirm they do not introduce indirect calls to version."
+}

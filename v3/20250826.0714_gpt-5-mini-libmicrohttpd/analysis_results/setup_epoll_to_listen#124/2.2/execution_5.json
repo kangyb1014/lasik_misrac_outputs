@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "after_top_assert: daemon=0x56516f171a40 ls=-2\nbefore_listen_check: daemon=0x56516f171a40 ls=-2\ninside_listen_block_after_assignment: daemon=0x56516f171a40 ls=3\nafter_top_assert: daemon=0x56516f172060 ls=-2\nbefore_listen_check: daemon=0x56516f172060 ls=-2\ninside_listen_block_after_assignment: daemon=0x56516f172060 ls=3\nafter_top_assert: daemon=0x56516f172308 ls=-2\nbefore_listen_check: daemon=0x56516f172308 ls=-2\ninside_listen_block_after_assignment: daemon=0x56516f172308 ls=3\n"
+}

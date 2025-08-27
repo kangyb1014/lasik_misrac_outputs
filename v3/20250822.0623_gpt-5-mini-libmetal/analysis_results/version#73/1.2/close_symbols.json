@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int version(void)\n{\n\tchar ver_def[16], ver_dyn[16];\n\n\tsnprintf(ver_def, sizeof(ver_def), \"%d.%d.%d\",\n\t\t METAL_VER_MAJOR,\n\t\t METAL_VER_MINOR,\n\t\t METAL_VER_PATCH);\n\n\tsnprintf(ver_dyn, sizeof(ver_dyn), \"%d.%d.%d\",\n\t\t metal_ver_major(), metal_ver_minor(), metal_ver_patch());\n\n\treturn (strcmp(ver_def, METAL_VER) +\n\t\tstrcmp(ver_dyn, metal_ver()));\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'version': {'callees': ['metal_ver_major', 'metal_ver_minor', 'metal_ver_patch', 'metal_ver'], 'callers': []}, 'metal_ver_major': {'callees': [], 'callers': ['version']}, 'metal_ver_minor': {'callees': [], 'callers': ['version']}, 'metal_ver_patch': {'callees': [], 'callers': ['version']}, 'metal_ver': {'callees': [], 'callers': ['version']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_ver_major",
+    "metal_ver_minor",
+    "metal_ver_patch",
+    "metal_ver",
+    "METAL_VER_MAJOR",
+    "METAL_VER_MINOR",
+    "METAL_VER_PATCH",
+    "METAL_VER",
+    "snprintf",
+    "strcmp"
+  ],
+  "explanation": "metal_ver_major / metal_ver_minor / metal_ver_patch / metal_ver: need the declarations/definitions to check whether these functions use any compiler-specific language extensions (for example GCC/Clang attributes, inline assembly, nested functions, non\u2011standard calling conventions, __extension__ constructs, statement expressions, typeof, anonymous/packed extension usage, or other compiler-specific keywords). METAL_VER_MAJOR / METAL_VER_MINOR / METAL_VER_PATCH / METAL_VER: need the macro or constant definitions to verify they are standard preprocessor definitions and not implemented via compiler extensions (e.g. macros that use statement expressions, typeof, __builtin_ helpers, or other non\u2011standard constructs). snprintf / strcmp: include their declarations/headers to ensure these identifiers are the standard library functions (and not redefined as macros or as compiler builtins that rely on extensions or non\u2011standard behaviour)."
+}

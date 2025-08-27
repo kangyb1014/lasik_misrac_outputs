@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "stage=enter sem_id=0xdeadbeef msecs=1000 token_ptr=0x7ffc4a1fd410 return_code=0\ntoken_bytes=20d41f4afc7f00000083f38c9824f313\nstage=after_OS_ObjectIdGetById sem_id=0xdeadbeef msecs=1000 token_ptr=(nil) return_code=-35\nstage=skip_Impl_return_error sem_id=0xdeadbeef msecs=1000 token_ptr=(nil) return_code=-35\nstage=exit sem_id=0xdeadbeef msecs=1000 token_ptr=(nil) return_code=-35\nstage=enter sem_id=0x0 msecs=1000 token_ptr=0x7ffc4a1fd410 return_code=0\ntoken_bytes=0200000000000000f0ffffffddffffff\nstage=after_OS_ObjectIdGetById sem_id=0x0 msecs=1000 token_ptr=(nil) return_code=-35\nstage=skip_Impl_return_error sem_id=0x0 msecs=1000 token_ptr=(nil) return_code=-35\nstage=exit sem_id=0x0 msecs=1000 token_ptr=(nil) return_code=-35\n"
+}

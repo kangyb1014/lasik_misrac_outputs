@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp9q56mdlt/src/src/os/shared/src/osapi-idmap.c: In function 'os_probe_log':\n/tmp/tmp9q56mdlt/src/src/os/shared/src/osapi-idmap.c:890:5: error: unknown type name 'pid_t'\n  890 |     pid_t pid = getpid();\n      |     ^~~~~\n/tmp/tmp9q56mdlt/src/src/os/shared/src/osapi-idmap.c:896:22: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  896 |     vfprintf(f, fmt, ap);\n      |                      ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-idmap.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-idmap.dir/__/__/os/shared/src/osapi-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3787: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-idmap.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

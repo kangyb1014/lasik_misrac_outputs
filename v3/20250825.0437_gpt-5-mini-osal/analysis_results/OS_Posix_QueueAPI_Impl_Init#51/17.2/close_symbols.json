@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_Posix_QueueAPI_Impl_Init(void)\n{\n    memset(OS_impl_queue_table, 0, sizeof(OS_impl_queue_table));\n\n    /*\n     * Automatic truncation is dependent on the OSAL_CONFIG_DEBUG_PERMISSIVE_MODE compile-time define - so\n     * creating a too-large message queue on a target without OSAL_CONFIG_DEBUG_PERMISSIVE_MODE will fail\n     * with an OS error as intended.\n     */\n#ifdef OSAL_CONFIG_DEBUG_PERMISSIVE_MODE\n    /*\n     * Use the BSP-provided limit\n     */\n    POSIX_GlobalVars.TruncateQueueDepth = OS_BSP_Global.MaxQueueDepth;\n#else\n    /*\n     * Initialize this to zero to indicate no limit\n     */\n    POSIX_GlobalVars.TruncateQueueDepth = OSAL_BLOCKCOUNT_C(0);\n#endif\n\n    return OS_SUCCESS;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_Posix_QueueAPI_Impl_Init': {'callees': [], 'callers': ['OS_API_Impl_Init']}, 'OS_API_Impl_Init': {'callees': ['OS_Posix_TableMutex_Init', 'OS_Posix_TaskAPI_Impl_Init', 'OS_Posix_QueueAPI_Impl_Init', 'OS_Posix_BinSemAPI_Impl_Init', 'OS_Posix_CountSemAPI_Impl_Init', 'OS_Posix_MutexAPI_Impl_Init', 'OS_Posix_ModuleAPI_Impl_Init', 'OS_Posix_TimeBaseAPI_Impl_Init', 'OS_Posix_StreamAPI_Impl_Init', 'OS_Posix_DirAPI_Impl_Init', 'OS_Posix_FileSysAPI_Impl_Init', 'OS_Posix_CondVarAPI_Impl_Init'], 'callers': ['OS_API_Init']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_API_Impl_Init",
+    "OS_API_Init",
+    "OS_Posix_TableMutex_Init",
+    "OS_Posix_TaskAPI_Impl_Init",
+    "OS_Posix_BinSemAPI_Impl_Init",
+    "OS_Posix_CountSemAPI_Impl_Init",
+    "OS_Posix_MutexAPI_Impl_Init",
+    "OS_Posix_ModuleAPI_Impl_Init",
+    "OS_Posix_TimeBaseAPI_Impl_Init",
+    "OS_Posix_StreamAPI_Impl_Init",
+    "OS_Posix_DirAPI_Impl_Init",
+    "OS_Posix_FileSysAPI_Impl_Init",
+    "OS_Posix_CondVarAPI_Impl_Init"
+  ],
+  "explanation": "To determine whether OS_Posix_QueueAPI_Impl_Init participates in direct or indirect recursion you must examine the functions that call it and the other functions in the same initialization call-tree that could form a cycle back to it. Specifically:\n\n- OS_API_Impl_Init: It is a direct caller of OS_Posix_QueueAPI_Impl_Init (per the static graph). Inspecting its body is required to see whether it (or other things it calls) can produce a call path back to OS_Posix_QueueAPI_Impl_Init.\n\n- OS_API_Init: According to the graph it calls OS_API_Impl_Init. A cycle could traverse upward to OS_API_Init and then back down; include it to detect recursion that involves higher-level entry points.\n\n- OS_Posix_TableMutex_Init, OS_Posix_TaskAPI_Impl_Init, OS_Posix_BinSemAPI_Impl_Init, OS_Posix_CountSemAPI_Impl_Init, OS_Posix_MutexAPI_Impl_Init, OS_Posix_ModuleAPI_Impl_Init, OS_Posix_TimeBaseAPI_Impl_Init, OS_Posix_StreamAPI_Impl_Init, OS_Posix_DirAPI_Impl_Init, OS_Posix_FileSysAPI_Impl_Init, OS_Posix_CondVarAPI_Impl_Init: These are all the other callees of OS_API_Impl_Init shown in the static graph. Any of them could call (directly or indirectly) OS_Posix_QueueAPI_Impl_Init or OS_API_Impl_Init/OS_API_Init and thereby create an indirect recursion cycle. Each must be inspected to ensure none contain call paths that return to OS_Posix_QueueAPI_Impl_Init (or to a caller that eventually reaches it).\n\n(No data-only symbols like POSIX_GlobalVars, OS_BSP_Global, or constants/macros are necessary for recursion detection \u2014 only the functions that could form call edges matter.)"
+}

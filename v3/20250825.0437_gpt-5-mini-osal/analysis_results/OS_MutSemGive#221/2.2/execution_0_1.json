@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemGive: entered with sem_id=3735928559, initial_return_code=-35\nOS_MutSemGive: OS_ObjectIdGetById failed for sem_id=3735928559, return_code=-35\nOS_MutSemGive: entered with sem_id=0, initial_return_code=-35\nOS_MutSemGive: OS_ObjectIdGetById failed for sem_id=0, return_code=-35\n"
+}

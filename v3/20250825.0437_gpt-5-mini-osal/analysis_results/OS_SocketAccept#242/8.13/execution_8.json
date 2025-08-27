@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c: In function 'OS_SocketAccept':\n/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c:346:15: error: missing terminating \" character\n  346 |     log_probe(\"OS_SocketAccept: entry: sock_id=%\n      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c:355:1: error: expected expression before 'int32'\n  355 | int32 OS_SocketConnect(osal_id_t sock_id, const OS_SockAddr_t *Addr, int32 Timeout)\n      | ^~~~~\n/tmp/tmpnysql45x/src/src/os/shared/src/osapi-sockets.c:654:1: error: expected declaration or statement at end of input\n  654 | }\n      | ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:328: CMakeFiles/osal.dir/src/os/shared/src/osapi-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,11 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *OS_PthreadTaskEntry(void *arg)\n{\n    OS_VoidPtrValueWrapper_t local_arg;\n\n    /* cppcheck-suppress unreadVariable // intentional use of other union member */\n    local_arg.opaque_arg = arg;\n    OS_TaskEntryPoint(local_arg.id); /* Never returns */\n\n    return NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_PthreadTaskEntry': {'callees': ['OS_TaskEntryPoint'], 'callers': []}, 'OS_TaskEntryPoint': {'callees': ['OS_TaskPrepare', 'OS_TaskExit'], 'callers': ['OS_PthreadTaskEntry']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_TaskEntryPoint",
+    "OS_TaskPrepare",
+    "OS_TaskExit",
+    "OS_VoidPtrValueWrapper_t",
+    "memcmp"
+  ],
+  "explanation": "- OS_TaskEntryPoint: This is the direct callee invoked with local_arg.id; you must inspect its implementation to see whether memcmp is used there to compare strings (and how the argument is interpreted).  \n- OS_TaskPrepare: A callee of OS_TaskEntryPoint (per the static graph); it may contain calls to memcmp or further string-comparison logic that would constitute a MISRA violation.  \n- OS_TaskExit: Another callee of OS_TaskEntryPoint that might perform comparisons using memcmp; its code must be checked.  \n- OS_VoidPtrValueWrapper_t: The union/struct definition is required to determine the actual type and meaning of the id member (e.g. char * vs integer). Knowing id\u2019s type and how opaque_arg is aliasing it is essential to determine whether a pointer passed into OS_TaskEntryPoint can be a null-terminated string and thus whether memcmp would be used on such a string.  \n- memcmp: The standard-library function itself (declaration/uses) must be located in the call chain so you can identify any calls to memcmp and inspect their argument types/values to determine whether it is being applied to null-terminated strings (the specific MISRA C prohibition)."
+}

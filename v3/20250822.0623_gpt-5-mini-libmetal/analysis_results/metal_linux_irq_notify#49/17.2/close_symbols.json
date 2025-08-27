@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int metal_linux_irq_notify(void)\n{\n\tuint64_t val = 1;\n\tint ret;\n\n\tret = write(irq_notify_fd, &val, sizeof(val));\n\tif (ret < 0) {\n\t\tmetal_log(METAL_LOG_ERROR, \"%s failed\\n\", __func__);\n\t}\n\treturn ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_irq_notify': {'callees': [], 'callers': ['metal_linux_irq_set_enable', 'metal_linux_irq_shutdown']}, 'metal_linux_irq_set_enable': {'callees': ['metal_mutex_acquire', 'metal_bitmap_set_bit', 'metal_bitmap_clear_bit', 'metal_mutex_release', 'metal_linux_irq_notify'], 'callers': []}, 'metal_linux_irq_shutdown': {'callees': ['metal_linux_irq_notify', 'metal_mutex_deinit'], 'callers': ['metal_sys_finish']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_linux_irq_set_enable",
+    "metal_linux_irq_shutdown",
+    "metal_sys_finish",
+    "metal_mutex_acquire",
+    "metal_mutex_release",
+    "metal_mutex_deinit",
+    "metal_bitmap_set_bit",
+    "metal_bitmap_clear_bit"
+  ],
+  "explanation": "To determine whether metal_linux_irq_notify participates in direct or indirect recursion you must examine its callers and any functions they call (transitively) to see if a call chain returns to metal_linux_irq_notify. Required symbols: \n- metal_linux_irq_set_enable: direct caller of metal_linux_irq_notify; its body may call other functions that could form a cycle. \n- metal_linux_irq_shutdown: direct caller of metal_linux_irq_notify; likewise may participate in a cycle. \n- metal_sys_finish: caller of metal_linux_irq_shutdown; needed to trace upward call paths that might loop back. \n- metal_mutex_acquire, metal_mutex_release, metal_mutex_deinit: mutex functions called by the callers above; include them to verify they do not call back into the IRQ functions. \n- metal_bitmap_set_bit, metal_bitmap_clear_bit: bitmap helpers called by the callers above; include to confirm they do not call into IRQ code. \nAnalyzing these symbols (their implementations/call sites) lets the next agent build the transitive call graph and detect any path from a caller back to metal_linux_irq_notify, which is required to determine compliance with the MISRA rule against direct or indirect self-calls."
+}

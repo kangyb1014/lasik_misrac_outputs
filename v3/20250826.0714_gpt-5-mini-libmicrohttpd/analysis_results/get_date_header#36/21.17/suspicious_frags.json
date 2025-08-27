@@ -1,0 +1,18 @@
+{
+  "user_message": "<misra_rule>\nThe target MISRA C 2023 Rule 21.17 is: Use of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters.\nThis rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\n</misra_rule>\n<instruction>\nOther agents will judge whether the code follows the MISRA C 2023 guidelines.\nThey will investigate the code fragments you give.\nYour job is to find code fragments in the code that should be investigated to check whether the code follows the MISRA C rule.\n</instruction>\n<response format>\nProvide your answer with these fields.\n- suspicious_frags: The list of suspicious code fragments in the code.\nIt should contain only the code fragments exists in the code. If you do not find any suspicious code fragments, return an empty list for suspicious_frags\n- explanation: The explanation of why other code fragments should NOT be investigated.\nIt is very important to not miss any suspicious code fragments, so please give a sufficient explanation why other code fragments should not be investigated.\nDO NOT give any explanation for the selected suspicious code fragments.\n</response format>\n<target_code>\nHere is the code of get_date_header:\n```c\nstatic bool\nget_date_header (char *header)\n{\n  if (! get_date_str (header + 6))\n  {\n    header[0] = 0;\n    return false;\n  }\n  header[0] = 'D';\n  header[1] = 'a';\n  header[2] = 't';\n  header[3] = 'e';\n  header[4] = ':';\n  header[5] = ' ';\n  header[35] = '\\r';\n  header[36] = '\\n';\n  header[37] = 0;\n  return true;\n}\n```\n</target_code>\nPlease find suspicious code fragments in the code and report them. Other agents can not investigate other fragments that you do not report, so it is very important to find all suspicious fragments without missing any. Report the suspicious fragments AS MUCH AS POSSIBLE.",
+  "suspicious_frags": [
+    "header[1] = 'a';",
+    "header[36] = '\\n';",
+    "header[37] = 0;",
+    "header[2] = 't';",
+    "header[35] = '\\r';",
+    "header[0] = 0;",
+    "header[3] = 'e';",
+    "header[4] = ':';",
+    "static bool\nget_date_header (char *header)",
+    "header[0] = 'D';",
+    "header[5] = ' ';",
+    "if (! get_date_str (header + 6))"
+  ],
+  "explanation": "The MISRA C 2023 Rule 21.17 concerns accesses beyond object bounds for pointer parameters used with string-handling functions and any code that writes into buffers passed to such functions. In this snippet there are no direct calls to <string.h> functions, so the only places that can cause out-of-bounds accesses (and thus require investigation) are: the function parameter declaration (to verify the caller provides a sufficiently large/non-NULL buffer), the call that passes header+6 into get_date_str (the callee may use string functions and may write beyond the provided space), and the explicit indexed writes into header (indices 0..5 and 35..37). Other fragments in the function (control-flow statements like return true/false, and the simple existence of the function) do not themselves perform buffer accesses or call string.h functions and therefore do not need to be investigated for Rule 21.17 in this context."
+}

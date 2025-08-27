@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_log_commitprog_state':\nlfs.c:1626:79: error: 'struct lfs_commit' has no member named 'size'\n 1626 |     fprintf(f, \"commit->size (if present): %llu\\n\", (unsigned long long)commit->size);\n      |                                                                               ^~\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

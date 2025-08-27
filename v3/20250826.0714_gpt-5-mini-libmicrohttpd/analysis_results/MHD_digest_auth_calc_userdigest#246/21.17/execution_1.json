@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "digestauth.c:1958:3: error: function definition is not allowed here\n 1958 |   {\n      |   ^\ndigestauth.c:1989:3: error: call to undeclared function 'mhd_probe_log'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n 1989 |   mhd_probe_log(\"after digest_init\", username, realm, password, bin_buf_size, 0U, 0);\n      |   ^\n2 errors generated.\nmake[3]: *** [Makefile:2224: libmicrohttpd_la-digestauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

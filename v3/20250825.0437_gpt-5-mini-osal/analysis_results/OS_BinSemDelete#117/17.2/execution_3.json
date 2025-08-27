@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[1756097863] ENTRY: OS_BinSemDelete sem_id=0\n[1756097863] After OS_ObjectIdGetById sem_id=0 return_code=-16 token_addr=0x7ffd885afec0\n[1756097863] EXIT: OS_BinSemDelete sem_id=0 return_code=-16\n[1756097863] ENTRY: OS_BinSemDelete sem_id=0\n[1756097863] After OS_ObjectIdGetById sem_id=0 return_code=-16 token_addr=0x7ffd885afe40\n[1756097863] EXIT: OS_BinSemDelete sem_id=0 return_code=-16\n[1756097863] ENTRY: OS_BinSemDelete sem_id=3735928559\n[1756097863] After OS_ObjectIdGetById sem_id=3735928559 return_code=-16 token_addr=0x7ffd885afef0\n[1756097863] EXIT: OS_BinSemDelete sem_id=3735928559 return_code=-16\n[1756097863] ENTRY: OS_BinSemDelete sem_id=0\n[1756097863] After OS_ObjectIdGetById sem_id=0 return_code=-16 token_addr=0x7ffd885afef0\n[1756097863] EXIT: OS_BinSemDelete sem_id=0 return_code=-16\n"
+}

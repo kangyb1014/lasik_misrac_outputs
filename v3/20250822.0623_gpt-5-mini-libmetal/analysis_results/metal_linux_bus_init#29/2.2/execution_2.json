@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_init: enter\niter: lbus=0x7f6c25789b60 before_probe valid=0\niter: lbus=0x7f6c25789b60 probe_ret=0\niter: lbus=0x7f6c25789b60 after_update valid=1\niter: lbus=0x7f6c2578adc8 before_probe valid=1\niter: lbus=0x7f6c2578adc8 probe_ret=0\niter: lbus=0x7f6c2578adc8 after_update valid=2\nmetal_linux_bus_init: exit valid=2 ret=0\nmetal_linux_bus_init: enter\niter: lbus=0x556f5d576260 before_probe valid=0\niter: lbus=0x556f5d576260 probe_ret=0\niter: lbus=0x556f5d576260 after_update valid=1\niter: lbus=0x556f5d5774c8 before_probe valid=1\niter: lbus=0x556f5d5774c8 probe_ret=0\niter: lbus=0x556f5d5774c8 after_update valid=2\nmetal_linux_bus_init: exit valid=2 ret=0\n"
+}

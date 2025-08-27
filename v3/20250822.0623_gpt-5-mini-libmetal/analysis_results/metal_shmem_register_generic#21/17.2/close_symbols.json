@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_shmem_register_generic(struct metal_generic_shmem *shmem)\n{\n\t/* Make sure that we can be found. */\n\tmetal_assert(shmem->name && strlen(shmem->name) != 0);\n\n\t/* Statically registered shmem regions cannot have a destructor. */\n\tmetal_assert(!shmem->io.ops.close);\n\n\tmetal_list_add_tail(&_metal.common.generic_shmem_list,\n\t\t\t    &shmem->node);\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_shmem_register_generic': {'callees': ['metal_list_add_tail'], 'callers': []}, 'metal_list_add_tail': {'callees': [], 'callers': ['metal_bus_register', 'metal_register_generic_device', 'metal_irq_register_controller', 'metal_shmem_register_generic', 'metal_linux_dev_open', 'metal_add_test_case']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_list_add_tail",
+    "metal_assert",
+    "strlen",
+    "metal_bus_register",
+    "metal_register_generic_device",
+    "metal_irq_register_controller",
+    "metal_linux_dev_open",
+    "metal_add_test_case"
+  ],
+  "explanation": "- metal_list_add_tail: Called directly by metal_shmem_register_generic; you must inspect its implementation to verify it does not (directly or indirectly) call back into metal_shmem_register_generic (which would create recursion).\n- metal_assert: Called (macro/function) in the target; verify it does not expand or call code that could indirectly invoke metal_shmem_register_generic.\n- strlen: Standard library call used by the target; include to confirm it has no callbacks or non\u2011standard overrides that could lead to recursion.\n- metal_bus_register, metal_register_generic_device, metal_irq_register_controller, metal_linux_dev_open, metal_add_test_case: These are the other functions shown in the static graph as callers of metal_list_add_tail. Although they are callers (not callees) of metal_list_add_tail, inspect them in case metal_list_add_tail or list handling triggers callbacks that invoke these routines (or they participate in other call chains) which might form an indirect cycle back to metal_shmem_register_generic. Checking these symbols ensures no indirect recursion via list operations or callbacks."
+}

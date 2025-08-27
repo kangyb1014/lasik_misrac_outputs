@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[ENTRY] OS_BinSemTimedWait called: sem_id=3735928559 msecs=1000\n[ObjectIdGetById] return_code=-35 token_addr=0x7ffec5319d30\n[EARLY_RETURN] Parameter check failed; returning -35\n[EXIT] OS_BinSemTimedWait returning -35\n[ENTRY] OS_BinSemTimedWait called: sem_id=0 msecs=1000\n[ObjectIdGetById] return_code=-35 token_addr=0x7ffec5319d30\n[EARLY_RETURN] Parameter check failed; returning -35\n[EXIT] OS_BinSemTimedWait returning -35\n"
+}

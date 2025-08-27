@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_sys_init: entry, params=0x7ffc5186c810\ntmp_path set to '/tmp'\nfopen('/dev/urandom') -> 0x56481cafc2a0\nfread succeeded, seed=4051433896\n/dev/urandom closed, seed=4051433896\nsrand(seed=4051433896) called\nmetal_init_page_sizes() -> 0\nmetal_linux_bus_init() -> 0\nopen('/proc/self/pagemap') -> 4\n_metal.pagemap_fd set to 4\nmetal_linux_irq_init() called; exiting metal_sys_init with 0\nmetal_sys_init: entry, params=0x7fff53cac370\ntmp_path set to '/tmp'\nfopen('/dev/urandom') -> 0x55e331fd42a0\nfread succeeded, seed=3606523322\n/dev/urandom closed, seed=3606523322\nsrand(seed=3606523322) called\nmetal_init_page_sizes() -> 0\nmetal_linux_bus_init() -> 0\nopen('/proc/self/pagemap') -> 4\n_metal.pagemap_fd set to 4\nmetal_linux_irq_init() called; exiting metal_sys_init with 0\n"
+}

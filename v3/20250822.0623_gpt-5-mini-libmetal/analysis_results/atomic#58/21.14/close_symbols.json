@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int atomic(void)\n{\n\tconst int threads = 10;\n\tatomic_int counter = ATOMIC_VAR_INIT(0);\n\tint value, error;\n\n\terror = metal_run(threads, atomic_thread, &counter);\n\tif (!error) {\n\t\tvalue = atomic_load(&counter);\n\t\tvalue -= atomic_test_count * threads;\n\t\tif (value) {\n\t\t\tmetal_log(METAL_LOG_DEBUG, \"counter mismatch, delta = %d\\n\",\n\t\t\t\t  value);\n\t\t\terror = -EINVAL;\n\t\t}\n\t}\n\n\treturn error;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'atomic': {'callees': ['metal_run'], 'callers': []}, 'metal_run': {'callees': ['metal_run_noblock', 'metal_finish_threads'], 'callers': ['atomic', 'mutex', 'shmem', 'condition', 'spinlock']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_run",
+    "atomic_thread",
+    "metal_run_noblock",
+    "metal_finish_threads",
+    "metal_log",
+    "memcmp"
+  ],
+  "explanation": "- metal_run: direct callee from atomic. You must inspect metal_run's implementation to see if it (or code it invokes) calls memcmp to compare NUL-terminated strings.\n- atomic_thread: function pointer passed into metal_run; the thread routine may perform string comparisons (including using memcmp). Its body must be checked for memcmp-on-strings.\n- metal_run_noblock: a transitive callee of metal_run per the call graph. Any memcmp uses here (or in its callees) could violate the rule.\n- metal_finish_threads: another transitive callee of metal_run; inspect it for memcmp usage on null-terminated strings.\n- metal_log: used in atomic to report mismatches; its implementation may call string utilities or compare strings internally \u2014 check it for memcmp usage.\n- memcmp: the Standard Library symbol itself \u2014 include it so the analyzer can identify direct uses and verify whether those uses compare null-terminated strings (the specific MISRA C concern)."
+}

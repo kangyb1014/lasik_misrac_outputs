@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "sha256.c:614:43: error: no member named 'state' in 'struct Sha256Ctx'\n  614 |     mhd_put_32bit_be(&digest[i * 4], ctx->state[i]);\n      |                                      ~~~  ^\n1 error generated.\nmake[3]: *** [Makefile:2245: libmicrohttpd_la-sha256.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpw3d_k_ul/src/src/os/shared/src/osapi-task.c: In function 'log_probe':\n/tmp/tmpw3d_k_ul/src/src/os/shared/src/osapi-task.c:328:19: error: storage size of 'tm' isn't known\n  328 |         struct tm tm;\n      |                   ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-task.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-task.dir/__/__/os/shared/src/osapi-task.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:4283: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-task.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

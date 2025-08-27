@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory\nlfs.c:522:1: error: expected identifier or '(' before '{' token\n  522 | {\n      | ^\nmake: *** [Makefile:529: lfs.o] Error 1"
+}

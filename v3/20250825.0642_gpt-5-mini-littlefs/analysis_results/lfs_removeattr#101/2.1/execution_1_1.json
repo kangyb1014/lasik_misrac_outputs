@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Entered lfs_removeattr: lfs=0x7ffe8580bf28, path=\"hello\", type=66\nAfter LFS_LOCK: err=0\nif (err) branch NOT taken (err==0). This demonstrates the reported unreachable return in the project's configuration.\nlfs_removeattr(0x7ffe8580bf28, \"hello\", 66)\nlfs_removeattr_ called with lfs=0x7ffe8580bf28, path=\"hello\", type=66\nlfs_removeattr -> -1\nBefore LFS_UNLOCK: err=-1\nExiting lfs_removeattr: returning err=-1\n"
+}

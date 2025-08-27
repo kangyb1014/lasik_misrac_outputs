@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp9d27h_o8/src/src/os/shared/src/osapi-queue.c: In function 'object_table_get_local':\n/tmp/tmp9d27h_o8/src/src/os/shared/src/osapi-queue.c:131:107: error: array subscript is not an integer\n  131 |     probe_log(\"object_table_get_local: token=%d -> table_entry=%p\", token, (void *)&OS_queue_table_storage[token]);\n      |                                                                                                           ^\n/tmp/tmp9d27h_o8/src/src/os/shared/src/osapi-queue.c:132:35: error: array subscript is not an integer\n  132 |     return &OS_queue_table_storage[token];\n      |                                   ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:286: CMakeFiles/osal.dir/src/os/shared/src/osapi-queue.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[2025-08-22 06:31:41][pid:2348816] atomic: entry threads=10 counter_addr=0x7ffcab819f14 initial_counter=0\n[2025-08-22 06:31:41][pid:2348816] atomic: metal_run returned error=0 (0 means success)\n[2025-08-22 06:31:41][pid:2348816] atomic: after run raw_counter=10000\n[2025-08-22 06:31:41][pid:2348816] atomic: computed delta value=0 (after subtracting test_count * threads)\n[2025-08-22 06:31:41][pid:2348816] atomic: exit returning error=0\n[2025-08-22 06:31:42][pid:2349006] atomic: entry threads=10 counter_addr=0x7ffc4f1e6394 initial_counter=0\n[2025-08-22 06:31:42][pid:2349006] atomic: metal_run returned error=0 (0 means success)\n[2025-08-22 06:31:42][pid:2349006] atomic: after run raw_counter=10000\n[2025-08-22 06:31:42][pid:2349006] atomic: computed delta value=0 (after subtracting test_count * threads)\n[2025-08-22 06:31:42][pid:2349006] atomic: exit returning error=0\n"
+}

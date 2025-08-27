@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "atomic(): entry, threads=10, &counter=0x7ffd0ae21574, initial_counter=0\natomic(): about to call metal_run(threads=10, atomic_thread, &counter (non-const pointer))\natomic(): returned from metal_run, error=0\natomic(): loaded counter after threads, counter=10000, atomic_test_count=1000, threads=10\natomic(): delta computed=0\natomic(): counter matches expected value\natomic(): exit returning error=0\natomic(): entry, threads=10, &counter=0x7ffdc8453284, initial_counter=0\natomic(): about to call metal_run(threads=10, atomic_thread, &counter (non-const pointer))\natomic(): returned from metal_run, error=0\natomic(): loaded counter after threads, counter=10000, atomic_test_count=1000, threads=10\natomic(): delta computed=0\natomic(): counter matches expected value\natomic(): exit returning error=0\n"
+}

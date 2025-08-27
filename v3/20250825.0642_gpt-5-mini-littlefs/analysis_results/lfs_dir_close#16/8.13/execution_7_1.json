@@ -1,0 +1,25 @@
+{
+  "result": "compile_failed",
+  "message": "find: './srcs': No such file or directory
+  lfs.c:2783:1: error: expected identifier or '(' before '{' token
+   2783 | {
+        | ^
+  lfs.c: In function 'lfs_dir_close':
+  lfs.c:6411:15: error: void value not ignored as it ought to be
+   6411 |     int err = LFS_LOCK(lfs ? lfs->cfg : NULL);
+        |               ^~~~~~~~
+  lfs.c:6411:15: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+   6411 |     int err = LFS_LOCK(lfs ? lfs->cfg : NULL);
+        |               ^~~~~~~~
+  lfs.c:6433:5: error: void value not ignored as it ought to be
+   6433 |     LFS_UNLOCK(lfs ? lfs->cfg : NULL);
+        |     ^~~~~~~~~~
+  At top level:
+  lfs.c:2800:13: warning: 'LFS_UNLOCK' defined but not used [-Wunused-function]
+   2800 | static void LFS_UNLOCK(const struct lfs_config *cfg)
+        |             ^~~~~~~~~~
+  lfs.c:2793:12: warning: 'LFS_LOCK' defined but not used [-Wunused-function]
+   2793 | static int LFS_LOCK(const struct lfs_config *cfg)
+        |            ^~~~~~~~
+  make: *** [Makefile:529: lfs.o] Error 1"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: CMakeFiles/utobj_coverage-vxworks-bsd-select.dir/__/__/os/portable/os-impl-bsd-select.c.o: in function `OS_FdSet_ConvertOut_Impl':\n/tmp/tmpvrwl2s_s/src/src/os/portable/os-impl-bsd-select.c:164: undefined reference to `OS_INDEX_C'\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [unit-test-coverage/vxworks/CMakeFiles/coverage-vxworks-bsd-select-testrunner.dir/build.make:111: unit-test-coverage/vxworks/coverage-vxworks-bsd-select-testrunner] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:2619: unit-test-coverage/vxworks/CMakeFiles/coverage-vxworks-bsd-select-testrunner.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "1755844266 | enter | metal_sys_init entered\n1755844266 | tmp_path | tmp_path=/tmp\n1755844266 | seed_initialized | seed=3170738689\n1755844266 | metal_init_page_sizes_return | ok\n1755844266 | metal_linux_bus_init_return | ok\n1755844266 | pagemap_open | pagemap_fd=4\n1755844266 | irq_init | calling metal_linux_irq_init\n1755844266 | exit | metal_sys_init returning 0\n1755844266 | enter | metal_sys_init entered\n1755844266 | tmp_path | tmp_path=/tmp\n1755844266 | seed_initialized | seed=178487829\n1755844266 | metal_init_page_sizes_return | ok\n1755844266 | metal_linux_bus_init_return | ok\n1755844266 | pagemap_open | pagemap_fd=4\n1755844266 | irq_init | calling metal_linux_irq_init\n1755844266 | exit | metal_sys_init returning 0\n"
+}

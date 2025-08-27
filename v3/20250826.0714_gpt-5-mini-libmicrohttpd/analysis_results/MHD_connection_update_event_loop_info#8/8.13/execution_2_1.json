@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: ../../src/microhttpd/.libs/libmicrohttpd.so: undefined reference to `MHD_state_to_string'\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[4]: *** [Makefile:943: benchmark] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
+}

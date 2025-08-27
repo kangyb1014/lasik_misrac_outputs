@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_DirCreate_Impl(const char *local_path, uint32 access)\n{\n    struct stat st;\n    int32       return_code;\n\n    if (mkdir(local_path, S_IFDIR | S_IRWXU | S_IRWXG | S_IRWXO) < 0)\n    {\n        return_code = OS_ERROR;\n\n        if (errno == EEXIST)\n        {\n            /* Success if already exists and is a directory */\n            if (stat(local_path, &st) == 0 && S_ISDIR(st.st_mode))\n            {\n                return_code = OS_SUCCESS;\n            }\n        }\n    }\n    else\n    {\n        return_code = OS_SUCCESS;\n    }\n\n    return return_code;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_DirCreate_Impl': {'callees': [], 'callers': ['OS_mkdir']}, 'OS_mkdir': {'callees': ['OS_TranslatePath', 'OS_DirCreate_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "int32",
+    "uint32",
+    "OS_ERROR",
+    "OS_SUCCESS",
+    "mkdir",
+    "stat",
+    "struct stat",
+    "S_ISDIR",
+    "S_IFDIR",
+    "S_IRWXU",
+    "S_IRWXG",
+    "S_IRWXO",
+    "errno",
+    "EEXIST"
+  ],
+  "explanation": "For checking whether the target function uses any compiler/language extensions (per the MISRA rule), the next analyser must be able to inspect the actual definitions/expansions and declarations of each symbol that could hide an extension. Reasoning for each symbol:\n\n- int32, uint32: These are typedefs (not standard C keywords). Their underlying definitions must be inspected to ensure they are not implemented using compiler extensions/attributes (e.g. __attribute__, __int64, compiler-specific builtin types, or nonstandard typedefs).\n\n- OS_ERROR, OS_SUCCESS: Likely macros or enum constants. Their definitions might use extensions (complex macro tricks, GCC attributes, or compiler pragmas). Need to see the exact definitions.\n\n- mkdir: The name could be a function or a macro wrapper. The implementation/declaration could use platform-specific or compiler-specific extensions (inline, asm, attributes, or macro-based wrappers). Inspect the prototype/implementation to ensure no extensions are used.\n\n- stat, struct stat: The struct definition and the stat function prototype come from system headers. These definitions may contain implementation-defined or extension constructs (e.g. bitfields, packed attributes, type aliases). The analyzer must examine struct stat and stat declaration for extension usage.\n\n- S_ISDIR: This is a macro used to test the file type. Macros can hide compiler extensions (e.g. use of typeof, statement expressions ({ ... }), or other nonstandard constructs). The macro expansion must be checked.\n\n- S_IFDIR, S_IRWXU, S_IRWXG, S_IRWXO: These are constant macros for mode bits. Although normally plain integer macros, implementations could use nonstandard constructs or rely on implementation-specific headers that use extensions. Check their definitions to be safe.\n\n- errno, EEXIST: errno is often a macro expanding to an lvalue or function call (e.g. __errno_location()) which may use compiler-specific constructs. EEXIST is a macro constant; its definition should also be checked.\n\nIn short: inspect the typedefs, macros, and function/struct declarations used by the function because any of them might be implemented via compiler-specific language extensions. The above symbols are the minimal set whose definitions/expansions must be available to determine compliance with the \"no language extensions\" MISRA constraint."
+}

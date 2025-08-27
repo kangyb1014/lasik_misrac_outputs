@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void OS_BSP_ExecTput(const char *cap, const char *param)\n{\n    pid_t cpid;\n    int   status;\n\n    cpid = fork();\n    if (cpid < 0)\n    {\n        return;\n    }\n    if (cpid == 0)\n    {\n        execlp(\"tput\", \"tput\", cap, param, NULL);\n        exit(EXIT_FAILURE);\n    }\n    waitpid(cpid, &status, 0);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_BSP_ExecTput': {'callees': [], 'callers': ['OS_BSP_ConsoleSetMode_Impl']}, 'OS_BSP_ConsoleSetMode_Impl': {'callees': ['OS_BSP_ExecTput'], 'callers': ['UT_BSP_DoText']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "execlp",
+    "fork",
+    "waitpid",
+    "exit",
+    "pid_t",
+    "EXIT_FAILURE"
+  ],
+  "explanation": "execlp: need the prototype/signature to confirm how the cap and param arguments are passed (value vs pointer-to-pointer) and whether execlp could legally accept const char * or would require discarding const \u2014 this shows callees do not modify the caller's pointer variables (they receive copies). fork: prototype clarifies return type and semantics (returns pid_t in the caller) and ensures no pointer-to-pointer or parameter modification is involved. waitpid: prototype shows how the status argument is passed and confirms it does not take or modify the function's cap/param pointers. exit: prototype ensures it does not modify any caller parameters and documents behavior on the child path. pid_t: type definition is needed to understand the cpid variable type and assignment semantics (ensures no hidden pointer/aliasing semantics). EXIT_FAILURE: macro/constant used in exit() call \u2014 include to fully understand control-flow/exit behavior. Together these symbols let an analyzer verify that cap and param (both declared const char *) are not reassigned within OS_BSP_ExecTput and that none of the called functions accept pointers to those pointer variables (i.e., no callee can modify the parameter variables themselves)."
+}
