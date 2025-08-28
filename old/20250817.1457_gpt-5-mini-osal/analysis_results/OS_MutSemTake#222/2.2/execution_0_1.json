@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: sem_id=3735928559 token=0x7ffd6305f7f0 mutex=(nil) return_code=-1 taskid=0 assigned=0\nAfter_ObjectIdGetById: sem_id=3735928559 token=0x7ffd6305f7f0 mutex=(nil) return_code=-35 taskid=0 assigned=0\nEXIT: sem_id=3735928559 token=0x7ffd6305f7f0 mutex=(nil) return_code=-35 taskid=0 assigned=0\nENTER: sem_id=0 token=0x7ffd6305f7f0 mutex=(nil) return_code=-1 taskid=0 assigned=0\nAfter_ObjectIdGetById: sem_id=0 token=0x7ffd6305f7f0 mutex=(nil) return_code=-35 taskid=0 assigned=0\nEXIT: sem_id=0 token=0x7ffd6305f7f0 mutex=(nil) return_code=-35 taskid=0 assigned=0\n"
+}

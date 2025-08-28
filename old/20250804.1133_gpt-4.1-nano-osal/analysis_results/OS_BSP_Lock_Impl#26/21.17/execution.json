@@ -1,4 +1,0 @@
-{
-  "result": "success",
-  "message": "Entering OS_BSP_Lock_Impl\nMutex locked successfully. Disabling thread cancellation.\n"
-}

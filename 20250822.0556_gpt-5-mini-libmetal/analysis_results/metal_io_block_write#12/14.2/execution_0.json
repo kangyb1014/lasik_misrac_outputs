@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpuppfubv9/src/lib/io.c: In function 'log_state':\n/tmp/tmpuppfubv9/src/lib/io.c:90:28: error: expected ')' before 'PRIxPTR'\n   90 |     fprintf(f, \"%s: ptr=%#\" PRIxPTR \", source=%#\" PRIxPTR \", len=%d, retlen=%d\\n\",\n      |            ~               ^~~~~~~~\n      |                            )\n/tmp/tmpuppfubv9/src/lib/io.c:19:1: note: 'PRIxPTR' is defined in header '<inttypes.h>'; did you forget to '#include <inttypes.h>'?\n   18 | #include <metal/io.h>\n  +++ |+#include <inttypes.h>\n   19 | #include <metal/sys.h>\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:118: lib/CMakeFiles/metal-shared.dir/io.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

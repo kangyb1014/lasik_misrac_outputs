@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "response.c:1034:5: error: conflicting types for 'MHD_set_response_options'; have 'int(struct MHD_Response *, unsigned int, ...)'\n 1034 | int MHD_set_response_options(struct MHD_Response *response, unsigned flags, ...)\n      |     ^~~~~~~~~~~~~~~~~~~~~~~~\nIn file included from internal.h:34,\n                 from response.c:43:\n../../src/include/microhttpd.h:3912:1: note: previous declaration of 'MHD_set_response_options' with type 'enum MHD_Result(struct MHD_Response *, enum MHD_ResponseFlags, ...)'\n 3912 | MHD_set_response_options (struct MHD_Response *response,\n      | ^~~~~~~~~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

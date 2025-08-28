@@ -1,0 +1,15 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid metal_default_log_handler(enum metal_log_level level,\n\t\t\t       const char *format, ...)\n{\n#ifdef DEFAULT_LOGGER_ON\n\tchar msg[1024];\n\tva_list args;\n\tstatic const char * const level_strs[] = {\n\t\t\"metal: emergency: \",\n\t\t\"metal: alert:     \",\n\t\t\"metal: critical:  \",\n\t\t\"metal: error:     \",\n\t\t\"metal: warning:   \",\n\t\t\"metal: notice:    \",\n\t\t\"metal: info:      \",\n\t\t\"metal: debug:     \",\n\t};\n\n\tva_start(args, format);\n\tvsnprintf(msg, sizeof(msg), format, args);\n\tva_end(args);\n\n\tif (level <= METAL_LOG_EMERGENCY || level > METAL_LOG_DEBUG)\n\t\tlevel = METAL_LOG_EMERGENCY;\n\n\tfprintf(stderr, \"%s%s\", level_strs[level], msg);\n#else\n\t(void)level;\n\t(void)format;\n#endif\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "DEFAULT_LOGGER_ON",
+    "vsnprintf",
+    "fprintf",
+    "stderr",
+    "enum metal_log_level",
+    "METAL_LOG_EMERGENCY",
+    "METAL_LOG_DEBUG",
+    "level_strs (static const char * const[])",
+    "va_list / va_start / va_end"
+  ],
+  "explanation": "DEFAULT_LOGGER_ON: the preprocessor macro controls whether the function body that could call library functions is compiled at all \u2014 if undefined, there is no relevant code to check for memcmp usage. vsnprintf: the function is called from the target code; to determine if any memcmp-on-NUL-terminated-string violation occurs you must be able to inspect or reason about its implementation (it or its helper routines might, in theory, call memcmp). fprintf: same reason as vsnprintf \u2014 it is the other library call in the function and its implementation must be considered for any hidden use of memcmp. stderr: the FILE* object passed to fprintf; included to allow locating the fprintf call-site/implementation when tracing uses. enum metal_log_level and METAL_LOG_EMERGENCY .. METAL_LOG_DEBUG: the boundary check and array indexing use these enumerators; their numeric values are needed to confirm the index into level_strs is always within bounds (unsafe indexing could cause other code paths to be relevant). level_strs (static const char * const[]): the string literals that are printed \u2014 include to check if any comparison against these strings (e.g. elsewhere) uses memcmp on NUL-terminated strings and to confirm they are ordinary NUL-terminated string literals. va_list / va_start / va_end: the variadic machinery used to forward arguments into vsnprintf; include to ensure correct use of variadic APIs (they themselves do not imply memcmp use but are part of the call into vsnprintf)."
+}

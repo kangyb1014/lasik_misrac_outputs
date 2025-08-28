@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "\n=== metal_linux_bus_init start: Fri Aug 22 06:03:24 2025\nloop: lbus pointer = 0x7fcc18464b60\nmetal_linux_probe_bus(0x7fcc18464b60) returned 0\nafter iteration: valid = 1\nloop: lbus pointer = 0x7fcc18465dc8\nmetal_linux_probe_bus(0x7fcc18465dc8) returned 0\nafter iteration: valid = 2\nmetal_linux_bus_init end: valid = 2, returning 0\n\n=== metal_linux_bus_init start: Fri Aug 22 06:03:25 2025\nloop: lbus pointer = 0x5652e51d9260\nmetal_linux_probe_bus(0x5652e51d9260) returned 0\nafter iteration: valid = 1\nloop: lbus pointer = 0x5652e51da4c8\nmetal_linux_probe_bus(0x5652e51da4c8) returned 0\nafter iteration: valid = 2\nmetal_linux_bus_init end: valid = 2, returning 0\n"
+}

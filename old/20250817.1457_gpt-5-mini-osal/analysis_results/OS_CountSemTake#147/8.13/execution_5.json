@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_CountSemTake: entry sem_id=3735928559\nOS_CountSemTake: OS_ObjectIdGetById returned -35\nOS_CountSemTake: entry sem_id=0\nOS_CountSemTake: OS_ObjectIdGetById returned -35\n"
+}

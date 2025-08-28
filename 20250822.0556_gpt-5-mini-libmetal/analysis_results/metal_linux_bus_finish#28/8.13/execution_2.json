@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_finish: enter\niter: lbus=0x7f5418a95b60 bus_name=platform\nmetal_bus_find: found bus=0x7f5418a95b60 (will unregister)\niter: lbus=0x7f5418a96dc8 bus_name=pci\nmetal_bus_find: found bus=0x7f5418a96dc8 (will unregister)\nmetal_linux_bus_finish: exit\nmetal_linux_bus_finish: enter\niter: lbus=0x55f0c1bf4260 bus_name=platform\nmetal_bus_find: found bus=0x55f0c1bf4260 (will unregister)\niter: lbus=0x55f0c1bf54c8 bus_name=pci\nmetal_bus_find: found bus=0x55f0c1bf54c8 (will unregister)\nmetal_linux_bus_finish: exit\n"
+}

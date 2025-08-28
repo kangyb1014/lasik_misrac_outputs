@@ -1,0 +1,15 @@
+{
+  "user_message": "<misra_rule>\nThe target MISRA C 2023 Rule 8.13 is: A pointer should point to a const-qualified type whenever possible.\n\n</misra_rule>\n<instruction>\nOther agents will judge whether the code follows the MISRA C 2023 guidelines.\nThey will investigate the code fragments you give.\nYour job is to find code fragments in the code that should be investigated to check whether the code follows the MISRA C rule.\n</instruction>\n<response format>\nProvide your answer with these fields.\n- suspicious_frags: The list of suspicious code fragments in the code.\nIt should contain only the code fragments exists in the code. If you do not find any suspicious code fragments, return an empty list for suspicious_frags\n- explanation: The explanation of why other code fragments should NOT be investigated.\nIt is very important to not miss any suspicious code fragments, so please give a sufficient explanation why other code fragments should not be investigated.\nDO NOT give any explanation for the selected suspicious code fragments.\n</response format>\n<target_code>\nHere is the code of MHD_pool_get_free:\n```c\nsize_t\nMHD_pool_get_free (struct MemoryPool *pool)\n{\n  mhd_assert (pool->end >= pool->pos);\n  mhd_assert (pool->size >= pool->end - pool->pos);\n  mhd_assert (pool->pos == ROUND_TO_ALIGN (pool->pos));\n#ifdef MHD_ASAN_POISON_ACTIVE\n  if ((pool->end - pool->pos) <= _MHD_RED_ZONE_SIZE)\n    return 0;\n#endif /* MHD_ASAN_POISON_ACTIVE */\n  return (pool->end - pool->pos) - _MHD_RED_ZONE_SIZE;\n}\n```\n</target_code>\nPlease find suspicious code fragments in the code and report them. Other agents can not investigate other fragments that you do not report, so it is very important to find all suspicious fragments without missing any. Report the suspicious fragments AS MUCH AS POSSIBLE.",
+  "suspicious_frags": [
+    "  if ((pool->end - pool->pos) <= _MHD_RED_ZONE_SIZE)",
+    "    return 0;",
+    "  mhd_assert (pool->pos == ROUND_TO_ALIGN (pool->pos));",
+    "}",
+    "  return (pool->end - pool->pos) - _MHD_RED_ZONE_SIZE;",
+    "size_t\nMHD_pool_get_free (struct MemoryPool *pool)\n{",
+    "#ifdef MHD_ASAN_POISON_ACTIVE",
+    "  mhd_assert (pool->size >= pool->end - pool->pos);",
+    "  mhd_assert (pool->end >= pool->pos);"
+  ],
+  "explanation": "Rule 8.13 concerns pointer declarations/parameters that could be const-qualified. In this function the only pointer present is the parameter 'pool' (no local pointer variables, no pointer-returning expressions). The remaining code consists of read-only dereferences of 'pool' fields and constant/macro arithmetic; there are no pointer assignments, pointer arithmetic involving pointers (only arithmetic on integer fields), nor other pointer declarations elsewhere in this fragment. Therefore only the function parameter declaration and its direct uses need investigation for possible const qualification; all other lines do not introduce additional pointer targets relevant to Rule 8.13."
+}

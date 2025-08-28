@@ -1,0 +1,31 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic ssize_t\nrecv_param_adapter (struct MHD_Connection *connection,\n                    void *other,\n                    size_t i)\n{\n  ssize_t ret;\n\n  if ( (MHD_INVALID_SOCKET == connection->socket_fd) ||\n       (MHD_CONNECTION_CLOSED == connection->state) )\n  {\n    return MHD_ERR_NOTCONN_;\n  }\n  if (i > MHD_SCKT_SEND_MAX_SIZE_)\n    i = MHD_SCKT_SEND_MAX_SIZE_; /* return value limit */\n\n  ret = MHD_recv_ (connection->socket_fd,\n                   other,\n                   i);\n  if (0 > ret)\n  {\n    const int err = MHD_socket_get_error_ ();\n    if (MHD_SCKT_ERR_IS_EAGAIN_ (err))\n    {\n#ifdef EPOLL_SUPPORT\n      /* Got EAGAIN --- no longer read-ready */\n      connection->epoll_state &=\n        ~((enum MHD_EpollState) MHD_EPOLL_STATE_READ_READY);\n#endif /* EPOLL_SUPPORT */\n      return MHD_ERR_AGAIN_;\n    }\n    if (MHD_SCKT_ERR_IS_EINTR_ (err))\n      return MHD_ERR_AGAIN_;\n    if (MHD_SCKT_ERR_IS_REMOTE_DISCNN_ (err))\n      return MHD_ERR_CONNRESET_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_EOPNOTSUPP_))\n      return MHD_ERR_OPNOTSUPP_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_ENOTCONN_))\n      return MHD_ERR_NOTCONN_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_EINVAL_))\n      return MHD_ERR_INVAL_;\n    if (MHD_SCKT_ERR_IS_LOW_RESOURCES_ (err))\n      return MHD_ERR_NOMEM_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_EBADF_))\n      return MHD_ERR_BADF_;\n    /* Treat any other error as a hard error. */\n    return MHD_ERR_NOTCONN_;\n  }\n#ifdef EPOLL_SUPPORT\n  else if (i > (size_t) ret)\n    connection->epoll_state &=\n      ~((enum MHD_EpollState) MHD_EPOLL_STATE_READ_READY);\n#endif /* EPOLL_SUPPORT */\n  return ret;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_recv_",
+    "MHD_socket_get_error_",
+    "MHD_SCKT_ERR_IS_EAGAIN_",
+    "MHD_SCKT_ERR_IS_EINTR_",
+    "MHD_SCKT_ERR_IS_REMOTE_DISCNN_",
+    "MHD_SCKT_ERR_IS_",
+    "MHD_SCKT_ERR_IS_LOW_RESOURCES_",
+    "MHD_SCKT_EOPNOTSUPP_",
+    "MHD_SCKT_ENOTCONN_",
+    "MHD_SCKT_EINVAL_",
+    "MHD_SCKT_EBADF_",
+    "EPOLL_SUPPORT",
+    "MHD_EPOLL_STATE_READ_READY",
+    "enum MHD_EpollState",
+    "struct MHD_Connection",
+    "MHD_INVALID_SOCKET",
+    "MHD_CONNECTION_CLOSED",
+    "MHD_ERR_NOTCONN_",
+    "MHD_SCKT_SEND_MAX_SIZE_",
+    "MHD_ERR_AGAIN_",
+    "MHD_ERR_CONNRESET_",
+    "MHD_ERR_OPNOTSUPP_",
+    "MHD_ERR_INVAL_",
+    "MHD_ERR_NOMEM_",
+    "MHD_ERR_BADF_"
+  ],
+  "explanation": "You must inspect all functions/macros and types used in recv_param_adapter to determine whether any of them (directly or indirectly) call the C library memcmp to compare null\u2011terminated strings. For each listed symbol: \n- MHD_recv_: called to read data; its implementation may call memcmp or other string comparison helpers -> include to check for memcmp uses. \n- MHD_socket_get_error_: returns the socket error code; its definition could invoke helper routines that use memcmp -> include. \n- MHD_SCKT_ERR_IS_EAGAIN_, MHD_SCKT_ERR_IS_EINTR_, MHD_SCKT_ERR_IS_REMOTE_DISCNN_, MHD_SCKT_ERR_IS_, MHD_SCKT_ERR_IS_LOW_RESOURCES_: these error-classification macros/functions are invoked with the error code; they may be macros that expand to expressions or helper functions that use memcmp/string routines. Their definitions are needed to rule out memcmp usage. \n- MHD_SCKT_EOPNOTSUPP_, MHD_SCKT_ENOTCONN_, MHD_SCKT_EINVAL_, MHD_SCKT_EBADF_: error-code constants passed to MHD_SCKT_ERR_IS_ \u2013 their declarations/definitions are required to fully expand/check the macro implementations. \n- EPOLL_SUPPORT: conditional compilation flag controls whether epoll-related code is present; the epoll branch could call other helpers that use memcmp, so the presence/absence affects analysis. \n- MHD_EPOLL_STATE_READ_READY and enum MHD_EpollState: used in bit-masking of connection->epoll_state; the enum/constant definitions are needed if any enum-related helper functions expand to string comparisons. \n- struct MHD_Connection: definition (fields socket_fd, state, epoll_state) is required to see if any accessors/macros on these fields expand to string comparisons or wrap calls that might use memcmp. \n- MHD_INVALID_SOCKET, MHD_CONNECTION_CLOSED, MHD_ERR_NOTCONN_, MHD_SCKT_SEND_MAX_SIZE_, MHD_ERR_AGAIN_, MHD_ERR_CONNRESET_, MHD_ERR_OPNOTSUPP_, MHD_ERR_INVAL_, MHD_ERR_NOMEM_, MHD_ERR_BADF_: constant return values and limits used by the function; their definitions are needed to trace any macros or inline functions that produce them and to ensure no memcmp use is hidden in their expansion.\n\nIn short: include every called function/macro, the connection type and its related constants, and any compile\u2011time flags that change the code path. Only by inspecting these definitions can you be sure no memcmp call comparing null\u2011terminated strings is introduced indirectly."
+}

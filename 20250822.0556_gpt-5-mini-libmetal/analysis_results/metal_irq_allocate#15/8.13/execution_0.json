@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_irq_allocate called: irq_base=0, irq_num=1023, irq_cntrs_addr=0x7fadd0eaad80\ninitial irq_tocheck=0, irq_end_tocheck=1023\nfinal return irq_tocheck=0\nmetal_irq_allocate called: irq_base=0, irq_num=1023, irq_cntrs_addr=0x55b3b9bd5900\ninitial irq_tocheck=0, irq_end_tocheck=1023\nfinal return irq_tocheck=0\n"
+}

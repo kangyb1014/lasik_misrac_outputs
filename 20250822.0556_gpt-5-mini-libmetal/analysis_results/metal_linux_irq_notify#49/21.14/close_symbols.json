@@ -1,0 +1,15 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int metal_linux_irq_notify(void)\n{\n\tuint64_t val = 1;\n\tint ret;\n\n\tret = write(irq_notify_fd, &val, sizeof(val));\n\tif (ret < 0) {\n\t\tmetal_log(METAL_LOG_ERROR, \"%s failed\\n\", __func__);\n\t}\n\treturn ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_irq_notify': {'callees': [], 'callers': ['metal_linux_irq_set_enable', 'metal_linux_irq_shutdown']}, 'metal_linux_irq_set_enable': {'callees': ['metal_mutex_acquire', 'metal_bitmap_set_bit', 'metal_bitmap_clear_bit', 'metal_mutex_release', 'metal_linux_irq_notify'], 'callers': []}, 'metal_linux_irq_shutdown': {'callees': ['metal_linux_irq_notify', 'metal_mutex_deinit'], 'callers': ['metal_sys_finish']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memcmp",
+    "metal_linux_irq_set_enable",
+    "metal_linux_irq_shutdown",
+    "metal_mutex_acquire",
+    "metal_bitmap_set_bit",
+    "metal_bitmap_clear_bit",
+    "metal_mutex_release",
+    "metal_mutex_deinit",
+    "metal_log"
+  ],
+  "explanation": "memcmp \u2014 the Standard Library function referenced by the MISRA rule; the analyzer must know the memcmp symbol (declaration/definition/uses) to detect any use of memcmp in the target function or in reachable functions. metal_linux_irq_set_enable, metal_linux_irq_shutdown \u2014 callers of the target function; include them so the analyzer can inspect their bodies for any memcmp usage or for code that might forward null-terminated strings into memcmp (directly or via helper calls). metal_mutex_acquire, metal_bitmap_set_bit, metal_bitmap_clear_bit, metal_mutex_release, metal_mutex_deinit \u2014 functions called by the callers above (per the static call graph); include these to allow a transitive search for memcmp uses (the MISRA violation could occur in nested callees reachable from the target's call context). metal_log \u2014 called by the target; include it because logging wrappers or formatting helpers can call library routines (including memcmp or string-comparison helpers) and could therefore contain a MISRA violation relevant to the target function's behavior."
+}

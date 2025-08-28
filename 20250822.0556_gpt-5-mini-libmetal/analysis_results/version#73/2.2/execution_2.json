@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "timestamp=1755843071\nver_def=\"1.8.0\"\nMETAL_VER=\"1.8.0\"\nstrcmp(ver_def, METAL_VER)=0\nver_dyn=\"1.8.0\"\nmetal_ver()=\"1.8.0\"\nstrcmp(ver_dyn, metal_ver())=0\nsum_return=0\n---\ntimestamp=1755843072\nver_def=\"1.8.0\"\nMETAL_VER=\"1.8.0\"\nstrcmp(ver_def, METAL_VER)=0\nver_dyn=\"1.8.0\"\nmetal_ver()=\"1.8.0\"\nstrcmp(ver_dyn, metal_ver())=0\nsum_return=0\n---\n"
+}

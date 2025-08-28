@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "/tmp/tmpasizlu0d/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketAddrGetPort_Impl':\n/tmp/tmpasizlu0d/src/src/os/portable/os-impl-bsd-sockets.c:757:5: error: cannot convert to a pointer type\n  757 |     const void *ptr = (const void *)Addr->AddrData;\n      |     ^~~~~\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
-}

@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "/tmp/tmpnv1xyuyu/src/src/os/shared/src/osapi-file.c:531:6: error: conflicting types for 'OS_FileOpenCheck'; have '_Bool(const char *)'\n  531 | bool OS_FileOpenCheck(const char* filename) {\n      |      ^~~~~~~~~~~~~~~~\nIn file included from /tmp/tmpnv1xyuyu/src/src/os/shared/inc/os-shared-file.h:29,\n                 from /tmp/tmpnv1xyuyu/src/src/os/shared/src/osapi-file.c:46:\n/tmp/tmpnv1xyuyu/src/src/os/inc/osapi-file.h:467:7: note: previous declaration of 'OS_FileOpenCheck' with type 'int32(const char *)' {aka 'int(const char *)'}\n  467 | int32 OS_FileOpenCheck(const char *Filename);\n      |       ^~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
-}

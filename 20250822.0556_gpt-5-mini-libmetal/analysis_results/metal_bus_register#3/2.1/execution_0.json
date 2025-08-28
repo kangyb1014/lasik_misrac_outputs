@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter metal_bus_register: bus=0x7fb4eb48cba0\ncalling metal_bus_find(name=\"platform\", result=NULL)\nmetal_bus_find returned: -2\nbranch: rc!=0 -> continue registration for 'platform'\nregistered 'platform' successfully: return=0\nenter metal_bus_register: bus=0x7fb4eb48de08\ncalling metal_bus_find(name=\"pci\", result=NULL)\nmetal_bus_find returned: -2\nbranch: rc!=0 -> continue registration for 'pci'\nregistered 'pci' successfully: return=0\nenter metal_bus_register: bus=0x56376d8c4260\ncalling metal_bus_find(name=\"platform\", result=NULL)\nmetal_bus_find returned: -2\nbranch: rc!=0 -> continue registration for 'platform'\nregistered 'platform' successfully: return=0\nenter metal_bus_register: bus=0x56376d8c54c8\ncalling metal_bus_find(name=\"pci\", result=NULL)\nmetal_bus_find returned: -2\nbranch: rc!=0 -> continue registration for 'pci'\nregistered 'pci' successfully: return=0\n"
+}

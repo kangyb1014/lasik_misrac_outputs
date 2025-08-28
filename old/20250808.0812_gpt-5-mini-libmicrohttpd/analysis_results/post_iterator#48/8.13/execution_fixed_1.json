@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "post_example.c:507:6: error: redeclaration of 'enum MHD_ValueKind'\n  507 | enum MHD_ValueKind { MHD_VALUES, MHD_UNKNOWN };\n      |      ^~~~~~~~~~~~~\nIn file included from post_example.c:42:\n../../src/include/microhttpd.h:2244:6: note: originally defined here\n 2244 | enum MHD_ValueKind\n      |      ^~~~~~~~~~~~~\nmake[4]: *** [Makefile:1086: post_example.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

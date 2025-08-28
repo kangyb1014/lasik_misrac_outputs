@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "daemon.c: In function 'MHD_stop_daemon':\ndaemon.c:9330:23: error: invalid operands to binary != (have 'struct MHD_itc_' and 'void *')\n 9330 |       if (daemon->itc != NULL)\n      |           ~~~~~~~~~~~ ^~\n      |                 |\n      |                 struct MHD_itc_\ndaemon.c:9349:5: error: expected '}' before 'else'\n 9349 |     else\n      |     ^~~~\nmake[3]: *** [Makefile:2112: libmicrohttpd_la-daemon.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

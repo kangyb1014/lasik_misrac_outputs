@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpf_lgj41l/src/src/os/shared/src/osapi-time.c: In function 'OS_TimerGetInfo':\n/tmp/tmpf_lgj41l/src/src/os/shared/src/osapi-time.c:555:25: error: aggregate value used where an integer was expected\n  555 |                         (int)return_code, (void *)(uintptr_t)token);\n      |                         ^\n/tmp/tmpf_lgj41l/src/src/os/shared/src/osapi-time.c:571:81: error: type mismatch in conditional expression\n  571 |                             (void *)(uintptr_t)(timecb ? timecb->timebase_token : 0U),\n      |                                                                                 ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:370: CMakeFiles/osal.dir/src/os/shared/src/osapi-time.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

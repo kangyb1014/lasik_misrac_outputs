@@ -1,0 +1,13 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *\nuri_logger_cb (void *cls,\n               const char *uri)\n{\n  struct timeval *tv = malloc (sizeof (struct timeval));\n  (void) cls; /* Unused. Silent compiler warning. */\n  (void) uri; /* Unused. Silent compiler warning. */\n\n  if (NULL != tv)\n    gettimeofday (tv, NULL);\n  return tv;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "malloc",
+    "gettimeofday",
+    "struct timeval",
+    "NULL",
+    "size_t",
+    "(void) cast / unary (void) expression (C semantics)",
+    "sizeof operator (C semantics)"
+  ],
+  "explanation": "malloc \u2014 need the function prototype/definition to confirm it does not mutate the function parameters (cls, uri) or alias them (i.e. no hidden side\u2011effects on caller parameters). gettimeofday \u2014 need its prototype/definition to confirm it does not access or mutate cls or uri (it only writes to the timeval pointer). struct timeval \u2014 need the type definition so analysis can confirm gettimeofday writes into the allocated tv object only and there is no aliasing with parameters. NULL \u2014 need the macro definition/value to ensure the NULL comparison/usage does not imply any modification of parameters. size_t \u2014 required because malloc\u2019s prototype uses size_t; for completeness of prototype checking. (void) cast / unary (void) expression (C semantics) \u2014 the cast-of-parameter expressions (\"(void) cls; (void) uri;\") must be understood as value\u2011discard expressions and not as modifications/assignments to the parameters. sizeof operator (C semantics) \u2014 used in the malloc argument; include to confirm that its use does not modify parameters. These symbols (functions, types and relevant language operators/semantics) are sufficient to determine whether any called routine or expression in the function can modify the pointer parameters themselves (which would violate the MISRA rule)."
+}

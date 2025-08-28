@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpbapl3iv2/src/src/os/portable/os-impl-console-bsp.c: In function 'OS_ConsoleOutput_Log':\n/tmp/tmpbapl3iv2/src/src/os/portable/os-impl-console-bsp.c:89:23: error: cast specifies array type\n   89 |     vfprintf(fp, fmt, (va_list)ap);\n      |                       ^\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:300: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-console-bsp.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

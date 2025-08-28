@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_irq_init: entry\nirqs cleared\neventfd returned 6\nmutex init, irq_handling_stop=0\nmetal_irq_register_controller returned 0\nstarting thread: routine=0x7fa8ac960085, args=NULL\npthread_create returned 0, thread id 140362424153664\nmetal_linux_irq_init: success\nmetal_linux_irq_init: entry\nirqs cleared\neventfd returned 6\nmutex init, irq_handling_stop=0\nmetal_irq_register_controller returned 0\nstarting thread: routine=0x556b9a8ca018, args=NULL\npthread_create returned 0, thread id 139620945565248\nmetal_linux_irq_init: success\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTRY_BEFORE_GetById: sem_id=3735928559, return_code=-1, token_addr=0x7ffd3c21f480\nAFTER_GetById: sem_id=3735928559, return_code=-35, token_addr=0x7ffd3c21f480\nRETURN: sem_id=3735928559, return_code=-35, token_addr=0x7ffd3c21f480\nENTRY_BEFORE_GetById: sem_id=0, return_code=-1, token_addr=0x7ffd3c21f480\nAFTER_GetById: sem_id=0, return_code=-35, token_addr=0x7ffd3c21f480\nRETURN: sem_id=0, return_code=-35, token_addr=0x7ffd3c21f480\n"
+}

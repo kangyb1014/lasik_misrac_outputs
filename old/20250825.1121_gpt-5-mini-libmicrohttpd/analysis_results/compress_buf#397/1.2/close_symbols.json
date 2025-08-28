@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\ncompress_buf (z_stream *strm, const void *src, size_t src_size, size_t *offset,\n              void **dest, size_t *dest_size,\n              void *tmp)\n{\n  unsigned int have;\n  enum MHD_Result ret;\n  int flush;\n  void *tmp_dest;\n  *dest = NULL;\n  *dest_size = 0;\n  do\n  {\n    if (src_size > CHUNK)\n    {\n      strm->avail_in = CHUNK;\n      src_size -= CHUNK;\n      flush = Z_NO_FLUSH;\n    }\n    else\n    {\n      strm->avail_in = (uInt) src_size;\n      flush = Z_SYNC_FLUSH;\n    }\n    *offset += strm->avail_in;\n    strm->next_in = (const Bytef *) src;\n    do\n    {\n      strm->avail_out = CHUNK;\n      strm->next_out = tmp;\n      ret = (Z_OK == deflate (strm, flush)) ? MHD_YES : MHD_NO;\n      have = CHUNK - strm->avail_out;\n      *dest_size += have;\n      tmp_dest = realloc (*dest, *dest_size);\n      if (NULL == tmp_dest)\n      {\n        free (*dest);\n        *dest = NULL;\n        return MHD_NO;\n      }\n      *dest = tmp_dest;\n      memcpy (((uint8_t *) (*dest)) + ((*dest_size) - have), tmp, have);\n    }\n    while (0 == strm->avail_out);\n  }\n  while (flush != Z_SYNC_FLUSH);\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'compress_buf': {'callees': [], 'callers': ['read_cb']}, 'read_cb': {'callees': ['compress_buf'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "CHUNK",
+    "z_stream",
+    "Bytef",
+    "uInt",
+    "deflate",
+    "Z_NO_FLUSH",
+    "Z_SYNC_FLUSH",
+    "Z_OK",
+    "enum MHD_Result",
+    "MHD_YES",
+    "MHD_NO",
+    "realloc",
+    "free",
+    "memcpy",
+    "uint8_t",
+    "size_t",
+    "NULL"
+  ],
+  "explanation": "To decide whether compress_buf uses any compiler language extensions you must inspect the declarations/definitions of every external symbol, macro and typedef used in the function because an otherwise-looking standard call/type can be defined using compiler-specific extensions (attributes, typeof, statement-expressions, asm, __extension__, anonymous/unnamed language extensions, nonstandard storage-class specifiers, etc.). For each listed symbol you should check its definition/header for such extensions: \n- CHUNK: a macro \u2014 could be defined via nonstandard constructs (statement-expression, sizeof tricks, etc.).\n- z_stream: the zlib stream struct definition may contain attributes, anonymous unions/structs or other extensions.\n- Bytef, uInt: zlib typedefs \u2014 might be implemented with nonstandard typedefs or macros.\n- deflate: prototype/macro \u2014 could be a macro or have compiler-specific attributes or calling-convention annotations.\n- Z_NO_FLUSH, Z_SYNC_FLUSH, Z_OK: zlib macros/constants \u2014 their definitions could use extensions.\n- enum MHD_Result and enumerators MHD_YES / MHD_NO: the enum/type may be defined with compiler-specific extensions or macros expanding to extensions.\n- realloc, free, memcpy: library functions might be provided as macros or wrappers using extensions (e.g., inline asm, __attribute__); inspect their declarations.\n- uint8_t, size_t, NULL: standard types/macros \u2014 verify they come from standard headers and were not redefined using extensions.\n\nBy examining these symbol definitions you can determine whether any nonstandard/implementation-specific language extensions are being used in the target function."
+}

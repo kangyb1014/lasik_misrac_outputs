@@ -1,0 +1,11 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void\nMHD_default_logger_ (void *cls,\n                     const char *fm,\n                     va_list ap)\n{\n  vfprintf ((FILE *) cls, fm, ap);\n#ifdef _DEBUG\n  fflush ((FILE *) cls);\n#endif /* _DEBUG */\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "vfprintf",
+    "fflush",
+    "FILE",
+    "va_list",
+    "_DEBUG"
+  ],
+  "explanation": "- vfprintf: You must inspect the library declaration of vfprintf (prototype/attributes) to ensure the function is a standard C library symbol and not declared with compiler-specific extensions (eg. GCC __attribute__ annotations or nonstandard linkage). Any extension in its declaration could imply use of a language extension in this translation unit.\n- fflush: Same reason as vfprintf \u2014 check the prototype/attributes of fflush in the implementation headers to ensure no compiler-specific extensions are used.\n- FILE: The FILE type is used via a cast ((FILE *) cls). Its definition comes from the implementation headers; you need to see how FILE is defined (typedef/structure) to confirm no implementation-specific/extension features are required or relied upon by the cast.\n- va_list: vfprintf is called with a va_list parameter; va_list\u2019s implementation may be a compiler builtin (e.g. __builtin_va_list) or otherwise use compiler-specific semantics. Inspecting va_list\u2019s definition is necessary to determine whether the code depends on a compiler extension.\n- _DEBUG: This conditional compilation macro controls whether fflush is called. You must know whether _DEBUG is a compiler-provided predefined macro (an implementation extension) or a project-defined macro, since reliance on compiler-predefined macros can constitute use of a language/compiler extension."
+}

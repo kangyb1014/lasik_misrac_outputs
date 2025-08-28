@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpttu90_nh/src/lib/system/linux/device.c: In function 'to_linux_bus':\n/tmp/tmpttu90_nh/src/lib/system/linux/device.c:95:39: error: 'struct linux_bus' has no member named 'placeholder_lbus'\n   95 |     static struct linux_bus lbus = { .placeholder_lbus = 0 };\n      |                                       ^~~~~~~~~~~~~~~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:216: lib/CMakeFiles/metal-shared.dir/system/linux/device.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

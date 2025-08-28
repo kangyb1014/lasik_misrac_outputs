@@ -1,0 +1,13 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid UtMemFill(void *Memory, uint32 Length)\n{\n    uint32 i;\n    uint8 *Byte_ptr = Memory;\n\n    for (i = 0; i < Length; i++)\n    {\n        Byte_ptr[i] = i;\n    }\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "typedef/definition of uint8",
+    "typedef/definition of uint32",
+    "declaration/prototype of UtMemFill (header-level signature)",
+    "all callers of UtMemFill (function symbols from the static call graph)",
+    "declarations/types of the actual arguments passed as Memory at each call site (variables / expressions)",
+    "any cast operators or macros used at call sites to produce the Memory argument",
+    "any global objects or external variables that may alias Memory (symbols referenced by callers or accessible here)"
+  ],
+  "explanation": "To determine whether the pointer parameter could/should be const-qualified you must know: (1) the exact base types uint8 and uint32 (their typedefs) because typedefs can hide const qualifiers or pointer typedefs that affect how const applies; (2) the formal declaration/prototype of UtMemFill (header) to check whether the published API already uses or requires a const qualification; (3) every caller of UtMemFill (from the static call graph) because determining if the pointed-to memory is ever modified outside this function (or must be writable) requires seeing how callers pass the argument; (4) the concrete declarations/types of the expressions/variables passed as Memory at each call site so you can tell whether those objects are const-qualified or expected to be mutable; (5) any casts or macros used to build the Memory argument at call sites, since casts can strip/add const and thus change whether a const qualifier is possible; and (6) any global/external objects that may alias the same memory (referenced by callers or accessible in this translation unit) because aliasing can affect whether the memory must be modifiable. These symbols collectively let an analyzer confirm whether the function writes through the pointer (it does here), whether callers require writable memory, and whether changing the parameter to point-to-const would be safe and conformant to the MISRA rule."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Entry: sem_id=0, return_code=0, token_ptr=0x7ffff9c9a120\nAfter_GetById: sem_id=0, return_code=-16, token_ptr=0x7ffff9c9a120\nExit: sem_id=0, return_code=-16, token_ptr=0x7ffff9c9a120\nEntry: sem_id=0, return_code=0, token_ptr=0x7ffff9c9a0a0\nAfter_GetById: sem_id=0, return_code=-16, token_ptr=0x7ffff9c9a0a0\nExit: sem_id=0, return_code=-16, token_ptr=0x7ffff9c9a0a0\nEntry: sem_id=3735928559, return_code=0, token_ptr=0x7ffff9c9a150\nAfter_GetById: sem_id=3735928559, return_code=-16, token_ptr=0x7ffff9c9a150\nExit: sem_id=3735928559, return_code=-16, token_ptr=0x7ffff9c9a150\nEntry: sem_id=0, return_code=0, token_ptr=0x7ffff9c9a150\nAfter_GetById: sem_id=0, return_code=-16, token_ptr=0x7ffff9c9a150\nExit: sem_id=0, return_code=-16, token_ptr=0x7ffff9c9a150\n"
+}

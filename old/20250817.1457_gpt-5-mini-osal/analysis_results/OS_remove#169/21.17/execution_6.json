@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_remove ENTRY: path=0x55f0adea72b8, rc=0\nOS_remove AFTER_TRANSLATE: path=0x55f0adea72b8, rc=-108\nOS_remove EXIT: path=0x55f0adea72b8, rc=-108\nOS_remove ENTRY: path=0x55f0adea72b8, rc=0\nOS_remove AFTER_TRANSLATE: path=0x55f0adea72b8, rc=-108\nOS_remove EXIT: path=0x55f0adea72b8, rc=-108\nOS_remove ENTRY: path=0x55f0adea72b8, rc=0\nOS_remove AFTER_TRANSLATE: path=0x55f0adea72b8, rc=-108\nOS_remove EXIT: path=0x55f0adea72b8, rc=-108\n"
+}

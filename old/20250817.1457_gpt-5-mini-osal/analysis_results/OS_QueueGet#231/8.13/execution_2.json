@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpp7nui732/src/src/os/shared/src/osapi-queue.c: In function 'OS_QueueGet':\n/tmp/tmpp7nui732/src/src/os/shared/src/osapi-queue.c:200:75: error: 'OS_queue_internal_record_t' has no member named 'flags'\n  200 |                               (size_t)queue->max_size, (unsigned int)queue->flags, (void *)queue);\n      |                                                                           ^~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:286: CMakeFiles/osal.dir/src/os/shared/src/osapi-queue.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

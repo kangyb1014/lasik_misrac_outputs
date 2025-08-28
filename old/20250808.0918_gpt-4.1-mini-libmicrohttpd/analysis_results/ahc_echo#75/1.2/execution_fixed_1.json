@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "In file included from ../../src/include/mhd_options.h:34,\n                 from ../../src/include/platform.h:37,\n                 from suspend_resume_epoll.c:40:\n../../MHD_config.h:783: warning: \"_MHD_EXTERN\" redefined\n  783 | #define _MHD_EXTERN __attribute__((visibility(\"default\"))) extern\n      | \nIn file included from suspend_resume_epoll.c:7:\n../../src/include/microhttpd.h:191: note: this is the location of the previous definition\n  191 | #define _MHD_EXTERN extern\n      | \nsuspend_resume_epoll.c:61:1: error: unknown type name 'event'\n   61 | event evts;\n      | ^~~~~\nmake[4]: *** [Makefile:1180: suspend_resume_epoll-suspend_resume_epoll.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

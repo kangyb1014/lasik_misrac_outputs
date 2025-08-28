@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpyqgu6jar/src/src/os/shared/src/osapi-countsem.c: In function 'OS_CountSemGetInfo':\n/tmp/tmpyqgu6jar/src/src/os/shared/src/osapi-countsem.c:263:25: error: aggregate value used where an integer was expected\n  263 |                         (void *)(uintptr_t)token, (void *)record);\n      |                         ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:132: CMakeFiles/osal.dir/src/os/shared/src/osapi-countsem.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

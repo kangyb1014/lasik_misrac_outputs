@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\nint lfs_fs_stat(lfs_t *lfs, struct lfs_fsinfo *fsinfo) {\n    int err = LFS_LOCK(lfs->cfg);\n    if (err) {\n        return err;\n    }\n    LFS_TRACE(\"lfs_fs_stat(%p, %p)\", (void*)lfs, (void*)fsinfo);\n\n    err = lfs_fs_stat_(lfs, fsinfo);\n\n    LFS_TRACE(\"lfs_fs_stat -> %d\", err);\n    LFS_UNLOCK(lfs->cfg);\n    return err;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'lfs_fs_stat': {'callees': ['lfs_fs_stat_'], 'callers': []}, 'lfs_fs_stat_': {'callees': ['lfs_gstate_needssuperblock', 'lfs_fs_disk_version', 'lfs_dir_fetch', 'lfs_dir_get', 'lfs_superblock_fromle32'], 'callers': ['lfs_fs_stat']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "lfs_fs_stat_",
+    "LFS_LOCK",
+    "LFS_UNLOCK",
+    "LFS_TRACE",
+    "lfs_t",
+    "struct lfs_fsinfo",
+    "lfs_gstate_needssuperblock",
+    "lfs_fs_disk_version",
+    "lfs_dir_fetch",
+    "lfs_dir_get",
+    "lfs_superblock_fromle32"
+  ],
+  "explanation": "Required symbols and reasons:\n\n- lfs_fs_stat_: This is the direct callee. Its control-flow (whether it always returns, calls exit/longjmp, or otherwise makes later code unreachable) is essential to determine reachability of the code after the call (LFS_TRACE, LFS_UNLOCK, return).\n\n- LFS_LOCK: Used at function start and its return value controls an early return. Need its definition/expansion to determine whether it can fail, return non-zero, or perform non-local control-flow (e.g., longjmp/exit) that would affect reachability of subsequent statements.\n\n- LFS_UNLOCK: Called before returning. If this macro/function has non-local control-flow or is conditionally compiled out, it affects whether code after err = lfs_fs_stat_ is reachable and whether unlocking is guaranteed.\n\n- LFS_TRACE: Tracing macro may expand to nothing or to expressions with side effects or non-local control-flow; need to confirm it does not introduce unreachable code or alter reachability.\n\n- lfs_t: Type of the first parameter; its definition (especially the cfg member) is needed to understand how LFS_LOCK/LFS_UNLOCK operate and whether any member access can cause non-local behavior or be optimized away.\n\n- struct lfs_fsinfo: Type of the second parameter; include to check whether any macros or functions (e.g., tracing) inspect it in ways that affect control flow.\n\n- lfs_gstate_needssuperblock, lfs_fs_disk_version, lfs_dir_fetch, lfs_dir_get, lfs_superblock_fromle32: These are callees of lfs_fs_stat_. To determine if lfs_fs_stat_ can fail to return (or can perform non-local control-flow) you must inspect these functions; any non-returning behavior in them would make code in lfs_fs_stat after the call unreachable.\n\nIncluding these symbols lets the next analyst see all relevant definitions/expansions that can influence control flow and thus determine whether any statements in lfs_fs_stat are unreachable (MISRA rule violation)."
+}

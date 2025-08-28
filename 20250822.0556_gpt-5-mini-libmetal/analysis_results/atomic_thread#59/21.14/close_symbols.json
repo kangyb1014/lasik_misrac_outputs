@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_fetch_add",
+    "atomic_int",
+    "atomic_test_count",
+    "memcmp",
+    "__atomic_fetch_add",
+    "__sync_fetch_and_add"
+  ],
+  "explanation": "- atomic_fetch_add: The target function calls this symbol directly. You must inspect its implementation (or wrapper) to see whether it calls memcmp or performs string comparisons that would violate the MISRA rule.\n- atomic_int: The definition/typedef of atomic_int is needed to understand what the atomic_fetch_add implementation operates on (e.g. if it expands to a struct or wrapper that might invoke other functions that could call memcmp).\n- atomic_test_count: The global loop bound used in the target function; include its declaration/type to allow full contextual analysis (ensures no indirect string-comparison behavior via loop control or macros).\n- memcmp: The standard library function named in the MISRA rule. You need to find any call sites to memcmp (direct or indirect) reachable from atomic_thread to determine if memcmp is being used to compare null-terminated strings.\n- __atomic_fetch_add and __sync_fetch_and_add: Common low-level primitives or compiler-builtins that atomic_fetch_add may delegate to. Include their implementations or references so the analysis can follow transitive calls and detect any memcmp usage down the call chain."
+}

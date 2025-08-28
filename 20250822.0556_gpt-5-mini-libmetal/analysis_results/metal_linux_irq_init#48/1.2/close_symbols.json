@@ -1,0 +1,25 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_linux_irq_init(void)\n{\n\tint ret;\n\n\tmemset(&irqs, 0, sizeof(irqs));\n\n\tirq_notify_fd = eventfd(0, EFD_CLOEXEC);\n\tif (irq_notify_fd < 0) {\n\t\tmetal_log(METAL_LOG_ERROR,\n\t\t\t  \"Failed to create eventfd for IRQ handling.\\n\");\n\t\treturn  -EAGAIN;\n\t}\n\n\tmetal_mutex_init(&irq_lock);\n\tirq_handling_stop = false;\n\tret = metal_irq_register_controller(&linux_irq_cntr);\n\tif (ret < 0) {\n\t\tmetal_log(METAL_LOG_ERROR,\n\t\t\t  \"Linux IRQ controller failed to register.\\n\");\n\t\treturn -EINVAL;\n\t}\n\tret = pthread_create(&irq_pthread, NULL,\n\t\t\t     metal_linux_irq_handling, NULL);\n\tif (ret != 0) {\n\t\tmetal_log(METAL_LOG_ERROR, \"Failed to create IRQ thread: %d.\\n\",\n\t\t\t  ret);\n\t\treturn -EAGAIN;\n\t}\n\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_irq_init': {'callees': ['metal_mutex_init', 'metal_irq_register_controller'], 'callers': ['metal_sys_init']}, 'metal_mutex_init': {'callees': [], 'callers': ['metal_linux_irq_init', 'mutex']}, 'metal_irq_register_controller': {'callees': ['metal_irq_allocate', 'metal_list_add_tail'], 'callers': ['metal_softirq_init', 'metal_linux_irq_init']}, 'metal_sys_init': {'callees': ['metal_init_page_sizes', 'metal_linux_bus_init', 'metal_linux_irq_init'], 'callers': ['metal_init']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "eventfd",
+    "EFD_CLOEXEC",
+    "memset",
+    "irqs",
+    "irq_notify_fd",
+    "metal_log",
+    "METAL_LOG_ERROR",
+    "EAGAIN",
+    "EINVAL",
+    "metal_mutex_init",
+    "irq_lock",
+    "irq_handling_stop",
+    "metal_irq_register_controller",
+    "linux_irq_cntr",
+    "pthread_create",
+    "irq_pthread",
+    "metal_linux_irq_handling",
+    "NULL",
+    "false"
+  ],
+  "explanation": "For each listed symbol the next analyzer must inspect its declaration/definition (headers, macros, or implementation) to determine whether any compiler/language extensions are used (for example: GCC/clang __attribute__ annotations, __extension__ keyword, __asm__, typeof, statement-expressions, non-standard macros, inline assembly or other compiler-specific builtins). Reasons: \n- eventfd: system call wrapper or macro in headers \u2014 may be a macro or inline using extensions.\n- EFD_CLOEXEC: macro constant defined in headers \u2014 could be defined via compiler-specific constructs.\n- memset: standard lib function prototype or inline implementation \u2014 headers may use extension attributes or builtins.\n- irqs: global variable/type \u2014 its type/definition may use non-standard language extensions (bitfields, attributes, packed, etc.).\n- irq_notify_fd: global variable \u2014 declaration could use attributes or non-standard typedefs.\n- metal_log: function/macro used for logging \u2014 often implemented as variadic macro or function with __attribute__((format)) or other extensions; must check.\n- METAL_LOG_ERROR: macro or enum \u2014 inspect definition for non-standard macro tricks or extensions.\n- EAGAIN / EINVAL: errno macros from headers \u2014 header definitions sometimes include compiler-specific attributes/macros.\n- metal_mutex_init: function \u2014 check prototype/definition for attributes or use of non-standard language features.\n- irq_lock: global (mutex) object \u2014 its type/definition may involve typedefs or attributes (e.g., pthread_mutex_t wrappers) that use extensions.\n- irq_handling_stop: global boolean \u2014 its type/definition may use non-standard typedefs or extensions.\n- metal_irq_register_controller: function \u2014 its prototype/implementation may use extensions (attributes, inline asm, builtin types).\n- linux_irq_cntr: controller object (struct) \u2014 struct definition may use GCC extensions (packed, aligned, bitfields, typeof, etc.).\n- pthread_create: POSIX function prototype \u2014 system headers sometimes use compiler-specific macros/attributes (e.g., __THROW, __attribute__).\n- irq_pthread: pthread_t variable \u2014 typedef underlying pthread_t may be implementation-specific or involve extensions.\n- metal_linux_irq_handling: thread-start function \u2014 check signature/definition for non-standard attributes or calling-convention extensions.\n- NULL: macro definition in headers \u2014 some implementations define NULL using compiler-specific constructs.\n- false: macro/enum from stdbool.h \u2014 check definition for any extension usage.\n\nOnly by examining these symbols' declarations/definitions can one determine if the target function relies on language/compiler extensions that would violate the MISRA rule."
+}

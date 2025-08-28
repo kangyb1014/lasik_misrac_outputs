@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "connection.c:6310:13: error: static declaration of 'MHD_update_last_activity_' follows non-static declaration\n 6310 | static void MHD_update_last_activity_(struct MHD_Connection *connection) { /* do nothing */ }\n      |             ^~~~~~~~~~~~~~~~~~~~~~~~~\nIn file included from connection.c:39:\nconnection.h:200:1: note: previous declaration of 'MHD_update_last_activity_' with type 'void(struct MHD_Connection *)'\n  200 | MHD_update_last_activity_ (struct MHD_Connection *connection);\n      | ^~~~~~~~~~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2098: libmicrohttpd_la-connection.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "mutex: entry\nmutex: &lock= 0x7ffd936abda4\nmutex: threads=10\nmetal_run_probe: entry threads=10 arg=0x7ffd936abda4\nmetal_run_probe: exit rc=0\nmutex: exit rc=0\nmutex: entry\nmutex: &lock= 0x7ffcee9fb4e4\nmutex: threads=10\nmetal_run_probe: entry threads=10 arg=0x7ffcee9fb4e4\nmetal_run_probe: exit rc=0\nmutex: exit rc=0\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpcf4zdq07/src/lib/system/linux/irq.c: In function 'metal_linux_irq_handling':\n/tmp/tmpcf4zdq07/src/lib/system/linux/irq.c:136:21: error: invalid storage class for function 'log_probe'\n  136 |         static void log_probe(const char *fmt, ...)\n      |                     ^~~~~~~~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:244: lib/CMakeFiles/metal-shared.dir/system/linux/irq.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

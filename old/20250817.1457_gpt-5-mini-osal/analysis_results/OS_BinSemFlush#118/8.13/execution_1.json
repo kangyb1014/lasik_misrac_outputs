@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemFlush - entry: sem_id=3735928559 return_code=-1\nOS_BinSemFlush - after OS_ObjectIdGetById: sem_id=3735928559 return_code=-35\nOS_BinSemFlush - skipped Impl due to bad id: sem_id=3735928559 return_code=-35\nOS_BinSemFlush - entry: sem_id=0 return_code=-1\nOS_BinSemFlush - after OS_ObjectIdGetById: sem_id=0 return_code=-35\nOS_BinSemFlush - skipped Impl due to bad id: sem_id=0 return_code=-35\n"
+}

@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "mhd_mono_clock.c: In function 'mhd_log_state':\nmhd_mono_clock.c:158:19: error: 'mono_clock_source' undeclared (first use in this function); did you mean 'mono_clock_start'?\n  158 |             (int) mono_clock_source,\n      |                   ^~~~~~~~~~~~~~~~~\n      |                   mono_clock_start\nmhd_mono_clock.c:158:19: note: each undeclared identifier is reported only once for each function it appears in\nmake[3]: *** [Makefile:2133: libmicrohttpd_la-mhd_mono_clock.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

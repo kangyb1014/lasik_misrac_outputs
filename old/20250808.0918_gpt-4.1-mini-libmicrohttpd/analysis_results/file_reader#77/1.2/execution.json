@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "response.c:7:10: fatal error: MHD_Response.h: No such file or directory\n    7 | #include \"MHD_Response.h\"\n      |          ^~~~~~~~~~~~~~~~\ncompilation terminated.\nmake[3]: *** [Makefile:2182: libmicrohttpd_la-response.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

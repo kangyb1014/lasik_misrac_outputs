@@ -1,0 +1,22 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_linux_get_device_property(struct metal_device *device,\n\t\t\t\t    const char *property_name,\n\t\t\t\t    void *output, int len)\n{\n\tint fd = 0;\n\tint status = 0;\n\tconst int flags = O_RDONLY;\n\tconst int mode = S_IRUSR | S_IRGRP | S_IROTH;\n\tstruct linux_device *ldev = to_linux_device(device);\n\tchar path[PATH_MAX];\n\n\tsnprintf(path, sizeof(path), \"%s/of_node/%s\",\n\t\t\t ldev->sdev->path, property_name);\n\tfd = open(path, flags, mode);\n\tif (fd < 0)\n\t\treturn -errno;\n\tif (read(fd, output, len) < 0) {\n\t\tstatus = -errno;\n\t\tclose(fd);\n\t\treturn status;\n\t}\n\n\tstatus = close(fd);\n\treturn status < 0 ? -errno : 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_get_device_property': {'callees': ['to_linux_device'], 'callers': []}, 'to_linux_device': {'callees': [], 'callers': ['metal_linux_dev_close', 'metal_linux_dev_irq_ack', 'metal_linux_dev_dma_map', 'metal_linux_dev_dma_unmap', 'metal_linux_get_device_property']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "to_linux_device",
+    "container_of",
+    "typeof",
+    "struct linux_device",
+    "struct metal_device",
+    "sdev (definition of ldev->sdev and its 'path' member)",
+    "PATH_MAX",
+    "O_RDONLY",
+    "S_IRUSR",
+    "S_IRGRP",
+    "S_IROTH",
+    "snprintf",
+    "open",
+    "read",
+    "close",
+    "errno"
+  ],
+  "explanation": "to_linux_device: may be a macro (common in kernel code) that implements a cast via container_of or other helpers; its definition is required because it is the most likely place a compiler extension (e.g. typeof) is hidden. container_of: commonly used in Linux sources and frequently implemented using compiler extensions; inspect its definition to see if it uses non\u2011standard constructs. typeof: an explicit GCC/Clang language extension often used inside container_of; must be checked directly. struct linux_device: the concrete structure may carry attributes (e.g. __attribute__((packed)), flexible array members, bit\u2011fields or other implementation details that could be compiler extensions; also required to check the type/layout used by to_linux_device. struct metal_device: the source type used by to_linux_device; needed to verify whether any casting or macro assumes non\u2011standard behavior. sdev (definition of ldev->sdev and its 'path' member): the member types/definitions (and any attributes on the sdev struct or path member) can hide extensions (packed/aligned/attribute, non\u2011standard types). PATH_MAX, O_RDONLY, S_IRUSR, S_IRGRP, S_IROTH: macros used to build path and open flags/mode \u2014 include their definitions to ensure no unexpected compiler extensions are involved in their expansion. snprintf, open, read, close: prototypes/headers could be replaced by platform\u2011specific or extension variants (e.g. open64) or have attributes/macros; verify standard declarations are used. errno: errno is typically a macro that may expand to a thread\u2011local function or implementation detail; check its definition to ensure no compiler extension is being relied upon. These symbols together let the next analyst determine whether any non\u2011standard language/compiler extensions are used either directly in this function or indirectly via macros/types it relies on."
+}

@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid UtPrintx(const void *Memory, uint32 Length)\n{\n    uint32       i;\n    uint32       j;\n    const uint8 *Byte_ptr = Memory;\n    char         OutputLine[80];\n    char *       OutPtr;\n\n    i = 0;\n    while (i < Length)\n    {\n        snprintf(OutputLine, sizeof(OutputLine), \"%16lx: \", (unsigned long)&Byte_ptr[i]);\n        OutPtr = OutputLine;\n        OutPtr += strlen(OutputLine);\n        for (j = 0; j < 16 && i < Length; j++, i++)\n        {\n            sprintf(OutPtr, \"%02X  \", Byte_ptr[i]);\n            OutPtr += 3;\n        }\n\n        UT_BSP_DoText(UTASSERT_CASETYPE_INFO, OutputLine);\n    }\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'UtPrintx': {'callees': ['UT_BSP_DoText'], 'callers': []}, 'UT_BSP_DoText': {'callees': ['UT_BSP_Lock', 'OS_BSP_ConsoleOutput_Impl', 'UtAssert_GetCaseTypeAbbrev', 'OS_BSP_ConsoleSetMode_Impl', 'UT_BSP_Unlock', 'OS_BSP_Shutdown_Impl'], 'callers': ['UtAssert_DoReport', 'UtAssert_DoTestSegmentReport', 'UtAssert_EndTest', 'UtAssert_Abort', 'UtAssert_Message', 'UtMessage', 'UtPrintx', 'UT_BSP_Setup', 'UT_BSP_StartTestSegment']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "UT_BSP_DoText",
+    "UT_BSP_Lock",
+    "UT_BSP_Unlock",
+    "OS_BSP_ConsoleOutput_Impl",
+    "OS_BSP_ConsoleSetMode_Impl",
+    "UT_BSP_Shutdown_Impl",
+    "UtAssert_GetCaseTypeAbbrev",
+    "memcmp",
+    "snprintf",
+    "sprintf",
+    "strlen"
+  ],
+  "explanation": "- UT_BSP_DoText: UtPrintx passes OutputLine (a formatted C string) directly to this function. To determine if a memcmp-based null-terminated string comparison occurs, UT_BSP_DoText implementation must be inspected.\n- UT_BSP_Lock / UT_BSP_Unlock: These are direct callees of UT_BSP_DoText (per the call graph). If UT_BSP_DoText delegates string handling or comparisons to these helpers, they must be checked for memcmp usage on null-terminated strings.\n- OS_BSP_ConsoleOutput_Impl / OS_BSP_ConsoleSetMode_Impl / UT_BSP_Shutdown_Impl: These are other callees of UT_BSP_DoText. Any of them could perform string comparisons using memcmp; they must be inspected to rule out forbidden memcmp usage.\n- UtAssert_GetCaseTypeAbbrev: Called by UT_BSP_DoText (per call graph). It returns/handles strings; it must be checked for memcmp use on null-terminated strings.\n- memcmp: The actual standard-library function whose misuse is prohibited by the MISRA rule \u2014 search for its invocations in the call chain (UT_BSP_DoText and its callees) and inspect argument origins to see if null-terminated strings are being compared.\n- snprintf / sprintf / strlen: These functions are used in UtPrintx to build OutputLine. They establish that OutputLine is a null-terminated C string (strlen reads a C string, snprintf/sprintf write a NUL terminator). This fact is necessary to decide whether any memcmp seen in the downstream call chain is being used to compare null-terminated strings (which would violate the rule)."
+}

@@ -1,0 +1,17 @@
+{
+  "user_message": "<misra_rule>\nThe target MISRA C 2023 Rule 2.2 is: A project shall not contain dead code.\nAny operation that is executed but whose removal would not affect program behaviour constitutes dead code. Notes:\n1. The behaviour of an embedded sytem is often determined not just by the nature of its actions, but also by the time at which they occur.\n2. unreachable code is not dead code, as it cannot be executed.\n3.Initialization is not the same as an assignment operation and is therfore not a candidate for dead code.\n</misra_rule>\n<instruction>\nOther agents will judge whether the code follows the MISRA C 2023 guidelines.\nThey will investigate the code fragments you give.\nYour job is to find code fragments in the code that should be investigated to check whether the code follows the MISRA C rule.\n</instruction>\n<response format>\nProvide your answer with these fields.\n- suspicious_frags: The list of suspicious code fragments in the code.\nIt should contain only the code fragments exists in the code. If you do not find any suspicious code fragments, return an empty list for suspicious_frags\n- explanation: The explanation of why other code fragments should NOT be investigated.\nIt is very important to not miss any suspicious code fragments, so please give a sufficient explanation why other code fragments should not be investigated.\nDO NOT give any explanation for the selected suspicious code fragments.\n</response format>\n<target_code>\nHere is the code of expire_sessions:\n```c\nstatic void\nexpire_sessions (void)\n{\n  struct Session *pos;\n  struct Session *prev;\n  struct Session *next;\n  time_t now;\n\n  now = time (NULL);\n  prev = NULL;\n  pos = sessions;\n  while (NULL != pos)\n  {\n    next = pos->next;\n    if (now - pos->start > 60 * 60)\n    {\n      /* expire sessions after 1h */\n      if (NULL == prev)\n        sessions = pos->next;\n      else\n        prev->next = next;\n      free (pos);\n    }\n    else\n      prev = pos;\n    pos = next;\n  }\n}\n```\n</target_code>\nPlease find suspicious code fragments in the code and report them. Other agents can not investigate other fragments that you do not report, so it is very important to find all suspicious fragments without missing any. Report the suspicious fragments AS MUCH AS POSSIBLE.",
+  "suspicious_frags": [
+    "pos = sessions;",
+    "while (NULL != pos)",
+    "if (now - pos->start > 60 * 60)",
+    "now = time (NULL);",
+    "else\n    prev = pos;",
+    "next = pos->next;",
+    "free (pos);",
+    "if (NULL == prev)\n      sessions = pos->next;",
+    "prev = NULL;",
+    "else\n      prev->next = next;",
+    "pos = next;"
+  ],
+  "explanation": "I have listed all the executable statements in expire_sessions that could potentially constitute dead code (assignments, pointer updates, the condition test, the free call and loop control). Other fragments in the function are declarations (struct Session *pos; struct Session *prev; struct Session *next; time_t now;) and a comment (/* expire sessions after 1h */), or syntactic elements (braces), which are either not executed or represent initialization (initialization is explicitly excluded per MISRA Note 3) and therefore are not candidates for Rule 2.2. There is no obviously unreachable code in this function (no return/goto making later statements unreachable), so the above executable statements are the relevant pieces to investigate for potential dead code."
+}

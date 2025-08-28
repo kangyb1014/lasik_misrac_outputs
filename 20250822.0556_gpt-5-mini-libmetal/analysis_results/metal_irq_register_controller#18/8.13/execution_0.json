@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter: metal_irq_register_controller(cntr=0x7fc7f9c53cc0)\nstart list scan: cntr->node=0x7fc7f9c53ce0\nallocating IRQs: requested_base=0 requested_num=1023\nmetal_irq_allocate returned irq_base=0\nassigned cntr->irq_base=0\nadding controller node 0x7fc7f9c53ce0 to irq_cntrs list\nadded node, returning 0\nenter: metal_irq_register_controller(cntr=0x55cf2b9bc4e0)\nstart list scan: cntr->node=0x55cf2b9bc500\nallocating IRQs: requested_base=0 requested_num=1023\nmetal_irq_allocate returned irq_base=0\nassigned cntr->irq_base=0\nadding controller node 0x55cf2b9bc500 to irq_cntrs list\nadded node, returning 0\n"
+}

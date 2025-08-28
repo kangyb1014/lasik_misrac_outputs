@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpuqmabvbs/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketOpen_Impl':\n/tmp/tmpuqmabvbs/src/src/os/portable/os-impl-bsd-sockets.c:167:21: error: aggregate value used where an integer was expected\n  167 |                     (unsigned long)(*token), (void *)impl, (void *)stream,\n      |                     ^\n/tmp/tmpuqmabvbs/src/src/os/portable/os-impl-bsd-sockets.c:307:21: error: aggregate value used where an integer was expected\n  307 |                     (unsigned long)(*token), (void *)impl, (void *)stream, impl->fd);\n      |                     ^\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

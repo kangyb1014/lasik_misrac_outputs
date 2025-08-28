@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp0i2xyq1x/src/src/os/shared/src/osapi-module.c: In function 'OS_ModuleUnload_Log':\n/tmp/tmp0i2xyq1x/src/src/os/shared/src/osapi-module.c:283:15: error: storage size of 'tm_buf' isn't known\n  283 |     struct tm tm_buf;\n      |               ^~~~~~\n/tmp/tmp0i2xyq1x/src/src/os/shared/src/osapi-module.c:295:23: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  295 |     vfprintf(fp, fmt, ap);\n      |                       ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-module.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-module.dir/__/__/os/shared/src/osapi-module.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3849: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-module.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

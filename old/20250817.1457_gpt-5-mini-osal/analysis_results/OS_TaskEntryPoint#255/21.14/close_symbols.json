@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid OS_TaskEntryPoint(osal_id_t task_id)\n{\n    osal_task_entry task_entry;\n\n    if (OS_TaskPrepare(task_id, &task_entry) == OS_SUCCESS)\n    {\n        if (task_entry != NULL)\n        {\n            (*task_entry)();\n        }\n    }\n\n    /* If the function returns, treat as a normal exit and do the proper cleanup */\n    OS_TaskExit();\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_TaskEntryPoint': {'callees': ['OS_TaskPrepare', 'OS_TaskExit'], 'callers': ['OS_PthreadTaskEntry']}, 'OS_TaskPrepare': {'callees': ['OS_ObjectIdGetById', 'OS_ObjectIndexFromToken', 'OS_TaskMatch_Impl', 'OS_ObjectIdRelease', 'OS_TaskRegister_Impl', 'OS_NotifyEvent'], 'callers': ['OS_TaskEntryPoint']}, 'OS_TaskExit': {'callees': ['OS_TaskGetId_Impl', 'OS_ObjectIdGetById', 'OS_TaskDetach_Impl', 'OS_ObjectIdFinalizeDelete', 'OS_TaskExit_Impl', 'UT_ExecuteBasicHandler'], 'callers': ['OS_TaskEntryPoint']}, 'OS_PthreadTaskEntry': {'callees': ['OS_TaskEntryPoint'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_TaskPrepare",
+    "OS_TaskExit",
+    "OS_ObjectIdGetById",
+    "OS_ObjectIndexFromToken",
+    "OS_TaskMatch_Impl",
+    "OS_ObjectIdRelease",
+    "OS_TaskRegister_Impl",
+    "OS_NotifyEvent",
+    "OS_TaskGetId_Impl",
+    "OS_TaskDetach_Impl",
+    "OS_ObjectIdFinalizeDelete",
+    "OS_TaskExit_Impl",
+    "UT_ExecuteBasicHandler",
+    "memcmp"
+  ],
+  "explanation": "To determine whether OS_TaskEntryPoint (or any function it invokes) uses the Standard Library function memcmp to compare null\u2011terminated strings, the analysis must include all transitive callees of OS_TaskEntryPoint and the memcmp symbol itself. Reasoning for each symbol:\n\n- OS_TaskPrepare: Direct callee of OS_TaskEntryPoint. Any memcmp use in OS_TaskPrepare (or data it passes on) could make the rule applicable.\n- OS_TaskExit: Direct callee of OS_TaskEntryPoint. memcmp usage during exit processing would be relevant.\n- OS_ObjectIdGetById: Called by both OS_TaskPrepare and OS_TaskExit; may perform/forward string comparisons.\n- OS_ObjectIndexFromToken: Callee of OS_TaskPrepare; include to catch memcmp usage there.\n- OS_TaskMatch_Impl: Callee of OS_TaskPrepare; may compare names/strings to find tasks.\n- OS_ObjectIdRelease: Callee of OS_TaskPrepare; include in case it performs string comparisons.\n- OS_TaskRegister_Impl: Callee of OS_TaskPrepare; registration code often compares identifiers/strings.\n- OS_NotifyEvent: Callee of OS_TaskPrepare; event handling could include string compares.\n- OS_TaskGetId_Impl: Callee of OS_TaskExit; include for possible string operations when resolving IDs.\n- OS_TaskDetach_Impl: Callee of OS_TaskExit; may use string compares in cleanup.\n- OS_ObjectIdFinalizeDelete: Callee of OS_TaskExit; include for potential string comparisons during finalize.\n- OS_TaskExit_Impl: Callee of OS_TaskExit; internal exit implementation may perform comparisons.\n- UT_ExecuteBasicHandler: Callee of OS_TaskExit; unit-test/utility handlers sometimes do string comparisons.\n- memcmp: The Standard Library function being banned for null\u2011terminated string comparison. Including memcmp lets the analyzer find direct calls and inspect call sites to see whether arguments are pointers to null\u2011terminated strings (or used in a string comparison context).\n\nIncluding these symbols (the full source or prototypes for each) allows the next agent to inspect every place reachable from OS_TaskEntryPoint where memcmp might be invoked and to examine the argument types/usage to decide if the MISRA rule is violated."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTRY: OS_MutSemGetInfo called: sem_id=3735928559, mut_prop=0x7fffa363c540\nSTATE: mut_prop zeroed (size=24)\nAFTER OS_ObjectIdGetById: return_code=-35, token_addr=0x7fffa363c4f0\nERROR PATH: OS_ObjectIdGetById failed with code=-35\nEXIT: OS_MutSemGetInfo returning -35\nENTRY: OS_MutSemGetInfo called: sem_id=0, mut_prop=0x7fffa363c540\nSTATE: mut_prop zeroed (size=24)\nAFTER OS_ObjectIdGetById: return_code=-35, token_addr=0x7fffa363c4f0\nERROR PATH: OS_ObjectIdGetById failed with code=-35\nEXIT: OS_MutSemGetInfo returning -35\n"
+}

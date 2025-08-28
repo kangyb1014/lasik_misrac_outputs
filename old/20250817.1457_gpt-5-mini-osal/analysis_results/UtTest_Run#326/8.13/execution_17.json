@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "UtTest_Run: log open\nMerged head (default): UtListMain=0x56297af4e8a0\nAfter merge SETUP: UtListMain=0x56297af4e8a0\nAfter merge TEST: UtListMain=0x56297af4e8a0\nAfter merge TEARDOWN: UtListMain=0x56297af4e8a0\nLoop iter 0: UtListNode=0x56297af4e8c0, IsEnd=0\n  UtTestDataBaseEntry=(nil)\nLoop iter 1: UtListNode=0x56297af4e8e0, IsEnd=0\n  UtTestDataBaseEntry=(nil)\nLoop iter 2: UtListNode=0x56297af4e900, IsEnd=0\n  UtTestDataBaseEntry=(nil)\nLoop iter 3: UtListNode=0x56297af4e930, IsEnd=0\n  UtTestDataBaseEntry=0x56297af4e950\n  TestName ptr=0x56297af4e968, TestName=\"Cleanup\"\n  No Setup\n  No Test\n  Calling Teardown at 0x56294a087f05\n  Returned from Teardown\nBefore Destroy: DataBasePtr=0x56297af4e890\nAfter Destroy\nFinal ExecutedCount=0\nUtTest_Run: log close\n"
+}

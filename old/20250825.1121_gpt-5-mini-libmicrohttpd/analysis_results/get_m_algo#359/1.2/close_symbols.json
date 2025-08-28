@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_DigestAuthMultiAlgo3\nget_m_algo (void)\n{\n  if (force_md5)\n    return MHD_DIGEST_AUTH_MULT_ALGO3_MD5;\n  else if (force_sha256)\n    return MHD_DIGEST_AUTH_MULT_ALGO3_SHA256;\n  else if (force_sha512_256)\n    return MHD_DIGEST_AUTH_MULT_ALGO3_SHA512_256;\n\n  /* No forced algorithm selection, let MHD to use default */\n  return MHD_DIGEST_AUTH_MULT_ALGO3_ANY_NON_SESSION;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'get_m_algo': {'callees': [], 'callers': ['reply_with_auth_required']}, 'reply_with_auth_required': {'callees': ['MHD_create_response_from_buffer_static', 'MHD_add_response_header', 'MHD_queue_auth_required_response3', 'get_m_QOP', 'get_m_algo', 'MHD_destroy_response'], 'callers': ['handle_sec_areas_req']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "enum MHD_DigestAuthMultiAlgo3 (full definition)",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_MD5",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_SHA256",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_SHA512_256",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_ANY_NON_SESSION",
+    "force_md5",
+    "force_sha256",
+    "force_sha512_256"
+  ],
+  "explanation": "Each listed symbol is needed so the next analyzer can determine whether any compiler-specific language extensions are used in the target function:\n\n- enum MHD_DigestAuthMultiAlgo3 (full definition): needed to check whether the enum type itself is declared with any compiler extensions/attributes (for example __attribute__ decorations, non-standard underlying types, anonymous-enum tricks, or typedefs that hide extensions).\n\n- MHD_DIGEST_AUTH_MULT_ALGO3_MD5, MHD_DIGEST_AUTH_MULT_ALGO3_SHA256, MHD_DIGEST_AUTH_MULT_ALGO3_SHA512_256, MHD_DIGEST_AUTH_MULT_ALGO3_ANY_NON_SESSION: the enumerator definitions must be inspected to ensure they are plain standard enum constants and not macros or expressions that use compiler extensions (e.g. GCC statement-expressions, typeof, assembler tokens, or attribute-bearing macros).\n\n- force_md5, force_sha256, force_sha512_256: the identifiers used in the if conditions may be variables, macros or inline expressions. Their declarations/definitions must be checked to see if they use language extensions (e.g. defined as macros that expand to GCC statement-expressions '({ ... })', use __extension__ tokens, compiler-specific builtins, inline asm, or non-standard types/attributes)."
+}

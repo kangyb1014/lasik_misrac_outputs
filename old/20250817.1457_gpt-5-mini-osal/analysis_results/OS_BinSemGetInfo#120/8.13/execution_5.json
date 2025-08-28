@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: OS_BinSemGetInfo sem_id=3735928559 bin_prop=0x7ffd51f41200\nAfter memset: bin_prop zeroed\nOS_ObjectIdGetById returned -35, token_address=0x7ffd51f411b0\nOS_ObjectIdGetById failed for sem_id=3735928559 with code -35\nEXIT: OS_BinSemGetInfo return_code=-35\nENTER: OS_BinSemGetInfo sem_id=0 bin_prop=0x7ffd51f41200\nAfter memset: bin_prop zeroed\nOS_ObjectIdGetById returned -35, token_address=0x7ffd51f411b0\nOS_ObjectIdGetById failed for sem_id=0 with code -35\nEXIT: OS_BinSemGetInfo return_code=-35\n"
+}

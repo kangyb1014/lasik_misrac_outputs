@@ -1,0 +1,31 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void\nparse_http_std_method (struct MHD_Connection *connection,\n                       const char *method,\n                       size_t len)\n{\n  const char *const m = method; /**< short alias */\n  mhd_assert (NULL != m);\n  mhd_assert (0 != len);\n\n  if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_GET) == len) &&\n      (0 == memcmp (m, MHD_HTTP_METHOD_GET, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_GET;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_HEAD) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_HEAD, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_HEAD;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_POST) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_POST, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_POST;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_PUT) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_PUT, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_PUT;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_DELETE) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_DELETE, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_DELETE;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_CONNECT) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_CONNECT, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_CONNECT;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_OPTIONS) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_OPTIONS, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_OPTIONS;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_TRACE) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_TRACE, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_TRACE;\n  else\n    connection->rq.http_mthd = MHD_HTTP_MTHD_OTHER;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'parse_http_std_method': {'callees': [], 'callers': ['get_request_line_inner']}, 'get_request_line_inner': {'callees': ['connection_close_error', 'transmit_error_response_len', 'parse_http_version', 'parse_http_std_method'], 'callers': ['get_request_line']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_STATICSTR_LEN_ (macro)",
+    "MHD_HTTP_METHOD_GET (string/identifier)",
+    "MHD_HTTP_METHOD_HEAD",
+    "MHD_HTTP_METHOD_POST",
+    "MHD_HTTP_METHOD_PUT",
+    "MHD_HTTP_METHOD_DELETE",
+    "MHD_HTTP_METHOD_CONNECT",
+    "MHD_HTTP_METHOD_OPTIONS",
+    "MHD_HTTP_METHOD_TRACE",
+    "MHD_HTTP_MTHD_GET (enum/constant)",
+    "MHD_HTTP_MTHD_HEAD",
+    "MHD_HTTP_MTHD_POST",
+    "MHD_HTTP_MTHD_PUT",
+    "MHD_HTTP_MTHD_DELETE",
+    "MHD_HTTP_MTHD_CONNECT",
+    "MHD_HTTP_MTHD_OPTIONS",
+    "MHD_HTTP_MTHD_TRACE",
+    "MHD_HTTP_MTHD_OTHER",
+    "struct MHD_Connection (type)",
+    "rq (member of struct MHD_Connection)",
+    "type of rq.http_mthd (the field assigned)",
+    "mhd_assert (macro)",
+    "memcmp (standard library function)",
+    "NULL (macro)",
+    "size_t (typedef)"
+  ],
+  "explanation": "To determine whether the target function uses any compiler language extensions you must inspect the definitions/types that the function references (macros, constants, and struct/field types). Specifically:\n\n- MHD_STATICSTR_LEN_ (macro): This macro is used in every length comparison. Macros are a common place to hide compiler extensions (e.g. __builtin_*, __extension__, statement expressions ({ ... }), typeof, gcc attributes). You need its definition to check for such extensions.\n\n- MHD_HTTP_METHOD_* (string/identifier constants): The code compares against these names; their definitions (string literals or macros) may embed compiler-specific constructs or attributes. Inspect each (GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE).\n\n- MHD_HTTP_MTHD_* (enum/constant values): These are the l-values assigned to connection->rq.http_mthd. Their declarations may be macros or enums that use extensions (enum extensions, attributes, non-standard integer-width qualifiers). Include GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, OTHER.\n\n- struct MHD_Connection: You must see the struct definition to verify that use of nested members (rq, http_mthd) does not rely on compiler extensions (bit-fields with nonstandard widths, anonymous structs/unions, packed/align attributes, or GCC-specific attributes).\n\n- rq (member of struct MHD_Connection) and type of rq.http_mthd: The exact type of the http_mthd field is required to check whether assignment is standard C (compatible types) or uses compiler-specific extensions (e.g. bit-field of non-standard type, __attribute__ markers, or anonymous/unnamed members).\n\n- mhd_assert (macro): Assertion macros often hide uses of compiler intrinsics or extensions (statement expressions, __builtin_trap, __attribute__((noreturn)), inline asm). Inspecting its definition is necessary to determine if it uses extensions.\n\n- memcmp (standard library function): Although memcmp is standard, include it to confirm the code is using the standard prototype and not a project-local wrapper/macro that might be implemented with extensions.\n\n- NULL (macro) and size_t (typedef): These are standard symbols; include them to ensure they are the standard definitions and not redefined using compiler-specific features.\n\nCollecting these symbols (and their header/definition locations) lets the next analyst inspect each macro/type/constant for uses of compiler-specific extensions (GCC/Clang builtins, attributes, statement expressions, typeof, inline asm, __extension__, etc.) and thus determine compliance with the MISRA rule about language extensions."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_rmfs: entry\nOS_rmfs: incoming: devname ptr=0x563fd282a1e9, len_reported=8, content=\"/ramdev3\"\nOS_rmfs: after OS_CHECK_PATHNAME\nOS_rmfs: OS_ObjectIdGetByName returned -17\nOS_rmfs: name not found, setting return_code=OS_ERR_NAME_NOT_FOUND\nOS_rmfs: exit with return_code=-17\nOS_rmfs: entry\nOS_rmfs: incoming: devname ptr=0x563fd282a1e9, len_reported=8, content=\"/ramdev3\"\nOS_rmfs: after OS_CHECK_PATHNAME\nOS_rmfs: OS_ObjectIdGetByName returned -17\nOS_rmfs: name not found, setting return_code=OS_ERR_NAME_NOT_FOUND\nOS_rmfs: exit with return_code=-17\nOS_rmfs: entry\nOS_rmfs: incoming: devname ptr=0x563fd282a1e9, len_reported=8, content=\"/ramdev3\"\nOS_rmfs: after OS_CHECK_PATHNAME\nOS_rmfs: OS_ObjectIdGetByName returned -17\nOS_rmfs: name not found, setting return_code=OS_ERR_NAME_NOT_FOUND\nOS_rmfs: exit with return_code=-17\n"
+}

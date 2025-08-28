@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpf_lgj41l/src/src/os/shared/src/osapi-time.c: In function 'os_timer_log_probe':\n/tmp/tmpf_lgj41l/src/src/os/shared/src/osapi-time.c:531:21: error: aggregate value used where an integer was expected\n  531 |                     (long)timecb->timebase_token,\n      |                     ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:370: CMakeFiles/osal.dir/src/os/shared/src/osapi-time.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

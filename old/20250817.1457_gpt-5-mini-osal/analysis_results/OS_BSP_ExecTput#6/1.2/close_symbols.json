@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void OS_BSP_ExecTput(const char *cap, const char *param)\n{\n    pid_t cpid;\n    int   status;\n\n    cpid = fork();\n    if (cpid < 0)\n    {\n        return;\n    }\n    if (cpid == 0)\n    {\n        execlp(\"tput\", \"tput\", cap, param, NULL);\n        exit(EXIT_FAILURE);\n    }\n    waitpid(cpid, &status, 0);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_BSP_ExecTput': {'callees': [], 'callers': ['OS_BSP_ConsoleSetMode_Impl']}, 'OS_BSP_ConsoleSetMode_Impl': {'callees': ['OS_BSP_ExecTput'], 'callers': ['UT_BSP_DoText']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "fork",
+    "pid_t",
+    "execlp",
+    "waitpid",
+    "exit",
+    "EXIT_FAILURE",
+    "NULL",
+    "unistd.h",
+    "sys/types.h",
+    "sys/wait.h",
+    "stdlib.h"
+  ],
+  "explanation": "fork \u2014 needed to determine whether fork is part of ISO C or a platform/compiler extension (fork is POSIX, not ISO C). pid_t \u2014 the type of cpid; must be checked whether pid_t is a typedef provided by the platform (POSIX) or a compiler extension. execlp \u2014 the exec-family call used in the child; determine if execlp is a POSIX extension (it is) or standard C. waitpid \u2014 used to wait for the child; check whether waitpid is POSIX-only (not ISO C). exit \u2014 used in the child on failure; confirm exit is an ISO C library function (it is) so it is not an extension. EXIT_FAILURE \u2014 macro passed to exit; verify it is defined by ISO C (stdlib.h) and not an extension. NULL \u2014 sentinel argument to execlp; verify NULL is the standard C macro, not a compiler extension. unistd.h, sys/types.h, sys/wait.h, stdlib.h \u2014 the headers that declare the above symbols; include them so the analyzer can consult the platform declarations and documentation to decide whether each used symbol is from ISO C or from platform/compiler extensions (POSIX headers indicate non\u2011ISO features)."
+}

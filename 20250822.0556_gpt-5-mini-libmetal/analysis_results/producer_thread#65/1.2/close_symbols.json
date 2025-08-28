@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *producer_thread(void *arg)\n{\n\t(void)arg;\n\tmetal_mutex_acquire(&lock);\n\twhile (counter == COUNTER_MAX)\n\t\tmetal_condition_wait(&nfull_condv, &lock);\n\tcounter++;\n\tmetal_condition_signal(&nempty_condv);\n\tmetal_mutex_release(&lock);\n\n\treturn NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'producer_thread': {'callees': ['metal_mutex_acquire', 'metal_condition_wait', 'metal_condition_signal', 'metal_mutex_release'], 'callers': []}, 'metal_mutex_acquire': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_save_disable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}, 'metal_condition_wait': {'callees': ['metal_mutex_is_acquired', 'metal_mutex_release', 'metal_mutex_acquire'], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_condition_signal': {'callees': [], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_mutex_release': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_restore_enable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_mutex_acquire",
+    "metal_condition_wait",
+    "metal_condition_signal",
+    "metal_mutex_release",
+    "metal_mutex_is_acquired",
+    "lock",
+    "nfull_condv",
+    "nempty_condv",
+    "counter",
+    "COUNTER_MAX",
+    "metal.h",
+    "metal_mutex_t",
+    "metal_cond_t"
+  ],
+  "explanation": "For checking the MISRA rule about language extensions we must inspect the actual definitions and types referenced by producer_thread, not just its source lines. Specifically:\n- metal_mutex_acquire, metal_condition_wait, metal_condition_signal, metal_mutex_release: need the function definitions (or macro expansions) to see if they use compiler-specific extensions (attributes, inline asm, statement-expressions, typeof, GCC/Clang builtins, nonstandard calling conventions, etc.).\n- metal_mutex_is_acquired: transitive callee of metal_condition_wait; its definition may contain extensions that affect the call chain and must be checked.\n- lock, nfull_condv, nempty_condv: the declarations/types/initializers of these objects may be implemented with nonstandard language extensions (e.g. unusual typedefs, anonymous structs/unions, compiler attributes, or macro-generated code).\n- counter, COUNTER_MAX: COUNTER_MAX may be a macro or expression using extensions; counter's type or definition (e.g. atomic/inline-asm backed) could use extensions.\n- metal.h: the header that declares/defines the metal API is needed to find macros, inline helpers, or attributes applied to the above symbols.\n- metal_mutex_t, metal_cond_t: the concrete typedef/struct names (or equivalent types) used for lock/condition variables must be inspected for anonymous-structs, compiler-specific alignment/attribute annotations, or other extensions.\n\nHaving these symbols (their declarations and definitions) allows the next analyzer to determine whether any compiler-specific language extensions are present in the code used by producer_thread."
+}

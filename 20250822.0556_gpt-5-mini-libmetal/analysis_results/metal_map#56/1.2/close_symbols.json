@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_map(int fd, off_t offset, size_t size, int expand, int flags,\n\t      void **result)\n{\n\tint prot = PROT_READ | PROT_WRITE, error;\n\tvoid *mem;\n\n\tflags |= MAP_SHARED;\n\n\tif (fd < 0) {\n\t\tfd = -1;\n\t\tflags = MAP_PRIVATE | MAP_ANONYMOUS;\n\t} else if (expand) {\n\t\toff_t reqsize = offset + size;\n\t\tstruct stat stat;\n\n\t\terror = flock(fd, LOCK_EX) < 0 ? -errno : 0;\n\t\tif (!error)\n\t\t\terror = fstat(fd, &stat);\n\t\tif (!error && stat.st_size < reqsize)\n\t\t\terror = ftruncate(fd, reqsize);\n\t\tif (!error)\n\t\t\tflock(fd, LOCK_UN);\n\t\tif (error)\n\t\t\treturn -errno;\n\t}\n\n\tmem = mmap(NULL, size, prot, flags, fd, offset);\n\tif (mem == MAP_FAILED)\n\t\treturn -errno;\n\t*result = mem;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_map': {'callees': [], 'callers': ['metal_uio_dev_open', 'metal_shmem_try_map']}, 'metal_uio_dev_open': {'callees': ['metal_uio_dev_bind', 'metal_open', 'metal_uio_read_map_attr', 'metal_map', 'metal_io_init', 'metal_linux_irq_register_dev'], 'callers': []}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "PROT_READ",
+    "PROT_WRITE",
+    "MAP_SHARED",
+    "MAP_PRIVATE",
+    "MAP_ANONYMOUS",
+    "MAP_FAILED",
+    "mmap",
+    "flock",
+    "LOCK_EX",
+    "LOCK_UN",
+    "fstat",
+    "ftruncate",
+    "struct stat",
+    "stat.st_size",
+    "errno",
+    "off_t",
+    "size_t"
+  ],
+  "explanation": "Each listed symbol is referenced in metal_map and is required to determine whether the code relies on compiler/language extensions (the MISRA rule target). For each: \n\n- PROT_READ, PROT_WRITE: used to build prot argument to mmap; need their definitions to ensure they are ordinary macros/constants and not implemented via compiler extensions (e.g. GCC-specific constructs).\n- MAP_SHARED, MAP_PRIVATE, MAP_ANONYMOUS, MAP_FAILED: used as flags/return sentinel for mmap; their definitions must be checked for any compiler-specific extension usage.\n- mmap: core call that may be provided by the system C library or via inline/builtin/extension; need its declaration/definition/signature to confirm no language-extension (compiler builtin/attribute) is being used.\n- flock: used for file locking; check its declaration/implementation to ensure no compiler-specific extension.\n- LOCK_EX, LOCK_UN: flock flag macros; confirm they are plain macros/constants.\n- fstat: used to populate struct stat; examine declaration to ensure no extension usage.\n- ftruncate: used to change file size; check declaration/implementation for extensions.\n- struct stat and stat.st_size: the code reads stat.st_size; need the type layout/definition to ensure no compiler extensions (e.g. nonstandard bitfields, attributes) affect use.\n- errno: used in expressions (negated and returned); errno may be a macro that expands to thread-local or compiler-builtins \u2014 its definition must be checked to ensure it does not rely on compiler extensions.\n- off_t, size_t: parameter types used in signature and arithmetic; need their typedefs to confirm they are standard types and not compiler-specific extensions.\n\nProviding these symbols (or their header definitions) lets the analyst verify whether any of them are implemented using compiler-specific language extensions (e.g. __attribute__, statement-expressions, typeof, builtins) that would violate the MISRA rule about language extensions."
+}

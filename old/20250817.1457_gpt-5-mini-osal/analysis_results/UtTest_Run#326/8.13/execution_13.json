@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "UtTest_Run: start\nGot UtListMain (DEFAULT) = 0x560bccea58a0\nMerged SETUP into UtListMain\nMerged TEST into UtListMain\nMerged TEARDOWN into UtListMain\nTraversing node 1: UtListNode=0x560bccea58c0\n UtList_GetObject returned (nil)\n  UtTestDataBaseEntry is NULL for node 1\nTraversing node 2: UtListNode=0x560bccea58e0\n UtList_GetObject returned (nil)\n  UtTestDataBaseEntry is NULL for node 2\nTraversing node 3: UtListNode=0x560bccea5900\n UtList_GetObject returned (nil)\n  UtTestDataBaseEntry is NULL for node 3\nTraversing node 4: UtListNode=0x560bccea5930\n UtList_GetObject returned 0x560bccea5950\n  Test entry: name=\"Cleanup\"; Setup=(nil); Test=(nil); Teardown=0x560bc67c7eec; ExecutedCount(before)=0\n   No Setup() for Cleanup\n   No Test() for Cleanup\n   Calling Teardown() for Cleanup\n  Finished test entry Cleanup\nCalling UtList_Destroy on DataBasePtr=0x560bccea5890\nUT_BSP_EndTest with counters=3330285888\n"
+}

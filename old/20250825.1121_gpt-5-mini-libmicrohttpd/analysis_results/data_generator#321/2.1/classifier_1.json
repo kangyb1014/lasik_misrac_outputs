@@ -1,0 +1,5 @@
+{
+  "user_message": "<misra_rule>\nMISRA C 2023 Rule 2.1 is: A project shall not contain unreachable code.\n\n</misra_rule>\n<response format>\nProvide your answer with these fields.\n- is_rule_violated: whether the rule is violated or not (true/false),\n- scenario: a specific violation scenario.\n</response format>\n<target_code>\nHere is the code of data_generator:\n```c\nstatic ssize_t\ndata_generator (void *cls, uint64_t pos, char *buf, size_t max)\n{\n  (void) cls; /* Unused. Silent compiler warning. */\n  (void) pos; /* Unused. Silent compiler warning. */\n  if (max < 80)\n    return 0;\n  memset (buf, 'A', max - 1);\n  buf[79] = '\\n';\n  return 80;\n}\n```\n</target_code>\n<target_code>\nHere is the code fragment that you need to analyze:\n```c\nreturn 80;\n```\nFocus on the above code fragment and judge whether it violates the rule 2.1 or not.\n</target_code>\n",
+  "is_rule_violated": false,
+  "scenario": "No violation: the final return 80 is reachable on the path where max >= 80 (for example, calling data_generator(..., max == 80) executes memset, sets buf[79] = '\\n', and then returns 80)."
+}

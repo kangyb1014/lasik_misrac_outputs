@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *consumer_thread(void *arg)\n{\n\t(void)arg;\n\tmetal_mutex_acquire(&lock);\n\twhile (!counter)\n\t\tmetal_condition_wait(&nempty_condv, &lock);\n\tcounter--;\n\tmetal_condition_signal(&nfull_condv);\n\tmetal_mutex_release(&lock);\n\n\treturn NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'consumer_thread': {'callees': ['metal_mutex_acquire', 'metal_condition_wait', 'metal_condition_signal', 'metal_mutex_release'], 'callers': []}, 'metal_mutex_acquire': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_save_disable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}, 'metal_condition_wait': {'callees': ['metal_mutex_is_acquired', 'metal_mutex_release', 'metal_mutex_acquire'], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_condition_signal': {'callees': [], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_mutex_release': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_restore_enable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "arg",
+    "metal_mutex_acquire",
+    "metal_condition_wait",
+    "metal_condition_signal",
+    "metal_mutex_release",
+    "metal_mutex_is_acquired",
+    "lock",
+    "nempty_condv",
+    "nfull_condv",
+    "counter"
+  ],
+  "explanation": "arg \u2014 the function parameter under test; must be inspected to ensure it is not assigned or otherwise modified within this function (even via macro expansions). metal_mutex_acquire, metal_condition_wait, metal_condition_signal, metal_mutex_release \u2014 the callees used by consumer_thread; their prototypes, macro definitions or inline implementations must be examined to ensure they do not expand to code that assigns to or otherwise modifies the local parameter variable 'arg' (macros can capture local names). metal_mutex_is_acquired \u2014 shown in the static call graph as called by metal_condition_wait; include it because condition-wait might expand or inline calls that could reference or modify local names. lock, nempty_condv, nfull_condv, counter \u2014 the global objects whose addresses/values are passed to the callees; their declarations/macros must be checked to ensure they are not defined in a way (e.g. as macros or aliasing) that could cause modification of the local parameter variable 'arg' (or hide a macro expansion that uses the name 'arg'). Together these symbols let an analyzer determine whether any code reachable from consumer_thread assigns to or otherwise modifies the parameter variable (which would violate the MISRA rule)."
+}

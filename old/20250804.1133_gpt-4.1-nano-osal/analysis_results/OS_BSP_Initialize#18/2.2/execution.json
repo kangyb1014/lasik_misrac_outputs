@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "/tmp/tmpickl4_wk/src/src/bsp/generic-linux/src/bsp_start.c: In function 'OS_BSP_Initialize':\n/tmp/tmpickl4_wk/src/src/bsp/generic-linux/src/bsp_start.c:106:47: error: 'OS_BSP_GlobalData_t' has no member named 'AccessMutex'\n  106 |     status = pthread_mutex_init(&OS_BSP_Global.AccessMutex, &mutex_attr);\n      |                                               ^\ngmake[2]: *** [generic-linux_impl/CMakeFiles/osal_generic-linux_impl.dir/build.make:76: generic-linux_impl/CMakeFiles/osal_generic-linux_impl.dir/src/bsp_start.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:893: generic-linux_impl/CMakeFiles/osal_generic-linux_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
-}

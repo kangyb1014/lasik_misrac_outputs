@@ -1,0 +1,33 @@
+{
+  "user_message": "Target function code is:\n```c\ntime_t\nMHD_monotonic_sec_counter (void)\n{\n#ifdef HAVE_CLOCK_GETTIME\n  struct timespec ts;\n\n  if ( (_MHD_UNWANTED_CLOCK != mono_clock_id) &&\n       (0 == clock_gettime (mono_clock_id,\n                            &ts)) )\n    return ts.tv_sec - mono_clock_start;\n#endif /* HAVE_CLOCK_GETTIME */\n#ifdef HAVE_CLOCK_GET_TIME\n  if (_MHD_INVALID_CLOCK_SERV != mono_clock_service)\n  {\n    mach_timespec_t cur_time;\n\n    if (KERN_SUCCESS == clock_get_time (mono_clock_service,\n                                        &cur_time))\n      return cur_time.tv_sec - mono_clock_start;\n  }\n#endif /* HAVE_CLOCK_GET_TIME */\n#if defined(_WIN32)\n#if _WIN32_WINNT >= 0x0600\n  if (1)\n    return (time_t) (((uint64_t) (GetTickCount64 () - tick_start)) / 1000);\n#else  /* _WIN32_WINNT < 0x0600 */\n  if (0 != perf_freq)\n  {\n    LARGE_INTEGER perf_counter;\n\n    QueryPerformanceCounter (&perf_counter);   /* never fail on XP and later */\n    return (time_t) (((uint64_t) perf_counter.QuadPart - perf_start)\n                     / perf_freq);\n  }\n#endif /* _WIN32_WINNT < 0x0600 */\n#endif /* _WIN32 */\n#ifdef HAVE_GETHRTIME\n  if (1)\n    return (time_t) (((uint64_t) (gethrtime () - hrtime_start)) / 1000000000);\n#endif /* HAVE_GETHRTIME */\n\n  return time (NULL) - sys_clock_start;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mono_clock_id",
+    "_MHD_UNWANTED_CLOCK",
+    "clock_gettime",
+    "struct timespec",
+    "mono_clock_start",
+    "HAVE_CLOCK_GETTIME",
+    "mono_clock_service",
+    "_MHD_INVALID_CLOCK_SERV",
+    "clock_get_time",
+    "mach_timespec_t",
+    "KERN_SUCCESS",
+    "_WIN32",
+    "_WIN32_WINNT",
+    "GetTickCount64",
+    "tick_start",
+    "perf_freq",
+    "LARGE_INTEGER",
+    "QueryPerformanceCounter",
+    "perf_start",
+    "HAVE_CLOCK_GET_TIME",
+    "gethrtime",
+    "hrtime_start",
+    "HAVE_GETHRTIME",
+    "time",
+    "sys_clock_start",
+    "time_t",
+    "uint64_t"
+  ],
+  "explanation": "Each listed symbol is referenced (directly or via preprocessor guards) by MHD_monotonic_sec_counter and therefore must be inspected to determine whether any use of <string.h> functions could occur indirectly or via macro expansion:\n\n- mono_clock_id, _MHD_UNWANTED_CLOCK: used in the clock_gettime branch condition; must confirm they are simple scalar constants/variables and not macros that expand to string-handling expressions.\n- clock_gettime, struct timespec, mono_clock_start: clock_gettime is called and fills a timespec; mono_clock_start is subtracted from ts.tv_sec. Inspect clock_gettime implementation/aliases and any macro wrappers to ensure no hidden string.h calls or out-of-bounds buffer accesses.\n- HAVE_CLOCK_GETTIME: preprocessor guard controlling inclusion of the clock_gettime branch; needed to know which code paths are active.\n- mono_clock_service, _MHD_INVALID_CLOCK_SERV, clock_get_time, mach_timespec_t, KERN_SUCCESS: used in the MACH clock branch. Confirm these names are not macros or wrappers that invoke string functions and check clock_get_time implementation for any string operations.\n- _WIN32, _WIN32_WINNT: preprocessor guards selecting Windows branches; needed to determine active code paths.\n- GetTickCount64, tick_start: used in the GetTickCount64 branch; inspect any wrapper/macro definitions to ensure no string functions are introduced.\n- perf_freq, LARGE_INTEGER, QueryPerformanceCounter, perf_start: used in the high-resolution perf counter branch on older Windows. QueryPerformanceCounter and any local wrappers must be inspected for hidden string usage; the involved variables must be checked for macro aliasing.\n- HAVE_CLOCK_GET_TIME: guard for the Mach branch; needed to know active path.\n- gethrtime, hrtime_start, HAVE_GETHRTIME: used in the gethrtime branch; ensure gethrtime (or any wrapper) does not call string functions or perform buffer accesses.\n- time, sys_clock_start: fallback uses time(); check whether time is the C library time function or a macro/wrapper that could call string functions.\n- time_t, uint64_t: types used in arithmetic/returns; include to verify typedefs and ensure no hidden array/struct accesses via these types.\n\nIn short: the listed symbols cover all identifiers, functions, types and preprocessor guards that determine which code paths run or that could be macro-expanded. The next agent should inspect each symbol's definition/implementation (and any macro wrappers) to ensure no use of the standard <string.h> functions (memcpy, strcpy, memset, etc.) or any out-of-bounds memory accesses are introduced indirectly into the target function."
+}

@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\ncompress_buf (z_stream *strm, const void *src, size_t src_size, size_t *offset,\n              void **dest, size_t *dest_size,\n              void *tmp)\n{\n  unsigned int have;\n  enum MHD_Result ret;\n  int flush;\n  void *tmp_dest;\n  *dest = NULL;\n  *dest_size = 0;\n  do\n  {\n    if (src_size > CHUNK)\n    {\n      strm->avail_in = CHUNK;\n      src_size -= CHUNK;\n      flush = Z_NO_FLUSH;\n    }\n    else\n    {\n      strm->avail_in = (uInt) src_size;\n      flush = Z_SYNC_FLUSH;\n    }\n    *offset += strm->avail_in;\n    strm->next_in = (const Bytef *) src;\n    do\n    {\n      strm->avail_out = CHUNK;\n      strm->next_out = tmp;\n      ret = (Z_OK == deflate (strm, flush)) ? MHD_YES : MHD_NO;\n      have = CHUNK - strm->avail_out;\n      *dest_size += have;\n      tmp_dest = realloc (*dest, *dest_size);\n      if (NULL == tmp_dest)\n      {\n        free (*dest);\n        *dest = NULL;\n        return MHD_NO;\n      }\n      *dest = tmp_dest;\n      memcpy (((uint8_t *) (*dest)) + ((*dest_size) - have), tmp, have);\n    }\n    while (0 == strm->avail_out);\n  }\n  while (flush != Z_SYNC_FLUSH);\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'compress_buf': {'callees': [], 'callers': ['read_cb']}, 'read_cb': {'callees': ['compress_buf'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memcmp",
+    "memcpy",
+    "deflate",
+    "realloc",
+    "free",
+    "z_stream",
+    "CHUNK",
+    "Z_NO_FLUSH",
+    "Z_SYNC_FLUSH",
+    "Z_OK",
+    "uInt",
+    "Bytef",
+    "enum MHD_Result",
+    "MHD_YES",
+    "MHD_NO"
+  ],
+  "explanation": "To determine whether compress_buf violates the MISRA rule banning use of memcmp to compare null-terminated strings, the next analysis needs the following symbols:\n\n- memcmp: Directly relevant symbol \u2014 must be checked to ensure it is not used in this function (or hidden via macros/wrappers). If memcmp is referenced (directly or via macro), its use must be inspected to see if it compares null-terminated strings.\n\n- memcpy: compress_buf calls memcpy. Include its symbol to distinguish correct use of memcpy from any accidental use of memcmp (e.g., mis-typed or macro-shaded identifiers) and to ensure no string-comparison uses are done via memcpy.\n\n- deflate: compress_buf calls deflate. Even though deflate is an external/library call, include it so the analyzer can confirm that this call is not a macro or inline wrapper that expands to or invokes memcmp in the caller context (and to reason about whether string comparisons could be hidden there).\n\n- realloc, free: These allocation functions are called; include them to check for macros or wrappers that might internally expand to or alias memcmp (rare but relevant for thorough static analysis of symbol resolutions).\n\n- z_stream, uInt, Bytef: Types used by the zlib API in the function. Include to resolve any macros/type aliases that could hide calls to memcmp or change semantics of pointer/byte handling relevant to string comparison checks.\n\n- CHUNK, Z_NO_FLUSH, Z_SYNC_FLUSH, Z_OK: Macros/constants used by compress_buf. Include to allow full preprocessing/resolution of the function body (ensuring no macro tricks convert code into memcmp-based string comparisons).\n\n- enum MHD_Result, MHD_YES, MHD_NO: Return-value symbols used by compress_buf. Include to confirm no macros or inline expansions hide memcmp usage through those symbols.\n\nIn short, include memcmp plus all functions, macros, and types referenced by compress_buf so the analyzer can (1) verify no direct memcmp call exists, (2) ensure no indirect or macro-aliased memcmp usage is hidden in called/expanded symbols, and (3) confirm that byte-copy operations (memcpy) are not being confused with string comparisons."
+}

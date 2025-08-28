@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_probe: stage=entry_before_set ret=0 notify_fd=5 irq_handling_stop=0\nmetal_linux_probe: stage=after_set ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=after_notify ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=after_join ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=after_close ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=exit ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=entry_before_set ret=0 notify_fd=5 irq_handling_stop=0\nmetal_linux_probe: stage=after_set ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=after_notify ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=after_join ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=after_close ret=0 notify_fd=5 irq_handling_stop=1\nmetal_linux_probe: stage=exit ret=0 notify_fd=5 irq_handling_stop=1\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[OS_rmfs] stage=entry_after_check, return_code=0, token_ptr=(nil)\n[OS_rmfs] stage=after_ObjectIdGetByName, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=name_not_found_set, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=exit, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=entry_after_check, return_code=0, token_ptr=(nil)\n[OS_rmfs] stage=after_ObjectIdGetByName, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=name_not_found_set, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=exit, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=entry_after_check, return_code=0, token_ptr=(nil)\n[OS_rmfs] stage=after_ObjectIdGetByName, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=name_not_found_set, return_code=-17, token_ptr=(nil)\n[OS_rmfs] stage=exit, return_code=-17, token_ptr=(nil)\n"
+}

@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\ncheck_write_done (struct MHD_Connection *connection,\n                  enum MHD_CONNECTION_STATE next_state)\n{\n  if ( (connection->write_buffer_append_offset !=\n        connection->write_buffer_send_offset)\n       /* || data_in_tls_buffers == true  */\n       )\n    return MHD_NO;\n  connection->write_buffer_append_offset = 0;\n  connection->write_buffer_send_offset = 0;\n  connection->state = next_state;\n  return MHD_YES;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'check_write_done': {'callees': [], 'callers': ['MHD_connection_handle_write']}, 'MHD_connection_handle_write': {'callees': ['MHD_send_data_', 'MHD_DLOG', 'connection_close_error', 'MHD_update_last_activity_', 'MHD_send_hdr_and_body_', 'str_conn_error_', 'check_write_done', '__builtin_unreachable', 'try_ready_normal_body', 'MHD_send_sendfile_', 'MHD_send_iovec_'], 'callers': ['call_handlers']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_connection_handle_write",
+    "MHD_send_data_",
+    "MHD_DLOG",
+    "connection_close_error",
+    "MHD_update_last_activity_",
+    "MHD_send_hdr_and_body_",
+    "str_conn_error_",
+    "__builtin_unreachable",
+    "try_ready_normal_body",
+    "MHD_send_sendfile_",
+    "MHD_send_iovec_",
+    "call_handlers"
+  ],
+  "explanation": "To determine whether check_write_done participates in direct or indirect recursion you must analyze its caller(s) and any callees reachable from those callers that could call back into check_write_done. Reasons: \n- MHD_connection_handle_write: direct caller of check_write_done; any path from it back to check_write_done would create indirect recursion. \n- MHD_send_data_, MHD_DLOG, connection_close_error, MHD_update_last_activity_, MHD_send_hdr_and_body_, str_conn_error_, try_ready_normal_body, MHD_send_sendfile_, MHD_send_iovec_: all are listed callees of MHD_connection_handle_write and therefore must be examined because any of them (or functions they call) could call check_write_done, closing a recursion cycle. \n- __builtin_unreachable: present in the call graph as a callee of MHD_connection_handle_write (compiler builtin); include for completeness when surveying possible control-flow/back-edge sources. \n- call_handlers: caller of MHD_connection_handle_write; include to verify higher-level call paths that could produce a recursion cycle involving check_write_done."
+}

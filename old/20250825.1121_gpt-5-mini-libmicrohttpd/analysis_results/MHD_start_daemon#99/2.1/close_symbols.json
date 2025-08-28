@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\n_MHD_EXTERN struct MHD_Daemon *\nMHD_start_daemon (unsigned int flags,\n                  uint16_t port,\n                  MHD_AcceptPolicyCallback apc,\n                  void *apc_cls,\n                  MHD_AccessHandlerCallback dh,\n                  void *dh_cls,\n                  ...)\n{\n  struct MHD_Daemon *daemon;\n  va_list ap;\n\n  va_start (ap,\n            dh_cls);\n  daemon = MHD_start_daemon_va (flags,\n                                port,\n                                apc,\n                                apc_cls,\n                                dh,\n                                dh_cls,\n                                ap);\n  va_end (ap);\n  return daemon;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'MHD_start_daemon': {'callees': ['MHD_start_daemon_va'], 'callers': ['main', 'run_mhd']}, 'MHD_start_daemon_va': {'callees': ['parse_options_va', 'process_interim_params', 'MHD_DLOG', '__builtin_unreachable', 'MHD_socket_create_listen_', 'MHD_socket_nonblocking_', 'setup_epoll_to_listen', 'MHD_create_named_thread_', 'MHD_stop_daemon'], 'callers': ['MHD_start_daemon']}, 'main': {'callees': ['MHD_create_response_from_buffer_static', 'MHD_start_daemon', 'MHD_stop_daemon', 'MHD_destroy_response', 'MHD_get_fdset2', 'MHD_get_timeout64', 'MHD_run', 'MHD_get_daemon_info', 'MHD_get_timeout_i', 'MHD_resume_connection', 'expire_sessions', 'ignore_sigpipe', 'mark_as_html', 'update_directory', 'update_cached_response', 'check_params', 'add_new_users', 'init_rand_data', 'set_self_name', 'process_params', 'check_apply_params', 'init_data', 'run_mhd', 'deinit_data'], 'callers': []}, 'run_mhd': {'callees': ['get_num_threads', 'print_perf_warnings', 'get_mhd_response_size', 'MHD_start_daemon', 'MHD_get_daemon_info', 'get_mhd_conn_limit', 'MHD_stop_daemon'], 'callers': ['main']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_start_daemon_va",
+    "parse_options_va",
+    "process_interim_params",
+    "MHD_DLOG",
+    "__builtin_unreachable",
+    "MHD_socket_create_listen_",
+    "MHD_socket_nonblocking_",
+    "setup_epoll_to_listen",
+    "MHD_create_named_thread_",
+    "MHD_stop_daemon",
+    "va_start",
+    "va_end",
+    "va_list"
+  ],
+  "explanation": "To decide whether MHD_start_daemon contains unreachable code you must know whether the call to MHD_start_daemon_va always returns (if it does not, the following va_end and return statements in MHD_start_daemon would be unreachable). Therefore: \n- MHD_start_daemon_va: primary callee \u2014 need its control-flow (does it return, longjmp, exit, or otherwise not return?).\n- parse_options_va, process_interim_params, MHD_DLOG, MHD_socket_create_listen_, MHD_socket_nonblocking_, setup_epoll_to_listen, MHD_create_named_thread_, MHD_stop_daemon: direct callees of MHD_start_daemon_va. Any of these may contain non-returning behavior (exit/abort/longjmp/__builtin_unreachable usage) or create control-flow that makes portions of MHD_start_daemon_va non-returning; they must be inspected.\n- __builtin_unreachable: explicitly indicates unreachable code points; its use inside MHD_start_daemon_va (or its callees) is directly relevant to the MISRA rule.\n- va_start, va_end, va_list: macros/type used in MHD_start_daemon. If the callee does not return, va_end (and any code after the call) would be unreachable \u2014 you must confirm correct use/requirement of va_end and whether it is actually reachable."
+}

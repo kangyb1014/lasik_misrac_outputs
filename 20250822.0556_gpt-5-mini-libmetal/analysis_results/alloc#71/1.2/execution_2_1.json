@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[2025-08-22 06:13:53] alloc: entry\n[2025-08-22 06:13:53] alloc: about to call metal_allocate_memory(1000)\n[2025-08-22 06:13:53] alloc: metal_allocate_memory returned 0x563afffeb520\n[2025-08-22 06:13:53] alloc: freeing allocated memory at 0x563afffeb520\n[2025-08-22 06:13:53] alloc: freed memory; exiting with 0\n[2025-08-22 06:13:54] alloc: entry\n[2025-08-22 06:13:54] alloc: about to call metal_allocate_memory(1000)\n[2025-08-22 06:13:54] alloc: metal_allocate_memory returned 0x5621e2c12520\n[2025-08-22 06:13:54] alloc: freeing allocated memory at 0x5621e2c12520\n[2025-08-22 06:13:54] alloc: freed memory; exiting with 0\n"
+}

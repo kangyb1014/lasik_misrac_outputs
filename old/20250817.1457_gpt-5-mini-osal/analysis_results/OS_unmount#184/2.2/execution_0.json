@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpd68iput8/src/src/os/shared/src/osapi-filesys.c: In function 'OS_unmount':\n/tmp/tmpd68iput8/src/src/os/shared/src/osapi-filesys.c:525:9: error: aggregate value used where an integer was expected\n  525 |         OS_unmount_log(\"OS_unmount: token=%u, filesys=%p, flags=0x%08lx\", (unsigned)token, (void *)filesys, (unsigned long)(filesys ? filesys->flags : 0UL));\n      |         ^~~~~~~~~~~~~~\n/tmp/tmpd68iput8/src/src/os/shared/src/osapi-filesys.c:558:9: error: aggregate value used where an integer was expected\n  558 |         OS_unmount_log(\"OS_unmount: released token %u\", (unsigned)token);\n      |         ^~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:188: CMakeFiles/osal.dir/src/os/shared/src/osapi-filesys.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

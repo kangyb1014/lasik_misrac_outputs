@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "Stage: enter\n  task_id: 3735928559\n  return_code (so far): -1\n  record ptr: (nil)\n  task ptr: (nil)\n\nStage: after ObjectIdGetById\n  task_id: 3735928559\n  return_code (so far): -35\n  record ptr: (nil)\n  task ptr: (nil)\n\nStage: exit\n  task_id: 3735928559\n  return_code (so far): -35\n  record ptr: (nil)\n  task ptr: (nil)\n\nStage: enter\n  task_id: 0\n  return_code (so far): -1\n  record ptr: (nil)\n  task ptr: (nil)\n\nStage: after ObjectIdGetById\n  task_id: 0\n  return_code (so far): -35\n  record ptr: (nil)\n  task ptr: (nil)\n\nStage: exit\n  task_id: 0\n  return_code (so far): -35\n  record ptr: (nil)\n  task ptr: (nil)\n\n"
+}

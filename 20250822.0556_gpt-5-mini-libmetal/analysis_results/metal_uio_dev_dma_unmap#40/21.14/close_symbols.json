@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void metal_uio_dev_dma_unmap(struct linux_bus *lbus,\n\t\t\t\t    struct linux_device *ldev,\n\t\t\t\t    uint32_t dir,\n\t\t\t\t    struct metal_sg *sg,\n\t\t\t\t    int nents)\n{\n\t(void) lbus;\n\t(void) ldev;\n\t(void) dir;\n\t(void) sg;\n\t(void) nents;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memcmp",
+    "__builtin_memcmp",
+    "bcmp",
+    "os_memcmp",
+    "memcmp_s",
+    "strcmp",
+    "strncmp",
+    "struct linux_bus",
+    "struct linux_device",
+    "struct metal_sg",
+    "string.h (memcmp prototype and related declarations)",
+    "Any inline functions/macros in the headers that define linux_bus/linux_device/metal_sg"
+  ],
+  "explanation": "To decide whether this function violates the MISRA rule forbidding use of memcmp to compare null-terminated strings you must (1) detect any direct or indirect use of memcmp (or equivalent functions/wrappers) inside the function and (2) determine whether the arguments passed are null-terminated strings. - memcmp: the primary symbol to detect direct violation. You must inspect any calls to memcmp and the types/values of its arguments. - __builtin_memcmp / bcmp / os_memcmp / memcmp_s: project or compiler-specific alternatives/wrappers or secure variants that behave like memcmp; calls to these must be treated the same for this rule. - strcmp / strncmp: the correct API for comparing null-terminated strings; presence of these can indicate intended string comparisons and help establish whether memcmp was used incorrectly. - struct linux_bus / struct linux_device / struct metal_sg: definitions of these types (and the headers that declare them) must be inspected because they can contain inline functions, macros, or function pointer fields that might call memcmp (indirect use) or expose char* members that could be passed to memcmp. - string.h (memcmp prototype and related declarations): to resolve which memcmp implementation/declaration is actually in scope and to detect any macro remapping. - Any inline functions/macros in the headers that define linux_bus/linux_device/metal_sg: these can introduce indirect calls to memcmp or wrappers; they must be analyzed to be sure the empty body here cannot hide indirect uses. Note: the target function as shown contains no operations and therefore no direct memcmp usage; the symbols above are required only to rule out indirect/hidden uses via type headers, wrappers, or compiler built-ins."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_CountSemDelete: ENTRY sem_id=0\nOS_CountSemDelete: OS_ObjectIdGetById returned -16\nOS_CountSemDelete: EXIT return_code=-16\nOS_CountSemDelete: ENTRY sem_id=0\nOS_CountSemDelete: OS_ObjectIdGetById returned -16\nOS_CountSemDelete: EXIT return_code=-16\nOS_CountSemDelete: ENTRY sem_id=3735928559\nOS_CountSemDelete: OS_ObjectIdGetById returned -16\nOS_CountSemDelete: EXIT return_code=-16\nOS_CountSemDelete: ENTRY sem_id=0\nOS_CountSemDelete: OS_ObjectIdGetById returned -16\nOS_CountSemDelete: EXIT return_code=-16\n"
+}

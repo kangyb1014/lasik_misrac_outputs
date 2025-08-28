@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void\nmake_blocking (MHD_socket fd)\n{\n#if defined(MHD_POSIX_SOCKETS)\n  int flags;\n\n  flags = fcntl (fd, F_GETFL);\n  if (-1 == flags)\n    abort ();\n  if ((flags & ~O_NONBLOCK) != flags)\n    if (-1 == fcntl (fd, F_SETFL, flags & ~O_NONBLOCK))\n      abort ();\n#elif defined(MHD_WINSOCK_SOCKETS)\n  unsigned long flags = 0;\n\n  if (0 != ioctlsocket (fd, (int) FIONBIO, &flags))\n    abort ();\n#endif /* MHD_WINSOCK_SOCKETS */\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'make_blocking': {'callees': [], 'callers': ['send_all', 'run_usock']}, 'send_all': {'callees': ['make_blocking'], 'callers': ['run_usock', 'ws_send_frame']}, 'run_usock': {'callees': ['make_blocking', 'send_all', 'MHD_upgrade_action', 'ws_receive_frame', 'ws_send_frame'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_POSIX_SOCKETS",
+    "MHD_WINSOCK_SOCKETS",
+    "MHD_socket",
+    "fcntl",
+    "F_GETFL",
+    "F_SETFL",
+    "O_NONBLOCK",
+    "abort",
+    "ioctlsocket",
+    "FIONBIO",
+    "<fcntl.h>",
+    "<winsock2.h>",
+    "<stdlib.h>"
+  ],
+  "explanation": "To determine whether make_blocking uses any compiler language extensions (MISRA rule about language extensions), the analyzer needs the definitions and origins of all platform/type/function/macros used in the function:\n\n- MHD_POSIX_SOCKETS, MHD_WINSOCK_SOCKETS: conditional-compilation macros control which API is compiled. Knowing how these are defined (or which is active) is required to know which code path to inspect for extensions.\n\n- MHD_socket: typedef for the socket parameter \u2014 its underlying type (e.g. int, SOCKET, uintptr_t) may reveal nonstandard typedefs or compiler-specific types.\n\n- fcntl: POSIX system call used in the POSIX branch. The analyzer must know whether this is a standard library/POSIX API or implemented via compiler-specific extension.\n\n- F_GETFL, F_SETFL, O_NONBLOCK: macros used with fcntl. Their definitions (from system headers) are needed to ensure they are normal macros/constants and not compiler-specific language extensions.\n\n- abort: standard C library function. Confirming it is the standard abort (stdlib.h) rules out use of nonstandard extension.\n\n- ioctlsocket: Windows/WinSock API used in the Winsock branch. Its origin (winsock headers) must be checked \u2014 it's a platform API, not a C language extension, but the analyzer must see that no compiler-specific construct is hidden behind it.\n\n- FIONBIO: macro used with ioctlsocket; its definition must be inspected (type/expansion) to ensure no extension is involved.\n\n- <fcntl.h>, <winsock2.h>, <stdlib.h>: headers where the above symbols/macros are defined. The analyzer should consult these headers to see whether any of the referenced identifiers rely on compiler-specific extensions (for example compiler-supplied nonstandard macros, attributes, or language extensions) or are standard POSIX/Win32/C library items.\n\nCollectively these symbols (and their header definitions) let the next agent determine whether any of the identifiers or their usages rely on compiler language extensions rather than standard C or documented platform APIs."
+}

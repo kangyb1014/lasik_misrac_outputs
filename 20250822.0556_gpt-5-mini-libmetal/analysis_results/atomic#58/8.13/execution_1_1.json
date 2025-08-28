@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[probe] entering metal_run_probe\n[probe] threads = 10\n[probe] thread_fn = 0x555791abd803\n[probe] arg (pointer passed to threads) = 0x7fff91475f24\n[probe] metal_run returned err = 0\n[probe] entering metal_run_probe\n[probe] threads = 10\n[probe] thread_fn = 0x5624e74cebc3\n[probe] arg (pointer passed to threads) = 0x7fffe28404e4\n[probe] metal_run returned err = 0\n"
+}

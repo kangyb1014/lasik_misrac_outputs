@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nbool UtBinFile2Mem(void *Memory, const char *Filename, uint32 Length)\n{\n    FILE *fp;\n    bool  Success;\n\n    Success = false;\n    if ((fp = fopen(Filename, \"r\")))\n    {\n        if (fread(Memory, Length, 1, fp) == 1)\n        {\n            Success = true;\n        }\n        fclose(fp);\n    }\n    else\n    {\n        UtAssert_Failed(\"UtBinFile2Mem: Error Opening %s: %s\", Filename, strerror(errno));\n    }\n\n    return Success;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'UtBinFile2Mem': {'callees': ['UtAssert_GetContext'], 'callers': []}, 'UtAssert_GetContext': {'callees': [], 'callers': ['UtAssert', 'UT_StoreRetval', 'UT_LoadRetval', 'UT_SetDeferredRetcode', 'UT_Stub_GetReturnValuePtr', 'UT_Hook_GetArgPtr', 'UT_DefaultStubImplWithArgs', 'UtMem2BinFile', 'UtBinFile2Mem', 'UtMem2HexFile', 'UtMem2BinFileCmp', 'UT_AllocStubObjId', 'UT_DeleteStubObjId']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memcmp",
+    "strcmp",
+    "strncmp",
+    "strlen",
+    "All call sites that invoke memcmp in the codebase",
+    "All call sites that invoke UtBinFile2Mem (callers)",
+    "Definitions/declarations/allocations of the buffers passed as the Memory argument to UtBinFile2Mem",
+    "fopen",
+    "fread",
+    "fclose",
+    "strerror",
+    "errno",
+    "UtAssert_Failed",
+    "UtAssert_GetContext"
+  ],
+  "explanation": "Explanation of why each symbol is required:\n- memcmp: the MISRA rule specifically forbids using memcmp to compare null-terminated strings. You must locate all uses of memcmp to determine whether any call compares buffers that are (or may be) NUL-terminated strings \u2014 directly or via data read by UtBinFile2Mem.\n- strcmp / strncmp / strlen: these string APIs are needed to identify places where a buffer is intended as a null-terminated string (e.g. used with strcmp/strncmp/strlen). If buffers written by UtBinFile2Mem are later used with these functions, that indicates they are treated as NUL-terminated strings and any memcmp uses on them would violate the rule.\n- All call sites that invoke memcmp in the codebase: you must inspect each memcmp call site to see what arguments are passed (pointers, lengths) and whether those arguments can be null-terminated strings or point into buffers filled by UtBinFile2Mem.\n- All call sites that invoke UtBinFile2Mem (callers): to determine how the Memory argument is supplied (its declared type, intended usage, and lifetime) and whether callers subsequently treat that buffer as a C string or pass it to memcmp.\n- Definitions/declarations/allocations of the buffers passed as the Memory argument to UtBinFile2Mem: you need the buffer\u2019s declared type (char*, uint8_t*, struct, etc.), its allocated size, and any initialization/terminator behavior to decide whether it can hold or be treated as a null-terminated string.\n- fopen / fread / fclose / strerror / errno: standard-library semantics are required to reason about what UtBinFile2Mem does to the passed buffer (fread reads raw bytes and does not add a NUL terminator). Confirming these prototypes/behaviour ensures correct conclusions about whether the function itself produces NUL-terminated strings.\n- UtAssert_Failed / UtAssert_GetContext: these are called on the error path; include them to ensure they do not internally use memcmp or otherwise affect the analysis of whether buffers are treated as strings (and to fully understand side-effects from error handling)."
+}

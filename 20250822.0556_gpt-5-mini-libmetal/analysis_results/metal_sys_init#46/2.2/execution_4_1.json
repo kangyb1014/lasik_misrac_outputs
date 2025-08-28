@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "enter: metal_sys_init\n[entry] params pointer=0x7ffebbb19110\ntmp_path set to /tmp\n/dev/urandom opened\nseed read from /dev/urandom = 977929170\n/dev/urandom closed\nsrand(seed) called\nmetal_init_page_sizes returned 0\nmetal_linux_bus_init returned 0\npagemap_fd=4\n[before_metal_unused] params pointer=0x7ffebbb19110\n[after_metal_unused] params pointer=0x7ffebbb19110\ncalling metal_linux_irq_init\nexit: metal_sys_init (success)\nenter: metal_sys_init\n[entry] params pointer=0x7ffef3c4a960\ntmp_path set to /tmp\n/dev/urandom opened\nseed read from /dev/urandom = 1678905276\n/dev/urandom closed\nsrand(seed) called\nmetal_init_page_sizes returned 0\nmetal_linux_bus_init returned 0\npagemap_fd=4\n[before_metal_unused] params pointer=0x7ffef3c4a960\n[after_metal_unused] params pointer=0x7ffef3c4a960\ncalling metal_linux_irq_init\nexit: metal_sys_init (success)\n"
+}

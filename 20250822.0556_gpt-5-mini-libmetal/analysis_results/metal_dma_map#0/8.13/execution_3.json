@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpd4dhkhcw/src/lib/dma.c: In function 'metal_dma_map':\n/tmp/tmpd4dhkhcw/src/lib/dma.c:61:19: error: cannot convert to a pointer type\n   61 |                   (void *)dev, (void *)dev->bus, (void *)dev->bus->ops);\n      |                   ^\n/tmp/tmpd4dhkhcw/src/lib/dma.c:66:15: error: cannot convert to a pointer type\n   66 |               (void *)dev->bus->ops.dev_dma_map, (void *)dev->bus->ops);\n      |               ^\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:76: lib/CMakeFiles/metal-shared.dir/dma.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

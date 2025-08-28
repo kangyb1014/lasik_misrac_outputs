@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_irq_notify: enter\n  val (before write) = 1\n  &val = 0x7ffdea4da1f8\n"
+}

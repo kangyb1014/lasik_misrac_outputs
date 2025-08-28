@@ -1,0 +1,33 @@
+{
+  "user_message": "Target function code is:\n```c\nuint32 OS_GetMaxForObjectType(osal_objtype_t idtype)\n{\n    switch (idtype)\n    {\n        case OS_OBJECT_TYPE_OS_TASK:\n            return OS_MAX_TASKS;\n        case OS_OBJECT_TYPE_OS_QUEUE:\n            return OS_MAX_QUEUES;\n        case OS_OBJECT_TYPE_OS_BINSEM:\n            return OS_MAX_BIN_SEMAPHORES;\n        case OS_OBJECT_TYPE_OS_COUNTSEM:\n            return OS_MAX_COUNT_SEMAPHORES;\n        case OS_OBJECT_TYPE_OS_MUTEX:\n            return OS_MAX_MUTEXES;\n        case OS_OBJECT_TYPE_OS_STREAM:\n            return OS_MAX_NUM_OPEN_FILES;\n        case OS_OBJECT_TYPE_OS_DIR:\n            return OS_MAX_NUM_OPEN_DIRS;\n        case OS_OBJECT_TYPE_OS_TIMEBASE:\n            return OS_MAX_TIMEBASES;\n        case OS_OBJECT_TYPE_OS_TIMECB:\n            return OS_MAX_TIMERS;\n        case OS_OBJECT_TYPE_OS_MODULE:\n            return OS_MAX_MODULES;\n        case OS_OBJECT_TYPE_OS_FILESYS:\n            return OS_MAX_FILE_SYSTEMS;\n        case OS_OBJECT_TYPE_OS_CONSOLE:\n            return OS_MAX_CONSOLES;\n        case OS_OBJECT_TYPE_OS_CONDVAR:\n            return OS_MAX_CONDVARS;\n        default:\n            return 0;\n    }\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_GetMaxForObjectType': {'callees': [], 'callers': ['OS_ObjectIdTransactionInit', 'OS_ObjectIdFindNextMatch', 'OS_ObjectIdFindNextFree', 'OS_ObjectIdIteratorInit', 'OS_ObjectIdToArrayIndex']}, 'OS_ObjectIdTransactionInit': {'callees': ['OS_GetMaxForObjectType', 'OS_Lock_Global'], 'callers': ['OS_ObjectIdGetBySearch', 'OS_ObjectIdGetById', 'OS_ObjectIdAllocateNew', 'OS_ObjectIdIteratorInit', 'OS_SymbolTableDump']}, 'OS_ObjectIdFindNextMatch': {'callees': ['OS_GetBaseForObjectType', 'OS_GetMaxForObjectType', 'OS_ObjectIndexFromToken', 'OS_ObjectIdDefined'], 'callers': ['OS_ObjectIdGetBySearch', 'OS_ObjectIdAllocateNew']}, 'OS_ObjectIdFindNextFree': {'callees': ['OS_GetBaseForObjectType', 'OS_GetMaxForObjectType', 'OS_ObjectIdToSerialNumber_Impl', 'OS_ObjectIdDefined', 'OS_ObjectIdCompose_Impl', 'OS_TaskGetId'], 'callers': ['OS_ObjectIdAllocateNew']}, 'OS_ObjectIdIteratorInit': {'callees': ['OS_GetMaxForObjectType', 'OS_GetBaseForObjectType', 'OS_ObjectIdTransactionInit'], 'callers': ['OS_GetFsInfo', 'OS_ObjectIdIterateActive', 'OS_ForEachObjectOfType']}, 'OS_ObjectIdToArrayIndex': {'callees': ['OS_printf', 'OS_ObjectIdToSerialNumber_Impl', 'OS_ObjectIdToType_Impl', 'OS_GetMaxForObjectType', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': ['OS_ObjectIdGetById', 'OS_ConvertToArrayIndex', 'OS_SelectFdAdd', 'OS_SelectFdClear', 'OS_SelectFdIsSet']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "osal_objtype_t",
+    "OS_OBJECT_TYPE_OS_TASK",
+    "OS_OBJECT_TYPE_OS_QUEUE",
+    "OS_OBJECT_TYPE_OS_BINSEM",
+    "OS_OBJECT_TYPE_OS_COUNTSEM",
+    "OS_OBJECT_TYPE_OS_MUTEX",
+    "OS_OBJECT_TYPE_OS_STREAM",
+    "OS_OBJECT_TYPE_OS_DIR",
+    "OS_OBJECT_TYPE_OS_TIMEBASE",
+    "OS_OBJECT_TYPE_OS_TIMECB",
+    "OS_OBJECT_TYPE_OS_MODULE",
+    "OS_OBJECT_TYPE_OS_FILESYS",
+    "OS_OBJECT_TYPE_OS_CONSOLE",
+    "OS_OBJECT_TYPE_OS_CONDVAR",
+    "OS_MAX_TASKS",
+    "OS_MAX_QUEUES",
+    "OS_MAX_BIN_SEMAPHORES",
+    "OS_MAX_COUNT_SEMAPHORES",
+    "OS_MAX_MUTEXES",
+    "OS_MAX_NUM_OPEN_FILES",
+    "OS_MAX_NUM_OPEN_DIRS",
+    "OS_MAX_TIMEBASES",
+    "OS_MAX_TIMERS",
+    "OS_MAX_MODULES",
+    "OS_MAX_FILE_SYSTEMS",
+    "OS_MAX_CONSOLES",
+    "OS_MAX_CONDVARS"
+  ],
+  "explanation": "To check the MISRA rule that a function parameter must not be modified, the analyzer must examine the parameter type and every symbol referenced in the function body to ensure none of them expand to code that could assign to or otherwise modify the parameter. Specifically:\n- osal_objtype_t: the parameter's typedef/enum definition is needed to confirm it is not a pointer type and to see if any unusual attributes or macros are attached that could enable modification.\n- OS_OBJECT_TYPE_* (all listed case labels): the definitions of these labels (usually enum values or macros) must be checked to ensure they are simple integer constants and not macros or expressions that could reference/modify the parameter when used in a switch.\n- OS_MAX_* (all listed return symbols): the returned symbols must be inspected to confirm they are plain constants/macros or const variables and not function-like macros or inline functions that could have side effects (for example, macros that reference or assign to idtype or call functions that modify it).\nCollectively, these symbols are the only identifiers used in the function body; inspecting their definitions is sufficient to determine whether the function body or any macro expansions could modify the parameter 'idtype' and thus violate the MISRA rule."
+}

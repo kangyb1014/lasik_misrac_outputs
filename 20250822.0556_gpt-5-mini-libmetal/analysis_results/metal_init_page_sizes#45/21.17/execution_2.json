@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "EVENT: before_first_add\n  name: _metal.tmp_path\n  ptr: 0x7f2313ff9a6f\n  page_size_or_size: 4096\n  shift: 12\n\nEVENT: hugetlb_multi_before_add\n  name: hugetlbfs_find_path_for_size()\n  ptr: (nil)\n  page_size_or_size: 2097152\n  shift: 21\n\nEVENT: hugetlb_multi_before_add\n  name: hugetlbfs_find_path_for_size()\n  ptr: (nil)\n  page_size_or_size: 1073741824\n  shift: 30\n\nEVENT: before_first_add\n  name: _metal.tmp_path\n  ptr: 0x5562bbdf0a37\n  page_size_or_size: 4096\n  shift: 12\n\nEVENT: hugetlb_multi_before_add\n  name: hugetlbfs_find_path_for_size()\n  ptr: (nil)\n  page_size_or_size: 2097152\n  shift: 21\n\nEVENT: hugetlb_multi_before_add\n  name: hugetlbfs_find_path_for_size()\n  ptr: (nil)\n  page_size_or_size: 1073741824\n  shift: 30\n\n"
+}

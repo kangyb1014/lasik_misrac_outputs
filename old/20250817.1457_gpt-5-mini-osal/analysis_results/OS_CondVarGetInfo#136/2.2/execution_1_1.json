@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp7gzmxp05/src/src/os/shared/src/osapi-condvar.c: In function 'os_condvar_log':\n/tmp/tmp7gzmxp05/src/src/os/shared/src/osapi-condvar.c:330:22: error: cast specifies array type\n  330 |     vfprintf(f, fmt, (va_list)ap);\n      |                      ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:118: CMakeFiles/osal.dir/src/os/shared/src/osapi-condvar.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

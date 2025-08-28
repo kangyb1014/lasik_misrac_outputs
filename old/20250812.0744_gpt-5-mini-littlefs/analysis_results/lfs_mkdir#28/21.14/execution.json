@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "find: './srcs': No such file or directory\nlfs.c: In function 'lfs_mkdir':\nlfs.c:6353:75: error: 'ptrdiff_t' undeclared (first use in this function)\n 6353 |                 fprintf(f, \" token[%d] offset=%td len=%zu '\", token_idx, (ptrdiff_t)(name - path), namelen);\n      |                                                                           ^~~~~~~~~\nlfs.c:16:1: note: 'ptrdiff_t' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?\n   15 | #include \"lfs.h\"\n  +++ |+#include <stddef.h>\n   16 | #include \"lfs_util.h\"\nlfs.c:6353:75: note: each undeclared identifier is reported only once for each function it appears in\n 6353 |                 fprintf(f, \" token[%d] offset=%td len=%zu '\", token_idx, (ptrdiff_t)(name - path), namelen);\n      |                                                                           ^~~~~~~~~\nmake: *** [Makefile:529: lfs.o] Error 1"
-}

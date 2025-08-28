@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "http_chunked_compression.c:61:15: error: expected identifier or '(' before numeric constant\n   61 | #define CHUNK 16384\n      |               ^~~~~\nhttp_chunked_compression.c:70:14: note: in expansion of macro 'CHUNK'\n   70 | const size_t CHUNK = 16384u;\n      |              ^~~~~\nmake[4]: *** [Makefile:1086: http_chunked_compression.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

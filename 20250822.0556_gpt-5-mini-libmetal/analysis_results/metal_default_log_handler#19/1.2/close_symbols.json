@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid metal_default_log_handler(enum metal_log_level level,\n\t\t\t       const char *format, ...)\n{\n#ifdef DEFAULT_LOGGER_ON\n\tchar msg[1024];\n\tva_list args;\n\tstatic const char * const level_strs[] = {\n\t\t\"metal: emergency: \",\n\t\t\"metal: alert:     \",\n\t\t\"metal: critical:  \",\n\t\t\"metal: error:     \",\n\t\t\"metal: warning:   \",\n\t\t\"metal: notice:    \",\n\t\t\"metal: info:      \",\n\t\t\"metal: debug:     \",\n\t};\n\n\tva_start(args, format);\n\tvsnprintf(msg, sizeof(msg), format, args);\n\tva_end(args);\n\n\tif (level <= METAL_LOG_EMERGENCY || level > METAL_LOG_DEBUG)\n\t\tlevel = METAL_LOG_EMERGENCY;\n\n\tfprintf(stderr, \"%s%s\", level_strs[level], msg);\n#else\n\t(void)level;\n\t(void)format;\n#endif\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "DEFAULT_LOGGER_ON",
+    "enum metal_log_level",
+    "METAL_LOG_EMERGENCY",
+    "METAL_LOG_DEBUG",
+    "va_list",
+    "va_start",
+    "va_end",
+    "vsnprintf",
+    "fprintf",
+    "stderr",
+    "<stdarg.h>",
+    "<stdio.h>"
+  ],
+  "explanation": "DEFAULT_LOGGER_ON: preprocessor symbol that controls whether the body using variadic/IO code is compiled. You must know its definition (or absence) to determine which language constructs are actually present in the compiled unit.\nenum metal_log_level: the typedef/enum declaration is required to check whether the enum uses any non\u2011standard/implementation extensions (underlying type, attributes) and to see valid value range and semantics.\nMETAL_LOG_EMERGENCY, METAL_LOG_DEBUG: the numeric values of these enum constants are needed to confirm the range check logic and to detect any non\u2011standard enum constant definitions (e.g. large values implemented with extensions).\nva_list, va_start, va_end: these are provided by <stdarg.h> and some compilers implement them using built\u2011in/implementation specific machinery (e.g. __builtin_va_list). Inspecting their actual definitions is necessary to determine whether a compiler language extension is being used.\nvsnprintf, fprintf: standard I/O functions may be macros or map to compiler builtins (or wrappers using attributes/extensions). Their actual declarations/definitions must be checked to ensure no compiler extension (e.g. builtin replacement, attribute macros) is pulled into this function.\nstderr: the stderr symbol might be a macro or alias to an implementation symbol (for example __stderrp) in some C libraries; its definition must be inspected to ensure no non\u2011standard extension is involved.\n<stdarg.h>, <stdio.h>: include headers are listed so the next agent can inspect the exact declarations/macros used for va_list/va_start/va_end, vsnprintf, fprintf and stderr in the target build environment to detect any compiler/library language extensions."
+}

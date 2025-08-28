@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "In file included from mhd_str.h:41,\n                 from basicauth.h:31,\n                 from basicauth.c:36:\nmhd_str_types.h:33:36: error: expected identifier or '(' before 'sizeof'\n   33 | #define MHD_STATICSTR_LEN_(macro) (sizeof(macro) / sizeof(char) - 1)\n      |                                    ^~~~~~\nbasicauth.c:231:15: note: in expansion of macro 'MHD_STATICSTR_LEN_'\n  231 | static size_t MHD_STATICSTR_LEN_ (const char *macro) { return strlen(macro); }\n      |               ^~~~~~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2266: libmicrohttpd_la-basicauth.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

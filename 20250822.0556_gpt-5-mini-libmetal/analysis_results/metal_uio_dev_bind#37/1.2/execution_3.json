@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmp0hx9b8zj/src/lib/system/linux/device.c: In function 'metal_uio_probe_log':\n/tmp/tmp0hx9b8zj/src/lib/system/linux/device.c:136:37: error: 'struct sysfs_driver' has no member named 'driver'\n  136 |         if (ldrv->sdrv && ldrv->sdrv->driver)\n      |                                     ^~\n/tmp/tmp0hx9b8zj/src/lib/system/linux/device.c:137:35: error: 'struct sysfs_driver' has no member named 'driver'\n  137 |             sdrv_name = ldrv->sdrv->driver; /* try another possible field */\n      |                                   ^~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:216: lib/CMakeFiles/metal-shared.dir/system/linux/device.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

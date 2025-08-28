@@ -1,0 +1,27 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_sys_init(const struct metal_init_params *params)\n{\n\tconst char *tmp_path;\n\tunsigned int seed;\n\tFILE *urandom;\n\tint result;\n\n\t/* Find the temporary directory location. */\n\ttmp_path = getenv(\"TMPDIR\");\n\tif (!tmp_path)\n\t\ttmp_path = \"/tmp\";\n\t_metal.tmp_path = tmp_path;\n\n\t/* Initialize the pseudo-random number generator. */\n\turandom = fopen(\"/dev/urandom\", \"r\");\n\tif (!urandom) {\n\t\tmetal_log(METAL_LOG_ERROR, \"failed to open /dev/urandom (%s)\\n\",\n\t\t\t  strerror(errno));\n\t\treturn -errno;\n\t}\n\tif (fread(&seed, 1, sizeof(seed), urandom) <= 0) {\n\t\tmetal_log(METAL_LOG_DEBUG, \"Failed fread /dev/urandom\\n\");\n\t}\n\tfclose(urandom);\n\tsrand(seed);\n\n\tresult = metal_init_page_sizes();\n\tif (result < 0)\n\t\treturn result;\n\n\tresult = metal_linux_bus_init();\n\tif (result < 0)\n\t\treturn result;\n\n\tresult = open(\"/proc/self/pagemap\", O_RDONLY | O_CLOEXEC);\n\tif (result < 0) {\n\t\tmetal_log(METAL_LOG_DEBUG, \"Failed pagemap open - %s\\n\",\n\t\t\t  strerror(errno));\n\t}\n\t_metal.pagemap_fd = result;\n\n\tmetal_unused(params);\n\n\t/* Initialize IRQ handling */\n\tmetal_linux_irq_init();\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_sys_init': {'callees': ['metal_init_page_sizes', 'metal_linux_bus_init', 'metal_linux_irq_init'], 'callers': ['metal_init']}, 'metal_init_page_sizes': {'callees': ['metal_log2', 'metal_add_page_size'], 'callers': ['metal_sys_init']}, 'metal_linux_bus_init': {'callees': ['metal_linux_probe_bus'], 'callers': ['metal_sys_init']}, 'metal_linux_irq_init': {'callees': ['metal_mutex_init', 'metal_irq_register_controller'], 'callers': ['metal_sys_init']}, 'metal_init': {'callees': ['metal_list_init', 'metal_sys_init'], 'callers': ['metal_tests_run']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "_metal",
+    "metal_log",
+    "METAL_LOG_ERROR",
+    "METAL_LOG_DEBUG",
+    "metal_unused",
+    "getenv",
+    "fopen",
+    "fread",
+    "fclose",
+    "strerror",
+    "errno",
+    "open",
+    "O_RDONLY",
+    "O_CLOEXEC",
+    "FILE",
+    "size_t",
+    "srand",
+    "metal_init_page_sizes",
+    "metal_linux_bus_init",
+    "metal_linux_irq_init",
+    "struct metal_init_params"
+  ],
+  "explanation": "For detecting compiler language extensions you must inspect any symbol whose declaration/definition could hide compiler-specific constructs (attributes, built-ins, statement-expressions, asm, typeof, thread-local macros, GNU/Clang extensions, etc.). Brief reasons: \n\n- _metal: global object definition may use compiler-specific attributes, section/visibility annotations, or reserved identifier rules; check its declaration for extensions and reserved-identifier violations.\n- metal_log: often implemented as a macro or wrapper; its definition may use variadic macros, __attribute__, __builtin_*, or statement-expressions \u2014 all potential extensions.\n- METAL_LOG_ERROR, METAL_LOG_DEBUG: logging level macros may expand to compiler-specific expressions or use macros built from extensions; inspect their definitions.\n- metal_unused: typically a macro (e.g. __attribute__((unused)) or (void)(x)); must check for use of compiler attributes or extensions.\n- getenv, fopen, fread, fclose, strerror, srand: standard library functions \u2014 inspect included headers/implementations if they are wrapped by macros that use compiler extensions on this platform.\n- errno: often a macro that may expand to a thread-local accessor (e.g. __errno_location()) or other implementation-defined construct; inspect definition for compiler-specific built-ins or thread-local storage usage.\n- open: POSIX function; headers or wrappers may use feature-test macros or compiler extensions (e.g. flags implemented via macros); check its prototype/macros.\n- O_RDONLY, O_CLOEXEC: platform macros; their definitions could use unusual constructs or require feature macros \u2014 verify they are plain integer macros and not compiler extensions. (O_CLOEXEC in particular is Linux-specific; confirm it is a simple macro.)\n- FILE, size_t: fundamental types from stdio/stdlib headers; check typedefs/macros in headers in use to ensure no compiler-specific typedefs or extensions are hiding in their definitions.\n- metal_init_page_sizes, metal_linux_bus_init, metal_linux_irq_init: callees listed in static call graph \u2014 their declarations/definitions should be examined for inline, __attribute__, asm, or other extensions that could affect the caller or indicate use of extensions in this module.\n- struct metal_init_params: the parameter type; its definition may contain compiler-specific extensions (packed, aligned, bitfields with extensions, attributes).\n\nInspecting these symbols and their headers/definitions will allow determining whether the target function or any identifiers it uses employ compiler-specific language extensions that must be reported under the MISRA rule."
+}

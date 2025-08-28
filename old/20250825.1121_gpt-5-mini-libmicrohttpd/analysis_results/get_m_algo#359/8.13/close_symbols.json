@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_DigestAuthMultiAlgo3\nget_m_algo (void)\n{\n  if (force_md5)\n    return MHD_DIGEST_AUTH_MULT_ALGO3_MD5;\n  else if (force_sha256)\n    return MHD_DIGEST_AUTH_MULT_ALGO3_SHA256;\n  else if (force_sha512_256)\n    return MHD_DIGEST_AUTH_MULT_ALGO3_SHA512_256;\n\n  /* No forced algorithm selection, let MHD to use default */\n  return MHD_DIGEST_AUTH_MULT_ALGO3_ANY_NON_SESSION;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'get_m_algo': {'callees': [], 'callers': ['reply_with_auth_required']}, 'reply_with_auth_required': {'callees': ['MHD_create_response_from_buffer_static', 'MHD_add_response_header', 'MHD_queue_auth_required_response3', 'get_m_QOP', 'get_m_algo', 'MHD_destroy_response'], 'callers': ['handle_sec_areas_req']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "force_md5",
+    "force_sha256",
+    "force_sha512_256",
+    "enum MHD_DigestAuthMultiAlgo3",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_MD5",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_SHA256",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_SHA512_256",
+    "MHD_DIGEST_AUTH_MULT_ALGO3_ANY_NON_SESSION"
+  ],
+  "explanation": "For MISRA C rule checking about pointer const-qualification we must confirm the types and constness of all identifiers used in the function: 1) force_md5, force_sha256, force_sha512_256 \u2014 their declarations (type, pointer vs non\u2011pointer, const/volatile qualifiers). If any of these are pointers, MISRA requires checking whether they should point to const; if they are plain scalars there is no pointer concern. 2) enum MHD_DigestAuthMultiAlgo3 \u2014 the full type/definition to ensure the function returns an enum (value) rather than a pointer type or typedef to a pointer. 3) MHD_DIGEST_AUTH_MULT_ALGO3_MD5, MHD_DIGEST_AUTH_MULT_ALGO3_SHA256, MHD_DIGEST_AUTH_MULT_ALGO3_SHA512_256, MHD_DIGEST_AUTH_MULT_ALGO3_ANY_NON_SESSION \u2014 the enum/constant definitions to confirm they are enum constants (not pointer macros) and to ensure no hidden pointer usage. These symbols collectively allow determination whether the function uses or returns any pointer that should be const-qualified per MISRA; if all are non\u2011pointer scalars/enums, the rule is not violated."
+}

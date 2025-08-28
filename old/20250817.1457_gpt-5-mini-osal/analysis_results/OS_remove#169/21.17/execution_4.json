@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_remove: entered; path_ptr=0x55de2d7fd2b8; OS_MAX_LOCAL_PATH_LEN=128\nOS_remove: OS_TranslatePath returned -108\nOS_remove: translation failed, skipping remove\nOS_remove: returning -108\nOS_remove: entered; path_ptr=0x55de2d7fd2b8; OS_MAX_LOCAL_PATH_LEN=128\nOS_remove: OS_TranslatePath returned -108\nOS_remove: translation failed, skipping remove\nOS_remove: returning -108\nOS_remove: entered; path_ptr=0x55de2d7fd2b8; OS_MAX_LOCAL_PATH_LEN=128\nOS_remove: OS_TranslatePath returned -108\nOS_remove: translation failed, skipping remove\nOS_remove: returning -108\n"
+}

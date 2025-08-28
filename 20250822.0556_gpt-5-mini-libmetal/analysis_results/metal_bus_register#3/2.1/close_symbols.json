@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nint metal_bus_register(struct metal_bus *bus)\n{\n\tif (!bus || !bus->name || !strlen(bus->name))\n\t\treturn -EINVAL;\n\tif (metal_bus_find(bus->name, NULL) == 0)\n\t\treturn -EEXIST;\n\tmetal_list_init(&bus->devices);\n\tmetal_list_add_tail(&_metal.common.bus_list, &bus->node);\n\tmetal_log(METAL_LOG_DEBUG, \"registered %s bus\\n\", bus->name);\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_bus_register': {'callees': ['metal_bus_find', 'metal_list_init', 'metal_list_add_tail'], 'callers': ['metal_linux_register_bus']}, 'metal_bus_find': {'callees': [], 'callers': ['metal_bus_register', 'metal_device_open', 'metal_linux_bus_finish']}, 'metal_list_init': {'callees': [], 'callers': ['metal_bus_register', 'metal_init']}, 'metal_list_add_tail': {'callees': [], 'callers': ['metal_bus_register', 'metal_register_generic_device', 'metal_irq_register_controller', 'metal_shmem_register_generic', 'metal_linux_dev_open', 'metal_add_test_case']}, 'metal_linux_register_bus': {'callees': ['metal_bus_register'], 'callers': ['metal_linux_probe_bus']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "struct metal_bus",
+    "metal_bus::name",
+    "metal_bus::devices",
+    "metal_bus::node",
+    "metal_bus_find",
+    "metal_list_init",
+    "metal_list_add_tail",
+    "_metal",
+    "_metal.common.bus_list",
+    "metal_log",
+    "METAL_LOG_DEBUG",
+    "strlen",
+    "EINVAL",
+    "EEXIST",
+    "metal_linux_register_bus"
+  ],
+  "explanation": "For checking unreachable code in metal_bus_register you must know any definitions/semantics that can make branches always true/false or cause non\u2011local exits. Concise reasons per symbol:\n\n- struct metal_bus / metal_bus::name / metal_bus::devices / metal_bus::node: the structure layout and types (and any invariants) are needed to determine whether bus or bus->name can ever be NULL/empty (first if) and whether accessing devices/node has side effects that could affect control flow.\n\n- metal_bus_find: implementation, return-value contract and attributes (e.g. noreturn, always returns 0, or has side effects such as abort/longjmp). If metal_bus_find always returns 0 or never returns, the second if would make the remainder unreachable.\n\n- metal_list_init and metal_list_add_tail: implementations and any attributes (noreturn, longjmp, abort, or macros that expand to early returns). Needed to ensure these calls do not themselves prevent subsequent statements from executing or cause earlier returns.\n\n- _metal and _metal.common.bus_list: definition/type of the global used by metal_list_add_tail; if accessing this global is undefined or fails, it could affect reachability analysis or indicate invariants that make calls redundant.\n\n- metal_log and METAL_LOG_DEBUG: implementation or macros/attributes (noreturn) to confirm logging does not alter control flow (e.g. does not longjmp/exit), so the final return 0 is reachable.\n\n- strlen: standard semantics (side effects, behaviour on empty string); confirm that because the code uses !strlen(bus->name) this check can be relied upon and that short\u2011circuit evaluation prevents a NULL dereference.\n\n- EINVAL and EEXIST: constant definitions to confirm these are ordinary integer macros (no side effects) so the return statements are normal returns.\n\n- metal_linux_register_bus: caller(s) that construct/pass the bus argument. Inspecting callers shows whether the caller always passes a non-NULL bus or a bus with a guaranteed name, or guarantees uniqueness such that metal_bus_find will always trigger \u2014 info required to detect unreachable branches in this function when used in the project.\n\nProviding these symbols (types, function implementations/attributes, macros and caller code) lets the next analyzer decide whether any branch/statement in metal_bus_register can never be reached under the project\u2019s actual code and invariants."
+}

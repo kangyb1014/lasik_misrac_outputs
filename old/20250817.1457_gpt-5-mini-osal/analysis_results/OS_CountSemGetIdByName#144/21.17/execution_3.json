@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER OS_CountSemGetIdByName: sem_id=(nil), sem_name=0x55e7b14bfee9\nENTER OS_CountSemGetIdByName: sem_id=0x7ffe1794161c, sem_name=(nil)\nAfter OS_CHECK_POINTER(sem_id): sem_id=0x7ffe1794161c\nENTER OS_CountSemGetIdByName: sem_id=0x7ffe1794161c, sem_name=0x7ffe17941620\nAfter OS_CHECK_POINTER(sem_id): sem_id=0x7ffe1794161c\nAfter OS_CHECK_POINTER(sem_name): sem_name=0x7ffe17941620\nCalling OS_ObjectIdFindByName with sem_name=0x7ffe17941620\nOS_ObjectIdFindByName returned -13, *sem_id=0\nENTER OS_CountSemGetIdByName: sem_id=0x7ffe1794161c, sem_name=0x55e7b14bff7d\nAfter OS_CHECK_POINTER(sem_id): sem_id=0x7ffe1794161c\nAfter OS_CHECK_POINTER(sem_name): sem_name=0x55e7b14bff7d\nCalling OS_ObjectIdFindByName with sem_name=0x55e7b14bff7d\nOS_ObjectIdFindByName returned -17, *sem_id=0\n"
+}

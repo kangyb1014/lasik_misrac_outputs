@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int version(void)\n{\n\tchar ver_def[16], ver_dyn[16];\n\n\tsnprintf(ver_def, sizeof(ver_def), \"%d.%d.%d\",\n\t\t METAL_VER_MAJOR,\n\t\t METAL_VER_MINOR,\n\t\t METAL_VER_PATCH);\n\n\tsnprintf(ver_dyn, sizeof(ver_dyn), \"%d.%d.%d\",\n\t\t metal_ver_major(), metal_ver_minor(), metal_ver_patch());\n\n\treturn (strcmp(ver_def, METAL_VER) +\n\t\tstrcmp(ver_dyn, metal_ver()));\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'version': {'callees': ['metal_ver_major', 'metal_ver_minor', 'metal_ver_patch', 'metal_ver'], 'callers': []}, 'metal_ver_major': {'callees': [], 'callers': ['version']}, 'metal_ver_minor': {'callees': [], 'callers': ['version']}, 'metal_ver_patch': {'callees': [], 'callers': ['version']}, 'metal_ver': {'callees': [], 'callers': ['version']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "METAL_VER_MAJOR",
+    "METAL_VER_MINOR",
+    "METAL_VER_PATCH",
+    "METAL_VER",
+    "snprintf",
+    "strcmp",
+    "all_callers_of_version (any function in the translation unit or project that calls 'version')",
+    "all_address_taken_references_of_version (any object/initializer that takes &version, e.g. function-pointer tables, struct initializers)",
+    "preprocessor expansions/macros that may expand to a call to version (any macro elsewhere that could invoke 'version')",
+    "translation_unit_symbols (symbol table / other file-scope symbols in the same source file)"
+  ],
+  "explanation": "To determine whether the function 'version' is unreachable (MISRA: no unreachable code) you must know: the compile-time macros used inside it (METAL_VER_MAJOR, METAL_VER_MINOR, METAL_VER_PATCH, METAL_VER) only to check whether the function body could be eliminated by conditional compilation or macro expansion; the library calls it invokes (snprintf, strcmp) to rule out side effects that could make the function intentionally retained/used; and, crucially, whether the function is ever referenced. That requires (a) a complete list of all callers of 'version' across the translation unit/project (direct calls), (b) any places that take its address (function-pointer tables, global initializers, registration APIs \u2014 listed as address_taken_references_of_version), and (c) any macros or preprocessor expansions that might expand into calls to 'version'. Finally, the full translation-unit symbol table is needed because 'version' is static (internal linkage) \u2014 reachability must be established within its defining translation unit. Each of these symbols (or symbol sets) is necessary to conclude whether 'version' is truly unreachable and therefore whether the codebase violates the MISRA unreachable-code rule."
+}

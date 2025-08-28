@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_remove: enter; path='/drive3/select_test.txt'; code=0\nOS_remove: translate_failed; path='/drive3/select_test.txt'; code=-108\nOS_remove: exit; path='/drive3/select_test.txt'; code=-108\nOS_remove: enter; path='/drive3/select_test.txt'; code=0\nOS_remove: translate_failed; path='/drive3/select_test.txt'; code=-108\nOS_remove: exit; path='/drive3/select_test.txt'; code=-108\nOS_remove: enter; path='/drive3/select_test.txt'; code=0\nOS_remove: translate_failed; path='/drive3/select_test.txt'; code=-108\nOS_remove: exit; path='/drive3/select_test.txt'; code=-108\n"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp3nwt6gyj/src/src/os/shared/src/osapi-printf.c: In function 'OS_ConsoleAPI_Init':\n/tmp/tmp3nwt6gyj/src/src/os/shared/src/osapi-printf.c:149:9: error: aggregate value used where an integer was expected\n  149 |         fprintf(log, \"OS_ObjectIdAllocateNew returned %ld, token=%llu\\n\", (long)return_code, (unsigned long long)token);\n      |         ^~~~~~~\n/tmp/tmp3nwt6gyj/src/src/os/shared/src/osapi-printf.c:159:13: error: aggregate value used where an integer was expected\n  159 |             fprintf(log, \"Allocated console record pointer=%p for token=%llu\\n\", (void *)console, (unsigned long long)token);\n      |             ^~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:272: CMakeFiles/osal.dir/src/os/shared/src/osapi-printf.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

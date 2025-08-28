@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[alloc probe] entry: ptr=(nil) errno=0\n[alloc probe] after metal_allocate_memory: ptr=0x562ce1918520 errno=0\n[alloc probe] allocated; about to free: ptr=0x562ce1918520 errno=0\n[alloc probe] freed memory; returning success: ptr=(nil) errno=0\n[alloc probe] entry: ptr=(nil) errno=0\n[alloc probe] after metal_allocate_memory: ptr=0x55f443f21520 errno=0\n[alloc probe] allocated; about to free: ptr=0x55f443f21520 errno=0\n[alloc probe] freed memory; returning success: ptr=(nil) errno=0\n"
+}

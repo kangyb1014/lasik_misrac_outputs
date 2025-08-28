@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpv3qxhhbj/src/src/os/posix/src/os-impl-idmap.c:122:3: error: conflicting types for 'OS_impl_objtype_lock_t'; have 'struct <anonymous>'\n  122 | } OS_impl_objtype_lock_t;\n      |   ^~~~~~~~~~~~~~~~~~~~~~\nIn file included from /tmp/tmpv3qxhhbj/src/src/os/posix/src/os-impl-idmap.c:46:\n/tmp/tmpv3qxhhbj/src/src/os/posix/inc/os-impl-idmap.h:37:3: note: previous declaration of 'OS_impl_objtype_lock_t' with type 'OS_impl_objtype_lock_t'\n   37 | } OS_impl_objtype_lock_t;\n      |   ^~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmpv3qxhhbj/src/src/os/posix/src/os-impl-idmap.c:142:1: error: expected identifier or '(' before '{' token\n  142 | {\n      | ^\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:216: posix_impl/CMakeFiles/osal_posix_impl.dir/src/os-impl-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

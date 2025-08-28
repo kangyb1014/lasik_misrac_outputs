@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void OS_BSP_ExecTput(const char *cap, const char *param)\n{\n    pid_t cpid;\n    int   status;\n\n    cpid = fork();\n    if (cpid < 0)\n    {\n        return;\n    }\n    if (cpid == 0)\n    {\n        execlp(\"tput\", \"tput\", cap, param, NULL);\n        exit(EXIT_FAILURE);\n    }\n    waitpid(cpid, &status, 0);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_BSP_ExecTput': {'callees': [], 'callers': ['OS_BSP_ConsoleSetMode_Impl']}, 'OS_BSP_ConsoleSetMode_Impl': {'callees': ['OS_BSP_ExecTput'], 'callers': ['UT_BSP_DoText']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "execlp",
+    "fork",
+    "waitpid",
+    "exit",
+    "EXIT_FAILURE",
+    "pid_t",
+    "NULL",
+    "OS_BSP_ConsoleSetMode_Impl",
+    "UT_BSP_DoText",
+    "<unistd.h>",
+    "<sys/types.h>",
+    "<sys/wait.h>",
+    "<stdlib.h>"
+  ],
+  "explanation": "- execlp: You must know the prototype/semantics (varargs, expects NUL-terminated char* arguments, whether it may read beyond callers' buffers). This determines whether passing cap/param can cause out\u2011of\u2011bounds reads.\\n- fork, waitpid, exit, pid_t, EXIT_FAILURE, NULL: These control-flow / macro/type symbols affect process creation/termination and how arguments are passed to execlp (child process path). Understanding their semantics ensures the analysis focuses on string usage (they do not themselves perform string-handling but are needed to reason about which code path invokes execlp).\\n- OS_BSP_ConsoleSetMode_Impl and UT_BSP_DoText: The callers (and grand\u2011caller) supply cap and param. To decide if any string-handling violation can occur you must inspect how those callers construct or obtain cap/param (ownership, lifetime, guaranteed NUL-termination, buffer sizes).\\n- <unistd.h>, <sys/types.h>, <sys/wait.h>, <stdlib.h>: Header declarations provide the exact function/type prototypes and macros (execlp, fork, pid_t, waitpid, exit, NULL, EXIT_FAILURE) required for sound static analysis.\\nCollectively these symbols let the next analyst (1) confirm whether execlp reads NUL-terminated strings only (thus whether cap/param must be terminated and sized), (2) trace the provenance and lifetimes of cap/param through the callers, and (3) rule out any direct use of <string.h> functions in this unit that could cause out\u2011of\u2011bounds accesses."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmptko4k18n/src/src/os/shared/src/osapi-idmap.c: In function 'OS_LogForEachFilterCreator':\n/tmp/tmptko4k18n/src/src/os/shared/src/osapi-idmap.c:237:25: error: cast specifies array type\n  237 |     vfprintf(f, format, (va_list)ap);\n      |                         ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:216: CMakeFiles/osal.dir/src/os/shared/src/osapi-idmap.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

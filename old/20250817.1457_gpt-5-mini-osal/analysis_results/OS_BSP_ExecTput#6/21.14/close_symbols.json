@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void OS_BSP_ExecTput(const char *cap, const char *param)\n{\n    pid_t cpid;\n    int   status;\n\n    cpid = fork();\n    if (cpid < 0)\n    {\n        return;\n    }\n    if (cpid == 0)\n    {\n        execlp(\"tput\", \"tput\", cap, param, NULL);\n        exit(EXIT_FAILURE);\n    }\n    waitpid(cpid, &status, 0);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_BSP_ExecTput': {'callees': [], 'callers': ['OS_BSP_ConsoleSetMode_Impl']}, 'OS_BSP_ConsoleSetMode_Impl': {'callees': ['OS_BSP_ExecTput'], 'callers': ['UT_BSP_DoText']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_BSP_ConsoleSetMode_Impl",
+    "UT_BSP_DoText",
+    "fork",
+    "execlp",
+    "waitpid",
+    "exit",
+    "memcmp",
+    "strcmp",
+    "strncmp",
+    "bcmp"
+  ],
+  "explanation": "OS_BSP_ConsoleSetMode_Impl \u2014 immediate caller of OS_BSP_ExecTput; must be inspected to see whether it (or code just before calling OS_BSP_ExecTput) uses memcmp to compare null-terminated strings or otherwise prepares/derives the cap/param strings in a way that would imply a memcmp-based comparison. UT_BSP_DoText \u2014 higher-level caller in the provided call chain; include to check for memcmp usage in the caller chain and to find origins of cap/param. fork, execlp, waitpid, exit \u2014 functions invoked directly by OS_BSP_ExecTput; include as close symbols so the analyzer can confirm that no hidden string comparisons (e.g., via wrappers or side-effects) occur in those calls or their platform-specific wrappers. memcmp \u2014 the exact standard-library symbol the MISRA rule forbids for comparing null-terminated strings; must be searched for in the target and its close-call/caller symbols. strcmp, strncmp \u2014 allowed string comparison functions; include to check whether code uses the correct alternatives (or incorrectly uses memcmp instead). bcmp \u2014 historical/alternate memory-compare API that can be used in place of memcmp on some platforms; include to detect equivalent forbidden usages."
+}

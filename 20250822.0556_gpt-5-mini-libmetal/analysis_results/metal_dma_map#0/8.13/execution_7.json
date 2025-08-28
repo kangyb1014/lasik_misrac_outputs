@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpd4dhkhcw/src/lib/dma.c: In function 'probe_log_entry':\n/tmp/tmpd4dhkhcw/src/lib/dma.c:62:17: error: used struct type value where scalar is required\n   62 |             if (dev->bus->ops) {\n      |                 ^~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:76: lib/CMakeFiles/metal-shared.dir/dma.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,7 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic ssize_t\ndata_generator (void *cls, uint64_t pos, char *buf, size_t max)\n{\n  (void) cls; /* Unused. Silent compiler warning. */\n  (void) pos; /* Unused. Silent compiler warning. */\n  if (max < 80)\n    return 0;\n  memset (buf, 'A', max - 1);\n  buf[79] = '\\n';\n  return 80;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "memset"
+  ],
+  "explanation": "The only function called by data_generator is memset. To prove absence of direct or indirect recursion you must inspect the actual symbol bound to memset in the build (could be the C library implementation, a compiler builtin, or a user-supplied/replacement function or macro). Therefore include the definition/implementation (and its transitive callees) of memset (and any macro/alias such as a user-defined memset or __builtin_memset) so you can determine whether that call chain ever reaches data_generator. No other functions are called by data_generator; the parameter and type symbols (ssize_t, size_t, uint64_t) are not relevant to the recursion rule."
+}

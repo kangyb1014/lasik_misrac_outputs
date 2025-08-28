@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemGetInfo ENTRY: sem_id=-559038737, bin_prop=0x7fff744f8240\nAfter OS_CHECK_POINTER; bin_prop=0x7fff744f8240\nAfter memset; cleared bin_prop at 0x7fff744f8240\nOS_ObjectIdGetById returned -35; token addr=0x7fff744f81f0\nOS_BinSemGetInfo EXIT: return_code=-35\nOS_BinSemGetInfo ENTRY: sem_id=0, bin_prop=0x7fff744f8240\nAfter OS_CHECK_POINTER; bin_prop=0x7fff744f8240\nAfter memset; cleared bin_prop at 0x7fff744f8240\nOS_ObjectIdGetById returned -35; token addr=0x7fff744f81f0\nOS_BinSemGetInfo EXIT: return_code=-35\n"
+}

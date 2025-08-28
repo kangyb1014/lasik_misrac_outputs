@@ -1,0 +1,33 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void\nset_self_name (int argc, char *const *argv)\n{\n  if ((argc >= 1) && (NULL != argv[0]))\n  {\n    const char *last_dir_sep;\n    last_dir_sep = strrchr (argv[0], '/');\n#ifdef _WIN32\n    if (1)\n    {\n      const char *last_w32_dir_sep;\n      last_w32_dir_sep = strrchr (argv[0], '\\\\');\n      if ((NULL == last_dir_sep) ||\n          ((NULL != last_w32_dir_sep) && (last_w32_dir_sep > last_dir_sep)))\n        last_dir_sep = last_w32_dir_sep;\n    }\n#endif /* _WIN32 */\n    if (NULL != last_dir_sep)\n    {\n      size_t name_len;\n      name_len = strlen (last_dir_sep + 1);\n      if ((0 != name_len) && ((sizeof(self_name) / sizeof(char)) > name_len))\n      {\n        strcpy (self_name, last_dir_sep + 1);\n        return;\n      }\n    }\n  }\n  /* Set default name */\n  strcpy (self_name, \"perf_replies\");\n  return;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'set_self_name': {'callees': [], 'callers': ['main']}, 'main': {'callees': ['MHD_create_response_from_buffer_static', 'MHD_start_daemon', 'MHD_stop_daemon', 'MHD_destroy_response', 'MHD_get_fdset2', 'MHD_get_timeout64', 'MHD_run', 'MHD_get_daemon_info', 'MHD_get_timeout_i', 'MHD_resume_connection', 'expire_sessions', 'ignore_sigpipe', 'mark_as_html', 'update_directory', 'update_cached_response', 'check_params', 'add_new_users', 'init_rand_data', 'set_self_name', 'process_params', 'check_apply_params', 'init_data', 'run_mhd', 'deinit_data'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "main",
+    "MHD_create_response_from_buffer_static",
+    "MHD_start_daemon",
+    "MHD_stop_daemon",
+    "MHD_destroy_response",
+    "MHD_get_fdset2",
+    "MHD_get_timeout64",
+    "MHD_run",
+    "MHD_get_daemon_info",
+    "MHD_get_timeout_i",
+    "MHD_resume_connection",
+    "expire_sessions",
+    "ignore_sigpipe",
+    "mark_as_html",
+    "update_directory",
+    "update_cached_response",
+    "check_params",
+    "add_new_users",
+    "init_rand_data",
+    "process_params",
+    "check_apply_params",
+    "init_data",
+    "run_mhd",
+    "deinit_data",
+    "strrchr",
+    "strlen",
+    "strcpy"
+  ],
+  "explanation": "- main: Direct caller of set_self_name; must be inspected to see if there is a call path from set_self_name back into main (indirect recursion).  \n- All functions listed as callees of main (MHD_create_response_from_buffer_static, MHD_start_daemon, MHD_stop_daemon, MHD_destroy_response, MHD_get_fdset2, MHD_get_timeout64, MHD_run, MHD_get_daemon_info, MHD_get_timeout_i, MHD_resume_connection, expire_sessions, ignore_sigpipe, mark_as_html, update_directory, update_cached_response, check_params, add_new_users, init_rand_data, process_params, check_apply_params, init_data, run_mhd, deinit_data): Any of these could (directly or indirectly) call set_self_name or form a call cycle that includes set_self_name. To prove absence of indirect recursion you must examine their call graphs to ensure there is no path back to set_self_name.  \n- strrchr, strlen, strcpy: Library functions called by set_self_name. Include them to document and confirm that these callees do not call user code (i.e., they do not call back into set_self_name), so they cannot participate in recursion.  \nTogether, these symbols provide the necessary local call-graph context to determine whether set_self_name appears in any call cycle (direct or indirect) and thus whether it violates the MISRA rule against self-calls."
+}

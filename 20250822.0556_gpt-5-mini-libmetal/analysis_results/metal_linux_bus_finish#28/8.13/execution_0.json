@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_finish: entry\niter: lbus=0x7f6eb38dbb60, bus_name_ptr=0x7f6eb38d5730, bus_name_str=\"platform\"\nmetal_bus_find returned 0, bus=0x7f6eb38dbb60\nmetal_bus_unregister called for bus=0x7f6eb38dbb60\niter: lbus=0x7f6eb38dcdc8, bus_name_ptr=0x7f6eb38d575d, bus_name_str=\"pci\"\nmetal_bus_find returned 0, bus=0x7f6eb38dcdc8\nmetal_bus_unregister called for bus=0x7f6eb38dcdc8\nmetal_linux_bus_finish: exit\nmetal_linux_bus_finish: entry\niter: lbus=0x55f2ec198260, bus_name_ptr=0x55f2ec190220, bus_name_str=\"platform\"\nmetal_bus_find returned 0, bus=0x55f2ec198260\nmetal_bus_unregister called for bus=0x55f2ec198260\niter: lbus=0x55f2ec1994c8, bus_name_ptr=0x55f2ec19024d, bus_name_str=\"pci\"\nmetal_bus_find returned 0, bus=0x55f2ec1994c8\nmetal_bus_unregister called for bus=0x55f2ec1994c8\nmetal_linux_bus_finish: exit\n"
+}

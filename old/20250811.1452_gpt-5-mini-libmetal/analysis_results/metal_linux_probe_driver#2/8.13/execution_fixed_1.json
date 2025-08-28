@@ -1,4 +1,0 @@
-{
-  "result": "success",
-  "message": "ENTER metal_linux_probe_driver: lbus=0x7f1443276b60 ldrv=0x7f1443276bc0 bus_name=platform drv_name=uio_pdrv_genirq sdrv=(nil)\n"
-}

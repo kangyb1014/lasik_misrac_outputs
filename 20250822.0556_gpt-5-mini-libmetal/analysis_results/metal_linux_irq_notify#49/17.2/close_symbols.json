@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int metal_linux_irq_notify(void)\n{\n\tuint64_t val = 1;\n\tint ret;\n\n\tret = write(irq_notify_fd, &val, sizeof(val));\n\tif (ret < 0) {\n\t\tmetal_log(METAL_LOG_ERROR, \"%s failed\\n\", __func__);\n\t}\n\treturn ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_linux_irq_notify': {'callees': [], 'callers': ['metal_linux_irq_set_enable', 'metal_linux_irq_shutdown']}, 'metal_linux_irq_set_enable': {'callees': ['metal_mutex_acquire', 'metal_bitmap_set_bit', 'metal_bitmap_clear_bit', 'metal_mutex_release', 'metal_linux_irq_notify'], 'callers': []}, 'metal_linux_irq_shutdown': {'callees': ['metal_linux_irq_notify', 'metal_mutex_deinit'], 'callers': ['metal_sys_finish']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_linux_irq_set_enable",
+    "metal_linux_irq_shutdown",
+    "metal_mutex_acquire",
+    "metal_bitmap_set_bit",
+    "metal_bitmap_clear_bit",
+    "metal_mutex_release",
+    "metal_mutex_deinit",
+    "metal_sys_finish",
+    "metal_log",
+    "write"
+  ],
+  "explanation": "To prove whether metal_linux_irq_notify participates in direct or indirect recursion we must inspect its callers and any transitive callees that could produce a cycle back to the target:\n\n- metal_linux_irq_set_enable: a direct caller of metal_linux_irq_notify (needed to see if it calls other functions that eventually call back into the target).\n- metal_linux_irq_shutdown: a direct caller of metal_linux_irq_notify (needed for the same reason as above).\n- metal_mutex_acquire: callee of metal_linux_irq_set_enable (include to examine transitive call paths from the caller(s)).\n- metal_bitmap_set_bit: callee of metal_linux_irq_set_enable (to inspect further call edges that could form a cycle).\n- metal_bitmap_clear_bit: callee of metal_linux_irq_set_enable (same rationale).\n- metal_mutex_release: callee of metal_linux_irq_set_enable (same rationale).\n- metal_mutex_deinit: callee of metal_linux_irq_shutdown (to inspect transitive paths starting at the caller).\n- metal_sys_finish: caller of metal_linux_irq_shutdown (included to check higher-level call chains that might close a cycle).\n- metal_log: called by metal_linux_irq_notify; include because a logging helper could (in theory) call back into other library code that reaches the target.\n- write: called by metal_linux_irq_notify (include to rule out system/library calls that might indirectly re-enter code that reaches the target).\n\nThese symbols provide the necessary local call-graph neighborhood (callers and their callees and the target's callees) needed to determine whether any path exists that forms a cycle including metal_linux_irq_notify."
+}

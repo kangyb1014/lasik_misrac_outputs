@@ -1,0 +1,13 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_int",
+    "atomic_fetch_add",
+    "atomic_test_count",
+    "NULL",
+    "<stdatomic.h>",
+    "__atomic_fetch_add",
+    "__sync_fetch_and_add"
+  ],
+  "explanation": "- atomic_int: determine whether this identifier is the C11 standard atomic typedef (from stdatomic.h/_Atomic) or a compiler/library-specific typedef or extension. If it is not the C11 standard type, the code may rely on a language/library extension.\n- atomic_fetch_add: determine whether this is the standard C11 atomic operation (provided by <stdatomic.h>) or a wrapper/macro that expands to compiler builtins or vendor extensions. The exact definition/signature is needed to decide if a language extension is used.\n- atomic_test_count: the loop bound; its declaration (type, storage, and how it is defined) is required to check whether it is a plain int, an atomic, a macro, or otherwise provided by an extension.\n- NULL: verify whether NULL is the standard macro from the C standard headers or a nonstandard definition; uncommon but a nonstandard NULL could indicate use of extensions.\n- <stdatomic.h>: the header that normally provides atomic_int and atomic_fetch_add in standard C11. Knowing whether this header is included (or whether an alternative header/implementation is used) is necessary to determine if the code uses standard C features or compiler-specific extensions.\n- __atomic_fetch_add and __sync_fetch_and_add: common compiler builtin intrinsics that atomic_fetch_add might map to. Their presence/usage in the translation unit or headers would indicate use of compiler extensions rather than the C11 standard API."
+}

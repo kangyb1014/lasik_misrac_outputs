@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_TaskInstallDeleteHandler: entry: after OS_TaskGetId_Impl\n  task_id=0, return_code=-1\n  token_addr=0x7ffe52f0d160, task_ptr=(nil), function_pointer_is_null=0\n---\nOS_TaskInstallDeleteHandler: after OS_ObjectIdGetById\n  task_id=0, return_code=-35\n  token_addr=0x7ffe52f0d160, task_ptr=(nil), function_pointer_is_null=0\n---\n"
+}

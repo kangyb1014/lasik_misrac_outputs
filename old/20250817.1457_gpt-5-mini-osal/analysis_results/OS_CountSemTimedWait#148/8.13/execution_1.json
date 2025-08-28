@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "--- OS_CountSemTimedWait ENTER\nsem_id=0xDEADBEEF msecs=1000\nOS_ObjectIdGetById returned -35\nSkipping Impl call due to earlier error (code=-35)\n--- OS_CountSemTimedWait EXIT\n--- OS_CountSemTimedWait ENTER\nsem_id=0x00000000 msecs=1000\nOS_ObjectIdGetById returned -35\nSkipping Impl call due to earlier error (code=-35)\n--- OS_CountSemTimedWait EXIT\n"
+}

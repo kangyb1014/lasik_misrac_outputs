@@ -1,0 +1,16 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *consumer_thread(void *arg)\n{\n\t(void)arg;\n\tmetal_mutex_acquire(&lock);\n\twhile (!counter)\n\t\tmetal_condition_wait(&nempty_condv, &lock);\n\tcounter--;\n\tmetal_condition_signal(&nfull_condv);\n\tmetal_mutex_release(&lock);\n\n\treturn NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'consumer_thread': {'callees': ['metal_mutex_acquire', 'metal_condition_wait', 'metal_condition_signal', 'metal_mutex_release'], 'callers': []}, 'metal_mutex_acquire': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_save_disable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}, 'metal_condition_wait': {'callees': ['metal_mutex_is_acquired', 'metal_mutex_release', 'metal_mutex_acquire'], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_condition_signal': {'callees': [], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_mutex_release': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_restore_enable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "metal_mutex_acquire",
+    "metal_condition_wait",
+    "metal_condition_signal",
+    "metal_mutex_release",
+    "metal_mutex_is_acquired",
+    "lock",
+    "counter",
+    "nempty_condv",
+    "nfull_condv",
+    "memcmp"
+  ],
+  "explanation": "- metal_mutex_acquire: target calls it directly; need its implementation to see whether it (or functions it calls) uses memcmp to compare null\u2011terminated strings.\n- metal_condition_wait: target calls it and it itself calls other mutex helpers; its body must be inspected for any memcmp usage or string comparisons performed while waiting.\n- metal_condition_signal: target calls it; include its implementation to ensure it does not invoke memcmp on C strings.\n- metal_mutex_release: target calls it (and metal_condition_wait calls it); inspect to ensure no memcmp usage.\n- metal_mutex_is_acquired: called by metal_condition_wait; include to follow the call chain for any memcmp use.\n- lock, counter, nempty_condv, nfull_condv: global objects referenced by the target; include their definitions to understand what data is passed into the called functions (e.g., if any are or wrap string data that could be compared with memcmp).\n- memcmp: the standard library function named by the MISRA rule \u2014 include it (or any project wrapper) to detect direct or indirect uses (calls) of memcmp in any of the above functions."
+}

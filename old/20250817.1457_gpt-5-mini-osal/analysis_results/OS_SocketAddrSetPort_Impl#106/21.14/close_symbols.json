@@ -1,0 +1,24 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_SocketAddrSetPort_Impl(OS_SockAddr_t *Addr, uint16 PortNum)\n{\n    in_port_t               sa_port;\n    OS_SockAddr_Accessor_t *Accessor;\n\n    sa_port  = htons(PortNum);\n    Accessor = (OS_SockAddr_Accessor_t *)&Addr->AddrData;\n\n    switch (Accessor->sa.sa_family)\n    {\n        case AF_INET:\n            Accessor->sa_in.sin_port = sa_port;\n            break;\n#ifdef OS_NETWORK_SUPPORTS_IPV6\n        case AF_INET6:\n            Accessor->sa_in6.sin6_port = sa_port;\n            break;\n#endif\n        default:\n            return OS_ERR_BAD_ADDRESS;\n    }\n\n    return OS_SUCCESS;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_SocketAddrSetPort_Impl': {'callees': [], 'callers': ['OS_SocketAddrSetPort']}, 'OS_SocketAddrSetPort': {'callees': ['OS_printf', 'OS_SocketAddrSetPort_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_SockAddr_t",
+    "OS_SockAddr_Accessor_t",
+    "AddrData",
+    "sa",
+    "sa_family",
+    "sa_in",
+    "sin_port",
+    "sa_in6",
+    "sin6_port",
+    "in_port_t",
+    "htons",
+    "AF_INET",
+    "AF_INET6",
+    "OS_NETWORK_SUPPORTS_IPV6",
+    "OS_ERR_BAD_ADDRESS",
+    "OS_SUCCESS",
+    "uint16",
+    "int32"
+  ],
+  "explanation": "Each listed symbol is needed to fully understand what the target function actually does and to ensure there is no hidden use of memcmp on null-terminated strings:\n\n- OS_SockAddr_t: Definition of the Addr parameter type. Required to see whether Addr accessors or embedded helpers might call memcmp or treat data as strings.\n- OS_SockAddr_Accessor_t: Definition of the accessor type used after the cast. Must be inspected to ensure no functions/macros inside its definition use memcmp on strings.\n- AddrData: The member of OS_SockAddr_t that's cast to the accessor. Needed to verify layout and any accessor helpers/macros.\n- sa: The generic socket-address sub-structure inside the accessor. Its contents (notably sa_family) determine the switch case and could be implemented via macros.\n- sa_family: Field used in the switch. Needed to ensure its access is a plain field read (not a macro/function that could use memcmp).\n- sa_in: IPv4-specific embedded struct in the accessor. Required to check whether writing sin_port is a plain assignment.\n- sin_port: Field written for AF_INET. Ensure this assignment does not hide any call to memcmp or string handling in accessor/overloaded operators.\n- sa_in6: IPv6-specific embedded struct in the accessor (conditional). Needed if IPv6 support is enabled to inspect any hidden behavior.\n- sin6_port: Field written for AF_INET6. Same reasons as sin_port.\n- in_port_t: Type of sa_port and port fields; inspect whether it's a typedef that could be implemented in an unexpected way.\n- htons: Function/macro called to convert PortNum. Needed to check that its implementation does not invoke memcmp (very unlikely but must be confirmed).\n- AF_INET: Macro/constant for IPv4 branch. Required to confirm conditional logic and that it is not a macro expanding to code that could call memcmp.\n- AF_INET6: Macro/constant for IPv6 branch; same rationale as AF_INET.\n- OS_NETWORK_SUPPORTS_IPV6: Conditional compilation macro controlling the IPv6 case. Needed to know whether the IPv6 code is present and must be inspected for memcmp usage.\n- OS_ERR_BAD_ADDRESS: Return constant used in default case. Included to verify it is a simple constant and not a function/macro that might call memcmp.\n- OS_SUCCESS: Return constant for success. Same rationale as OS_ERR_BAD_ADDRESS.\n- uint16: Type of PortNum (or the project typedef). Required to ensure there are no hidden wrappers that use string comparisons.\n- int32: Function return type as a typedef; included to ensure no hidden semantics.\n\nIn short: include the types, struct/field names, macros, and small helpers (htons) referenced by the function so the next analyzer can inspect their definitions and confirm no memcmp usage (particularly any memcmp used to compare null-terminated strings) is hidden behind macros, inline functions, or atypical typedefs."
+}

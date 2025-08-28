@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_init: enter\niteration 0: lbus=0x7f8811441b60\niteration 0: metal_linux_probe_bus returned 0\niteration 1: lbus=0x7f8811442dc8\niteration 1: metal_linux_probe_bus returned 0\nmetal_linux_bus_init: exit valid=2 return=0\nmetal_linux_bus_init: enter\niteration 0: lbus=0x55fd02163260\niteration 0: metal_linux_probe_bus returned 0\niteration 1: lbus=0x55fd021644c8\niteration 1: metal_linux_probe_bus returned 0\nmetal_linux_bus_init: exit valid=2 return=0\n"
+}

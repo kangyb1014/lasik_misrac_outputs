@@ -1,0 +1,21 @@
+{
+  "user_message": "<misra_rule>\nThe target MISRA C 2023 Rule 8.13 is: A pointer should point to a const-qualified type whenever possible.\n\n</misra_rule>\n<instruction>\nOther agents will judge whether the code follows the MISRA C 2023 guidelines.\nThey will investigate the code fragments you give.\nYour job is to find code fragments in the code that should be investigated to check whether the code follows the MISRA C rule.\n</instruction>\n<response format>\nProvide your answer with these fields.\n- suspicious_frags: The list of suspicious code fragments in the code.\nIt should contain only the code fragments exists in the code. If you do not find any suspicious code fragments, return an empty list for suspicious_frags\n- explanation: The explanation of why other code fragments should NOT be investigated.\nIt is very important to not miss any suspicious code fragments, so please give a sufficient explanation why other code fragments should not be investigated.\nDO NOT give any explanation for the selected suspicious code fragments.\n</response format>\n<target_code>\nHere is the code of ahc_echo:\n```c\nstatic enum MHD_Result\nahc_echo (void *cls,\n          struct MHD_Connection *connection,\n          const char *url,\n          const char *method,\n          const char *version,\n          const char *upload_data,\n          size_t *upload_data_size,\n          void **req_cls)\n{\n  static int aptr;\n  struct MHD_Response *response;\n  enum MHD_Result ret;\n\n  (void) cls;               /* Unused. Silent compiler warning. */\n  (void) url;               /* Unused. Silent compiler warning. */\n  (void) version;           /* Unused. Silent compiler warning. */\n  (void) upload_data;       /* Unused. Silent compiler warning. */\n  (void) upload_data_size;  /* Unused. Silent compiler warning. */\n\n  if (0 != strcmp (method, \"GET\"))\n    return MHD_NO;              /* unexpected method */\n  if (&aptr != *req_cls)\n  {\n    /* do never respond on first call */\n    *req_cls = &aptr;\n    return MHD_YES;\n  }\n  *req_cls = NULL;                  /* reset when done */\n  response = MHD_create_response_empty (MHD_RF_NONE);\n  ret = MHD_queue_response (connection,\n                            MHD_HTTP_NO_CONTENT,\n                            response);\n  MHD_destroy_response (response);\n  return ret;\n}\n```\n</target_code>\nPlease find suspicious code fragments in the code and report them. Other agents can not investigate other fragments that you do not report, so it is very important to find all suspicious fragments without missing any. Report the suspicious fragments AS MUCH AS POSSIBLE.",
+  "suspicious_frags": [
+    "ahc_echo (void *cls,",
+    "  (void) upload_data;       /* Unused. Silent compiler warning. */",
+    "          void **req_cls)",
+    "  (void) upload_data_size;  /* Unused. Silent compiler warning. */",
+    "          const char *method,",
+    "          size_t *upload_data_size,",
+    "    *req_cls = &aptr;",
+    "          const char *version,",
+    "  (void) cls;               /* Unused. Silent compiler warning. */",
+    "  if (&aptr != *req_cls)",
+    "          struct MHD_Connection *connection,",
+    "  if (0 != strcmp (method, \"GET\"))",
+    "          const char *upload_data,",
+    "  *req_cls = NULL;",
+    "          const char *url,"
+  ],
+  "explanation": "Fragments not listed do not need investigation for Rule 8.13 because they either already use const-qualified pointee types (e.g. const char *url, const char *method, const char *version, const char *upload_data) or are not pointer declarations where adding const to the pointed-to type would be applicable (e.g. static int aptr; local non-pointer variables; response and ret declarations and calls to MHD_* functions are API uses rather than pointer-type declarations). Also, some pointer writes (assignments to *req_cls) are included above so that reviewers can judge whether the pointee must remain non-const; other statements that merely use those pointers (e.g. passing connection to MHD_queue_response) are not separately listed because their relevance will be assessed when inspecting the parameter declarations and assignments already provided."
+}

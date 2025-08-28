@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER metal_linux_irq_notify: irq_notify_fd=5 val_addr=0x7ffdc51c2460 val_initial=1\nWRITE OK metal_linux_irq_notify: irq_notify_fd=5 wrote=8 expected=8 val_addr=0x7ffdc51c2460 val=1\nENTER metal_linux_irq_notify: irq_notify_fd=5 val_addr=0x7ffd6b73ab90 val_initial=1\nWRITE OK metal_linux_irq_notify: irq_notify_fd=5 wrote=8 expected=8 val_addr=0x7ffd6b73ab90 val=1\n"
+}

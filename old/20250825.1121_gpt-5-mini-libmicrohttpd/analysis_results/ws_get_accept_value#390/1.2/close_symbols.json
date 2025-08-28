@@ -1,0 +1,26 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\nws_get_accept_value (const char *key, char **val)\n{\n  struct SHA1Context ctx;\n  unsigned char hash[SHA1HashSize];\n  char *str;\n  ssize_t len;\n\n  if ( (NULL == key) || (WS_KEY_LEN != strlen (key)))\n  {\n    return MHD_NO;\n  }\n  str = malloc (WS_KEY_LEN + WS_GUID_LEN + 1);\n  if (NULL == str)\n  {\n    return MHD_NO;\n  }\n  strncpy (str, key, (WS_KEY_LEN + 1));\n  strncpy (str + WS_KEY_LEN, WS_GUID, WS_GUID_LEN + 1);\n  SHA1Reset (&ctx);\n  SHA1Input (&ctx, (const unsigned char *) str, WS_KEY_GUID_LEN);\n  if (SHA1_RESULT_SUCCESS != SHA1Result (&ctx, hash))\n  {\n    free (str);\n    return MHD_NO;\n  }\n  free (str);\n  len = BASE64Encode (hash, SHA1HashSize, val);\n  if (-1 == len)\n  {\n    return MHD_NO;\n  }\n  (*val)[len] = '\\0';\n  return MHD_YES;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'ws_get_accept_value': {'callees': ['SHA1Reset', 'SHA1Input', 'SHA1Result', 'BASE64Encode'], 'callers': ['ahc_cb']}, 'SHA1Reset': {'callees': [], 'callers': ['ws_get_accept_value']}, 'SHA1Input': {'callees': ['SHA1ProcessMessageBlock'], 'callers': ['ws_get_accept_value']}, 'SHA1Result': {'callees': ['SHA1PadMessage'], 'callers': ['ws_get_accept_value']}, 'BASE64Encode': {'callees': [], 'callers': ['ws_get_accept_value']}, 'ahc_cb': {'callees': ['MHD_lookup_connection_value', 'is_websocket_request', 'send_chat_page', 'send_bad_request', 'send_upgrade_required', 'MHD_lookup_connection_value_n', 'ws_get_accept_value', 'MHD_create_response_for_upgrade', 'MHD_add_response_header', 'MHD_destroy_response', 'MHD_queue_response'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "ssize_t",
+    "malloc",
+    "free",
+    "strncpy",
+    "strlen",
+    "NULL",
+    "SHA1Context",
+    "SHA1HashSize",
+    "SHA1_RESULT_SUCCESS",
+    "SHA1Reset (prototype)",
+    "SHA1Input (prototype)",
+    "SHA1Result (prototype)",
+    "BASE64Encode (prototype)",
+    "WS_KEY_LEN",
+    "WS_GUID_LEN",
+    "WS_KEY_GUID_LEN",
+    "WS_GUID",
+    "enum MHD_Result",
+    "MHD_NO",
+    "MHD_YES"
+  ],
+  "explanation": "For checking the MISRA rule about language extensions you must inspect any declarations, typedefs or macros used by the target function because compiler-specific extensions often appear there (attributes, asm labels, non\u2011standard keywords, compiler builtins, etc.). Reasoning for each symbol: \n\n- ssize_t: typedefs for integer types can be implementation/extension specific (e.g. typedef with attribute, or defined only via nonstandard headers). You need its definition to ensure no extension is used.\n- malloc / free: standard library function declarations can carry compiler attributes or be replaced by nonstandard wrappers; inspect prototypes to detect extensions.\n- strncpy / strlen: same as above \u2014 their declarations may use extensions/attributes or nonstandard overloads.\n- NULL: macro expansion could be implemented using compiler extensions (e.g. __null) \u2014 check definition.\n- SHA1Context: struct definition may use nonstandard extensions (bit\u2011fields with implementation specifics, anonymous structs/unions, attributes) so you must see it.\n- SHA1HashSize: macro/constant \u2014 could be computed with extension constructs or unusual definitions; check its definition.\n- SHA1_RESULT_SUCCESS: macro/enum constant used in comparison \u2014 inspect to ensure it is a plain constant and not an extension.\n- SHA1Reset (prototype), SHA1Input (prototype), SHA1Result (prototype): function declarations may include compiler-specific attributes, calling conventions or asm labels \u2014 need prototypes to verify absence of extensions.\n- BASE64Encode (prototype): the prototype (and its return/parameter types) must be checked for extensions (e.g. nonstandard ssize_t usage, attributes, varargs with extensions).\n- WS_KEY_LEN, WS_GUID_LEN, WS_KEY_GUID_LEN, WS_GUID: macros/strings used to compute buffer sizes and copying. Their definitions might use extension constructs (compound literals, GCC statement expressions, attributes) or nonstandard encodings \u2014 inspect them.\n- enum MHD_Result, MHD_NO, MHD_YES: the enum type and its enumerators must be checked because enum declarations can be annotated with extensions or macros could hide extension usage.\n\nCollecting these symbols (their typedefs, macros and prototypes/definitions) lets the next analyst examine whether any of those declarations employ compiler extensions that would cause the target function to violate the MISRA prohibition on language extensions."
+}

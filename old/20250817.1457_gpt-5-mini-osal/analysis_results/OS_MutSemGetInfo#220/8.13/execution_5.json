@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemGetInfo ENTRY: sem_id=3735928559, mut_prop=0x7ffd1c048400\nOS_MutSemGetInfo: after memset(mut_prop).\nOS_MutSemGetInfo: OS_ObjectIdGetById returned -35\nOS_MutSemGetInfo: token raw bytes: 0000000000000000000000000000000000000000\nOS_MutSemGetInfo: returning error without accessing record\nOS_MutSemGetInfo EXIT: return_code=-35\nOS_MutSemGetInfo ENTRY: sem_id=0, mut_prop=0x7ffd1c048400\nOS_MutSemGetInfo: after memset(mut_prop).\nOS_MutSemGetInfo: OS_ObjectIdGetById returned -35\nOS_MutSemGetInfo: token raw bytes: 0000000000000000000000000000000000000000\nOS_MutSemGetInfo: returning error without accessing record\nOS_MutSemGetInfo EXIT: return_code=-35\n"
+}

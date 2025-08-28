@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_irq_notify: enter\n  val (non-const) = 1\n  &val = 0x7ffc7b52df68\n  sizeof(val) = 8\nmetal_linux_irq_notify: exit\n  write returned = 8\nmetal_linux_irq_notify: enter\n  val (non-const) = 1\n  &val = 0x7ffc2666c508\n  sizeof(val) = 8\nmetal_linux_irq_notify: exit\n  write returned = 8\n"
+}

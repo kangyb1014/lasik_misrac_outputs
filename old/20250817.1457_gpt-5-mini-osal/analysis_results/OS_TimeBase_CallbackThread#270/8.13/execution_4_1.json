@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpyzzix9zk/src/src/os/shared/src/osapi-timebase.c: In function 'OS_TimeBase_Log_Internal':\n/tmp/tmpyzzix9zk/src/src/os/shared/src/osapi-timebase.c:400:22: error: cast specifies array type\n  400 |     vfprintf(f, fmt, (va_list)ap);\n      |                      ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:356: CMakeFiles/osal.dir/src/os/shared/src/osapi-timebase.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

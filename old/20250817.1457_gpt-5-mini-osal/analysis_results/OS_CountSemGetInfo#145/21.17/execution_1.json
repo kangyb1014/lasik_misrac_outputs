@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_CountSemGetInfo: entry sem_id=3735928559, count_prop=0x7ffd850c0e10\nOS_CountSemGetInfo: OS_ObjectIdGetById failed, return_code=-35\nOS_CountSemGetInfo: exit return_code=-35\nOS_CountSemGetInfo: entry sem_id=0, count_prop=0x7ffd850c0e10\nOS_CountSemGetInfo: OS_ObjectIdGetById failed, return_code=-35\nOS_CountSemGetInfo: exit return_code=-35\n"
+}

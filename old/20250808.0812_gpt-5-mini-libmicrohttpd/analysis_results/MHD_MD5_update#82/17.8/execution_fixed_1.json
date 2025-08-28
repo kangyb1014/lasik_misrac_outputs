@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "In file included from md5.c:35:\nmd5.h:71:29: error: expected identifier or '(' before numeric constant\n   71 | #define MD5_BLOCK_SIZE_BITS 512\n      |                             ^~~\nmd5.h:76:25: note: in expansion of macro 'MD5_BLOCK_SIZE_BITS'\n   76 | #define MD5_BLOCK_SIZE (MD5_BLOCK_SIZE_BITS / 8)\n      |                         ^~~~~~~~~~~~~~~~~~~\nmd5.c:401:14: note: in expansion of macro 'MD5_BLOCK_SIZE'\n  401 | const size_t MD5_BLOCK_SIZE = 64;\n      |              ^~~~~~~~~~~~~~\nmake[3]: *** [Makefile:2231: libmicrohttpd_la-md5.lo] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

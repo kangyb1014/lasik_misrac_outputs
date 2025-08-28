@@ -1,0 +1,28 @@
+{
+  "user_message": "Target function code is:\n```c\ntime_t\nMHD_monotonic_sec_counter (void)\n{\n#ifdef HAVE_CLOCK_GETTIME\n  struct timespec ts;\n\n  if ( (_MHD_UNWANTED_CLOCK != mono_clock_id) &&\n       (0 == clock_gettime (mono_clock_id,\n                            &ts)) )\n    return ts.tv_sec - mono_clock_start;\n#endif /* HAVE_CLOCK_GETTIME */\n#ifdef HAVE_CLOCK_GET_TIME\n  if (_MHD_INVALID_CLOCK_SERV != mono_clock_service)\n  {\n    mach_timespec_t cur_time;\n\n    if (KERN_SUCCESS == clock_get_time (mono_clock_service,\n                                        &cur_time))\n      return cur_time.tv_sec - mono_clock_start;\n  }\n#endif /* HAVE_CLOCK_GET_TIME */\n#if defined(_WIN32)\n#if _WIN32_WINNT >= 0x0600\n  if (1)\n    return (time_t) (((uint64_t) (GetTickCount64 () - tick_start)) / 1000);\n#else  /* _WIN32_WINNT < 0x0600 */\n  if (0 != perf_freq)\n  {\n    LARGE_INTEGER perf_counter;\n\n    QueryPerformanceCounter (&perf_counter);   /* never fail on XP and later */\n    return (time_t) (((uint64_t) perf_counter.QuadPart - perf_start)\n                     / perf_freq);\n  }\n#endif /* _WIN32_WINNT < 0x0600 */\n#endif /* _WIN32 */\n#ifdef HAVE_GETHRTIME\n  if (1)\n    return (time_t) (((uint64_t) (gethrtime () - hrtime_start)) / 1000000000);\n#endif /* HAVE_GETHRTIME */\n\n  return time (NULL) - sys_clock_start;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "HAVE_CLOCK_GETTIME",
+    "HAVE_CLOCK_GET_TIME",
+    "_WIN32",
+    "_WIN32_WINNT",
+    "HAVE_GETHRTIME",
+    "mono_clock_id",
+    "_MHD_UNWANTED_CLOCK",
+    "clock_gettime",
+    "mono_clock_start",
+    "mono_clock_service",
+    "_MHD_INVALID_CLOCK_SERV",
+    "clock_get_time",
+    "KERN_SUCCESS",
+    "tick_start",
+    "GetTickCount64",
+    "perf_freq",
+    "QueryPerformanceCounter",
+    "perf_start",
+    "gethrtime",
+    "hrtime_start",
+    "time",
+    "sys_clock_start"
+  ],
+  "explanation": "For determining unreachable code in MHD_monotonic_sec_counter you must know which conditional compilation branches are present (compile-time macros) and the possible runtime outcomes of the run-time conditions and function calls that control early returns. Each symbol is required for the following reason:\n\n- HAVE_CLOCK_GETTIME: controls whether the clock_gettime block is compiled \u2014 necessary to know if that branch exists at all.\n- HAVE_CLOCK_GET_TIME: controls whether the Mach clock_get_time block is compiled.\n- _WIN32: controls whether Windows-specific code is compiled.\n- _WIN32_WINNT: selects which Windows sub-branch (GetTickCount64 vs QueryPerformanceCounter) is compiled.\n- HAVE_GETHRTIME: controls whether the gethrtime() block is compiled.\n\n- mono_clock_id: runtime value tested against _MHD_UNWANTED_CLOCK; needed to decide if the clock_gettime branch's if condition can be true.\n- _MHD_UNWANTED_CLOCK: constant compared to mono_clock_id; needed to evaluate that condition.\n- clock_gettime: its return value (0 on success) is used in the conjunction determining whether that branch returns \u2014 needed to know if the return statement can execute.\n- mono_clock_start: used in the return expression; knowing it is not required for reachability itself but needed to ensure the return is meaningful and not optimized away.\n\n- mono_clock_service: runtime value tested against _MHD_INVALID_CLOCK_SERV for the Mach path; required to assess reachability of that return.\n- _MHD_INVALID_CLOCK_SERV: constant compared to mono_clock_service; required to evaluate the Mach-path guard.\n- clock_get_time: its return code is compared to KERN_SUCCESS to decide whether that branch returns \u2014 needed to determine reachability.\n- KERN_SUCCESS: constant compared against clock_get_time result; required to interpret that test.\n\n- tick_start: used by GetTickCount64 path; required to check whether that Windows return path is reachable and what it computes.\n- GetTickCount64: presence/semantics of this API determine whether the if-1 return under _WIN32_WINNT >= 0x0600 is reachable/valid.\n- perf_freq: tested for non-zero to enter the QueryPerformanceCounter path; its value decides whether that Windows path can run.\n- QueryPerformanceCounter: used to obtain perf_counter; its availability/semantics affect reachability and whether the return executes.\n- perf_start: used in the QueryPerformanceCounter return expression; needed to reason about the return but primarily to ensure that the branch is non-trivial.\n\n- gethrtime: presence/semantics of this API determine whether the HAVE_GETHRTIME block's if(1) return is compiled and reachable.\n- hrtime_start: used in gethrtime() return expression; required to check meaningfulness of that return.\n\n- time: fallback call used in the final return; needed because if all earlier branches are absent or cannot return, this final return is the reachable fallback.\n- sys_clock_start: used in the final return expression; needed to ensure the final return is not dead code.\n\nIn short: the compile-time macros determine which code blocks exist; the listed globals/constants/functions determine whether the if-tests and API calls inside those blocks can succeed and cause the function to return early. Without these symbols (their definitions/values/semantics) you cannot conclude whether some return statements or entire blocks are unreachable (violate the MISRA rule)."
+}

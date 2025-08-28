@@ -1,4 +1,0 @@
-{
-  "result": "success",
-  "message": "Attempting to unlock mutex.\nMutex unlocked successfully. Restoring cancel state.\n"
-}

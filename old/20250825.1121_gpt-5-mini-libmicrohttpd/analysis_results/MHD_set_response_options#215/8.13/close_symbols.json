@@ -1,0 +1,19 @@
+{
+  "user_message": "Target function code is:\n```c\n_MHD_EXTERN enum MHD_Result\nMHD_set_response_options (struct MHD_Response *response,\n                          enum MHD_ResponseFlags flags,\n                          ...)\n{\n  va_list ap;\n  enum MHD_Result ret;\n  enum MHD_ResponseOptions ro;\n\n  if (0 != (response->flags_auto & MHD_RAF_HAS_CONTENT_LENGTH))\n  { /* Response has custom \"Content-Lengh\" header */\n    if ( (0 != (response->flags & MHD_RF_INSANITY_HEADER_CONTENT_LENGTH)) &&\n         (0 == (flags & MHD_RF_INSANITY_HEADER_CONTENT_LENGTH)))\n    { /* Request to remove MHD_RF_INSANITY_HEADER_CONTENT_LENGTH flag */\n      return MHD_NO;\n    }\n    if ( (0 != (response->flags & MHD_RF_HEAD_ONLY_RESPONSE)) &&\n         (0 == (flags & MHD_RF_HEAD_ONLY_RESPONSE)))\n    { /* Request to remove MHD_RF_HEAD_ONLY_RESPONSE flag */\n      if (0 == (flags & MHD_RF_INSANITY_HEADER_CONTENT_LENGTH))\n        return MHD_NO;\n    }\n  }\n\n  if ( (0 != (flags & MHD_RF_HEAD_ONLY_RESPONSE)) &&\n       (0 != response->total_size) )\n    return MHD_NO;\n\n  ret = MHD_YES;\n  response->flags = flags;\n\n  va_start (ap, flags);\n  while (MHD_RO_END != (ro = va_arg (ap, enum MHD_ResponseOptions)))\n  {\n    switch (ro)\n    {\n    case MHD_RO_END: /* Not possible */\n      break;\n    default:\n      ret = MHD_NO;\n      break;\n    }\n  }\n  va_end (ap);\n  return ret;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "struct MHD_Response",
+    "struct MHD_Response::flags",
+    "struct MHD_Response::flags_auto",
+    "struct MHD_Response::total_size",
+    "enum MHD_Result",
+    "MHD_YES",
+    "MHD_NO",
+    "enum MHD_ResponseFlags",
+    "MHD_RF_INSANITY_HEADER_CONTENT_LENGTH",
+    "MHD_RF_HEAD_ONLY_RESPONSE",
+    "MHD_RAF_HAS_CONTENT_LENGTH",
+    "enum MHD_ResponseOptions",
+    "MHD_RO_END"
+  ],
+  "explanation": "To decide whether the parameter pointer 'struct MHD_Response *response' (and any other pointers) should be const-qualified you must know which object members are read or written and whether any of the used symbols are pointer types or have const qualifiers. Provide:\n\n- struct MHD_Response and its members (flags, flags_auto, total_size): to see whether the function modifies any part of *response (the code assigns response->flags and reads flags_auto and total_size). The member types and any existing const qualifiers determine whether the pointer could legally be const.\n- enum MHD_Result and the constants MHD_YES / MHD_NO: to confirm the return type and whether these are macros/enum values (not pointer-bearing) and whether their definitions impose constness constraints.\n- enum MHD_ResponseFlags and the flag constants used (MHD_RF_INSANITY_HEADER_CONTENT_LENGTH, MHD_RF_HEAD_ONLY_RESPONSE, MHD_RAF_HAS_CONTENT_LENGTH): to check whether these are ordinary integer/enum constants or expand to expressions involving pointers or const-qualified types that would affect pointer constness.\n- enum MHD_ResponseOptions and MHD_RO_END: to verify that the variadic argument handling (va_arg(..., enum MHD_ResponseOptions)) is not returning pointer types or types that require const qualification.\n\nWith these definitions the next analyst can determine whether 'response' (or any other pointer used) is modified or points to objects that must be mutable, and thus whether const qualification is appropriate under the MISRA rule."
+}

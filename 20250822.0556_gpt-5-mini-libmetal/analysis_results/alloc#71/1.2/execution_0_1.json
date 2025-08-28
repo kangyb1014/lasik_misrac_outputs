@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "event=alloc_enter ptr=(nil) errno=0 ts=1755843034\nevent=alloc_succeeded ptr=0x5639428ce520 errno=0 ts=1755843034\nevent=alloc_freed ptr=0x5639428ce520 errno=0 ts=1755843034\nevent=alloc_exit ptr=(nil) errno=0 ts=1755843034\nevent=alloc_enter ptr=(nil) errno=0 ts=1755843035\nevent=alloc_succeeded ptr=0x556d52803520 errno=0 ts=1755843035\nevent=alloc_freed ptr=0x556d52803520 errno=0 ts=1755843035\nevent=alloc_exit ptr=(nil) errno=0 ts=1755843035\n"
+}

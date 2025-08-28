@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "=== metal_sys_init entered ===\nTMPDIR env -> (null)\n_metal.tmp_path set to '/tmp'\nseed read from /dev/urandom: 3155825514 (0xbc1a136a), bytes=4\nsrand called with seed 3155825514\nmetal_init_page_sizes returned 0\nmetal_linux_bus_init returned 0\nOpened /proc/self/pagemap, fd=5\nmetal_linux_irq_init completed, returning 0\n=== metal_sys_init entered ===\nTMPDIR env -> (null)\n_metal.tmp_path set to '/tmp'\nseed read from /dev/urandom: 620283458 (0x24f8c642), bytes=4\nsrand called with seed 620283458\nmetal_init_page_sizes returned 0\nmetal_linux_bus_init returned 0\nOpened /proc/self/pagemap, fd=5\nmetal_linux_irq_init completed, returning 0\n"
+}

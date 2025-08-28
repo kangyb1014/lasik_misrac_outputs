@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\nIn file included from /tmp/tmp709_ui10/src/lib/softirq.c:20:\n/tmp/tmp709_ui10/build/lib/include/metal/irq_controller.h:34:30: error: expected identifier or '(' before numeric constant\n   34 | #define METAL_IRQ_ENABLE     1U\n      |                              ^~\n/tmp/tmp709_ui10/src/lib/softirq.c:38:27: note: in expansion of macro 'METAL_IRQ_ENABLE'\n   38 | static const unsigned int METAL_IRQ_ENABLE = 1u;\n      |                           ^~~~~~~~~~~~~~~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:174: lib/CMakeFiles/metal-shared.dir/softirq.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

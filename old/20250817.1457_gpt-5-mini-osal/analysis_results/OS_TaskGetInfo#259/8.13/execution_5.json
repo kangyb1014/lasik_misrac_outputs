@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[OS_TaskGetInfo] stage=entry\n  task_id=3735928559\n  local_token_addr=0x7fffd6cfa210\n  return_code=0\n  record_ptr=NULL\n  task_ptr=NULL\n---\n[OS_TaskGetInfo] stage=after_ObjectIdGetById\n  task_id=3735928559\n  local_token_addr=0x7fffd6cfa210\n  return_code=-35\n  record_ptr=NULL\n  task_ptr=NULL\n---\n[OS_TaskGetInfo] stage=exit\n  task_id=3735928559\n  local_token_addr=0x7fffd6cfa210\n  return_code=-35\n  record_ptr=NULL\n  task_ptr=NULL\n---\n[OS_TaskGetInfo] stage=entry\n  task_id=0\n  local_token_addr=0x7fffd6cfa210\n  return_code=0\n  record_ptr=NULL\n  task_ptr=NULL\n---\n[OS_TaskGetInfo] stage=after_ObjectIdGetById\n  task_id=0\n  local_token_addr=0x7fffd6cfa210\n  return_code=-35\n  record_ptr=NULL\n  task_ptr=NULL\n---\n[OS_TaskGetInfo] stage=exit\n  task_id=0\n  local_token_addr=0x7fffd6cfa210\n  return_code=-35\n  record_ptr=NULL\n  task_ptr=NULL\n---\n"
+}

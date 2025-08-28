@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpttu90_nh/src/lib/system/linux/device.c: In function 'metal_linux_dev_dma_map':\n/tmp/tmpttu90_nh/src/lib/system/linux/device.c:528:21: error: invalid storage class for function 'probe_log'\n  528 |         static void probe_log(struct linux_bus *lbus, struct linux_device *ldev,\n      |                     ^~~~~~~~~\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:216: lib/CMakeFiles/metal-shared.dir/system/linux/device.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

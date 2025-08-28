@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemGetInfo ENTER: sem_id=3735928559, bin_prop=0x7fff25e656a0\nOS_ObjectIdGetById returned -35; token address=0x7fff25e65650, token_size=20\nOS_BinSemGetInfo: ObjectIdGetById failed with -35; returning\nOS_BinSemGetInfo ENTER: sem_id=0, bin_prop=0x7fff25e656a0\nOS_ObjectIdGetById returned -35; token address=0x7fff25e65650, token_size=20\nOS_BinSemGetInfo: ObjectIdGetById failed with -35; returning\n"
+}

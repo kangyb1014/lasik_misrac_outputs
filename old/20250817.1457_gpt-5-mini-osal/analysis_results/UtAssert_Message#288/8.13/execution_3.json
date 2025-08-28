@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/usr/bin/ld: ../../ut_assert/libut_assert.a(utbsp.c.o): in function `UT_BSP_DoText':\n/tmp/tmpeq9fzb0h/src/ut_assert/src/utbsp.c:116: multiple definition of `UT_BSP_DoText'; ../../ut_assert/libut_assert.a(utassert.c.o):/tmp/tmpeq9fzb0h/src/ut_assert/src/utassert.c:311: first defined here\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [unit-test-coverage/vxworks/CMakeFiles/coverage-vxworks-binsem-testrunner.dir/build.make:111: unit-test-coverage/vxworks/coverage-vxworks-binsem-testrunner] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:1170: unit-test-coverage/vxworks/CMakeFiles/coverage-vxworks-binsem-testrunner.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

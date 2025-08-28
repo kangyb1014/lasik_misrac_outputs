@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmplewse6at/src/src/os/shared/src/osapi-module.c: In function 'OS_ModuleSymbolLookup':\n/tmp/tmplewse6at/src/src/os/shared/src/osapi-module.c:416:16: error: missing terminating \" character\n  416 |     os1699_log(\"OS_ModuleSymbolLookup ENTRY: module_id=%\n      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/tmplewse6at/src/src/os/shared/src/osapi-module.c:425:1: error: expected expression before 'int32'\n  425 | int32 OS_SymbolTableDump(const char *filename, size_t SizeLimit)\n      | ^~~~~\n/tmp/tmplewse6at/src/src/os/shared/src/osapi-module.c:463:1: error: expected declaration or statement at end of input\n  463 | }\n      | ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:230: CMakeFiles/osal.dir/src/os/shared/src/osapi-module.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

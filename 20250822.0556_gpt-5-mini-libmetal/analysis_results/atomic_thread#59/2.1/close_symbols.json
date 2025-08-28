@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_test_count",
+    "definitions/assignments that modify atomic_test_count (initializers and all writers)",
+    "atomic_fetch_add",
+    "atomic_int (typedef/definition)",
+    "callers of atomic_thread (all call sites that take &atomic_thread or pass it to thread-creation APIs, e.g. pthread_create sites)",
+    "NULL"
+  ],
+  "explanation": "atomic_test_count \u2014 The loop bound; to decide if the for-loop body (and any code inside it) is ever reachable you must know the variable's type, initializer and all possible assignments. If atomic_test_count is a compile-time constant zero or is never set >0, the loop body would be unreachable. \"definitions/assignments that modify atomic_test_count\" \u2014 Static analysis must examine where and how this global is written (initialization and all writers) to determine possible values at the site. atomic_fetch_add \u2014 The called routine inside the loop: its declaration/definition is needed to rule out unusual behavior that could make subsequent code unreachable (for example, if it were defined as non-returning or to loop forever). atomic_int (typedef/definition) \u2014 The pointee type lets the analyser determine whether the cast from void* and the use of atomic_fetch_add are well-formed; it can also reveal qualifiers (e.g. volatile) that affect value/lifetime reasoning. callers of atomic_thread \u2014 To determine whether the entire function is reachable at all, you must know every place it is referenced or passed as a thread entry (call sites or thread-creation APIs). If there are no callers, the whole function is unreachable. NULL \u2014 The returned value; knowledge of the NULL macro/type (usually from stddef.h) is required to reason about the return statement's reachability/meaning (and to check for any macro redefinition that could alter control flow)."
+}

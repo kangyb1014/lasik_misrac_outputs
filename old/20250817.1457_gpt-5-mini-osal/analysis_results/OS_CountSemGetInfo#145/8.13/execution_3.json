@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "ENTER: OS_CountSemGetInfo sem_id=3735928559, count_prop_ptr=0x7ffe025e0a40\nAfter OS_ObjectIdGetById: return_code=-35, token_addr=0x7ffe025e09a0\nOS_ObjectIdGetById failed: return_code=-35\nEXIT: OS_CountSemGetInfo return_code=-35\nENTER: OS_CountSemGetInfo sem_id=0, count_prop_ptr=0x7ffe025e0a40\nAfter OS_ObjectIdGetById: return_code=-35, token_addr=0x7ffe025e09a0\nOS_ObjectIdGetById failed: return_code=-35\nEXIT: OS_CountSemGetInfo return_code=-35\n"
+}

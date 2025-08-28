@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpm4tvjgc8/src/src/os/shared/src/osapi-sockets.c: In function 'OS_SocketOpen':\n/tmp/tmpm4tvjgc8/src/src/os/shared/src/osapi-sockets.c:162:9: error: aggregate value used where an integer was expected\n  162 |         OS_SocketOpen_Log(\"Allocated token=%lu stream=%p\", (unsigned long)token, (void *)stream);\n      |         ^~~~~~~~~~~~~~~~~\n/tmp/tmpm4tvjgc8/src/src/os/shared/src/osapi-sockets.c:172:9: error: aggregate value used where an integer was expected\n  172 |         OS_SocketOpen_Log(\"Calling OS_SocketOpen_Impl with token=%lu\", (unsigned long)token);\n      |         ^~~~~~~~~~~~~~~~~\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:328: CMakeFiles/osal.dir/src/os/shared/src/osapi-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

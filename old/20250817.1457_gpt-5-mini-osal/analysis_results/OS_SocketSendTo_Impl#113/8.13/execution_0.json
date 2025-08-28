@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp1e9cm15h/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketSendTo_Impl':\n/tmp/tmp1e9cm15h/src/src/os/portable/os-impl-bsd-sockets.c:583:17: error: invalid storage class for function 'probe_log_before'\n  583 |     static void probe_log_before(const OS_object_token_t *token_ptr,\n      |                 ^~~~~~~~~~~~~~~~\n/tmp/tmp1e9cm15h/src/src/os/portable/os-impl-bsd-sockets.c:619:17: error: invalid storage class for function 'probe_log_after'\n  619 |     static void probe_log_after(const OS_impl_file_internal_record_t *impl_ptr, int result)\n      |                 ^~~~~~~~~~~~~~~\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *producer_thread(void *arg)\n{\n\t(void)arg;\n\tmetal_mutex_acquire(&lock);\n\twhile (counter == COUNTER_MAX)\n\t\tmetal_condition_wait(&nfull_condv, &lock);\n\tcounter++;\n\tmetal_condition_signal(&nempty_condv);\n\tmetal_mutex_release(&lock);\n\n\treturn NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'producer_thread': {'callees': ['metal_mutex_acquire', 'metal_condition_wait', 'metal_condition_signal', 'metal_mutex_release'], 'callers': []}, 'metal_mutex_acquire': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_save_disable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}, 'metal_condition_wait': {'callees': ['metal_mutex_is_acquired', 'metal_mutex_release', 'metal_mutex_acquire'], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_condition_signal': {'callees': [], 'callers': ['consumer_thread', 'producer_thread']}, 'metal_mutex_release': {'callees': [], 'callers': ['metal_condition_wait', 'metal_irq_restore_enable', 'metal_linux_irq_set_enable', 'metal_linux_irq_handling', 'mutex_thread', 'consumer_thread', 'producer_thread']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "counter",
+    "COUNTER_MAX",
+    "lock",
+    "nfull_condv",
+    "nempty_condv",
+    "metal_mutex_acquire",
+    "metal_condition_wait",
+    "metal_condition_signal",
+    "metal_mutex_release",
+    "pthread_create",
+    "metal_thread_create",
+    "main",
+    "mutex_thread",
+    "consumer_thread"
+  ],
+  "explanation": "To determine whether producer_thread is unreachable (MISRA rule), the analyzer must see (1) all local/global symbols used by the function so the function body cannot be considered dead based on their semantics, and (2) all places and APIs that could take its address / start it as a thread or otherwise call it. \u2022 counter, COUNTER_MAX: the global variable and limit referenced by the loop; needed to know whether the loop or increments affect reachability reasoning (and whether counter is optimized away). \u2022 lock, nfull_condv, nempty_condv: synchronization objects whose types/initializers might reference producer_thread (e.g., in static initializers) or influence whether the function is required/used by thread system. \u2022 metal_mutex_acquire, metal_condition_wait, metal_condition_signal, metal_mutex_release: callees whose implementations could contain indirect calls, callbacks, or registration logic that reference producer_thread (or otherwise make it reachable); their semantics also affect whether the code inside producer_thread can be considered executable. \u2022 pthread_create, metal_thread_create: common thread-creation APIs that may be passed producer_thread as the start routine; must be examined to find invocations that would make producer_thread reachable. \u2022 main: program entry that typically creates threads or registers callbacks; needed to find direct/indirect references to producer_thread. \u2022 mutex_thread, consumer_thread: peer thread functions that are often created or registered from the same call sites as producer_thread; analyzing them and their creation sites helps find patterns/places where producer_thread might be started (or its address taken)."
+}

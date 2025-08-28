@@ -1,0 +1,21 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_DirCreate_Impl(const char *local_path, uint32 access)\n{\n    struct stat st;\n    int32       return_code;\n\n    if (mkdir(local_path, S_IFDIR | S_IRWXU | S_IRWXG | S_IRWXO) < 0)\n    {\n        return_code = OS_ERROR;\n\n        if (errno == EEXIST)\n        {\n            /* Success if already exists and is a directory */\n            if (stat(local_path, &st) == 0 && S_ISDIR(st.st_mode))\n            {\n                return_code = OS_SUCCESS;\n            }\n        }\n    }\n    else\n    {\n        return_code = OS_SUCCESS;\n    }\n\n    return return_code;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_DirCreate_Impl': {'callees': [], 'callers': ['OS_mkdir']}, 'OS_mkdir': {'callees': ['OS_TranslatePath', 'OS_DirCreate_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "mkdir",
+    "stat",
+    "errno",
+    "EEXIST",
+    "S_ISDIR",
+    "struct stat",
+    "S_IFDIR",
+    "S_IRWXU",
+    "S_IRWXG",
+    "S_IRWXO",
+    "mode_t",
+    "OS_ERROR",
+    "OS_SUCCESS",
+    "uint32",
+    "int32"
+  ],
+  "explanation": "For checking the MISRA rule \u201cA function parameter should not be modified\u201d for OS_DirCreate_Impl we must know the types and behavior of every symbol the function uses so we can prove the parameter variables (local_path and access) are not assigned or otherwise modified inside the function or by callees in a way that changes the pointer variable itself. Reason for each symbol:\n\n- mkdir: Its prototype (e.g. int mkdir(const char *pathname, mode_t mode)) is needed to confirm it takes the path by value (const char *) so the local pointer variable is not modified by this call.\n- stat: Its prototype (e.g. int stat(const char *path, struct stat *buf)) is needed to confirm it takes the path by value (const char *) and therefore does not modify the pointer parameter variable.\n- errno: The global used for error checking; include its declaration (extern int errno) to understand error-check logic and to ensure no interference with parameter modification.\n- EEXIST: The errno constant used in the conditional; required to understand control flow that depends on mkdir failure but does not modify parameters.\n- S_ISDIR: Macro used to test st.st_mode; need its definition to verify it reads struct stat only and does not mutate the provided path/pointer.\n- struct stat: Definition is required to verify stat() fills this struct and that S_ISDIR operates on st.st_mode (no modification of pointer parameters).\n- S_IFDIR, S_IRWXU, S_IRWXG, S_IRWXO: Mode macros passed to mkdir; their presence/definitions ensure the second argument to mkdir is a mode_t value and do not imply any modification of the pointer parameter.\n- mode_t: Type of the second mkdir argument; seeing the correct prototype ensures the second argument is not the address of the path (i.e., confirms path is passed by value).\n- OS_ERROR, OS_SUCCESS: Return-code macros used by the function; included so the return-value logic can be understood when assessing whether any parameter-modifying action is implied by returning different codes.\n- uint32, int32: Typedefs for the function parameters and return type; needed to ensure 'access' is a plain (non-pointer) integer parameter (so it cannot be modified via indirection) and that return type semantics do not hide any side-effects.\n\nNote: Only symbols actually referenced in the target function body are listed. Callers (e.g., OS_mkdir) or unrelated UT stub symbols are not required for determining whether this function itself modifies its parameters."
+}

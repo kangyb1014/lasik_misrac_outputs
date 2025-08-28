@@ -1,0 +1,1 @@
+/ssd_home/yeongbin/lasik/misrac_subjects/osal/srcs/equuleus-rc1/src/bsp/shared/src/bsp_default_app_startup.c

@@ -1,0 +1,32 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic ssize_t\nrecv_param_adapter (struct MHD_Connection *connection,\n                    void *other,\n                    size_t i)\n{\n  ssize_t ret;\n\n  if ( (MHD_INVALID_SOCKET == connection->socket_fd) ||\n       (MHD_CONNECTION_CLOSED == connection->state) )\n  {\n    return MHD_ERR_NOTCONN_;\n  }\n  if (i > MHD_SCKT_SEND_MAX_SIZE_)\n    i = MHD_SCKT_SEND_MAX_SIZE_; /* return value limit */\n\n  ret = MHD_recv_ (connection->socket_fd,\n                   other,\n                   i);\n  if (0 > ret)\n  {\n    const int err = MHD_socket_get_error_ ();\n    if (MHD_SCKT_ERR_IS_EAGAIN_ (err))\n    {\n#ifdef EPOLL_SUPPORT\n      /* Got EAGAIN --- no longer read-ready */\n      connection->epoll_state &=\n        ~((enum MHD_EpollState) MHD_EPOLL_STATE_READ_READY);\n#endif /* EPOLL_SUPPORT */\n      return MHD_ERR_AGAIN_;\n    }\n    if (MHD_SCKT_ERR_IS_EINTR_ (err))\n      return MHD_ERR_AGAIN_;\n    if (MHD_SCKT_ERR_IS_REMOTE_DISCNN_ (err))\n      return MHD_ERR_CONNRESET_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_EOPNOTSUPP_))\n      return MHD_ERR_OPNOTSUPP_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_ENOTCONN_))\n      return MHD_ERR_NOTCONN_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_EINVAL_))\n      return MHD_ERR_INVAL_;\n    if (MHD_SCKT_ERR_IS_LOW_RESOURCES_ (err))\n      return MHD_ERR_NOMEM_;\n    if (MHD_SCKT_ERR_IS_ (err, MHD_SCKT_EBADF_))\n      return MHD_ERR_BADF_;\n    /* Treat any other error as a hard error. */\n    return MHD_ERR_NOTCONN_;\n  }\n#ifdef EPOLL_SUPPORT\n  else if (i > (size_t) ret)\n    connection->epoll_state &=\n      ~((enum MHD_EpollState) MHD_EPOLL_STATE_READ_READY);\n#endif /* EPOLL_SUPPORT */\n  return ret;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "struct MHD_Connection",
+    "MHD_INVALID_SOCKET",
+    "MHD_CONNECTION_CLOSED",
+    "ssize_t",
+    "MHD_SCKT_SEND_MAX_SIZE_",
+    "MHD_recv_",
+    "MHD_socket_get_error_",
+    "MHD_SCKT_ERR_IS_EAGAIN_",
+    "MHD_SCKT_ERR_IS_EINTR_",
+    "MHD_SCKT_ERR_IS_REMOTE_DISCNN_",
+    "MHD_SCKT_ERR_IS_",
+    "MHD_SCKT_EOPNOTSUPP_",
+    "MHD_SCKT_ENOTCONN_",
+    "MHD_SCKT_EINVAL_",
+    "MHD_SCKT_ERR_IS_LOW_RESOURCES_",
+    "MHD_SCKT_EBADF_",
+    "MHD_ERR_NOTCONN_",
+    "MHD_ERR_AGAIN_",
+    "MHD_ERR_CONNRESET_",
+    "MHD_ERR_OPNOTSUPP_",
+    "MHD_ERR_INVAL_",
+    "MHD_ERR_NOMEM_",
+    "MHD_ERR_BADF_",
+    "EPOLL_SUPPORT",
+    "enum MHD_EpollState",
+    "MHD_EPOLL_STATE_READ_READY"
+  ],
+  "explanation": "For MISRA rule checking of \u2018\u2018language extensions should not be used\u2019\u2019 we must inspect the definitions of every macro, type, enum and function referenced by recv_param_adapter to detect any compiler/implementation extensions (e.g. GCC/clang builtins, __attribute__, inline asm, typeof, statement-expressions, unnamed struct/union extensions, nonstandard storage-class/specifiers, nonstandard macro tricks). Each listed symbol is required for the following reasons:\n\n- struct MHD_Connection: to see its definition (fields socket_fd, state, epoll_state) for any nonstandard/extension features (anonymous structs/unions, bit-field widths using implementation-defined types, attributes, pragmas).\n- MHD_INVALID_SOCKET, MHD_CONNECTION_CLOSED: to check whether these are simple constants/macros or use extensions (e.g. compiler-specific casts, builtin constants).\n- ssize_t: to verify whether this typedef comes from a system header or is faked using compiler-specific types or extensions.\n- MHD_SCKT_SEND_MAX_SIZE_: to verify if it is a plain constant or uses extension syntax.\n- MHD_recv_: to inspect its declaration/definition for nonstandard function attributes, inline asm, builtin wrappers, variadic macros or GCC-specific prototypes.\n- MHD_socket_get_error_: to check for any builtins or extension usage in its implementation/definition.\n- MHD_SCKT_ERR_IS_EAGAIN_, MHD_SCKT_ERR_IS_EINTR_, MHD_SCKT_ERR_IS_REMOTE_DISCNN_, MHD_SCKT_ERR_IS_, MHD_SCKT_ERR_IS_LOW_RESOURCES_: these are macros or inline helpers used for error tests \u2014 their definitions must be checked for GCC/clang extensions (statement-expression ({ ... }), typeof, __extension__, token-pasting or other nonstandard macro constructs).\n- MHD_SCKT_EOPNOTSUPP_, MHD_SCKT_ENOTCONN_, MHD_SCKT_EINVAL_, MHD_SCKT_EBADF_: to ensure these error-code macros or enum values are plain constants (not using extension constructs).\n- MHD_ERR_NOTCONN_, MHD_ERR_AGAIN_, MHD_ERR_CONNRESET_, MHD_ERR_OPNOTSUPP_, MHD_ERR_INVAL_, MHD_ERR_NOMEM_, MHD_ERR_BADF_: return-value macros/constants \u2014 need to confirm they are ordinary definitions and not defined via compiler-specific features.\n- EPOLL_SUPPORT: this conditional compilation macro must be inspected to see if it is defined in terms of compiler flags or if the guarded code uses extensions; also to ensure any EPOLL-related definitions do not rely on extensions.\n- enum MHD_EpollState, MHD_EPOLL_STATE_READ_READY: the enum/type and its constants must be checked for any nonstandard constructs (explicit underlying-type specifiers or compiler extensions used in enum definitions). \n\nIn short: to determine whether recv_param_adapter itself uses language extensions we must examine the definitions of the above symbols (macros, typedefs, functions, enums, and struct) because those definitions may introduce compiler-specific extensions even though the function body looks standard. The next analyzer should retrieve these symbol definitions and check them for any compiler-documented language extensions."
+}

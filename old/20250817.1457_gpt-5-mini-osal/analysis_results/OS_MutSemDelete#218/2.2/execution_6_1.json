@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_MutSemDelete ENTER: sem_id=0, token_addr=0x7ffca6c1cbd0\nAfter OS_ObjectIdGetById: return_code=-16, sem_id=0, token_addr=0x7ffca6c1cbd0\nOS_MutSemDelete EXIT: sem_id=0, return_code=-16\nOS_MutSemDelete ENTER: sem_id=0, token_addr=0x7ffca6c1cbb0\nAfter OS_ObjectIdGetById: return_code=-16, sem_id=0, token_addr=0x7ffca6c1cbb0\nOS_MutSemDelete EXIT: sem_id=0, return_code=-16\nOS_MutSemDelete ENTER: sem_id=3735928559, token_addr=0x7ffca6c1cc00\nAfter OS_ObjectIdGetById: return_code=-16, sem_id=3735928559, token_addr=0x7ffca6c1cc00\nOS_MutSemDelete EXIT: sem_id=3735928559, return_code=-16\nOS_MutSemDelete ENTER: sem_id=0, token_addr=0x7ffca6c1cc00\nAfter OS_ObjectIdGetById: return_code=-16, sem_id=0, token_addr=0x7ffca6c1cc00\nOS_MutSemDelete EXIT: sem_id=0, return_code=-16\n"
+}

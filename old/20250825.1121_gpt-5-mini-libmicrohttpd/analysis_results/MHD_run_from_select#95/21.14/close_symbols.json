@@ -1,0 +1,13 @@
+{
+  "user_message": "Target function code is:\n```c\n_MHD_EXTERN enum MHD_Result\nMHD_run_from_select (struct MHD_Daemon *daemon,\n                     const fd_set *read_fd_set,\n                     const fd_set *write_fd_set,\n                     const fd_set *except_fd_set)\n{\n  return MHD_run_from_select2 (daemon,\n                               read_fd_set,\n                               write_fd_set,\n                               except_fd_set,\n#ifdef HAS_FD_SETSIZE_OVERRIDABLE\n                               daemon->fdset_size_set_by_app ?\n                               ((unsigned int) daemon->fdset_size) :\n                               ((unsigned int) _MHD_SYS_DEFAULT_FD_SETSIZE)\n#else  /* ! HAS_FD_SETSIZE_OVERRIDABLE */\n                               ((unsigned int) _MHD_SYS_DEFAULT_FD_SETSIZE)\n#endif /* ! HAS_FD_SETSIZE_OVERRIDABLE */\n                               );\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'MHD_run_from_select': {'callees': ['MHD_run_from_select2'], 'callers': []}, 'MHD_run_from_select2': {'callees': ['MHD_DLOG', 'MHD_epoll', 'MHD_cleanup_connections', 'resume_suspended_connections', 'internal_run_from_select'], 'callers': ['MHD_run_from_select']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_run_from_select2",
+    "MHD_DLOG",
+    "MHD_epoll",
+    "MHD_cleanup_connections",
+    "resume_suspended_connections",
+    "internal_run_from_select",
+    "memcmp"
+  ],
+  "explanation": "MHD_run_from_select2: The target function is a thin wrapper that immediately calls MHD_run_from_select2. To decide whether the target violates the MISRA rule you must inspect MHD_run_from_select2's implementation for any uses of memcmp on null-terminated strings. MHD_DLOG, MHD_epoll, MHD_cleanup_connections, resume_suspended_connections, internal_run_from_select: These are the direct callees of MHD_run_from_select2 (per the static call graph). Any of these functions (or code they call) could contain calls to memcmp that compare null-terminated strings; they must be examined transitively. memcmp: The MISRA rule concerns the standard memcmp function itself. You need to find all uses of this symbol in the transitive call tree and check the nature of the operands (whether they are null-terminated C strings) to determine compliance."
+}

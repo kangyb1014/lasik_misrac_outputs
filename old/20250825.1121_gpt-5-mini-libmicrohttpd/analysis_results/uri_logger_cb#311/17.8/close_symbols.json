@@ -1,0 +1,10 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *\nuri_logger_cb (void *cls,\n               const char *uri)\n{\n  struct timeval *tv = malloc (sizeof (struct timeval));\n  (void) cls; /* Unused. Silent compiler warning. */\n  (void) uri; /* Unused. Silent compiler warning. */\n\n  if (NULL != tv)\n    gettimeofday (tv, NULL);\n  return tv;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA function parameter should not be modified. Note that the object referred to by a pointer parameter may be modified, but the pointer itself shall not be modified.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "malloc",
+    "gettimeofday",
+    "struct timeval",
+    "NULL"
+  ],
+  "explanation": "malloc: Verify its prototype/definition (normally from <stdlib.h>) to confirm it does not take or modify any of the function parameters (and to understand its return semantics so tv can be NULL). gettimeofday: Verify its prototype/definition (normally from <sys/time.h>) to ensure it does not accept or modify uri or cls (it only writes to the local tv pointer) and to exclude the possibility that it is a macro that might reference outer symbols. struct timeval: The type definition is needed to confirm that tv is an object distinct from the parameters (so calls that write into tv cannot be considered modifications of function parameters). NULL: Check the definition of NULL (macro/constant) used in the comparison to ensure it has the expected semantics. These symbols are the external items referenced by the function; confirming their declarations/definitions is necessary to prove that no called routine or macro could be modifying the function parameters (cls, uri) and thus violating the MISRA rule."
+}

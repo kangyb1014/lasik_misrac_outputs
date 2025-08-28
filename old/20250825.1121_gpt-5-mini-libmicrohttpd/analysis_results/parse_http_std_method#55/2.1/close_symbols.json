@@ -1,0 +1,29 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void\nparse_http_std_method (struct MHD_Connection *connection,\n                       const char *method,\n                       size_t len)\n{\n  const char *const m = method; /**< short alias */\n  mhd_assert (NULL != m);\n  mhd_assert (0 != len);\n\n  if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_GET) == len) &&\n      (0 == memcmp (m, MHD_HTTP_METHOD_GET, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_GET;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_HEAD) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_HEAD, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_HEAD;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_POST) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_POST, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_POST;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_PUT) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_PUT, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_PUT;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_DELETE) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_DELETE, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_DELETE;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_CONNECT) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_CONNECT, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_CONNECT;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_OPTIONS) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_OPTIONS, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_OPTIONS;\n  else if ((MHD_STATICSTR_LEN_ (MHD_HTTP_METHOD_TRACE) == len) &&\n           (0 == memcmp (m, MHD_HTTP_METHOD_TRACE, len)))\n    connection->rq.http_mthd = MHD_HTTP_MTHD_TRACE;\n  else\n    connection->rq.http_mthd = MHD_HTTP_MTHD_OTHER;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'parse_http_std_method': {'callees': [], 'callers': ['get_request_line_inner']}, 'get_request_line_inner': {'callees': ['connection_close_error', 'transmit_error_response_len', 'parse_http_version', 'parse_http_std_method'], 'callers': ['get_request_line']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_STATICSTR_LEN_",
+    "MHD_HTTP_METHOD_GET",
+    "MHD_HTTP_METHOD_HEAD",
+    "MHD_HTTP_METHOD_POST",
+    "MHD_HTTP_METHOD_PUT",
+    "MHD_HTTP_METHOD_DELETE",
+    "MHD_HTTP_METHOD_CONNECT",
+    "MHD_HTTP_METHOD_OPTIONS",
+    "MHD_HTTP_METHOD_TRACE",
+    "mhd_assert",
+    "memcmp",
+    "struct MHD_Connection (full definition, especially .rq and .rq.http_mthd)",
+    "MHD_HTTP_MTHD_GET",
+    "MHD_HTTP_MTHD_HEAD",
+    "MHD_HTTP_MTHD_POST",
+    "MHD_HTTP_MTHD_PUT",
+    "MHD_HTTP_MTHD_DELETE",
+    "MHD_HTTP_MTHD_CONNECT",
+    "MHD_HTTP_MTHD_OPTIONS",
+    "MHD_HTTP_MTHD_TRACE",
+    "MHD_HTTP_MTHD_OTHER",
+    "get_request_line_inner",
+    "get_request_line"
+  ],
+  "explanation": "- MHD_STATICSTR_LEN_: the macro expands to the compile-time length used in each length comparison; knowing its definition is required to prove whether any length-comparison branch can ever be true (or is always false => unreachable).\n- MHD_HTTP_METHOD_* (GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE): the actual string literals (or definitions) compared by memcmp; their contents determine whether memcmp branches are reachable for any input.\n- memcmp: standard comparison semantics are assumed, but having the prototype/semantics available is necessary to reason precisely about byte comparisons and possible overlapping/aliasing effects.\n- mhd_assert: the assert macro may abort or be a no-op depending on build configuration; its definition is needed to know if the NULL/zero checks act as runtime guards that affect reachability reasoning.\n- struct MHD_Connection (definition, including member rq and rq.http_mthd): required to understand the effect of assignments and whether any aliasing/side-effects or unusual types could affect control flow or make assignments unreachable/invalid.\n- MHD_HTTP_MTHD_* (GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, OTHER): target enum/constant values assigned to connection->rq.http_mthd; needed to confirm assignments are valid and to see if any assignment paths are impossible due to type/enum constraints.\n- get_request_line_inner and get_request_line: these callers (from the provided static call graph) are needed to determine whether parse_http_std_method is reachable from program entry points. To satisfy the MISRA rule about unreachable code you must consider the call chain; if these callers are themselves never reachable, parse_http_std_method could be unreachable even if its internal branches are conditionally reachable.\n\nProviding these symbols (macro/string definitions, struct/enum definitions, assert implementation, and the immediate callers) lets an analyst determine whether any branch inside parse_http_std_method or the function itself is provably impossible (unreachable) in the built project."
+}

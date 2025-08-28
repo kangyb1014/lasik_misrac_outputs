@@ -1,0 +1,4 @@
+{
+  "result": "empty_test_log",
+  "message": "The test code was compiled successfully, but the test log is empty for UtSprintf. The test suite might not cover this function or the test code might be not suitable to print important information."
+}

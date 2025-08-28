@@ -1,0 +1,32 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid\nMHD_init (void)\n{\n#if defined(MHD_WINSOCK_SOCKETS)\n  WSADATA wsd;\n#endif /* MHD_WINSOCK_SOCKETS */\n\n  MHD_set_panic_func (NULL, NULL);\n\n#if defined(MHD_WINSOCK_SOCKETS)\n  if (0 != WSAStartup (MAKEWORD (2, 2), &wsd))\n    MHD_PANIC (_ (\"Failed to initialize winsock.\\n\"));\n  if ((2 != LOBYTE (wsd.wVersion)) && (2 != HIBYTE (wsd.wVersion)))\n    MHD_PANIC (_ (\"Winsock version 2.2 is not available.\\n\"));\n#endif /* MHD_WINSOCK_SOCKETS */\n#ifdef HTTPS_SUPPORT\n#ifdef MHD_HTTPS_REQUIRE_GCRYPT\n#if GCRYPT_VERSION_NUMBER < 0x010600\n#if GNUTLS_VERSION_NUMBER <= 0x020b00\n#if defined(MHD_USE_POSIX_THREADS)\n  if (0 != gcry_control (GCRYCTL_SET_THREAD_CBS,\n                         &gcry_threads_pthread))\n    MHD_PANIC (_ (\"Failed to initialise multithreading in libgcrypt.\\n\"));\n#elif defined(MHD_W32_MUTEX_)\n  if (0 != gcry_control (GCRYCTL_SET_THREAD_CBS,\n                         &gcry_threads_w32))\n    MHD_PANIC (_ (\"Failed to initialise multithreading in libgcrypt.\\n\"));\n#endif /* defined(MHD_W32_MUTEX_) */\n#endif /* GNUTLS_VERSION_NUMBER <= 0x020b00 */\n  gcry_check_version (NULL);\n#else\n  if (NULL == gcry_check_version (\"1.6.0\"))\n    MHD_PANIC (_ (\"libgcrypt is too old. MHD was compiled for \" \\\n                  \"libgcrypt 1.6.0 or newer.\\n\"));\n#endif\n#endif /* MHD_HTTPS_REQUIRE_GCRYPT */\n  gnutls_global_init ();\n#endif /* HTTPS_SUPPORT */\n  MHD_monotonic_sec_counter_init ();\n  MHD_send_init_static_vars_ ();\n  MHD_init_mem_pools_ ();\n  /* Check whether sizes were correctly detected by configure */\n#ifdef _DEBUG\n  if (1)\n  {\n    struct timeval tv;\n    mhd_assert (sizeof(tv.tv_sec) == SIZEOF_STRUCT_TIMEVAL_TV_SEC);\n  }\n#endif /* _DEBUG */\n  mhd_assert (sizeof(uint64_t) == SIZEOF_UINT64_T);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'MHD_init': {'callees': ['MHD_set_panic_func', 'MHD_monotonic_sec_counter_init', 'MHD_send_init_static_vars_', 'MHD_init_mem_pools_'], 'callers': []}, 'MHD_set_panic_func': {'callees': [], 'callers': ['MHD_init']}, 'MHD_monotonic_sec_counter_init': {'callees': [], 'callers': ['MHD_init']}, 'MHD_send_init_static_vars_': {'callees': ['iov_max_init_'], 'callers': ['MHD_init']}, 'MHD_init_mem_pools_': {'callees': [], 'callers': ['MHD_init']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_WINSOCK_SOCKETS",
+    "WSADATA",
+    "WSAStartup",
+    "MAKEWORD",
+    "LOBYTE",
+    "HIBYTE",
+    "MHD_PANIC",
+    "_",
+    "HTTPS_SUPPORT",
+    "MHD_HTTPS_REQUIRE_GCRYPT",
+    "GCRYPT_VERSION_NUMBER",
+    "GNUTLS_VERSION_NUMBER",
+    "MHD_USE_POSIX_THREADS",
+    "MHD_W32_MUTEX_",
+    "gcry_control",
+    "GCRYCTL_SET_THREAD_CBS",
+    "gcry_threads_pthread",
+    "gcry_threads_w32",
+    "gcry_check_version",
+    "gnutls_global_init",
+    "_DEBUG",
+    "mhd_assert",
+    "timeval",
+    "SIZEOF_STRUCT_TIMEVAL_TV_SEC",
+    "SIZEOF_UINT64_T",
+    "uint64_t"
+  ],
+  "explanation": "Each listed symbol appears in MHD_init (as a macro, type, function or constant) and its definition can hide use of compiler language extensions (e.g. macros that expand to GCC/MSVC extensions, nonstandard attributes, inline asm, statement-expressions, typeof, compiler-specific pragmas, variadic-macro forms, or other extensions). To determine whether MHD_init itself uses a language extension you must inspect any macros and called identifiers that are not plain standard-library names. Brief reasons: \n- Preprocessor-condition macros (MHD_WINSOCK_SOCKETS, HTTPS_SUPPORT, MHD_HTTPS_REQUIRE_GCRYPT, MHD_USE_POSIX_THREADS, MHD_W32_MUTEX_, _DEBUG): their definitions control compilation paths and may themselves be set to compiler-specific constructs.\n- Winsock-related types/macros/functions (WSADATA, WSAStartup, MAKEWORD, LOBYTE, HIBYTE): platform-specific and/or macro wrappers; MAKEWORD/LOBYTE/HIBYTE may be macros that use nonstandard constructs.\n- Error/reporting macros and translation macro (MHD_PANIC, _): often implemented as macros that can use extensions (variadic macros, __attribute__, etc.).\n- libgcrypt/gnutls symbols and constants (gcry_control, GCRYCTL_SET_THREAD_CBS, gcry_threads_pthread, gcry_threads_w32, gcry_check_version, GCRYPT_VERSION_NUMBER, GNUTLS_VERSION_NUMBER, gnutls_global_init): may be macros or inline wrappers that use nonstandard features; version-number macros may be defined in unusual ways.\n- Assertions and debug helpers (mhd_assert): commonly a macro which can use statement-expressions or compiler-specific annotations.\n- Time/type related symbols (timeval, SIZEOF_STRUCT_TIMEVAL_TV_SEC, SIZEOF_UINT64_T, uint64_t): typedefs/macros that determine portability; their definitions may rely on compiler extensions or nonstandard headers.\n\nObtain these definitions to verify whether any of them (or their use here) introduce language extensions that would violate the MISRA rule."
+}

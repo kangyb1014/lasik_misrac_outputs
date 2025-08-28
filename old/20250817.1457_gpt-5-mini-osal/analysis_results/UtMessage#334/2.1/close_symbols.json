@@ -1,0 +1,23 @@
+{
+  "user_message": "Target function code is:\n```c\nvoid UtMessage(uint8 MessageType, const char *File, uint32 Line, const char *Spec, ...)\n{\n    UT_Snprintf_Buffer_t Buf;\n    va_list              va;\n\n    va_start(va, Spec);\n    vsnprintf(Buf.Text, sizeof(Buf.Text), Spec, va);\n    va_end(va);\n\n    UT_BSP_DoText(MessageType, Buf.Text);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'UtMessage': {'callees': ['UT_BSP_DoText'], 'callers': []}, 'UT_BSP_DoText': {'callees': ['UT_BSP_Lock', 'OS_BSP_ConsoleOutput_Impl', 'UtAssert_GetCaseTypeAbbrev', 'OS_BSP_ConsoleSetMode_Impl', 'UT_BSP_Unlock', 'OS_BSP_Shutdown_Impl'], 'callers': ['UtAssert_DoReport', 'UtAssert_DoTestSegmentReport', 'UtAssert_EndTest', 'UtAssert_Abort', 'UtAssert_Message', 'UtMessage', 'UtPrintx', 'UT_BSP_Setup', 'UT_BSP_StartTestSegment']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain unreachable code. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "UT_BSP_DoText",
+    "UtAssert_DoReport",
+    "UtAssert_DoTestSegmentReport",
+    "UtAssert_EndTest",
+    "UtAssert_Abort",
+    "UtAssert_Message",
+    "UtPrintx",
+    "UT_BSP_Setup",
+    "UT_BSP_StartTestSegment",
+    "UT_BSP_Lock",
+    "OS_BSP_ConsoleOutput_Impl",
+    "UtAssert_GetCaseTypeAbbrev",
+    "OS_BSP_ConsoleSetMode_Impl",
+    "UT_BSP_Unlock",
+    "OS_BSP_Shutdown_Impl",
+    "main (program entry)",
+    "system startup/initialization/interrupt entry points"
+  ],
+  "explanation": "To decide if UtMessage constitutes unreachable code you must trace program callability into and through that function. The following symbols are required and why:\n\n- UT_BSP_DoText: UtMessage's direct callee \u2014 inspect its body to see if it calls back to UtMessage or contains control-flow that prevents UtMessage from ever executing.\n- UtAssert_DoReport, UtAssert_DoTestSegmentReport, UtAssert_EndTest, UtAssert_Abort, UtAssert_Message, UtPrintx, UT_BSP_Setup, UT_BSP_StartTestSegment: These are listed callers of UT_BSP_DoText in the static graph. You must examine these to determine if any reachable code paths in the program call them and thus reach UT_BSP_DoText and potentially UtMessage.\n- UT_BSP_Lock, OS_BSP_ConsoleOutput_Impl, UtAssert_GetCaseTypeAbbrev, OS_BSP_ConsoleSetMode_Impl, UT_BSP_Unlock, OS_BSP_Shutdown_Impl: These are callees of UT_BSP_DoText. They might contain calls back into higher-level reporting functions or influence control flow (e.g., shutting down or branching) that affect reachability; include them to rule out indirect cycles or early termination that would make parts of UtMessage unreachable.\n- main (program entry) and system startup/initialization/interrupt entry points: To determine global reachability you must start from program entry points and system/OS initialization paths to see whether any path leads to the callers above (and hence to UtMessage). If none of the entry points can reach UtMessage, the function may be unreachable and thus a potential MISRA violation.\n\nYou do not need implementation details of standard library vsnprintf or the local buffer type to reason about reachability inside UtMessage (the function has no conditional branches), but you do need the above symbols to trace interprocedural reachability across the program."
+}

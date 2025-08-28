@@ -1,0 +1,131 @@
+{
+  "user_message": "<misra_rule>
+  MISRA C 2023 Rule 8.13 is: A pointer should point to a const-qualified type whenever possible.
+  
+  </misra_rule>
+  
+  Another agent reported that the target code violated the Rule 8.13.
+  Here is the comment from the agent.
+  <violation scenario>
+  The call passes a non-const pointer (lfs_dir_t *dir) to lfs_dir_close_. If neither lfs_dir_close nor lfs_dir_close_ modify the object pointed to by dir (i.e. they only read it), then the pointer should be const-qualified (const lfs_dir_t *dir). In that case the current use of a non-const pointer violates MISRA C 2023 Rule 8.13.
+  </violation scenario>
+  
+  Your job is to insert logging code to capture the control flow and state information of the program.
+  Insert logging code so that other agents can reproduce and get evidence for the violation scenario.
+  <response format>
+  - test_code: a modified lfs_dir_close code that contains useful probe functions that print useful logs to a file \"/tmp/logs/25.txt\". The logs should contain the control path and state information of the violation scenario. If test code is not required to validate the scenario, you can leave this blank.
+  </response format>
+  <target_code>
+  Here is the code of lfs_dir_close:
+  ```c
+  int lfs_dir_close(lfs_t *lfs, lfs_dir_t *dir) {
+      int err = LFS_LOCK(lfs->cfg);
+      if (err) {
+          return err;
+      }
+      LFS_TRACE(\"lfs_dir_close(%p, %p)\", (void*)lfs, (void*)dir);
+  
+      err = lfs_dir_close_(lfs, dir);
+  
+      LFS_TRACE(\"lfs_dir_close -> %d\", err);
+      LFS_UNLOCK(lfs->cfg);
+      return err;
+  }
+  ```
+  </target_code>
+  
+  <instruction>
+  
+  Please provide the modified lfs_dir_close code.
+  
+  The information below explains how I\u2019ll use the function you provide. Please use it as a reference when generating code.
+  1. Replacement
+    - I will parse your function and replace the original lfs_dir_close with it.
+    - Your function must have the exact same signature as lfs_dir_close.
+    - It must be a complete, self-contained definition; (no omissions, placeholders (e.g., \"...\"), or comments indicating skipped/omitted logic.)
+  2. Logging / reachability
+    - I will run a test suite that is guaranteed to call lfs_dir_close to check logs.
+    - Your function MUST preserve the original logic of lfs_dir_close as much as possible.
+    - The log output must not be empty. Even if you are verifying dead code, lfs_dir_close will be reached; insert a minimal probe/log to demonstrate that the target function was entered.
+  3. Coverage
+    - I will run the same test suite to measure coverage.
+    - Test outcomes must match those of the original code.
+    - If reproducing the rule violation necessarily causes a crash (e.g., the violation inherently triggers a crash), that is acceptable; otherwise, your function should not crash under the existing test suite so coverage can be measured.
+  4. Test code constraints
+    - The test code MUST preserve the original logic of lfs_dir_close as much as possible.
+    - DO NOT introduce new violations to demonstrate your scenario.
+    - The test code MUST be compilable and executable.
+    - The test code MUST include line breaks.
+    - You MUST NOT define the main function.
+    - You MUST NOT define macros.
+    - You MUST NOT REDEFINE any existing identifiers, such as macros, static/global variables, or functions.
+    - Do not break string literals or include stray/unmatched double quotes; the code must parse cleanly with no quote-related errors.
+  
+  These are common mistakes of generated codes. Do not make these mistakes:
+  - Redefining existing functions, variables, types, or macros.
+  - Broken string literals or unmatched quotes.
+  - Invoking undeclared function.
+  - Using undeclared member in a struct.
+  - Invoking functions with wrong parameter type.
+  
+  </instruction>
+  ",
+  "test_code": "int lfs_dir_close(lfs_t *lfs, lfs_dir_t *dir) {
+      /* Preserve original locking behavior */
+      int err = LFS_LOCK(lfs->cfg);
+  
+      /* Attempt to open log file for appending. If it fails, we continue without logging. */
+      FILE *logf = fopen(\"/tmp/logs/25.txt\", \"a\");
+      if (logf) {
+          /* Log entry + important pointers and immediate lock result */
+          fprintf(logf, \"ENTER lfs_dir_close: lfs=%p dir=%p cfg=%p lock_err=%d\
+  \",
+                  (void*)lfs, (void*)dir, (void*)(lfs ? lfs->cfg : NULL), err);
+          fflush(logf);
+      }
+  
+      if (err) {
+          /* Log early return due to lock failure */
+          if (logf) {
+              fprintf(logf, \"lfs_dir_close early return: lock failed with err=%d\
+  \", err);
+              fclose(logf);
+          }
+          return err;
+      }
+  
+      /* Original trace retained for existing tracing mechanisms */
+      LFS_TRACE(\"lfs_dir_close(%p, %p)\", (void*)lfs, (void*)dir);
+  
+      /* Log that we're about to call the underlying close helper */
+      if (logf) {
+          fprintf(logf, \"About to call lfs_dir_close_: lfs=%p dir=%p\
+  \", (void*)lfs, (void*)dir);
+          fflush(logf);
+      }
+  
+      /* Call the original helper and capture its return value */
+      err = lfs_dir_close_(lfs, dir);
+  
+      /* Log result from helper */
+      if (logf) {
+          fprintf(logf, \"lfs_dir_close_ returned %d for lfs=%p dir=%p\
+  \", err, (void*)lfs, (void*)dir);
+          fflush(logf);
+      }
+  
+      LFS_TRACE(\"lfs_dir_close -> %d\", err);
+  
+      /* Unlock and log final state */
+      LFS_UNLOCK(lfs->cfg);
+  
+      if (logf) {
+          fprintf(logf, \"EXIT lfs_dir_close: final_err=%d\
+  \", err);
+          fclose(logf);
+      }
+  
+      return err;
+  }
+  "
+}

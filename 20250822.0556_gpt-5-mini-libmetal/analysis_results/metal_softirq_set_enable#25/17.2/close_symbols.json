@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void metal_softirq_set_enable(struct metal_irq_controller *cntr,\n\t\t\t\t     int irq, unsigned int enable)\n{\n\tif (irq < cntr->irq_base ||\n\t    irq >= (cntr->irq_base + cntr->irq_num)) {\n\t\treturn;\n\t}\n\n\tirq -= cntr->irq_base;\n\tif (enable ==  METAL_IRQ_ENABLE) {\n\t\tatomic_store(&metal_softirq_enabled[irq], 1);\n\t} else {\n\t\tatomic_store(&metal_softirq_enabled[irq], 0);\n\t}\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_store",
+    "atomic_store_explicit",
+    "__atomic_store_n",
+    "metal_softirq_enabled",
+    "struct metal_irq_controller",
+    "METAL_IRQ_ENABLE"
+  ],
+  "explanation": "- atomic_store: The function/macro invoked by metal_softirq_set_enable. Its definition (or macro expansion) must be inspected to ensure it does not call back into metal_softirq_set_enable (directly or via other functions).\n- atomic_store_explicit: Some implementations map atomic_store to atomic_store_explicit; include to catch an indirect mapping that could introduce calls.\n- __atomic_store_n: Compilers/libc may lower C11 atomics to this builtin; inspect it to confirm no call chain to metal_softirq_set_enable.\n- metal_softirq_enabled: The array being written by atomic_store. Verify its type and initializer so you can confirm it does not hold function pointers or objects whose write semantics invoke callbacks that could lead to recursion.\n- struct metal_irq_controller: The type definition (fields and any embedded function pointers) must be checked to ensure accessing irq_base/irq_num does not involve function calls or indirect call targets that could lead back to metal_softirq_set_enable.\n- METAL_IRQ_ENABLE: The macro/constant controlling the branch. While it does not itself cause calls, knowing its definition can be necessary to determine which path is taken and whether any path triggers code that might call back into the target."
+}

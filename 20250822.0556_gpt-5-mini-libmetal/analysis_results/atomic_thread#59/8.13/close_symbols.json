@@ -1,0 +1,9 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_int",
+    "atomic_fetch_add",
+    "atomic_test_count"
+  ],
+  "explanation": "1) atomic_int: the typedef/definition of atomic_int is required to know the underlying type and qualifiers (for example whether it is _Atomic int, a typedef to int, or already has cv-qualifiers). That affects whether objects of that type can/should be referenced through a const-qualified pointer.\n\n2) atomic_fetch_add: the function prototype (parameter types and qualifiers) is required to determine whether the function writes through the pointer (i.e. whether it takes atomic_int * (non-const) or const atomic_int *). If atomic_fetch_add requires a non-const pointer (and modifies the object), then the incoming void *arg cannot be changed to a const void * without violating the call.\n\n3) atomic_test_count: declaration/type of this external variable is required so the analyzer can fully type-check the loop and compile/understand the function body. While it does not directly affect pointer constness, it is referenced by the target function and must be known for a complete static analysis of the function."
+}

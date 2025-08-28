@@ -1,0 +1,22 @@
+{
+  "user_message": "Target function code is:\n```c\nint32 OS_DirCreate_Impl(const char *local_path, uint32 access)\n{\n    struct stat st;\n    int32       return_code;\n\n    if (mkdir(local_path, S_IFDIR | S_IRWXU | S_IRWXG | S_IRWXO) < 0)\n    {\n        return_code = OS_ERROR;\n\n        if (errno == EEXIST)\n        {\n            /* Success if already exists and is a directory */\n            if (stat(local_path, &st) == 0 && S_ISDIR(st.st_mode))\n            {\n                return_code = OS_SUCCESS;\n            }\n        }\n    }\n    else\n    {\n        return_code = OS_SUCCESS;\n    }\n\n    return return_code;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_DirCreate_Impl': {'callees': [], 'callers': ['OS_mkdir']}, 'OS_mkdir': {'callees': ['OS_TranslatePath', 'OS_DirCreate_Impl', 'UT_Stub_RegisterReturnType', 'UT_Stub_RegisterContextWithMetaData', 'UT_ExecuteBasicHandler', 'UT_Stub_GetReturnValuePtr'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "int32",
+    "uint32",
+    "OS_ERROR",
+    "OS_SUCCESS",
+    "mkdir",
+    "stat",
+    "struct stat",
+    "st_mode",
+    "mode_t",
+    "S_IFDIR",
+    "S_IRWXU",
+    "S_IRWXG",
+    "S_IRWXO",
+    "S_ISDIR",
+    "errno",
+    "EEXIST"
+  ],
+  "explanation": "For verifying whether the target function uses any compiler language extensions you must inspect the definitions of any types, macros or declarations referenced in the function because those definitions can themselves use compiler-specific/extension constructs (attributes, builtins, __extension__, non\u2011standard type keywords, etc.). Brief justification for each symbol:\n\n- int32: The function return type. Must check how int32 is typedef'd (could be a compiler-specific alias or use attributes/extensions).\n- uint32: The parameter type. Same rationale as int32 \u2014 its typedef could involve extensions.\n- OS_ERROR: Macro/constant used for error return. Its definition might be an enum or macro that uses extension syntax.\n- OS_SUCCESS: Macro/constant used for success return. Need to ensure its definition does not use extensions.\n- mkdir: External function called. Its prototype (as provided by system headers) may include compiler-specific attributes or nonstandard declarations.\n- stat: External function called. Its prototype must be inspected for attributes or extensions.\n- struct stat: Type of local variable 'st'. The struct definition (from system headers) and any field types may use extensions.\n- st_mode: Field of struct stat accessed via S_ISDIR; its type/definition may be a typedef (mode_t) that could hide extensions.\n- mode_t: Underlying type used by mkdir/stat and st_mode. Often a typedef that could involve compiler-specific definitions.\n- S_IFDIR: File type macro used in the mode argument. Macros can be implemented using compiler-specific constructs; check its definition.\n- S_IRWXU: Permission bit macro. As with other file\u2011mode macros, its definition should be inspected for nonstandard constructs.\n- S_IRWXG: Permission bit macro \u2014 inspect definition for extensions.\n- S_IRWXO: Permission bit macro \u2014 inspect definition for extensions.\n- S_ISDIR: Macro used to test st.st_mode. Its implementation could use nonportable/extension constructs (e.g., GCC builtins) \u2014 verify definition.\n- errno: Macro or lvalue (typically defined in errno.h). The way errno is implemented (macro to function call, thread\u2011local, etc.) might use compiler extensions; inspect its definition.\n- EEXIST: Error code macro. Its definition should be checked in headers to confirm no extension usage.\n\nInspecting these symbols (their typedefs, macros and prototypes as provided by the included headers) is sufficient to determine whether the target function itself hides any language/implementation extensions via these referenced names. Only these are necessary because they are the identifiers used directly by the target function whose definitions could contain extension syntax."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmps8drunf_/src/src/os/shared/src/osapi-binsem.c: In function 'probe_log':\n/tmp/tmps8drunf_/src/src/os/shared/src/osapi-binsem.c:271:15: error: storage size of 'tmv' isn't known\n  271 |     struct tm tmv;\n      |               ^~~\n/tmp/tmps8drunf_/src/src/os/shared/src/osapi-binsem.c:285:23: note: expected '__va_list_tag *' but argument is of type 'OCS_va_list'\n  285 |     vfprintf(fp, fmt, ap);\n      |                       ^~\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-binsem.dir/build.make:76: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-binsem.dir/__/__/os/shared/src/osapi-binsem.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3167: unit-test-coverage/shared/CMakeFiles/utobj_coverage-shared-binsem.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

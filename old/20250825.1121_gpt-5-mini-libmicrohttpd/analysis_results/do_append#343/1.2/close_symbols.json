@@ -1,0 +1,15 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic enum MHD_Result\ndo_append (char **ret,\n           const char *data,\n           size_t size)\n{\n  char *buf;\n  size_t old_len;\n\n  if (NULL == *ret)\n    old_len = 0;\n  else\n    old_len = strlen (*ret);\n  if (NULL == (buf = malloc (old_len + size + 1)))\n    return MHD_NO;\n  if (NULL != *ret)\n  {\n    memcpy (buf,\n            *ret,\n            old_len);\n    free (*ret);\n  }\n  memcpy (&buf[old_len],\n          data,\n          size);\n  buf[old_len + size] = '\\0';\n  *ret = buf;\n  return MHD_YES;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'do_append': {'callees': [], 'callers': ['process_upload_data']}, 'process_upload_data': {'callees': ['do_append'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "enum MHD_Result",
+    "MHD_YES",
+    "MHD_NO",
+    "malloc",
+    "free",
+    "strlen",
+    "memcpy",
+    "size_t",
+    "NULL"
+  ],
+  "explanation": "Provide the definitions/prototypes of these symbols so the next analyst can determine whether any of them are implemented using compiler or library language extensions.\n\n- enum MHD_Result: The function's return type. The enum definition must be inspected to ensure it isn't declared using compiler-specific extensions (e.g. custom underlying type annotations, attribute extensions, or non-standard keywords).\n- MHD_YES / MHD_NO: The enumerator or macro constants used as return values. They might be macros or use non-standard constructs; need their definitions to rule out extensions.\n- malloc / free / strlen / memcpy: Standard library functions used by the function. Their declarations (or any local replacements/macros) must be checked for compiler-specific attributes, macros, or redefinitions that constitute language extensions.\n- size_t: The size type used in the signature. Its typedef/source must be checked to ensure it is the standard typedef and not a compiler-specific alias or extension.\n- NULL: The null pointer macro used in conditionals. Different implementations may define NULL using compiler-specific constructs; its definition should be inspected.\n\n(These are the minimal symbols required to decide if the code uses language extensions; standard headers that provide these symbols\u2014if available\u2014also serve this purpose.)"
+}

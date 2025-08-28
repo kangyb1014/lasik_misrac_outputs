@@ -1,0 +1,30 @@
+{
+  "user_message": "Target function code is:\n```c\ntime_t\nMHD_monotonic_sec_counter (void)\n{\n#ifdef HAVE_CLOCK_GETTIME\n  struct timespec ts;\n\n  if ( (_MHD_UNWANTED_CLOCK != mono_clock_id) &&\n       (0 == clock_gettime (mono_clock_id,\n                            &ts)) )\n    return ts.tv_sec - mono_clock_start;\n#endif /* HAVE_CLOCK_GETTIME */\n#ifdef HAVE_CLOCK_GET_TIME\n  if (_MHD_INVALID_CLOCK_SERV != mono_clock_service)\n  {\n    mach_timespec_t cur_time;\n\n    if (KERN_SUCCESS == clock_get_time (mono_clock_service,\n                                        &cur_time))\n      return cur_time.tv_sec - mono_clock_start;\n  }\n#endif /* HAVE_CLOCK_GET_TIME */\n#if defined(_WIN32)\n#if _WIN32_WINNT >= 0x0600\n  if (1)\n    return (time_t) (((uint64_t) (GetTickCount64 () - tick_start)) / 1000);\n#else  /* _WIN32_WINNT < 0x0600 */\n  if (0 != perf_freq)\n  {\n    LARGE_INTEGER perf_counter;\n\n    QueryPerformanceCounter (&perf_counter);   /* never fail on XP and later */\n    return (time_t) (((uint64_t) perf_counter.QuadPart - perf_start)\n                     / perf_freq);\n  }\n#endif /* _WIN32_WINNT < 0x0600 */\n#endif /* _WIN32 */\n#ifdef HAVE_GETHRTIME\n  if (1)\n    return (time_t) (((uint64_t) (gethrtime () - hrtime_start)) / 1000000000);\n#endif /* HAVE_GETHRTIME */\n\n  return time (NULL) - sys_clock_start;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA project shall not contain dead code. Any operation that is executed but whose removal would not affect program behaviour constitutes dead code. Notes:\n1. The behaviour of an embedded sytem is often determined not just by the nature of its actions, but also by the time at which they occur.\n2. unreachable code is not dead code, as it cannot be executed.\n3.Initialization is not the same as an assignment operation and is therfore not a candidate for dead code.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "HAVE_CLOCK_GETTIME",
+    "HAVE_CLOCK_GET_TIME",
+    "_WIN32",
+    "_WIN32_WINNT",
+    "HAVE_GETHRTIME",
+    "_MHD_UNWANTED_CLOCK",
+    "mono_clock_id",
+    "clock_gettime",
+    "mono_clock_start",
+    "_MHD_INVALID_CLOCK_SERV",
+    "mono_clock_service",
+    "mach_timespec_t",
+    "KERN_SUCCESS",
+    "clock_get_time",
+    "GetTickCount64",
+    "tick_start",
+    "perf_freq",
+    "LARGE_INTEGER",
+    "QueryPerformanceCounter",
+    "perf_start",
+    "gethrtime",
+    "hrtime_start",
+    "time",
+    "sys_clock_start"
+  ],
+  "explanation": "Each listed symbol can affect whether code in MHD_monotonic_sec_counter is compiled, whether particular branches execute, or whether an executed operation is necessary (i.e. could be considered dead code). Brief reasons:\n\n- HAVE_CLOCK_GETTIME, HAVE_CLOCK_GET_TIME, _WIN32, _WIN32_WINNT, HAVE_GETHRTIME: preprocessor feature/configuration macros determine which branches are compiled in \u2014 necessary to know which code is present and therefore can be executed or be considered dead.\n\n- _MHD_UNWANTED_CLOCK, mono_clock_id: the compare against _MHD_UNWANTED_CLOCK decides the first branch\u2019s runtime eligibility; needed to determine if that branch is ever taken.\n\n- clock_gettime: its presence/semantics and return value semantics (0==success) decide whether the first branch returns; influences reachability of subsequent code.\n\n- mono_clock_start: used in the first branch return expression; its value affects whether the return is meaningful and whether removal would change behaviour.\n\n- _MHD_INVALID_CLOCK_SERV, mono_clock_service: control eligibility of the MACH clock branch; needed to know if that return can occur.\n\n- mach_timespec_t: type of cur_time used by the MACH branch; included because its presence implies that the MACH branch compiles and executes.\n\n- KERN_SUCCESS, clock_get_time: KERN_SUCCESS is compared with clock_get_time result to decide MACH-branch return; both are required to know whether that branch can return.\n\n- GetTickCount64, tick_start: Windows GetTickCount64 branch uses tick_start; presence and semantics of GetTickCount64 and value of tick_start determine whether that branch produces the observable behaviour.\n\n- perf_freq, LARGE_INTEGER, QueryPerformanceCounter, perf_start: the older Windows high-resolution branch is guarded by perf_freq != 0, calls QueryPerformanceCounter and computes using perf_start and perf_freq; all are required to decide if the perf-counter branch executes and whether its removal changes behaviour.\n\n- gethrtime, hrtime_start: the gethrtime branch uses those; need them to know if that branch is available and whether it returns \u2014 affects whether other code is dead.\n\n- time, sys_clock_start: the final fallback return depends on time() and sys_clock_start; needed to determine observable behaviour when earlier branches are not taken.\n\nIn short: the preprocessor macros determine which chunks of code exist; the *_start, *_service, *_id and *_freq variables and the constants (e.g. _MHD_UNWANTED_CLOCK, _MHD_INVALID_CLOCK_SERV, KERN_SUCCESS) determine which compiled branches can actually execute at runtime; the external timing API functions determine success/failure semantics that affect control flow. All are required to decide whether any executed code in this function is redundant (dead) or necessary for correct behaviour."
+}

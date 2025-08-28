@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpgamrux4w/src/src/os/shared/src/osapi-file.c: In function 'OS_rename':\n/tmp/tmpgamrux4w/src/src/os/shared/src/osapi-file.c:414:25: error: aggregate value used where an integer was expected\n  414 |                         (unsigned int)iter.token, (const void *)stream, (int)stream->socket_domain,\n      |                         ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:174: CMakeFiles/osal.dir/src/os/shared/src/osapi-file.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

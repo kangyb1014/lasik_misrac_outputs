@@ -1,0 +1,501 @@
+[2025-08-27 13:36:24] INFO in continue_analysis: Continuing analysis with 750 items in the queue.
+[2025-08-27 13:36:24] INFO in shmem_child#14.2: Test generator started
+[2025-08-27 13:36:24] INFO in shmem_child#17.8: Test generator started
+[2025-08-27 13:36:24] INFO in shmem_child#21.17: Test generator started
+[2025-08-27 13:36:24] INFO in shmem_child#8.13: Test generator started
+[2025-08-27 13:36:24] INFO in shmem_child#1.2: Test generator started
+[2025-08-27 13:36:24] INFO in shmem_child#2.2: Test generator started
+[2025-08-27 13:36:24] INFO in metal_io_block_read#17.2: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#14.2: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#17.2: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#14.2: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#17.8: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#17.8: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#17.8: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#8.13: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#8.13: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#17.8: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#2.1: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_io_block_read#2.2: Target function metal_io_block_read#10 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#8.13: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#8.13: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#8.13: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#8.13: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#8.13: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#2.2: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#2.2: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_generic_dev_dma_unmap#2.2: Target function metal_generic_dev_dma_unmap#6 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_get_timestamp#8.13: Target function metal_get_timestamp#55 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_get_timestamp#1.2: Target function metal_get_timestamp#55 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_bus_register#21.17: Test generator started
+[2025-08-27 13:36:24] INFO in metal_bus_register#8.13: Test generator started
+[2025-08-27 13:36:24] INFO in metal_dma_unmap#17.2: Target function metal_dma_unmap#1 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_dma_unmap#8.13: Target function metal_dma_unmap#1 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_dma_unmap#8.13: Target function metal_dma_unmap#1 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in irq#17.2: Test generator started
+[2025-08-27 13:36:24] INFO in irq#8.13: Test generator started
+[2025-08-27 13:36:24] INFO in irq#2.1: Test generator started
+[2025-08-27 13:36:24] INFO in irq#1.2: Test generator started
+[2025-08-27 13:36:24] INFO in irq#2.2: Test generator started
+[2025-08-27 13:36:24] INFO in metal_shmem_open_generic#21.17: Test generator started
+[2025-08-27 13:36:24] INFO in metal_irq_register_controller#8.13: Test generator started
+[2025-08-27 13:36:24] INFO in metal_register_generic_device#21.17: Target function metal_register_generic_device#8 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_register_generic_device#8.13: Target function metal_register_generic_device#8 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_register_generic_device#8.13: Target function metal_register_generic_device#8 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_register_generic_device#1.2: Target function metal_register_generic_device#8 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:24] INFO in metal_uio_dev_irq_ack#17.2: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#8.13: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#8.13: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#8.13: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#1.2: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#8.13: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#8.13: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#2.2: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#8.13: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_irq_ack#2.2: Target function metal_uio_dev_irq_ack#41 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_linux_irq_set_enable#8.13: Target function metal_linux_irq_set_enable#50 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_linux_irq_set_enable#8.13: Target function metal_linux_irq_set_enable#50 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_linux_irq_set_enable#8.13: Target function metal_linux_irq_set_enable#50 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_linux_irq_set_enable#1.2: Target function metal_linux_irq_set_enable#50 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_linux_irq_set_enable#8.13: Target function metal_linux_irq_set_enable#50 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_open#14.2: Target function metal_uio_dev_open#42 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_open#8.13: Target function metal_uio_dev_open#42 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_open#8.13: Target function metal_uio_dev_open#42 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_open#8.13: Target function metal_uio_dev_open#42 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in consumer_thread#2.2: Test generator started
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#21.17: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#21.17: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#21.17: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#21.17: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#8.13: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#8.13: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#8.13: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#1.2: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_uio_dev_bind#2.2: Target function metal_uio_dev_bind#37 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:25] INFO in metal_linux_bus_close#8.13: Test generator started
+[2025-08-27 13:36:25] INFO in atomic#21.17: Test generator started
+[2025-08-27 13:36:25] INFO in atomic#8.13: Test generator started
+[2025-08-27 13:36:25] INFO in metal_shmem_open#14.2: Test generator started
+[2025-08-27 13:36:25] INFO in metal_shmem_open#17.8: Test generator started
+[2025-08-27 13:36:25] INFO in metal_shmem_open#21.17: Test generator started
+[2025-08-27 13:36:25] INFO in metal_shmem_open#8.13: Test generator started
+[2025-08-27 13:36:25] INFO in metal_shmem_open#1.2: Test generator started
+[2025-08-27 13:36:26] INFO in metal_virt2phys#8.13: Test generator started
+[2025-08-27 13:36:26] INFO in metal_virt2phys#1.2: Test generator started
+[2025-08-27 13:36:26] INFO in metal_condition_wait#17.2: Test generator started
+[2025-08-27 13:36:26] INFO in metal_linux_probe_bus#21.17: Test generator started
+[2025-08-27 13:36:26] INFO in metal_linux_probe_bus#8.13: Test generator started
+[2025-08-27 13:36:26] INFO in metal_linux_probe_bus#2.2: Test generator started
+[2025-08-27 13:36:26] INFO in metal_softirq_set_enable#17.8: Target function metal_softirq_set_enable#25 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_softirq_set_enable#8.13: Target function metal_softirq_set_enable#25 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_softirq_set_enable#8.13: Target function metal_softirq_set_enable#25 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_linux_irq_handling#8.13: Test generator started
+[2025-08-27 13:36:26] INFO in metal_linux_irq_handling#1.2: Test generator started
+[2025-08-27 13:36:26] INFO in metal_linux_irq_handling#2.2: Test generator started
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#8.13: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#8.13: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#8.13: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#2.2: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#2.2: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#2.2: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#2.2: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:26] INFO in metal_uio_dev_dma_unmap#2.2: Target function metal_uio_dev_dma_unmap#40 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_irq_register#8.13: Test generator started
+[2025-08-27 13:36:27] INFO in metal_softirq_set#17.8: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_softirq_set#17.8: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_softirq_set#8.13: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_softirq_set#8.13: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_softirq_set#8.13: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_softirq_set#8.13: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_softirq_set#8.13: Target function metal_softirq_set#24 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_uio_read_map_attr#8.13: Target function metal_uio_read_map_attr#43 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_uio_read_map_attr#2.2: Target function metal_uio_read_map_attr#43 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:27] INFO in metal_linux_probe_driver#17.2: Test generator started
+[2025-08-27 13:36:28] INFO in metal_linux_probe_driver#8.13: Test generator started
+[2025-08-27 13:36:28] INFO in metal_linux_probe_driver#1.2: Test generator started
+[2025-08-27 13:36:28] INFO in metal_io_block_write#14.2: Target function metal_io_block_write#12 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:28] INFO in metal_io_block_write#14.2: Target function metal_io_block_write#12 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:28] INFO in metal_io_block_write#17.8: Target function metal_io_block_write#12 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:28] INFO in metal_io_block_write#17.8: Target function metal_io_block_write#12 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:28] INFO in metal_io_block_write#17.8: Target function metal_io_block_write#12 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:28] INFO in metal_io_block_write#17.8: Target function metal_io_block_write#12 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:29] INFO in metal_shmem_try_map#14.2: Test generator started
+[2025-08-27 13:36:29] INFO in metal_shmem_try_map#17.8: Test generator started
+[2025-08-27 13:36:29] INFO in metal_shmem_try_map#8.13: Test generator started
+[2025-08-27 13:36:29] INFO in metal_shmem_try_map#1.2: Test generator started
+[2025-08-27 13:36:30] INFO in metal_uio_dev_close#8.13: Target function metal_uio_dev_close#38 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_uio_dev_close#8.13: Target function metal_uio_dev_close#38 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_uio_dev_close#2.2: Target function metal_uio_dev_close#38 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#17.2: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#8.13: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#8.13: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#8.13: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#8.13: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#8.13: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_dma_map#8.13: Target function metal_dma_map#0 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in _metal_irq_set_enable#17.2: Target function _metal_irq_set_enable#14 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#21.17: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#8.13: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#2.2: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:30] INFO in metal_generic_dev_dma_map#2.2: Target function metal_generic_dev_dma_map#5 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:31] INFO in metal_linux_dev_open#14.2: Target function metal_linux_dev_open#33 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:31] INFO in metal_linux_dev_open#14.2: Target function metal_linux_dev_open#33 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:31] INFO in metal_linux_dev_open#8.13: Target function metal_linux_dev_open#33 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:31] INFO in metal_linux_dev_open#2.1: Target function metal_linux_dev_open#33 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:32] INFO in metal_linux_dev_open#2.2: Target function metal_linux_dev_open#33 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:33] INFO in spinlock_thread#2.2: Test generator started
+[2025-08-27 13:36:34] INFO in metal_linux_dev_dma_map#8.13: Target function metal_linux_dev_dma_map#31 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_dma_map#8.13: Target function metal_linux_dev_dma_map#31 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_close#8.13: Target function metal_linux_dev_close#30 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_close#8.13: Target function metal_linux_dev_close#30 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_dma_unmap#8.13: Target function metal_linux_dev_dma_unmap#32 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_dma_unmap#8.13: Target function metal_linux_dev_dma_unmap#32 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_dma_unmap#8.13: Target function metal_linux_dev_dma_unmap#32 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_linux_dev_dma_unmap#8.13: Target function metal_linux_dev_dma_unmap#32 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:34] INFO in metal_tests_run#14.2: Test generator started
+[2025-08-27 13:36:34] INFO in metal_tests_run#17.8: Test generator started
+[2025-08-27 13:36:34] INFO in metal_tests_run#21.17: Test generator started
+[2025-08-27 13:36:34] INFO in metal_tests_run#8.13: Test generator started
+[2025-08-27 13:36:34] INFO in spinlock#21.17: Test generator started
+[2025-08-27 13:36:35] INFO in metal_add_page_size#21.17: Test generator started
+[2025-08-27 13:36:35] INFO in metal_add_page_size#8.13: Test generator started
+[2025-08-27 13:36:37] INFO in metal_softirq_dispatch#8.13: Target function metal_softirq_dispatch#23 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:37] INFO in metal_open#21.17: Test generator started
+[2025-08-27 13:36:38] INFO in metal_open#2.2: Test generator started
+[2025-08-27 13:36:38] INFO in condition#21.17: Test generator started
+[2025-08-27 13:36:38] INFO in condition#8.13: Test generator started
+[2025-08-27 13:36:38] INFO in condition#2.2: Test generator started
+[2025-08-27 13:36:39] INFO in metal_finish_threads#21.17: Test generator started
+[2025-08-27 13:36:39] INFO in metal_finish_threads#8.13: Test generator started
+[2025-08-27 13:36:39] INFO in metal_finish_threads#1.2: Test generator started
+[2025-08-27 13:36:39] INFO in metal_device_open#21.17: Target function metal_device_open#4 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:39] INFO in metal_device_open#21.17: Target function metal_device_open#4 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:39] INFO in metal_device_open#8.13: Target function metal_device_open#4 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:39] INFO in metal_device_open#2.1: Target function metal_device_open#4 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:39] INFO in metal_shmem_register_generic#17.2: Target function metal_shmem_register_generic#21 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:39] INFO in metal_shmem_register_generic#21.17: Target function metal_shmem_register_generic#21 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:39] INFO in metal_shmem_register_generic#8.13: Target function metal_shmem_register_generic#21 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:40] INFO in metal_run_noblock#21.17: Test generator started
+[2025-08-27 13:36:41] INFO in metal_run_noblock#1.2: Test generator started
+[2025-08-27 13:36:42] INFO in producer_thread#2.2: Test generator started
+[2025-08-27 13:36:43] INFO in metal_bus_register#8.13: Test generator finished
+[2025-08-27 13:36:43] INFO in metal_bus_register#8.13: Test generator started
+[2025-08-27 13:36:43] INFO in metal_linux_irq_init#8.13: Test generator started
+[2025-08-27 13:36:43] INFO in metal_linux_irq_init#1.2: Test generator started
+[2025-08-27 13:36:44] INFO in metal_linux_irq_init#2.2: Test generator started
+[2025-08-27 13:36:44] INFO in metal_linux_irq_notify#1.2: Test generator started
+[2025-08-27 13:36:44] INFO in metal_linux_get_device_property#8.13: Target function metal_linux_get_device_property#34 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:44] INFO in metal_linux_get_device_property#8.13: Target function metal_linux_get_device_property#34 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:44] INFO in metal_linux_get_device_property#8.13: Target function metal_linux_get_device_property#34 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:45] INFO in metal_linux_bus_init#8.13: Test generator started
+[2025-08-27 13:36:45] INFO in metal_linux_bus_init#2.2: Test generator started
+[2025-08-27 13:36:46] INFO in metal_io_init#8.13: Test generator started
+[2025-08-27 13:36:48] INFO in alloc#1.2: Test generator started
+[2025-08-27 13:36:48] INFO in irq#8.13: Test generator finished
+[2025-08-27 13:36:48] INFO in irq#8.13: Test generator started
+[2025-08-27 13:36:49] INFO in metal_shmem_open#14.2: Test generator finished
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#14.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#14.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#14.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.8: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.8: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.8: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#21.17: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:50] INFO in metal_io_block_set#17.8: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:51] INFO in metal_io_block_set#8.13: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:51] INFO in metal_io_block_set#2.2: Target function metal_io_block_set#11 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:51] INFO in metal_bus_find#21.17: Test generator started
+[2025-08-27 13:36:51] INFO in metal_bus_find#8.13: Test generator started
+[2025-08-27 13:36:52] INFO in metal_bus_find#2.2: Test generator started
+[2025-08-27 13:36:52] INFO in spinlock#21.17: Test generator finished
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#14.2: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#21.17: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#8.13: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#1.2: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#1.2: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#2.2: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:52] INFO in metal_uio_dev_dma_map#2.2: Target function metal_uio_dev_dma_map#39 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:36:53] INFO in shmem_child#21.17: Test generator finished
+[2025-08-27 13:36:54] INFO in atomic#21.17: Test generator finished
+[2025-08-27 13:36:54] INFO in metal_irq_allocate#8.13: Test generator started
+[2025-08-27 13:36:54] INFO in metal_linux_probe_bus#21.17: Test generator finished
+[2025-08-27 13:36:54] INFO in metal_linux_probe_bus#21.17: Test generator started
+[2025-08-27 13:36:54] INFO in shmem_child#1.2: Test generator finished
+[2025-08-27 13:36:54] INFO in metal_init_page_sizes#17.2: Test generator started
+[2025-08-27 13:36:55] INFO in shmem_child#8.13: Test generator finished
+[2025-08-27 13:36:55] INFO in shmem_child#8.13: Test generator started
+[2025-08-27 13:36:55] INFO in metal_irq_register#8.13: Test generator finished
+[2025-08-27 13:36:55] INFO in metal_init_page_sizes#21.17: Test generator started
+[2025-08-27 13:36:55] INFO in metal_init_page_sizes#8.13: Test generator started
+[2025-08-27 13:36:55] INFO in metal_init_page_sizes#2.2: Test generator started
+[2025-08-27 13:36:56] INFO in consumer_thread#2.2: Test generator finished
+[2025-08-27 13:36:56] INFO in consumer_thread#2.2: Test generator started
+[2025-08-27 13:36:56] INFO in irq#1.2: Test generator finished
+[2025-08-27 13:36:57] INFO in metal_init#8.13: Test generator started
+[2025-08-27 13:36:57] INFO in metal_run_noblock#1.2: Test generator finished
+[2025-08-27 13:36:57] INFO in metal_linux_probe_bus#2.2: Test generator finished
+[2025-08-27 13:36:58] INFO in metal_linux_irq_shutdown#1.2: Test generator started
+[2025-08-27 13:36:58] INFO in metal_shmem_try_map#8.13: Test generator finished
+[2025-08-27 13:36:58] INFO in metal_shmem_try_map#8.13: Test generator started
+[2025-08-27 13:36:59] INFO in metal_linux_bus_finish#8.13: Test generator started
+[2025-08-27 13:36:59] INFO in metal_linux_bus_finish#2.1: Test generator started
+[2025-08-27 13:36:59] INFO in irq#17.2: Test generator finished
+[2025-08-27 13:36:59] INFO in metal_run#8.13: Test generator started
+[2025-08-27 13:36:59] INFO in producer_thread#2.2: Test generator finished
+[2025-08-27 13:37:00] INFO in metal_map#17.8: Test generator started
+[2025-08-27 13:37:01] INFO in metal_map#8.13: Test generator started
+[2025-08-27 13:37:01] INFO in metal_irq_register_controller#8.13: Test generator finished
+[2025-08-27 13:37:01] INFO in metal_irq_register_controller#8.13: Test generator started
+[2025-08-27 13:37:01] INFO in metal_linux_probe_bus#8.13: Test generator finished
+[2025-08-27 13:37:01] INFO in metal_linux_probe_bus#8.13: Test generator started
+[2025-08-27 13:37:01] INFO in metal_linux_bus_close#8.13: Test generator finished
+[2025-08-27 13:37:01] INFO in metal_map#2.2: Test generator started
+[2025-08-27 13:37:03] INFO in shmem_child#17.8: Test generator finished
+[2025-08-27 13:37:03] INFO in shmem_child#14.2: Test generator finished
+[2025-08-27 13:37:03] INFO in metal_shmem_open#1.2: Test generator finished
+[2025-08-27 13:37:03] INFO in metal_shmem_open#8.13: Test generator finished
+[2025-08-27 13:37:03] INFO in metal_shmem_open#8.13: Test generator started
+[2025-08-27 13:37:03] INFO in metal_bus_register#21.17: Test generator finished
+[2025-08-27 13:37:03] INFO in metal_bus_register#21.17: Test generator started
+[2025-08-27 13:37:04] INFO in metal_sys_init#14.2: Test generator started
+[2025-08-27 13:37:04] INFO in metal_sys_init#17.8: Test generator started
+[2025-08-27 13:37:04] INFO in metal_sys_init#21.17: Test generator started
+[2025-08-27 13:37:04] INFO in metal_shmem_open_generic#21.17: Test generator finished
+[2025-08-27 13:37:04] INFO in metal_shmem_open_generic#21.17: Test generator started
+[2025-08-27 13:37:04] INFO in metal_sys_init#8.13: Test generator started
+[2025-08-27 13:37:04] INFO in metal_sys_init#1.2: Test generator started
+[2025-08-27 13:37:04] INFO in metal_sys_init#2.2: Test generator started
+[2025-08-27 13:37:04] INFO in atomic#8.13: Test generator finished
+[2025-08-27 13:37:05] INFO in metal_default_log_handler#17.8: Test generator started
+[2025-08-27 13:37:05] INFO in metal_shmem_open#21.17: Test generator finished
+[2025-08-27 13:37:05] INFO in metal_shmem_open#17.8: Test generator finished
+[2025-08-27 13:37:05] INFO in metal_open#21.17: Test generator finished
+[2025-08-27 13:37:05] INFO in metal_open#21.17: Test generator started
+[2025-08-27 13:37:06] INFO in metal_shmem_try_map#17.8: Test generator finished
+[2025-08-27 13:37:06] INFO in metal_add_page_size#21.17: Test generator finished
+[2025-08-27 13:37:06] INFO in metal_default_log_handler#2.2: Test generator started
+[2025-08-27 13:37:06] INFO in metal_condition_wait#17.2: Test generator finished
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#21.17: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#8.13: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#8.13: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#8.13: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#8.13: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:06] INFO in shmem_child#2.2: Test generator finished
+[2025-08-27 13:37:06] INFO in metal_linux_irq_handling#8.13: Test generator finished
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#2.2: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:06] INFO in metal_generic_dev_open#2.2: Target function metal_generic_dev_open#7 was not reached in the original code. Skipping dynamic feedback.
+[2025-08-27 13:37:07] INFO in metal_virt2phys#8.13: Test generator finished
+[2025-08-27 13:37:07] INFO in metal_virt2phys#8.13: Test generator started
+[2025-08-27 13:37:07] INFO in metal_open#2.2: Test generator finished
+[2025-08-27 13:37:07] INFO in metal_open#2.2: Test generator started
+[2025-08-27 13:37:08] INFO in metal_linux_probe_driver#1.2: Test generator finished
+[2025-08-27 13:37:08] INFO in spinlock_thread#2.2: Test generator finished
+[2025-08-27 13:37:08] INFO in alloc#1.2: Test generator finished
+[2025-08-27 13:37:08] INFO in alloc#1.2: Test generator started
+[2025-08-27 13:37:09] INFO in metal_linux_probe_driver#8.13: Test generator finished
+[2025-08-27 13:37:09] INFO in metal_linux_probe_driver#8.13: Test generator started
+[2025-08-27 13:37:10] INFO in metal_virt2phys#1.2: Test generator finished
+[2025-08-27 13:37:10] INFO in metal_finish_threads#21.17: Test generator finished
+[2025-08-27 13:37:11] INFO in metal_tests_run#17.8: Test generator finished
+[2025-08-27 13:37:12] INFO in metal_linux_irq_handling#1.2: Test generator finished
+[2025-08-27 13:37:13] INFO in metal_tests_run#8.13: Test generator finished
+[2025-08-27 13:37:13] INFO in metal_tests_run#8.13: Test generator started
+[2025-08-27 13:37:13] INFO in irq#2.2: Test generator finished
+[2025-08-27 13:37:13] INFO in metal_shmem_try_map#1.2: Test generator finished
+[2025-08-27 13:37:13] INFO in metal_shmem_try_map#1.2: Test generator started
+[2025-08-27 13:37:14] INFO in metal_bus_register#8.13: Test generator finished
+[2025-08-27 13:37:14] INFO in metal_bus_register#8.13: Test generator started
+[2025-08-27 13:37:14] INFO in metal_linux_bus_init#2.2: Test generator finished
+[2025-08-27 13:37:14] INFO in metal_linux_bus_init#2.2: Test generator started
+[2025-08-27 13:37:14] INFO in metal_tests_run#14.2: Test generator finished
+[2025-08-27 13:37:14] INFO in metal_linux_irq_init#2.2: Test generator finished
+[2025-08-27 13:37:14] INFO in metal_linux_irq_init#2.2: Test generator started
+[2025-08-27 13:37:15] INFO in metal_linux_irq_notify#1.2: Test generator finished
+[2025-08-27 13:37:15] INFO in metal_linux_irq_notify#1.2: Test generator started
+[2025-08-27 13:37:15] INFO in metal_linux_probe_driver#17.2: Test generator finished
+[2025-08-27 13:37:15] INFO in metal_add_page_size#8.13: Test generator finished
+[2025-08-27 13:37:15] INFO in metal_add_page_size#8.13: Test generator started
+[2025-08-27 13:37:16] INFO in condition#2.2: Test generator finished
+[2025-08-27 13:37:17] INFO in consumer_thread#2.2: Test generator finished
+[2025-08-27 13:37:17] INFO in metal_finish_threads#8.13: Test generator finished
+[2025-08-27 13:37:17] INFO in metal_finish_threads#8.13: Test generator started
+[2025-08-27 13:37:17] INFO in metal_linux_bus_init#8.13: Test generator finished
+[2025-08-27 13:37:17] INFO in metal_linux_bus_init#8.13: Test generator started
+[2025-08-27 13:37:18] INFO in metal_linux_bus_finish#8.13: Test generator finished
+[2025-08-27 13:37:18] INFO in metal_linux_bus_finish#8.13: Test generator started
+[2025-08-27 13:37:18] INFO in metal_linux_irq_init#1.2: Test generator finished
+[2025-08-27 13:37:18] INFO in metal_io_init#8.13: Test generator finished
+[2025-08-27 13:37:18] INFO in metal_io_init#8.13: Test generator started
+[2025-08-27 13:37:19] INFO in metal_bus_find#21.17: Test generator finished
+[2025-08-27 13:37:19] INFO in metal_bus_find#21.17: Test generator started
+[2025-08-27 13:37:19] INFO in metal_bus_find#8.13: Test generator finished
+[2025-08-27 13:37:19] INFO in metal_bus_find#8.13: Test generator started
+[2025-08-27 13:37:21] INFO in irq#2.1: Test generator finished
+[2025-08-27 13:37:21] INFO in metal_tests_run#21.17: Test generator finished
+[2025-08-27 13:37:21] INFO in metal_tests_run#21.17: Test generator started
+[2025-08-27 13:37:21] INFO in metal_finish_threads#1.2: Test generator finished
+[2025-08-27 13:37:21] INFO in metal_finish_threads#1.2: Test generator started
+[2025-08-27 13:37:24] INFO in metal_linux_irq_init#8.13: Test generator finished
+[2025-08-27 13:37:24] INFO in metal_linux_irq_init#8.13: Test generator started
+[2025-08-27 13:37:24] INFO in metal_run_noblock#21.17: Test generator finished
+[2025-08-27 13:37:25] INFO in metal_bus_find#2.2: Test generator finished
+[2025-08-27 13:37:25] INFO in condition#8.13: Test generator finished
+[2025-08-27 13:37:25] INFO in metal_linux_irq_handling#2.2: Test generator finished
+[2025-08-27 13:37:26] INFO in metal_shmem_try_map#14.2: Test generator finished
+[2025-08-27 13:37:28] INFO in condition#21.17: Test generator finished
+[2025-08-27 13:37:28] INFO in metal_linux_probe_bus#8.13: Test generator finished
+[2025-08-27 13:37:28] INFO in metal_open#21.17: Test generator finished
+[2025-08-27 13:37:29] INFO in irq#8.13: Test generator finished
+[2025-08-27 13:37:29] INFO in irq#8.13: Test generator started
+[2025-08-27 13:37:30] INFO in metal_irq_allocate#8.13: Test generator finished
+[2025-08-27 13:37:30] INFO in metal_irq_allocate#8.13: Test generator started
+[2025-08-27 13:37:33] INFO in metal_default_log_handler#2.2: Test generator finished
+[2025-08-27 13:37:33] INFO in metal_default_log_handler#2.2: Test generator started
+[2025-08-27 13:37:34] INFO in metal_shmem_open#8.13: Test generator finished
+[2025-08-27 13:37:34] INFO in metal_shmem_open#8.13: Test generator started
+[2025-08-27 13:37:35] INFO in metal_linux_irq_shutdown#1.2: Test generator finished
+[2025-08-27 13:37:35] INFO in metal_linux_irq_shutdown#1.2: Test generator started
+[2025-08-27 13:37:36] INFO in metal_shmem_try_map#8.13: Test generator finished
+[2025-08-27 13:37:36] INFO in metal_init_page_sizes#17.2: Test generator finished
+[2025-08-27 13:37:36] INFO in metal_init_page_sizes#17.2: Test generator started
+[2025-08-27 13:37:38] INFO in metal_init_page_sizes#21.17: Test generator finished
+[2025-08-27 13:37:38] INFO in metal_tests_run#8.13: Test generator finished
+[2025-08-27 13:37:38] INFO in metal_tests_run#8.13: Test generator started
+[2025-08-27 13:37:38] INFO in shmem_child#8.13: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_linux_irq_notify#1.2: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_map#8.13: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_map#8.13: Test generator started
+[2025-08-27 13:37:39] INFO in metal_add_page_size#8.13: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_init#8.13: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_sys_init#21.17: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_linux_bus_init#8.13: Test generator finished
+[2025-08-27 13:37:39] INFO in metal_linux_bus_init#8.13: Test generator started
+[2025-08-27 13:37:40] INFO in metal_open#2.2: Test generator finished
+[2025-08-27 13:37:40] INFO in metal_linux_probe_driver#8.13: Test generator finished
+[2025-08-27 13:37:40] INFO in metal_linux_probe_driver#8.13: Test generator started
+[2025-08-27 13:37:40] INFO in metal_init_page_sizes#8.13: Test generator finished
+[2025-08-27 13:37:40] INFO in metal_init_page_sizes#8.13: Test generator started
+[2025-08-27 13:37:40] INFO in metal_shmem_open_generic#21.17: Test generator finished
+[2025-08-27 13:37:40] INFO in metal_sys_init#14.2: Test generator finished
+[2025-08-27 13:37:41] INFO in metal_virt2phys#8.13: Test generator finished
+[2025-08-27 13:37:44] INFO in metal_bus_find#8.13: Test generator finished
+[2025-08-27 13:37:44] INFO in metal_linux_irq_init#2.2: Test generator finished
+[2025-08-27 13:37:45] INFO in metal_run#8.13: Test generator finished
+[2025-08-27 13:37:45] INFO in metal_run#8.13: Test generator started
+[2025-08-27 13:37:45] INFO in metal_bus_register#8.13: Test generator finished
+[2025-08-27 13:37:45] INFO in metal_bus_register#21.17: Test generator finished
+[2025-08-27 13:37:46] INFO in metal_finish_threads#8.13: Test generator finished
+[2025-08-27 13:37:46] INFO in metal_finish_threads#8.13: Test generator started
+[2025-08-27 13:37:47] INFO in metal_irq_register_controller#8.13: Test generator finished
+[2025-08-27 13:37:47] INFO in metal_irq_register_controller#8.13: Test generator started
+[2025-08-27 13:37:48] INFO in metal_linux_bus_finish#8.13: Test generator finished
+[2025-08-27 13:37:48] INFO in metal_tests_run#21.17: Test generator finished
+[2025-08-27 13:37:48] INFO in metal_tests_run#21.17: Test generator started
+[2025-08-27 13:37:50] INFO in metal_default_log_handler#17.8: Test generator finished
+[2025-08-27 13:37:51] INFO in metal_init_page_sizes#2.2: Test generator finished
+[2025-08-27 13:37:51] INFO in metal_init_page_sizes#2.2: Test generator started
+[2025-08-27 13:37:51] INFO in metal_io_init#8.13: Test generator finished
+[2025-08-27 13:37:51] INFO in metal_io_init#8.13: Test generator started
+[2025-08-27 13:37:52] INFO in metal_finish_threads#1.2: Test generator finished
+[2025-08-27 13:37:53] INFO in metal_map#17.8: Test generator finished
+[2025-08-27 13:37:53] INFO in alloc#1.2: Test generator finished
+[2025-08-27 13:37:53] INFO in metal_map#17.8: Test generator started
+[2025-08-27 13:37:54] INFO in metal_bus_find#21.17: Test generator finished
+[2025-08-27 13:37:55] INFO in metal_linux_probe_bus#21.17: Test generator finished
+[2025-08-27 13:37:55] INFO in metal_sys_init#2.2: Test generator finished
+[2025-08-27 13:37:55] INFO in metal_sys_init#2.2: Test generator started
+[2025-08-27 13:37:56] INFO in metal_map#2.2: Test generator finished
+[2025-08-27 13:37:56] INFO in irq#8.13: Test generator finished
+[2025-08-27 13:37:56] INFO in irq#8.13: Test generator started
+[2025-08-27 13:37:56] INFO in metal_sys_init#1.2: Test generator finished
+[2025-08-27 13:37:56] INFO in metal_sys_init#1.2: Test generator started
+[2025-08-27 13:37:58] INFO in metal_linux_bus_finish#2.1: Test generator finished
+[2025-08-27 13:38:01] INFO in metal_shmem_try_map#1.2: Test generator finished
+[2025-08-27 13:38:01] INFO in metal_shmem_try_map#1.2: Test generator started
+[2025-08-27 13:38:02] INFO in metal_linux_irq_init#8.13: Test generator finished
+[2025-08-27 13:38:02] INFO in metal_linux_irq_init#8.13: Test generator started
+[2025-08-27 13:38:03] INFO in metal_irq_allocate#8.13: Test generator finished
+[2025-08-27 13:38:03] INFO in metal_irq_allocate#8.13: Test generator started
+[2025-08-27 13:38:07] INFO in metal_irq_register_controller#8.13: Test generator finished
+[2025-08-27 13:38:07] INFO in metal_irq_register_controller#8.13: Test generator started
+[2025-08-27 13:38:08] INFO in metal_linux_irq_shutdown#1.2: Test generator finished
+[2025-08-27 13:38:08] INFO in metal_linux_irq_shutdown#1.2: Test generator started
+[2025-08-27 13:38:08] INFO in metal_default_log_handler#2.2: Test generator finished
+[2025-08-27 13:38:09] INFO in metal_sys_init#8.13: Test generator finished
+[2025-08-27 13:38:10] INFO in metal_linux_bus_init#8.13: Test generator finished
+[2025-08-27 13:38:10] INFO in metal_linux_bus_init#8.13: Test generator started
+[2025-08-27 13:38:10] INFO in metal_linux_bus_init#2.2: Test generator finished
+[2025-08-27 13:38:11] INFO in metal_tests_run#8.13: Test generator finished
+[2025-08-27 13:38:11] INFO in metal_tests_run#8.13: Test generator started
+[2025-08-27 13:38:16] INFO in metal_linux_probe_driver#8.13: Test generator finished
+[2025-08-27 13:38:18] INFO in metal_shmem_open#8.13: Test generator finished
+[2025-08-27 13:38:18] INFO in metal_shmem_open#8.13: Test generator started
+[2025-08-27 13:38:21] INFO in metal_map#17.8: Test generator finished
+[2025-08-27 13:38:21] INFO in metal_map#17.8: Test generator started
+[2025-08-27 13:38:22] INFO in metal_tests_run#21.17: Test generator finished
+[2025-08-27 13:38:22] INFO in metal_finish_threads#8.13: Test generator finished
+[2025-08-27 13:38:22] INFO in metal_finish_threads#8.13: Test generator started
+[2025-08-27 13:38:25] INFO in metal_sys_init#17.8: Test generator finished
+[2025-08-27 13:38:25] INFO in metal_sys_init#17.8: Test generator started
+[2025-08-27 13:38:30] INFO in metal_init_page_sizes#17.2: Test generator finished
+[2025-08-27 13:38:31] INFO in irq#8.13: Test generator finished
+[2025-08-27 13:38:31] INFO in irq#8.13: Test generator started
+[2025-08-27 13:38:32] INFO in metal_sys_init#1.2: Test generator finished
+[2025-08-27 13:38:32] INFO in metal_sys_init#1.2: Test generator started
+[2025-08-27 13:38:32] INFO in metal_run#8.13: Test generator finished
+[2025-08-27 13:38:34] INFO in metal_init_page_sizes#2.2: Test generator finished
+[2025-08-27 13:38:36] INFO in metal_io_init#8.13: Test generator finished
+[2025-08-27 13:38:36] INFO in metal_io_init#8.13: Test generator started
+[2025-08-27 13:38:36] INFO in metal_linux_bus_init#8.13: Test generator finished
+[2025-08-27 13:38:36] INFO in metal_linux_bus_init#8.13: Test generator started
+[2025-08-27 13:38:38] INFO in metal_init_page_sizes#8.13: Test generator finished
+[2025-08-27 13:38:38] INFO in metal_init_page_sizes#8.13: Test generator started
+[2025-08-27 13:38:39] INFO in metal_map#8.13: Test generator finished
+[2025-08-27 13:38:39] INFO in metal_map#8.13: Test generator started
+[2025-08-27 13:38:40] INFO in metal_sys_init#2.2: Test generator finished
+[2025-08-27 13:38:40] INFO in metal_linux_irq_init#8.13: Test generator finished
+[2025-08-27 13:38:40] INFO in metal_linux_irq_init#8.13: Test generator started
+[2025-08-27 13:38:40] INFO in metal_linux_irq_shutdown#1.2: Test generator finished
+[2025-08-27 13:38:40] INFO in metal_linux_irq_shutdown#1.2: Test generator started
+[2025-08-27 13:38:42] INFO in metal_irq_register_controller#8.13: Test generator finished
+[2025-08-27 13:38:48] INFO in metal_tests_run#8.13: Test generator finished
+[2025-08-27 13:38:49] INFO in metal_irq_allocate#8.13: Test generator finished
+[2025-08-27 13:38:49] INFO in metal_irq_allocate#8.13: Test generator started
+[2025-08-27 13:38:53] INFO in metal_shmem_try_map#1.2: Test generator finished
+[2025-08-27 13:38:58] INFO in metal_finish_threads#8.13: Test generator finished
+[2025-08-27 13:38:59] INFO in metal_shmem_open#8.13: Test generator finished
+[2025-08-27 13:39:00] INFO in metal_io_init#8.13: Test generator finished
+[2025-08-27 13:39:04] INFO in metal_linux_bus_init#8.13: Test generator finished
+[2025-08-27 13:39:06] INFO in metal_sys_init#17.8: Test generator finished
+[2025-08-27 13:39:06] INFO in metal_sys_init#17.8: Test generator started
+[2025-08-27 13:39:06] INFO in metal_linux_irq_init#8.13: Test generator finished
+[2025-08-27 13:39:08] INFO in irq#8.13: Test generator finished
+[2025-08-27 13:39:11] INFO in metal_map#8.13: Test generator finished
+[2025-08-27 13:39:11] INFO in metal_map#8.13: Test generator started
+[2025-08-27 13:39:14] INFO in metal_linux_irq_shutdown#1.2: Test generator finished
+[2025-08-27 13:39:14] INFO in metal_sys_init#1.2: Test generator finished
+[2025-08-27 13:39:14] INFO in metal_sys_init#1.2: Test generator started
+[2025-08-27 13:39:19] INFO in metal_map#17.8: Test generator finished
+[2025-08-27 13:39:25] INFO in metal_init_page_sizes#8.13: Test generator finished
+[2025-08-27 13:39:30] INFO in metal_irq_allocate#8.13: Test generator finished
+[2025-08-27 13:39:30] INFO in metal_irq_allocate#8.13: Test generator started
+[2025-08-27 13:39:39] INFO in metal_sys_init#17.8: Test generator finished
+[2025-08-27 13:39:54] INFO in metal_map#8.13: Test generator finished
+[2025-08-27 13:39:58] INFO in metal_sys_init#1.2: Test generator finished
+[2025-08-27 13:40:05] INFO in metal_irq_allocate#8.13: Test generator finished

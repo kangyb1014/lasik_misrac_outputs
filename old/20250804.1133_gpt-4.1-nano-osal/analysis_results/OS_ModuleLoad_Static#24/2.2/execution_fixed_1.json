@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "/usr/bin/ld: CMakeFiles/utobj_coverage-shared-module.dir/__/__/os/shared/src/osapi-module.c.o: in function `OS_ModuleLoad_Static':\n/tmp/tmpoq3n04x9/src/src/os/shared/src/osapi-module.c:143: undefined reference to `Log_ControlPathAndState'\n/usr/bin/ld: /tmp/tmpoq3n04x9/src/src/os/shared/src/osapi-module.c:149: undefined reference to `Log_ControlPathAndState'\n/usr/bin/ld: /tmp/tmpoq3n04x9/src/src/os/shared/src/osapi-module.c:155: undefined reference to `Log_ControlPathAndState'\ncollect2: error: ld returned 1 exit status\ngmake[2]: *** [unit-test-coverage/shared/CMakeFiles/coverage-shared-module-testrunner.dir/build.make:110: unit-test-coverage/shared/coverage-shared-module-testrunner] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:3885: unit-test-coverage/shared/CMakeFiles/coverage-shared-module-testrunner.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
-}

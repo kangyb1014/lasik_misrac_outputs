@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemGetInfo: entry sem_id=3735928559 bin_prop=0x7ffe05165a20\nOS_BinSemGetInfo: bin_prop cleared (28 bytes)\nOS_BinSemGetInfo: OS_ObjectIdGetById returned -35 token=0x7ffe051659d0\nOS_BinSemGetInfo: object id get failed with code -35\nOS_BinSemGetInfo: exit return_code=-35\nOS_BinSemGetInfo: entry sem_id=0 bin_prop=0x7ffe05165a20\nOS_BinSemGetInfo: bin_prop cleared (28 bytes)\nOS_BinSemGetInfo: OS_ObjectIdGetById returned -35 token=0x7ffe051659d0\nOS_BinSemGetInfo: object id get failed with code -35\nOS_BinSemGetInfo: exit return_code=-35\n"
+}

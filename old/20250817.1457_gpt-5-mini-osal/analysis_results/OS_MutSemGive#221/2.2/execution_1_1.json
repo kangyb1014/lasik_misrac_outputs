@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmptm2og282/src/src/os/shared/src/osapi-mutex.c: In function 'OS_MutSemGive_Probe':\n/tmp/tmptm2og282/src/src/os/shared/src/osapi-mutex.c:187:22: error: cast specifies array type\n  187 |     vfprintf(f, fmt, (va_list)ap);\n      |                      ^\ngmake[2]: *** [CMakeFiles/osal.dir/build.make:244: CMakeFiles/osal.dir/src/os/shared/src/osapi-mutex.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:762: CMakeFiles/osal.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,22 @@
+{
+  "user_message": "Target function code is:\n```c\n_MHD_EXTERN struct MHD_Response *\nMHD_create_response_from_fd_at_offset (size_t size,\n                                       int fd,\n                                       off_t offset)\n{\n  if (0 > offset)\n    return NULL;\n  return MHD_create_response_from_fd_at_offset64 (size,\n                                                  fd,\n                                                  (uint64_t) offset);\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'MHD_create_response_from_fd_at_offset': {'callees': ['MHD_create_response_from_fd_at_offset64'], 'callers': []}, 'MHD_create_response_from_fd_at_offset64': {'callees': ['MHD_create_response_from_callback'], 'callers': ['MHD_create_response_from_fd_at_offset', 'MHD_create_response_from_fd', 'MHD_create_response_from_fd64', 'answer_to_connection']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_create_response_from_fd_at_offset64",
+    "MHD_create_response_from_callback",
+    "struct MHD_Response",
+    "size_t",
+    "off_t",
+    "uint64_t",
+    "memcpy",
+    "memmove",
+    "memset",
+    "memcmp",
+    "strcpy",
+    "strncpy",
+    "strcat",
+    "strncat",
+    "strlen",
+    "strspn"
+  ],
+  "explanation": "To determine if this wrapper violates the MISRA C rule about out\u2011of\u2011bounds accesses by string.h functions you must inspect the callee(s) and the data structures/types they manipulate and any string operations they perform:\n\n- MHD_create_response_from_fd_at_offset64: This is the direct callee. You must examine its implementation to see if it calls any string.h functions and how it uses the passed size/offset (e.g., as lengths to memcpy/memset/etc.). The wrapper merely casts offset to uint64_t and forwards size; any unsafe use will be in this function.\n\n- MHD_create_response_from_callback: This function is reported as a callee of MHD_create_response_from_fd_at_offset64. If that function delegates buffer handling or copying to this callback, you must inspect it for string.h usage and argument handling that could cause out\u2011of\u2011bounds access.\n\n- struct MHD_Response: The response object layout and any internal buffers/length fields determine valid buffer bounds. You must inspect its definition to verify that sizes/offsets passed into string operations are consistent with actual buffer capacities.\n\n- size_t, off_t, uint64_t: The exact types/ranges matter because casts (off_t -> uint64_t) or size parameters may change signedness/width and affect bounds checks. You need their definitions to reason about conversions and limits used as lengths to string functions.\n\n- memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, strspn: The MISRA rule specifically targets the standard string.h functions. Include these symbols so the analyzer can check for any calls to them in the callee chain, and then verify the correctness of their pointer/length arguments against object bounds (as determined from struct MHD_Response and the size/offset values).\n\n(If MHD_create_response_from_fd_at_offset64 or its callees call other helper functions that perform buffer operations, include those helper function symbols too; the two listed callees and the listed string.h functions are the minimal set required to evaluate the MISRA rule for this wrapper.)"
+}

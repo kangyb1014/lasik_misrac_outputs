@@ -1,0 +1,20 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int metal_virt2phys(void *addr, unsigned long *phys)\n{\n\toff_t offset;\n\tuint64_t entry;\n\tint error;\n\n\tif (_metal.pagemap_fd < 0)\n\t\treturn -EINVAL;\n\n\toffset = ((uintptr_t)addr >> _metal.page_shift) * sizeof(entry);\n\terror = pread(_metal.pagemap_fd, &entry, sizeof(entry), offset);\n\tif (error < 0) {\n\t\tmetal_log(METAL_LOG_ERROR, \"failed pagemap pread (offset %llx) - %s\\n\",\n\t\t\t  (unsigned long long)offset, strerror(errno));\n\t\treturn -errno;\n\t}\n\n\t/* Check page present and not swapped. */\n\tif ((entry >> 62) != 2) {\n\t\tmetal_log(METAL_LOG_ERROR, \"pagemap page not present, %llx -> %llx\\n\",\n\t\t\t  (unsigned long long)offset, (unsigned long long)entry);\n\t\treturn -ENOENT;\n\t}\n\n\t*phys = (entry & ((1ULL << 54) - 1)) << _metal.page_shift;\n\treturn 0;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'metal_virt2phys': {'callees': [], 'callers': ['metal_shmem_try_map']}, 'metal_shmem_try_map': {'callees': ['metal_map', 'metal_unmap', 'metal_io_init', 'metal_virt2phys'], 'callers': ['metal_shmem_open']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "_metal",
+    "_metal.pagemap_fd",
+    "_metal.page_shift",
+    "struct/type of _metal",
+    "metal_log",
+    "METAL_LOG_ERROR",
+    "pread",
+    "strerror",
+    "errno",
+    "off_t",
+    "uintptr_t",
+    "uint64_t",
+    "EINVAL",
+    "ENOENT"
+  ],
+  "explanation": "To decide whether metal_virt2phys uses any compiler/language extensions you must inspect the definitions (not just uses) of all non-local symbols and types referenced by the function, because those definitions may hide compiler-specific extensions (attributes, builtin/inline macros, GCC/clang keywords, thread-local mechanisms, statement-expressions, typeof, __attribute__, asm, etc.). Specifically:\n\n- _metal / struct/type of _metal / _metal.pagemap_fd / _metal.page_shift: _metal is a global object; its type and field declarations must be checked for compiler extensions (e.g. __attribute__((packed/aligned)), GCC extensions in the struct, or if _metal is a macro that expands to an expression using extensions).\n\n- metal_log and METAL_LOG_ERROR: metal_log may be a macro or inline wrapper that uses language extensions (variadic macro syntax, statement expressions, typeof, __attribute__((format)), or other compiler-specific features). METAL_LOG_ERROR may be a macro constant or enum; its definition should be inspected for extensions.\n\n- pread: the declaration/definition (usually from <unistd.h>) should be checked to ensure it is not a project replacement that uses compiler extensions or non-standard attributes.\n\n- strerror and errno: errno is commonly a macro that may expand to a function call or thread-local accessor (implementation-defined; may use __thread or compiler builtin). strerror may be implemented as a macro/inline that uses extensions. Inspect their declarations/definitions to rule out extensions.\n\n- off_t, uintptr_t, uint64_t: these typedefs/macros come from system headers; their underlying definitions or any project redefinitions must be checked for use of compiler-specific integer extensions (e.g. __int128, non-standard type aliases) or unusual macros.\n\n- EINVAL, ENOENT: these error macros should be checked in case they are redefined in the project with extension-using constructs.\n\nCollecting the exact declarations/definitions of these symbols (and the headers or project files that provide them) is sufficient to determine whether metal_virt2phys or anything it directly uses relies on language/compiler extensions."
+}

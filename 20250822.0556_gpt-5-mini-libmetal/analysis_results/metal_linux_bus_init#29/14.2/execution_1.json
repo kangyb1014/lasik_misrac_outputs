@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_init: enter, initial valid=0\nfor_each_linux_bus: lbus=0x7f2edb87eb60 probe_rc=1 valid=1\nfor_each_linux_bus: lbus=0x7f2edb87fdc8 probe_rc=1 valid=2\nmetal_linux_bus_init: exit, final valid=2, return=0\nmetal_linux_bus_init: enter, initial valid=0\nfor_each_linux_bus: lbus=0x5621e8f16260 probe_rc=1 valid=1\nfor_each_linux_bus: lbus=0x5621e8f174c8 probe_rc=1 valid=2\nmetal_linux_bus_init: exit, final valid=2, return=0\n"
+}

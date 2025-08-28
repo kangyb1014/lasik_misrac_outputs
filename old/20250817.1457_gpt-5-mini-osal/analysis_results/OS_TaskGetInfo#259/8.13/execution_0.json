@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_TaskGetInfo: entry\n  task_prop ptr = 0x7ffc30b4e130\n  After parameter check and memset\n  OS_ObjectIdGetById returned -35\nOS_TaskGetInfo: exit with return_code=-35\nOS_TaskGetInfo: entry\n  task_prop ptr = 0x7ffc30b4e130\n  After parameter check and memset\n  OS_ObjectIdGetById returned -35\nOS_TaskGetInfo: exit with return_code=-35\n"
+}

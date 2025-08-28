@@ -1,0 +1,17 @@
+{
+  "user_message": "Target function code is:\n```c\n_MHD_EXTERN enum MHD_Result\nMHD_run (struct MHD_Daemon *daemon)\n{\n  if ( (daemon->shutdown) ||\n       MHD_D_IS_USING_THREADS_ (daemon) )\n    return MHD_NO;\n\n  (void) MHD_run_wait (daemon, 0);\n  return MHD_YES;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'MHD_run': {'callees': ['MHD_run_wait'], 'callers': ['main']}, 'MHD_run_wait': {'callees': ['MHD_poll_all', 'MHD_cleanup_connections', 'MHD_epoll', 'MHD_select'], 'callers': ['MHD_run']}, 'main': {'callees': ['MHD_create_response_from_buffer_static', 'MHD_start_daemon', 'MHD_stop_daemon', 'MHD_destroy_response', 'MHD_get_fdset2', 'MHD_get_timeout64', 'MHD_run', 'MHD_get_daemon_info', 'MHD_get_timeout_i', 'MHD_resume_connection', 'expire_sessions', 'ignore_sigpipe', 'mark_as_html', 'update_directory', 'update_cached_response', 'check_params', 'add_new_users', 'init_rand_data', 'set_self_name', 'process_params', 'check_apply_params', 'init_data', 'run_mhd', 'deinit_data'], 'callers': []}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "MHD_run_wait",
+    "MHD_poll_all",
+    "MHD_cleanup_connections",
+    "MHD_epoll",
+    "MHD_select",
+    "struct MHD_Daemon",
+    "daemon->shutdown (field)",
+    "MHD_D_IS_USING_THREADS_ (macro/function)",
+    "enum MHD_Result",
+    "MHD_YES",
+    "MHD_NO"
+  ],
+  "explanation": "To determine whether MHD_run (directly or indirectly) causes out\u2011of\u2011bounds accesses via string.h functions you must inspect any code it invokes and the data it uses: \n- MHD_run_wait: Called directly by MHD_run. Any use of memcpy/strcpy/strlen etc. in this function would make the MISRA rule relevant. \n- MHD_poll_all, MHD_cleanup_connections, MHD_epoll, MHD_select: These are the static callees of MHD_run_wait; any string.h usage in them can be reached from MHD_run and must be checked. \n- struct MHD_Daemon and daemon->shutdown (field): MHD_run reads daemon->shutdown; the daemon structure and its fields may contain pointers/buffers that are used by the callee chain. You need the structure definition to see buffer sizes and pointer ownership to decide whether string operations could exceed bounds. \n- MHD_D_IS_USING_THREADS_ (macro/function): MHD_run tests this predicate on the daemon; its implementation could inspect daemon internals or side\u2011effect state that influences which code paths (and thus which string operations) are taken. \n- enum MHD_Result, MHD_YES, MHD_NO: Provide the function\u2019s return semantics and are included so the analyzer can correlate return values and control flow (which paths are taken and whether callees run)."
+}

@@ -1,0 +1,24 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic ssize_t\nBASE64Encode (const void *in, size_t len, char **output)\n{\n#define FILLCHAR '='\n  const char *cvt = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\n                    \"abcdefghijklmnopqrstuvwxyz\"\n                    \"0123456789+/\";\n  const char *data = in;\n  char *opt;\n  ssize_t ret;\n  size_t i;\n  char c;\n  ret = 0;\n\n  opt = malloc (2 + (len * 4 / 3) + 8);\n  if (NULL == opt)\n  {\n    return -1;\n  }\n  for (i = 0; i < len; ++i)\n  {\n    c = (data[i] >> 2) & 0x3F;\n    opt[ret++] = cvt[(int) c];\n    c = (data[i] << 4) & 0x3F;\n    if (++i < len)\n    {\n      c = (char) (c | ((data[i] >> 4) & 0x0F));\n    }\n    opt[ret++] = cvt[(int) c];\n    if (i < len)\n    {\n      c = (char) (c | ((data[i] << 2) & 0x3F));\n      if (++i < len)\n      {\n        c = (char) (c | ((data[i] >> 6) & 0x03));\n      }\n      opt[ret++] = cvt[(int) c];\n    }\n    else\n    {\n      ++i;\n      opt[ret++] = FILLCHAR;\n    }\n    if (i < len)\n    {\n      c = data[i] & 0x3F;\n      opt[ret++] = cvt[(int) c];\n    }\n    else\n    {\n      opt[ret++] = FILLCHAR;\n    }\n  }\n  *output = opt;\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'BASE64Encode': {'callees': [], 'callers': ['ws_get_accept_value']}, 'ws_get_accept_value': {'callees': ['SHA1Reset', 'SHA1Input', 'SHA1Result', 'BASE64Encode'], 'callers': ['ahc_cb']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nUse of the string handling functions from <string.h> shall not result in accesses beyond the bounds of the objects referenced by their pointer parameters. This rule strictly applies to the Standard Library functions in <string.h> such as memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, and strspn.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "malloc",
+    "size_t",
+    "ssize_t",
+    "SIZE_MAX",
+    "ws_get_accept_value",
+    "SHA1Result",
+    "SHA1Input",
+    "SHA1Reset",
+    "memcpy",
+    "memmove",
+    "memset",
+    "memcmp",
+    "strcpy",
+    "strncpy",
+    "strcat",
+    "strncat",
+    "strlen",
+    "strspn"
+  ],
+  "explanation": "Explain why each symbol is needed:\n- malloc: BASE64Encode uses malloc() to allocate the output buffer. To determine whether writes to opt can overflow (and therefore whether any string-handling use could access out-of-bounds memory) you must inspect the malloc prototype/semantics and the requested size computation for integer overflow or allocation shortfalls.\n- size_t: The function computes and uses size_t (len and arithmetic on it). You need the exact typedef/width and semantics to reason about arithmetic overflow (len * 4 / 3) and comparisons against SIZE_MAX.\n- ssize_t: The function returns ssize_t. Knowing its signed range is required to reason about return-value conventions and whether ret can overflow or be misinterpreted.\n- SIZE_MAX: The maximum value of size_t is required to reason about potential overflow in the allocation size expression and whether len values could make the computed allocation wrap, leading to out-of-bounds writes.\n- ws_get_accept_value: This is the (static) caller of BASE64Encode. To establish whether any string.h functions are involved in preparing the arguments (in, len) passed into BASE64Encode you must inspect the caller to see whether it used string functions that might have produced invalid pointers/lengths or performed out-of-bounds accesses.\n- SHA1Result / SHA1Input / SHA1Reset: These symbols are called by ws_get_accept_value. If ws_get_accept_value builds the input buffer for BASE64Encode using SHA1Result (or manipulates buffers with SHA1Input), you must inspect these functions to see how the input buffer and length are produced and whether any string.h calls inside them can cause or depend on out-of-bounds accesses.\n- memcpy, memmove, memset, memcmp, strcpy, strncpy, strcat, strncat, strlen, strspn: The MISRA rule targets the standard string.h functions. To conclude that BASE64Encode does or does not violate this rule you must check whether BASE64Encode or its callers (notably ws_get_accept_value and the SHA1* functions) invoke any of these functions and whether those invocations could access beyond the bounds of the objects passed. If none of these functions are called in the function or its callers that affect the buffers passed to BASE64Encode, the MISRA rule about string.h functions is not violated by BASE64Encode itself."
+}

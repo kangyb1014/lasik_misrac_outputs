@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "digest_auth_example_adv.c:204:6: error: redeclaration of 'enum MHD_DigestAuthAlgo3'\n  204 | enum MHD_DigestAuthAlgo3 { ALG_MD5 = 0, ALG_SHA256 = 1, ALG_SHA512_256 = 2 };\n      |      ^~~~~~~~~~~~~~~~~~~\nIn file included from digest_auth_example_adv.c:33:\n../../src/include/microhttpd.h:4755:6: note: originally defined here\n 4755 | enum MHD_DigestAuthAlgo3\n      |      ^~~~~~~~~~~~~~~~~~~\nmake[4]: *** [Makefile:1086: digest_auth_example_adv.o] Error 1\nmake[3]: *** [Makefile:1234: all-recursive] Error 1\nmake[2]: *** [Makefile:449: all-recursive] Error 1\nmake[1]: *** [Makefile:788: all-recursive] Error 1\nmake: *** [Makefile:693: all] Error 2"
-}

@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmp39gxe7az/src/src/os/portable/os-impl-posix-dl-symtab.c:98:1: error: expected identifier or '(' before '{' token\n   98 | {\n      | ^\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:412: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-posix-dl-symtab.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_BinSemTimedWait ENTRY: sem_id=3735928559 msecs=1000\nOS_ObjectIdGetById returned -35\ntoken address passed to OS_ObjectIdGetById: 0x7fff5605ddf0\nSkipping OS_BinSemTimedWait_Impl due to previous error: -35\nOS_BinSemTimedWait EXIT: return_code=-35\nOS_BinSemTimedWait ENTRY: sem_id=0 msecs=1000\nOS_ObjectIdGetById returned -35\ntoken address passed to OS_ObjectIdGetById: 0x7fff5605ddf0\nSkipping OS_BinSemTimedWait_Impl due to previous error: -35\nOS_BinSemTimedWait EXIT: return_code=-35\n"
+}

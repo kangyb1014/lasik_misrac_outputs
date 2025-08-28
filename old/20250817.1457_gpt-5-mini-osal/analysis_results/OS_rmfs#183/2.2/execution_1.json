@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_rmfs: GetByName_failed: devname='/ramdev3' return_code=-17\nOS_rmfs: returning: devname='/ramdev3' return_code=-17\nOS_rmfs: GetByName_failed: devname='/ramdev3' return_code=-17\nOS_rmfs: returning: devname='/ramdev3' return_code=-17\nOS_rmfs: GetByName_failed: devname='/ramdev3' return_code=-17\nOS_rmfs: returning: devname='/ramdev3' return_code=-17\n"
+}

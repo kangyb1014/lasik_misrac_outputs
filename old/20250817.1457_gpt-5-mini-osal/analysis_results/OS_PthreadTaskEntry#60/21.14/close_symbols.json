@@ -1,0 +1,12 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *OS_PthreadTaskEntry(void *arg)\n{\n    OS_VoidPtrValueWrapper_t local_arg;\n\n    /* cppcheck-suppress unreadVariable // intentional use of other union member */\n    local_arg.opaque_arg = arg;\n    OS_TaskEntryPoint(local_arg.id); /* Never returns */\n\n    return NULL;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'OS_PthreadTaskEntry': {'callees': ['OS_TaskEntryPoint'], 'callers': []}, 'OS_TaskEntryPoint': {'callees': ['OS_TaskPrepare', 'OS_TaskExit'], 'callers': ['OS_PthreadTaskEntry']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nThe Standard Library function memcmp shall not be used to compare null terminated strings. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "OS_TaskEntryPoint (definition/implementation)",
+    "OS_TaskPrepare (definition/implementation)",
+    "OS_TaskExit (definition/implementation)",
+    "OS_VoidPtrValueWrapper_t (type/definition)",
+    "OS_VoidPtrValueWrapper_t.id (member type)",
+    "memcmp (stdlib function/declaration)"
+  ],
+  "explanation": "- OS_TaskEntryPoint: The target calls this function with local_arg.id. You must inspect its body to see whether it (or functions it calls) calls memcmp on that value or otherwise treats the argument as a null-terminated string.\\n- OS_TaskPrepare and OS_TaskExit: These are direct callees of OS_TaskEntryPoint (per the call graph). Their implementations must be checked for memcmp usages or for passing the argument along to other memcmp callers.\\n- OS_VoidPtrValueWrapper_t: The union/type definition is required to know what the union members represent and how the conversion from opaque_arg to id is meant to be interpreted.\\n- OS_VoidPtrValueWrapper_t.id (member type): You need the exact type of the id member to determine whether the value passed to OS_TaskEntryPoint is (or can be) a char* pointing to a null-terminated string (which would make memcmp use relevant).\\n- memcmp: Include the standard library symbol so the analyzer can identify calls to memcmp (and check argument types and call sites) to determine whether memcmp is being used to compare null-terminated strings."
+}

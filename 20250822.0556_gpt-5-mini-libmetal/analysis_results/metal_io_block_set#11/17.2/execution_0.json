@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "-- Build type:  \n-- Host:    Linux/x86_64\n-- Target:  Linux/x86_64\n-- Machine: Generic\n-- Vendor: none\n/tmp/tmpwryntdex/src/lib/io.c: In function 'metal_io_probe_log':\n/tmp/tmpwryntdex/src/lib/io.c:135:69: error: unknown type name 'n'\n  135 |         /* Access ops fields only for logging (do not call them). */n\n      |                                                                     ^\ngmake[2]: *** [lib/CMakeFiles/metal-shared.dir/build.make:118: lib/CMakeFiles/metal-shared.dir/io.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:291: lib/CMakeFiles/metal-shared.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

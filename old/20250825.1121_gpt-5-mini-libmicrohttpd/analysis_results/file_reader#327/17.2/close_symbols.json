@@ -1,0 +1,18 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic ssize_t\nfile_reader (void *cls, uint64_t pos, char *buf, size_t max)\n{\n  FILE *file = (FILE *) cls;\n  size_t bytes_read;\n\n  /* 'fseek' may not support files larger 2GiB, depending on platform.\n   * For production code, make sure that 'pos' has valid values, supported by\n   * 'fseek', or use 'fseeko' or similar function. */\n  if (0 != fseek (file, (long) pos, SEEK_SET))\n    return MHD_CONTENT_READER_END_WITH_ERROR;\n  bytes_read = fread (buf, 1, max, file);\n  if (0 == bytes_read)\n    return (0 != ferror (file)) ? MHD_CONTENT_READER_END_WITH_ERROR :\n           MHD_CONTENT_READER_END_OF_STREAM;\n  return (ssize_t) bytes_read;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "fseek",
+    "fseeko",
+    "fread",
+    "fread_unlocked",
+    "ferror",
+    "__fseek",
+    "__fread",
+    "__ferror",
+    "SEEK_SET",
+    "FILE",
+    "MHD_CONTENT_READER_END_WITH_ERROR",
+    "MHD_CONTENT_READER_END_OF_STREAM"
+  ],
+  "explanation": "To determine whether file_reader violates the MISRA rule (no direct or indirect recursion) we must examine the functions it calls and any symbols that affect or redirect those calls. Each listed symbol is required for the following reason:\n\n- fseek: file_reader directly calls fseek; you must inspect fseek's implementation/call-graph to see whether it can (directly or indirectly) call file_reader.\n\n- fseeko: platforms sometimes map fseek to fseeko (or code/comments mention it). Include fseeko because calls or macros may redirect to it; its call-graph must be checked for callbacks into file_reader.\n\n- fread: file_reader directly calls fread; its implementation and transitive callees must be inspected for any path back to file_reader.\n\n- fread_unlocked / __fread: some C libraries implement fread as a wrapper to unlocked or internal variants; include these symbols so the actual callees are analyzed.\n\n- ferror: file_reader calls ferror; include ferror and its internal variants to check whether they can call user callbacks (which might reach file_reader).\n\n- __fseek / __fread / __ferror: internal libc symbols or aliases are commonly used; include them so the real code that runs is analyzed rather than only the public prototype.\n\n- SEEK_SET: constant used as an argument to fseek. It is not a function, but include it to be sure no macro or unusual definition changes the call semantics (e.g., macro expansions that introduce calls).\n\n- FILE: the FILE type is used as the callback context; include it to check for any overloaded or instrumented implementations that could embed callbacks invoked by stdio functions.\n\n- MHD_CONTENT_READER_END_WITH_ERROR and MHD_CONTENT_READER_END_OF_STREAM: these are return-value macros/constants used by file_reader. Include them to confirm they are not function-like macros that could introduce calls.\n\nImportant note: proving absence of indirect recursion requires examining the full transitive call-graph of the functions listed above (the implementations of fseek/fseeko/fread/ferror and any internal wrappers they call). The entries above give the immediate symbols and common internal aliases/wrappers that must be inspected; you should also include any further internal libc symbols discovered while traversing those implementations."
+}

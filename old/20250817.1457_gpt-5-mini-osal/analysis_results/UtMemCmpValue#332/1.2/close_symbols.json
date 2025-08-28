@@ -1,0 +1,14 @@
+{
+  "user_message": "Target function code is:\n```c\nbool UtMemCmpValue(const void *Memory, uint8 Value, uint32 Length)\n{\n    uint32       i;\n    const uint8 *Byte_ptr = Memory;\n\n    for (i = 0; i < Length; i++)\n    {\n        if (Byte_ptr[i] != Value)\n        {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nLanguage extensions should not be used. You should report only when the code uses any language compiler extensions that are explicitly stated as an extension in compiler documentations.\nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "bool",
+    "true",
+    "false",
+    "uint8",
+    "uint32",
+    "stdbool.h",
+    "stdint.h",
+    "__cplusplus"
+  ],
+  "explanation": "To decide if this function uses compiler language extensions you must know how the non\u2011standard-looking types and boolean values are defined and what language mode the compiler is using: \n\n- bool / true / false: Determine whether these are the C99 stdbool macros (which expand to _Bool/true/false and are standard C), C++ built\u2011in keywords, or compiler/vendor extensions (e.g. a typedef or macro introduced by the toolchain). That decides if use of 'bool' here is a standard C feature or an extension.\n\n- uint8 / uint32: These names are not standard C identifiers (the standard fixed-width names are uint8_t/uint32_t). You must locate their typedefs/defines to see whether they are aliases defined in standard headers (via typedefs from uint8_t/uint32_t) or are vendor/compiler extensions or macros. If they come from a proprietary header or use compiler-specific keywords, that could violate the MISRA rule.\n\n- stdbool.h / stdint.h: Check whether these standard headers are included (and used) to provide the boolean and integer types, which would indicate standard C usage. If the project uses nonstandard headers instead, that must be inspected for extensions.\n\n- __cplusplus: The predefined macro indicates whether the translation unit is being compiled as C++ (where 'bool' is a built\u2011in keyword). Knowing the language mode (C vs C++) is necessary because use of C++ built\u2011in types in a C project or reliance on C++ language features would be a language extension relative to C MISRA rules.\n\nThese symbols (and the locations/definitions they map to) are sufficient to determine whether the code uses standard C facilities or relies on compiler/vendor language extensions."
+}

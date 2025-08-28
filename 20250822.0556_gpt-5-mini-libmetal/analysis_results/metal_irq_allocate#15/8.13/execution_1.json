@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_irq_allocate: entry irq_base=0 irq_num=1023\nmetal_irq_allocate: initial irq_tocheck=0 irq_end_tocheck=1023\nmetal_irq_allocate: exit returning irq_tocheck=0\nmetal_irq_allocate: entry irq_base=0 irq_num=1023\nmetal_irq_allocate: initial irq_tocheck=0 irq_end_tocheck=1023\nmetal_irq_allocate: exit returning irq_tocheck=0\n"
+}

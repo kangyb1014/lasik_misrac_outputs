@@ -1,0 +1,29 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic int\nmhd_tool_get_proc_cpu_count_sched_getaffinity_ (void)\n{\n  int ret = -1;\n#if defined(HAVE_SCHED_GETAFFINITY) && defined(HAVE_GETPID)\n  /* Glibc style */\n  if (0 >= ret)\n  {\n    cpu_set_t cur_set;\n    if (0 == sched_getaffinity (getpid (), sizeof (cur_set), &cur_set))\n    {\n#ifdef HAVE_CPU_COUNT\n      ret = CPU_COUNT (&cur_set);\n#else  /* ! HAVE_CPU_COUNT */\n      unsigned int i;\n      ret = 0;\n      for (i = 0; i < CPU_SETSIZE_SAFE; ++i)\n      {\n        if (CPU_ISSET (i, &cur_set))\n          ++ret;\n      }\n      if (0 == ret)\n        ret = -1;\n#endif /* ! HAVE_CPU_COUNT */\n    }\n  }\n#ifdef HAVE_CPU_COUNT_S\n  if (0 >= ret)\n  {\n    /* Use 256 times larger size than size for default maximum CPU number.\n       Hopefully it would be enough even for exotic situations. */\n    static const unsigned int set_size_cpus = 256 * CPU_SETSIZE;\n    const size_t set_size_bytes = CPU_ALLOC_SIZE (set_size_cpus);\n    cpu_set_t *p_set;\n\n    p_set = CPU_ALLOC (set_size_cpus);\n    if (NULL != p_set)\n    {\n      if (0 == sched_getaffinity (getpid (), set_size_bytes, p_set))\n      {\n#ifndef MHD_FUNC_CPU_COUNT_S_GETS_CPUS\n        ret = CPU_COUNT_S (set_size_bytes, p_set);\n#else  /* MHD_FUNC_CPU_COUNT_S_GETS_CPUS */\n        ret = CPU_COUNT_S (set_size_cpus, p_set);\n#endif /* MHD_FUNC_CPU_COUNT_S_GETS_CPUS */\n      }\n      CPU_FREE (p_set);\n    }\n  }\n#endif /* HAVE_CPU_COUNT_S */\n#endif /* HAVE_SCHED_GETAFFINITY && HAVE_GETPID */\n  if (0 >= ret)\n    return -1;\n  return ret;\n}\n```\n\nStatic call graph of the target function is:\n```json\n{'mhd_tool_get_proc_cpu_count_sched_getaffinity_': {'callees': [], 'callers': ['mhd_tool_get_proc_cpu_count']}, 'mhd_tool_get_proc_cpu_count': {'callees': ['mhd_tool_get_proc_cpu_count_sched_getaffinity_', 'mhd_tool_get_proc_cpu_count_cpuset_getaffinity_', 'mhd_tool_get_proc_cpu_count_sched_getaffinity_np_', 'mhd_tool_get_proc_cpu_count_w32_'], 'callers': ['detect_cpu_core_count', 'detect_process_cpu_core_count', 'mhd_tool_get_system_cpu_count']}}\n```\n\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "sched_getaffinity",
+    "getpid",
+    "CPU_COUNT",
+    "CPU_ISSET",
+    "CPU_COUNT_S",
+    "CPU_ALLOC",
+    "CPU_FREE",
+    "CPU_ALLOC_SIZE",
+    "CPU_SETSIZE_SAFE",
+    "CPU_SETSIZE",
+    "MHD_FUNC_CPU_COUNT_S_GETS_CPUS",
+    "cpu_set_t",
+    "HAVE_SCHED_GETAFFINITY",
+    "HAVE_GETPID",
+    "HAVE_CPU_COUNT",
+    "HAVE_CPU_COUNT_S",
+    "mhd_tool_get_proc_cpu_count",
+    "mhd_tool_get_proc_cpu_count_cpuset_getaffinity_",
+    "mhd_tool_get_proc_cpu_count_sched_getaffinity_np_",
+    "mhd_tool_get_proc_cpu_count_w32_",
+    "detect_cpu_core_count",
+    "detect_process_cpu_core_count",
+    "mhd_tool_get_system_cpu_count"
+  ],
+  "explanation": "For checking MISRA rule (no direct or indirect self-calls) you must know every symbol the target calls (and the callers that can reach it) so you can determine whether any call chain leads back to the target.\n\n- sched_getaffinity, getpid: directly invoked system/library calls. Inspect their definitions/linked call graph to ensure they don't (directly or indirectly) call back into the target.\n- CPU_COUNT, CPU_ISSET, CPU_COUNT_S: macros or functions used to count/test CPUs; they may expand to function calls or call other helpers. Their definitions are needed to verify they do not call the target (or other functions that do).\n- CPU_ALLOC, CPU_FREE, CPU_ALLOC_SIZE: used to allocate/free cpu_set storage; they may be macros or functions \u2014 include to confirm they are not involved in a call cycle.\n- CPU_SETSIZE_SAFE, CPU_SETSIZE: macros/constants that affect loop bounds/allocation size; include because they influence which CPU_* variant is used (and thus which callees are present).\n- MHD_FUNC_CPU_COUNT_S_GETS_CPUS: build-time macro that alters how CPU_COUNT_S is invoked; necessary to know which symbol (and argument form) is actually used.\n- cpu_set_t: the type used by CPU_* macros; include to be able to inspect any inline functions/macros operating on it.\n- HAVE_SCHED_GETAFFINITY, HAVE_GETPID, HAVE_CPU_COUNT, HAVE_CPU_COUNT_S: preprocessor feature macros control code inclusion. You must know which are defined in the build under analysis to know the exact call graph of the target.\n- mhd_tool_get_proc_cpu_count: the immediate caller of the target (and the aggregator of alternate implementations). You need its body to see if it can be called by any function reachable from the target (indirect recursion possibility).\n- mhd_tool_get_proc_cpu_count_cpuset_getaffinity_, mhd_tool_get_proc_cpu_count_sched_getaffinity_np_, mhd_tool_get_proc_cpu_count_w32_: the other variant implementations that mhd_tool_get_proc_cpu_count calls; include them because the target could be reached indirectly through those (or they could call back into the target in other build configurations).\n- detect_cpu_core_count, detect_process_cpu_core_count, mhd_tool_get_system_cpu_count: callers of mhd_tool_get_proc_cpu_count. Include them to trace upward call chains to ensure there is no cycle that returns to the target.\n\nInspecting the definitions (or call-graphs) of these symbols under the exact preprocessor configuration used will let you determine whether any call path from or to the target forms a cycle that violates the MISRA rule."
+}

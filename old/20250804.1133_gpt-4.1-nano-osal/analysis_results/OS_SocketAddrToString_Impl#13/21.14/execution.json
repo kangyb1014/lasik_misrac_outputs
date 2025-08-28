@@ -1,4 +1,0 @@
-{
-  "result": "compile_failed",
-  "message": "/tmp/tmp_cbfyr5n/src/src/os/portable/os-impl-bsd-sockets.c: In function 'OS_SocketAddrToString_Impl':\n/tmp/tmp_cbfyr5n/src/src/os/portable/os-impl-bsd-sockets.c:680:28: error: 'LOG_FILE' undeclared (first use in this function)\n  680 |     FILE *log_file = fopen(LOG_FILE, \"a\");\n      |                            ^~~~~~~~\n/tmp/tmp_cbfyr5n/src/src/os/portable/os-impl-bsd-sockets.c:680:28: note: each undeclared identifier is reported only once for each function it appears in\ngmake[2]: *** [posix_impl/CMakeFiles/osal_posix_impl.dir/build.make:426: posix_impl/CMakeFiles/osal_posix_impl.dir/__/portable/os-impl-bsd-sockets.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:919: posix_impl/CMakeFiles/osal_posix_impl.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
-}

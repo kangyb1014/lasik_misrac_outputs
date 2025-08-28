@@ -1,0 +1,8 @@
+{
+  "user_message": "Target function code is:\n```c\nstatic void *atomic_thread(void *arg)\n{\n\tatomic_int *c = arg;\n\tint i;\n\n\tfor (i = 0; i < atomic_test_count; i++)\n\t\tatomic_fetch_add(c, 1);\n\n\treturn NULL;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nFunctions shall not call themselves, either directly or indirectly. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "atomic_fetch_add",
+    "(all) transitive callees of atomic_fetch_add (i.e. every function called, directly or indirectly, by atomic_fetch_add)"
+  ],
+  "explanation": "atomic_fetch_add: atomic_thread calls this symbol in its loop. To determine whether atomic_thread violates the MISRA recursion rule you must inspect the body/definition of atomic_fetch_add to see whether it (directly) calls atomic_thread or (indirectly) calls other functions that eventually call atomic_thread.\n\n(all) transitive callees of atomic_fetch_add: if atomic_fetch_add is a wrapper or macro that forwards to compiler intrinsics or library helpers (for example __atomic_fetch_add, __sync_fetch_and_add, platform-specific helpers, or other wrapper functions), any of those transitive callees must be provided so the analyzer can compute the full call graph and detect indirect recursion back to atomic_thread. Without the full transitive set of callees you cannot conclude that atomic_thread does not (indirectly) call itself."
+}

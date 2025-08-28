@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "OS_FileSys_Initialize ENTRY: address=(nil), fsdevname=\"/ramdev3\", fsvolname=\"RAM3\", blocksize=512, numblocks=20, should_format=1\nOS_ObjectIdAllocateNew returned -35\nOS_FileSys_Initialize EXIT: return_code=-35\nOS_FileSys_Initialize ENTRY: address=(nil), fsdevname=\"/ramdev3\", fsvolname=\"RAM3\", blocksize=512, numblocks=20, should_format=1\nOS_ObjectIdAllocateNew returned -35\nOS_FileSys_Initialize EXIT: return_code=-35\nOS_FileSys_Initialize ENTRY: address=(nil), fsdevname=\"/ramdev3\", fsvolname=\"RAM3\", blocksize=512, numblocks=20, should_format=1\nOS_ObjectIdAllocateNew returned -35\nOS_FileSys_Initialize EXIT: return_code=-35\nOS_FileSys_Initialize ENTRY: address=(nil), fsdevname=\"/ramdev3\", fsvolname=\"RAM3\", blocksize=512, numblocks=64, should_format=1\nOS_ObjectIdAllocateNew returned -35\nOS_FileSys_Initialize EXIT: return_code=-35\n"
+}

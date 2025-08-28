@@ -1,0 +1,4 @@
+{
+  "result": "compile_failed",
+  "message": "/tmp/tmpmsen3fu7/src/ut_assert/src/utlist.c: In function 'UtList_Add':\n/tmp/tmpmsen3fu7/src/ut_assert/src/utlist.c:201:46: error: 'UtListNode_t' {aka 'struct UtListNodeTag'} has no member named 'Node'\n  201 |             node_data_ptr = (void *)(&NewNode->Node.Data);\n      |                                              ^~\n/tmp/tmpmsen3fu7/src/ut_assert/src/utlist.c:222:60: error: 'UtListNode_t' {aka 'struct UtListNodeTag'} has no member named 'Node'\n  222 |                     (void)memcpy(&stored_data_ptr, &NewNode->Node.Data, sizeof(stored_data_ptr));\n      |                                                            ^~\ngmake[2]: *** [ut_assert/CMakeFiles/ut_assert.dir/build.make:90: ut_assert/CMakeFiles/ut_assert.dir/src/utlist.c.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:788: ut_assert/CMakeFiles/ut_assert.dir/all] Error 2\ngmake: *** [Makefile:146: all] Error 2"
+}

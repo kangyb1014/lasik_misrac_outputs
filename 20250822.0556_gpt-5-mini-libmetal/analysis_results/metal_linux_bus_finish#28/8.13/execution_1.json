@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "metal_linux_bus_finish: enter\n  lbus=0x7f51c1bc5b60 name=\"platform\" find_ret=0 bus=0x7f51c1bc5b60\n  lbus=0x7f51c1bc6dc8 name=\"pci\" find_ret=0 bus=0x7f51c1bc6dc8\nmetal_linux_bus_finish: exit\nmetal_linux_bus_finish: enter\n  lbus=0x562036a37260 name=\"platform\" find_ret=0 bus=0x562036a37260\n  lbus=0x562036a384c8 name=\"pci\" find_ret=0 bus=0x562036a384c8\nmetal_linux_bus_finish: exit\n"
+}

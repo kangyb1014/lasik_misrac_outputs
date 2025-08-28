@@ -1,0 +1,4 @@
+{
+  "result": "success",
+  "message": "[1755444514] ENTRY: OS_MutSemGetIdByName called\n[1755444514]   sem_name pointer: 0x7ffd9d882380\n[1755444514]   sem_id pointer:   0x7ffd9d88237c\n[1755444514] EXIT:  OS_MutSemGetIdByName returning\n[1755444514]   sem_name pointer: 0x7ffd9d882380\n[1755444514]   sem_id pointer:   0x7ffd9d88237c\n[1755444514]   return_code:      -13\n[1755444514] ENTRY: OS_MutSemGetIdByName called\n[1755444514]   sem_name pointer: 0x559e7a7086d9\n[1755444514]   sem_id pointer:   0x7ffd9d88237c\n[1755444514] EXIT:  OS_MutSemGetIdByName returning\n[1755444514]   sem_name pointer: 0x559e7a7086d9\n[1755444514]   sem_id pointer:   0x7ffd9d88237c\n[1755444514]   return_code:      -17\n"
+}

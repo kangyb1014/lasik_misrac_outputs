@@ -1,0 +1,32 @@
+{
+  "user_message": "Target function code is:\n```c\ntime_t\nMHD_monotonic_sec_counter (void)\n{\n#ifdef HAVE_CLOCK_GETTIME\n  struct timespec ts;\n\n  if ( (_MHD_UNWANTED_CLOCK != mono_clock_id) &&\n       (0 == clock_gettime (mono_clock_id,\n                            &ts)) )\n    return ts.tv_sec - mono_clock_start;\n#endif /* HAVE_CLOCK_GETTIME */\n#ifdef HAVE_CLOCK_GET_TIME\n  if (_MHD_INVALID_CLOCK_SERV != mono_clock_service)\n  {\n    mach_timespec_t cur_time;\n\n    if (KERN_SUCCESS == clock_get_time (mono_clock_service,\n                                        &cur_time))\n      return cur_time.tv_sec - mono_clock_start;\n  }\n#endif /* HAVE_CLOCK_GET_TIME */\n#if defined(_WIN32)\n#if _WIN32_WINNT >= 0x0600\n  if (1)\n    return (time_t) (((uint64_t) (GetTickCount64 () - tick_start)) / 1000);\n#else  /* _WIN32_WINNT < 0x0600 */\n  if (0 != perf_freq)\n  {\n    LARGE_INTEGER perf_counter;\n\n    QueryPerformanceCounter (&perf_counter);   /* never fail on XP and later */\n    return (time_t) (((uint64_t) perf_counter.QuadPart - perf_start)\n                     / perf_freq);\n  }\n#endif /* _WIN32_WINNT < 0x0600 */\n#endif /* _WIN32 */\n#ifdef HAVE_GETHRTIME\n  if (1)\n    return (time_t) (((uint64_t) (gethrtime () - hrtime_start)) / 1000000000);\n#endif /* HAVE_GETHRTIME */\n\n  return time (NULL) - sys_clock_start;\n}\n```\n\nList additional symbols that are required to analyze the target function to determine if the target function code violates the following MISRA C rule:\nA pointer should point to a const-qualified type whenever possible. \nThe list will be included in the prompt for the next agent, so be concise and clear.\nExplain why each symbol is required in the analysis of the target function for the MISRA C rule.\n",
+  "close_symbols": [
+    "clock_gettime",
+    "struct timespec",
+    "HAVE_CLOCK_GETTIME",
+    "_MHD_UNWANTED_CLOCK",
+    "mono_clock_id",
+    "mono_clock_start",
+    "clock_get_time",
+    "mach_timespec_t",
+    "HAVE_CLOCK_GET_TIME",
+    "_MHD_INVALID_CLOCK_SERV",
+    "mono_clock_service",
+    "KERN_SUCCESS",
+    "QueryPerformanceCounter",
+    "LARGE_INTEGER",
+    "perf_freq",
+    "perf_start",
+    "GetTickCount64",
+    "tick_start",
+    "_WIN32",
+    "_WIN32_WINNT",
+    "gethrtime",
+    "HAVE_GETHRTIME",
+    "time",
+    "time_t",
+    "sys_clock_start",
+    "uint64_t"
+  ],
+  "explanation": "To decide whether this function violates the MISRA rule \"A pointer should point to a const-qualified type whenever possible\" you must know which pointer parameters are being passed and whether they are input (could be const) or output (must be non-const). The listed symbols are required for that determination:\n\n- clock_gettime: function prototype is needed to see the exact parameter types (e.g. whether the second parameter is 'struct timespec *' or 'const struct timespec *').\n- struct timespec: the pointed-to type used with &ts; confirms the pointer type passed to clock_gettime.\n- HAVE_CLOCK_GETTIME: controls whether the clock_gettime branch is compiled; needed to know if that pointer call is relevant.\n- _MHD_UNWANTED_CLOCK and mono_clock_id: used in the branch condition that enables/disables the clock_gettime call (affects whether that pointer use is active).\n- mono_clock_start: used in the subtraction with ts.tv_sec / cur_time.tv_sec; its type/usage helps confirm these values are output from the called API rather than const inputs.\n\n- clock_get_time: prototype for the Mach API is required to know the signature (whether it takes mach_timespec_t * as an output parameter).\n- mach_timespec_t: the pointed-to type for &cur_time; needed to determine pointer direction (input vs output).\n- HAVE_CLOCK_GET_TIME: compile-time guard for the Mach branch.\n- _MHD_INVALID_CLOCK_SERV and mono_clock_service: determine whether the Mach branch runs; mono_clock_service value is used in the call.\n- KERN_SUCCESS: used to check success of clock_get_time; knowing the error-checking pattern helps confirm that &cur_time is an output buffer.\n\n- QueryPerformanceCounter: Windows API prototype \u2014 need to know it takes LARGE_INTEGER * (an output pointer) rather than a const pointer.\n- LARGE_INTEGER: type passed by address to QueryPerformanceCounter; needed to confirm pointer semantics.\n- perf_freq and perf_start: control whether the QueryPerformanceCounter branch is taken and how the returned counter is used (not pointer types themselves but relevant to branch analysis).\n\n- GetTickCount64 and tick_start: GetTickCount64 has no pointer parameters but is used in a branch; tick_start type/value determine branch behavior (no pointer constness issue but needed to know which timing method is active).\n- _WIN32 and _WIN32_WINNT: compilation guards that determine which Windows timing API is used; needed to know whether pointer-accepting functions are compiled in.\n\n- gethrtime and HAVE_GETHRTIME: gethrtime takes/returns scalar (no pointer) but the macro controls that branch; included to know which timing path is active.\n\n- time and time_t: prototype for time(time_t *) is required because time is called with NULL; you must know the parameter type (time_t *) to assess pointer usage/constness and whether passing NULL matters for the rule.\n- sys_clock_start: used with time(NULL) result; helps confirm this path is active and how the time output is used.\n\n- uint64_t: used in several casts in the function; having the type definitions helps fully understand the expressions involving pointer-less APIs and confirm there are no hidden pointer conversions.\n\nIn short: include the prototypes/types for every called API that takes or might take pointer parameters (clock_gettime, clock_get_time, QueryPerformanceCounter, time) and the compile-time guards/macros that select which API is actually compiled. Those symbols let an analyzer determine whether pointers passed are intended as output buffers (must be non-const) or could reasonably be const-qualified, which is the core of the MISRA check."
+}
